@@ -1,5 +1,7 @@
 # Tasteful Frontend 技能核心
 
+[English Version](README.md) | 中文版
+
 专为生成现代化、生产级别且极具美感的前端 UI 界面 (基于 React, Tailwind CSS, HTML/CSS) 而构建的 AI 原生设计技能 (Skill)。
 
 此技能打破了常见的“AI 默认审美”（如千篇一律的布局、被滥用的默认字体以及糟糕的无障碍体验），采用独创的 **“三层架构体系” (Three-Tier Architecture)**，在确保工程底部严谨性的同时，大幅拉高界面的视觉上限。

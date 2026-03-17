@@ -1,5 +1,7 @@
 # Tasteful Frontend Skill
 
+[中文版](README_CN.md) | English Version
+
 An AI-native frontend UI design skill built to generate modern, production-ready, and highly aesthetic web interfaces (React, Tailwind CSS, HTML/CSS). 
 
 This skill moves beyond the generic "AI baseline" (often characterized by predictable layouts, overused fonts, and poor accessibility) by employing a **Three-Tier Architecture** that enforces both engineering rigor and striking visual design.
