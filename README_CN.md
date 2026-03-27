@@ -1,42 +1,94 @@
-# Tasteful Frontend 技能核心
+# Tasteful Frontend
 
 [English Version](README.md) | 中文版
 
-专为生成现代化、生产级别且极具美感的前端 UI 界面 (基于 React, Tailwind CSS, HTML/CSS) 而构建的 AI 原生设计技能 (Skill)。
+专为 **Web 和移动端** 构建现代化、生产级、高视觉冲击力界面的 AI 原生设计技能。支持 React、Next.js、Vue、Svelte、Tailwind CSS、SwiftUI、React Native 和 Flutter。
 
-此技能打破了常见的“AI 默认审美”（如千篇一律的布局、被滥用的默认字体以及糟糕的无障碍体验），采用独创的 **“三层架构体系” (Three-Tier Architecture)**，在确保工程底部严谨性的同时，大幅拉高界面的视觉上限。
+此技能专治"AI 设计泡沫" — 千篇一律的布局、被滥用的默认字体、糟糕的无障碍体验 — 采用独创的 **三层架构体系**，在确保工程底线的同时大幅拉高视觉上限。
+
+## v1.0 更新内容
+
+此版本由 [tasteful-frontend](https://github.com/d-wwei/tasteful-frontend)（审美哲学）和 [ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)（全面 UX 规则体系）合成而来，使用 [Remix](https://github.com/d-wwei/remix) 工具驱动。
+
+- **10 大规则优先级体系**（CRITICAL → LOW）— 系统化设计决策
+- **移动端平台支持** — iOS（SwiftUI / Apple HIG）、Android（Material Design）、React Native、Flutter
+- **约束文件大幅扩展** — 无障碍规则 34 → 74 行，组件模式 36 → 78 行
+- **预交付检查清单** — 视觉质量、交互、无障碍、布局、代码质量
+- **深度覆盖** — 触控目标、手势安全、骨架屏加载、安全区域、弹簧物理曲线、语义色彩 Token、屏幕阅读器支持
 
 ## 核心特性
 
-- **第一层：底线层 (Baseline Constraints)**：无障碍优先。强制约束 ARIA 标签、语义化 HTML、键盘焦点捕获以及严格的动效性能限制。
-- **第二层：组件基准层 (Component Patterns)**：引入真实生产环境的 SaaS 最佳实践，涵盖表单、数据展示、浮层和导航（例如强制执行 8px 网格、单列排版、按钮标签动词化）。
-- **第三层：审美表现层 (Aesthetic Directives)**：通过禁用泛滥的默认字体、强制要求留白构图、用纯粹的强调色取代随意的彩虹色、合理使用现代物理材质（如玻璃拟态 Glassmorphism），全面提升视觉冲击力。
-- **设计推演 (Design Thinking)**：强制 AI 在输出任何代码前，先明确大胆的视觉方向和设计的“吸睛点 (Wow factor)”。
+### 三层架构体系
+
+- **第一层：底线约束层** — 无障碍、触控交互、性能。没有商量余地。强制 ARIA 标签、44pt 触控目标、焦点捕获、动效性能、懒加载、屏幕阅读器兼容。
+- **第二层：组件模式层** — 来自生产环境的最佳实践：表单、导航、数据展示、浮层、响应式布局。8px 网格、单列表单、动词化按钮标签、空状态 CTA、自适应导航。
+- **第三层：审美表现层** — 此技能的灵魂。禁用被滥用的字体（Inter、Roboto、Arial），强制大胆的色彩哲学（一个主色 + 一个强调色），要求有意识的空间构图，应用现代材质效果（玻璃拟态、颗粒感、氛围背景）。
+
+### 设计推演优先
+
+强制 AI 在输出任何代码前，先明确大胆的视觉方向、平台上下文和设计的"吸睛点（Wow Factor）"。
+
+### 规则优先级系统
+
+10 大规则类别按影响级别排序（CRITICAL → LOW），参考 Apple HIG、Material Design 和 WCAG 标准。
+
+### 反 AI 泡沫反模式清单
+
+明确列出通用 AI 审美陷阱、工程失误、UX 错误和移动端特有问题。
 
 ## 目录结构
 
 ```text
 frontend-design/
-├── SKILL.md                  # 主技能配置文件 / 核心提示词
+├── SKILL.md                  # 主技能入口文件（240 行）
 ├── constraints/
-│   ├── accessibility.md      # 底线约束：无障碍设计与性能规范
-│   └── components.md         # 交互约束：组件模式与最佳实践
-├── README.md                 # 英文使用文档
-└── README_CN.md              # 中文使用文档
+│   ├── accessibility.md      # 无障碍、触控、性能、屏幕阅读器规则
+│   └── components.md         # 组件模式、导航、表单、图表、图标
+├── README.md                 # 英文文档
+└── README_CN.md              # 中文文档
 ```
 
 ## 使用方法
 
-要应用此技能，请确保您的 AI Agent 工具（如 Cursor, Claude 或其他本地工作流）被正确配置为在生成前端代码时读取 `SKILL.md` 文件。
+### Claude Code
 
-配置有此技能的 Agent 提示词示例：
-> "加载 Tasteful Frontend 技能，帮我构建一个美观的 SaaS 后台设置页面，我想要一种极致的深色模式质感。"
+将技能放置在 `~/.claude/skills/` 下即可自动识别。调用方式：
+
+```
+/tasteful-frontend
+```
+
+或自然语言引用：
+
+> "帮我构建一个 SaaS 后台设置页面，要深色模式的质感。"
+
+### 其他 AI Agent（Cursor、Windsurf 等）
+
+配置 Agent 在生成前端代码时读取 `SKILL.md` 作为系统提示词或上下文文件。
+
+### 示例提示词
+
+- "为一个金融科技产品做着陆页，我要奢华的编辑杂志风。"
+- "做一个 iOS 移动端引导流程，SwiftUI，简约温暖的感觉。"
+- "重新设计这个仪表盘的表格，加上合理的空状态和加载骨架屏。"
+- "审查这个 React 组件的无障碍性和触控目标合规性。"
 
 ## 设计原则
 
-1. **无障碍设计 (Accessibility) 没有商量余地**。
-2. **有主见的审美 (Intentional Aesthetics) 远胜于通用模板**。
-3. **通过既定优秀模式确保产品的可用性**。
+1. **无障碍设计没有商量余地** — 每条规则背后都有真实用户的需求。
+2. **有主见的审美远胜通用模板** — 大胆选择，而不是安全默认值。
+3. **平台感知** — 尊重 iOS HIG、Material Design 和 Web 惯例。
+4. **行动指南，而非百科全书** — 可执行的规则，而不是参考手册。
+
+## 致谢
+
+合成自：
+- [tasteful-frontend](https://github.com/d-wwei/tasteful-frontend) — 审美哲学与三层架构
+- [ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) — 全面的 UI/UX 规则体系与移动端平台规范
+- [Anthropic 前端设计指南](https://docs.anthropic.com) — 反 AI 泡沫设计思维
+
+使用 [Remix](https://github.com/d-wwei/remix) 构建 — 通用 artifact 重构工具。
 
 ---
-*融合了多个顶尖设计技能精华的终极解决方案。*
+
+MIT 许可证
