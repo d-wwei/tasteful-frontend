@@ -62,12 +62,16 @@ frontend-design/
 ├── aesthetic-patterns.md             # 10+ encodable visual patterns from brand analysis
 ├── constraints/
 │   ├── accessibility.md              # Design-level a11y, touch, performance rules
-│   ├── components.md                 # Component patterns, navigation, layout
-│   ├── component-visual-specs.md     # Component behavior + visual spec templates
+│   ├── code-rules.md                 # Code-level rules (for design-to-code-runner)
+│   ├── color-deep.md                 # Deep color system knowledge
 │   ├── component-css-specs.md        # CSS-level component implementation
-│   ├── responsive-strategies.md      # Breakpoint behavior, collapse rules
+│   ├── component-visual-specs.md     # Component behavior + visual spec templates
+│   ├── components.md                 # Component patterns, navigation, layout
+│   ├── motion-deep.md                # Motion timing, easing, choreography
+│   ├── motion-performance.md         # Motion rendering, FLIP, layer promotion
 │   ├── opentype-rules.md             # OpenType feature usage guide
-│   └── code-rules.md                 # Code-level rules (for design-to-code-runner)
+│   ├── responsive-strategies.md      # Breakpoint behavior, collapse rules
+│   └── typography-deep.md            # Deep typography system knowledge
 ├── brand-tokens/                     # 66+ brand reference token libraries
 │   └── {brand}.tokens.json
 ├── brand-guardrails/                 # Brand-specific do's / don'ts

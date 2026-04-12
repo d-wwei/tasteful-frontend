@@ -3,132 +3,489 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mongodb Brand Tokens Preview</title>
+<title>MongoDB Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#65727b&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --surface: #ffffff;
-    --surface-subtle: #f8f8f8;
-    --accent: #00684a;
-    --text-primary: #21313c;
-    --text-secondary: #65727b;
-    --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    /* LeafyGreen Palette */
+    --black: #001E2B;
+    --gray-dark4: #112733;
+    --gray-dark3: #1C2D38;
+    --gray-dark2: #3D4F58;
+    --gray-dark1: #5C6C75;
+    --gray-base: #889397;
+    --gray-light1: #C1C7C6;
+    --gray-light2: #E8EDEB;
+    --gray-light3: #F9FBFA;
+    --white: #ffffff;
+    --green-dark3: #023430;
+    --green-dark2: #00684A;
+    --green-dark1: #00A35C;
+    --green-base: #00ED64;
+    --green-light2: #C0FAE6;
+    --green-light3: #E3FCF7;
+    --blue-base: #016BF8;
+    --blue-light1: #0498EC;
+    --blue-light3: #E1F7FF;
+    --red-base: #DB3030;
+    --red-light3: #FFEAE5;
+    --yellow-base: #FFC010;
+    --yellow-light3: #FEF7DB;
+    --purple-base: #B45AF2;
+    /* Semantic */
+    --surface: var(--white);
+    --surface-dark: var(--black);
+    --accent-light: var(--green-dark2);
+    --accent-dark: var(--green-base);
+    --text-primary: var(--black);
+    --text-secondary: var(--gray-dark1);
+    --border: var(--gray-light2);
+    --border-dark: var(--gray-dark2);
+    /* Fonts */
+    --font-body: 'Euclid Circular A', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-code: 'Source Code Pro', 'SFMono-Regular', Consolas, monospace;
+    --font-display: Georgia, serif; /* MongoDB Value Serif fallback */
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
-  .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
-  }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
-  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  body { font-family: var(--font-body); background: var(--white); color: var(--text-primary); line-height: 1.5; }
+
+  /* -- Layout -- */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
   .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
-  .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
-  .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .section-title { font-size: 28px; font-weight: 600; line-height: 1.25; margin-bottom: 8px; }
+  .section-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+
+  /* -- Hero (dark, Atlas-style) -- */
+  .brand-header {
+    background: var(--surface-dark);
+    padding: 80px 32px 64px;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .brand-header .leaf-icon {
+    display: inline-block;
+    width: 48px; height: 48px;
+    background: var(--green-base);
+    border-radius: 50% 50% 50% 0;
+    margin-bottom: 24px;
+    transform: rotate(-45deg);
+  }
+  .brand-header h1 {
+    font-family: var(--font-display);
+    font-size: 48px; font-weight: 700; line-height: 1.25;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .brand-header .aesthetic {
+    font-size: 16px; color: var(--gray-light1); margin-bottom: 20px;
+  }
+  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .brand-header .tag {
+    font-size: 11px; padding: 4px 12px;
+    background: rgba(0, 237, 100, 0.12); color: var(--green-base);
+    border: 1px solid rgba(0, 237, 100, 0.25);
+    border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  /* -- Color Palette -- */
+  .palette-group { margin-bottom: 24px; }
+  .palette-group-title {
+    font-size: 12px; font-weight: 600; color: var(--gray-base);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
+  }
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  .color-swatch .swatch-fill { height: 56px; }
+  .color-swatch .swatch-info { padding: 8px 10px; background: var(--white); }
+  .color-swatch .swatch-name { font-size: 11px; font-weight: 600; margin-bottom: 1px; color: var(--text-primary); }
+  .color-swatch .swatch-hex { font-size: 10px; color: var(--text-secondary); font-family: var(--font-code); }
+  .color-swatch.dark-bg .swatch-info { background: var(--black); }
+  .color-swatch.dark-bg .swatch-name { color: var(--gray-light2); }
+  .color-swatch.dark-bg .swatch-hex { color: var(--gray-base); }
+
+  /* -- Typography -- */
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .type-label { flex: 0 0 80px; font-size: 11px; color: var(--gray-base); text-align: right; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+  .type-sample { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .type-meta { flex: 0 0 80px; font-size: 11px; color: var(--gray-base); text-align: right; font-family: var(--font-code); }
+
+  /* -- Spacing -- */
+  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 6px; }
+  .spacing-label { flex: 0 0 40px; font-size: 11px; color: var(--gray-base); text-align: right; font-weight: 600; font-family: var(--font-code); }
+  .spacing-bar { height: 20px; background: var(--green-dark2); border-radius: 3px; opacity: 0.5; }
+  .spacing-value { font-size: 11px; color: var(--gray-base); font-family: var(--font-code); min-width: 40px; }
+
+  /* -- Radius -- */
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; }
+  .radius-box {
+    aspect-ratio: 1; background: var(--gray-light3); border: 1px solid var(--border);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  }
+  .radius-box span { font-size: 10px; color: var(--gray-base); font-family: var(--font-code); }
+
+  /* -- Shadow -- */
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+  .shadow-card {
+    padding: 20px; border-radius: 8px; background: var(--white);
+    border: 1px solid var(--border); min-height: 90px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .shadow-card .shadow-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--gray-base); }
+
+  /* -- Component Previews -- */
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Buttons */
+  .comp-card {
+    padding: 24px; border-radius: 8px; border: 1px solid var(--border);
+  }
+  .comp-card.dark { background: var(--black); border-color: var(--border-dark); }
+  .comp-card.light { background: var(--white); }
+  .comp-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+  .comp-card.dark h3 { color: var(--gray-light2); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600;
+    cursor: pointer; border: none; transition: background 150ms, border-color 150ms;
+    font-family: var(--font-body); text-decoration: none; line-height: 1;
+  }
+  .btn-primary-dark { background: var(--green-base); color: var(--black); }
+  .btn-primary-dark:hover { background: var(--green-dark1); }
+  .btn-primary-light { background: var(--green-dark2); color: var(--white); }
+  .btn-primary-light:hover { background: var(--green-dark3); }
+  .btn-secondary-dark { background: transparent; color: var(--gray-light2); border: 1px solid var(--border-dark); }
+  .btn-secondary-dark:hover { border-color: var(--gray-base); }
+  .btn-secondary-light { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
+  .btn-secondary-light:hover { border-color: var(--gray-base); }
+  .btn-danger { background: var(--red-base); color: var(--white); }
+  .btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Query Result Panel */
+  .query-panel { background: var(--black); border-radius: 8px; overflow: hidden; border: 1px solid var(--border-dark); }
+  .query-toolbar {
+    height: 36px; background: var(--gray-dark4); border-bottom: 1px solid var(--border-dark);
+    display: flex; align-items: center; padding: 0 12px; gap: 8px;
+  }
+  .query-toolbar-label {
+    font-size: 11px; font-weight: 600; color: var(--gray-base);
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .query-toolbar-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--green-base);
+    margin-left: auto;
+  }
+  .query-toolbar-count {
+    font-size: 11px; color: var(--gray-base); font-family: var(--font-code);
+  }
+  .query-body { padding: 12px 0; font-family: var(--font-code); font-size: 13px; line-height: 1.7; }
+  .query-line { display: flex; padding: 0 12px; }
+  .query-line:hover { background: rgba(0, 237, 100, 0.04); }
+  .query-linenum { flex: 0 0 32px; text-align: right; padding-right: 12px; color: var(--gray-dark2); user-select: none; font-size: 12px; }
+  .query-code { flex: 1; color: var(--gray-light2); }
+  .syn-key { color: var(--blue-light1); }
+  .syn-str { color: var(--green-base); }
+  .syn-num { color: var(--purple-base); }
+  .syn-bool { color: var(--yellow-base); }
+  .syn-brace { color: var(--gray-base); }
+  .syn-punct { color: var(--gray-dark1); }
+
+  /* Pipeline Stage */
+  .pipeline-stage {
+    background: var(--gray-dark4); border: 1px solid var(--border-dark);
+    border-radius: 8px; overflow: hidden;
+  }
+  .pipeline-header {
+    height: 40px; display: flex; align-items: center; padding: 0 12px; gap: 8px;
+  }
+  .pipeline-num {
+    font-size: 11px; font-weight: 600; color: var(--green-base);
+    background: rgba(0, 237, 100, 0.1); padding: 2px 8px; border-radius: 4px;
+    font-family: var(--font-code);
+  }
+  .pipeline-op { font-size: 13px; font-weight: 600; color: var(--gray-light2); font-family: var(--font-code); }
+  .pipeline-body {
+    padding: 12px; border-top: 1px solid var(--border-dark);
+    background: var(--gray-dark3); font-family: var(--font-code);
+    font-size: 13px; color: var(--gray-light2); line-height: 1.6;
+  }
+  .pipeline-connector {
+    width: 2px; height: 8px; background: var(--border-dark); margin: 0 auto;
+  }
+
+  /* Status Banners */
+  .banner {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .banner-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .banner-success { background: var(--green-light3); color: var(--green-dark3); }
+  .banner-success .banner-dot { background: var(--green-dark2); }
+  .banner-error { background: var(--red-light3); color: #5B0000; }
+  .banner-error .banner-dot { background: var(--red-base); }
+  .banner-warning { background: var(--yellow-light3); color: #4C2100; }
+  .banner-warning .banner-dot { background: var(--yellow-base); }
+  .banner-info { background: var(--blue-light3); color: #0C2657; }
+  .banner-info .banner-dot { background: var(--blue-base); }
+
+  /* Nav bar */
+  .atlas-nav {
+    background: var(--black); height: 48px;
+    display: flex; align-items: center; padding: 0 16px; gap: 20px;
+    border-radius: 8px; margin-bottom: 4px;
+  }
+  .atlas-nav-logo {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 15px; font-weight: 700; color: var(--white);
+  }
+  .atlas-nav-logo .leaf {
+    width: 18px; height: 18px; background: var(--green-base);
+    border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+  }
+  .atlas-nav-link {
+    font-size: 13px; font-weight: 500; color: var(--gray-light1);
+    text-decoration: none; padding: 14px 0; border-bottom: 2px solid transparent;
+  }
+  .atlas-nav-link.active { color: var(--white); border-bottom-color: var(--green-base); }
+  .atlas-nav-cta {
+    margin-left: auto; background: var(--green-base); color: var(--black);
+    font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 6px;
+    border: none; cursor: pointer; font-family: var(--font-body);
+  }
 </style>
 </head>
 <body>
-<div class="container">
-  <header class="brand-header">
-    <h1>Mongodb</h1>
-    <p class="aesthetic">developer green with leaf branding</p>
-    <div class="tags">
-      <span class="tag">leaf-green</span><span class="tag">developer-docs</span><span class="tag">database-focused</span>
-    </div>
-  </header>
 
+<!-- Hero -->
+<header class="brand-header">
+  <div class="leaf-icon"></div>
+  <h1>MongoDB</h1>
+  <p class="aesthetic">Developer-focused data platform -- dark ink surfaces, electric green accents, monospace precision</p>
+  <div class="tags">
+    <span class="tag">LeafyGreen</span>
+    <span class="tag">Atlas</span>
+    <span class="tag">Document Database</span>
+    <span class="tag">Developer Tooling</span>
+    <span class="tag">Aggregation</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Color Palette -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Mongodb visual identity.</p>
-    <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#00684a"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#00684a</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#21313c"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#21313c</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#65727b"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#65727b</div></div></div>
+    <p class="section-desc">LeafyGreen palette -- cool-toned grays with teal undertone, anchored on MDB Ink.</p>
+
+    <div class="palette-group">
+      <div class="palette-group-title">Core Surfaces</div>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#001E2B"></div><div class="swatch-info"><div class="swatch-name">MDB Ink</div><div class="swatch-hex">#001E2B</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#112733"></div><div class="swatch-info"><div class="swatch-name">gray.dark4</div><div class="swatch-hex">#112733</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#1C2D38"></div><div class="swatch-info"><div class="swatch-name">gray.dark3</div><div class="swatch-hex">#1C2D38</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#F9FBFA"></div><div class="swatch-info"><div class="swatch-name">gray.light3</div><div class="swatch-hex">#F9FBFA</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff; border-bottom: 1px solid #E8EDEB"></div><div class="swatch-info"><div class="swatch-name">white</div><div class="swatch-hex">#FFFFFF</div></div></div>
+      </div>
+    </div>
+
+    <div class="palette-group">
+      <div class="palette-group-title">Green (Brand)</div>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#023430"></div><div class="swatch-info"><div class="swatch-name">green.dark3</div><div class="swatch-hex">#023430</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#00684A"></div><div class="swatch-info"><div class="swatch-name">green.dark2</div><div class="swatch-hex">#00684A</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#00A35C"></div><div class="swatch-info"><div class="swatch-name">green.dark1</div><div class="swatch-hex">#00A35C</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#00ED64"></div><div class="swatch-info"><div class="swatch-name">green.base</div><div class="swatch-hex">#00ED64</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#C0FAE6"></div><div class="swatch-info"><div class="swatch-name">green.light2</div><div class="swatch-hex">#C0FAE6</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#E3FCF7"></div><div class="swatch-info"><div class="swatch-name">green.light3</div><div class="swatch-hex">#E3FCF7</div></div></div>
+      </div>
+    </div>
+
+    <div class="palette-group">
+      <div class="palette-group-title">Grays</div>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#3D4F58"></div><div class="swatch-info"><div class="swatch-name">gray.dark2</div><div class="swatch-hex">#3D4F58</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#5C6C75"></div><div class="swatch-info"><div class="swatch-name">gray.dark1</div><div class="swatch-hex">#5C6C75</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#889397"></div><div class="swatch-info"><div class="swatch-name">gray.base</div><div class="swatch-hex">#889397</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#C1C7C6"></div><div class="swatch-info"><div class="swatch-name">gray.light1</div><div class="swatch-hex">#C1C7C6</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#E8EDEB"></div><div class="swatch-info"><div class="swatch-name">gray.light2</div><div class="swatch-hex">#E8EDEB</div></div></div>
+      </div>
+    </div>
+
+    <div class="palette-group">
+      <div class="palette-group-title">Semantic</div>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#DB3030"></div><div class="swatch-info"><div class="swatch-name">Error</div><div class="swatch-hex">#DB3030</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#FFC010"></div><div class="swatch-info"><div class="swatch-name">Warning</div><div class="swatch-hex">#FFC010</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#016BF8"></div><div class="swatch-info"><div class="swatch-name">Info</div><div class="swatch-hex">#016BF8</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#00684A"></div><div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-hex">#00684A</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#B45AF2"></div><div class="swatch-info"><div class="swatch-name">Purple</div><div class="swatch-hex">#B45AF2</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#0498EC"></div><div class="swatch-info"><div class="swatch-name">Focus ring</div><div class="swatch-hex">#0498EC</div></div></div>
+      </div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Mongodb branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Mongodb Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">MongoDB Value Serif for display, Euclid Circular A for UI, Source Code Pro for code.</p>
+    <div class="type-row"><span class="type-label">Display</span><span class="type-sample" style="font-family:var(--font-display);font-size:36px;font-weight:700;line-height:1.25">MongoDB Atlas</span><span class="type-meta">48px / 700</span></div>
+    <div class="type-row"><span class="type-label">H1</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.25">Page Title</span><span class="type-meta">36px / 600</span></div>
+    <div class="type-row"><span class="type-label">H2</span><span class="type-sample" style="font-size:22px;font-weight:600;line-height:1.25">Section Heading</span><span class="type-meta">28px / 600</span></div>
+    <div class="type-row"><span class="type-label">H3</span><span class="type-sample" style="font-size:18px;font-weight:600;line-height:1.25">Subsection</span><span class="type-meta">24px / 600</span></div>
+    <div class="type-row"><span class="type-label">Body 1</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Primary reading text for documentation and descriptions.</span><span class="type-meta">16px / 400</span></div>
+    <div class="type-row"><span class="type-label">Body 2</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Secondary text, table cells, metadata values.</span><span class="type-meta">14px / 400</span></div>
+    <div class="type-row"><span class="type-label">Caption</span><span class="type-sample" style="font-size:12px;font-weight:500;line-height:1.25;color:var(--gray-base)">Labels and badge text</span><span class="type-meta">12px / 500</span></div>
+    <div class="type-row"><span class="type-label">Code</span><span class="type-sample" style="font-family:var(--font-code);font-size:14px;font-weight:400;line-height:1.6;color:var(--gray-dark3)">db.collection.find({ status: "active" })</span><span class="type-meta">14px / 400</span></div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
+    <p class="section-desc">4px baseline grid. 8px base unit.</p>
+    <div class="spacing-row"><span class="spacing-label">2xs</span><div class="spacing-bar" style="width:2px"></div><span class="spacing-value">2px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
     <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
     <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
     <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
     <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
     <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">sec</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
   </section>
 
+  <!-- Border Radius -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:0"><span>0px</span><span>none</span></div>
+      <div class="radius-box" style="border-radius:4px"><span>4px</span><span>sm</span></div>
+      <div class="radius-box" style="border-radius:6px"><span>6px</span><span>md</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>8px</span><span>lg</span></div>
+      <div class="radius-box" style="border-radius:12px"><span>12px</span><span>xl</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span>pill</span><span>9999px</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Shadows</h2>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none"><div class="shadow-name">Level 0</div><div class="shadow-desc">Flat -- no elevation</div></div>
+      <div class="shadow-card" style="box-shadow:0px 4px 10px -4px rgba(0,30,43,0.08)"><div class="shadow-name">Level 1</div><div class="shadow-desc">Cards, dropdowns at rest</div></div>
+      <div class="shadow-card" style="box-shadow:0px 4px 20px -4px rgba(0,30,43,0.15)"><div class="shadow-name">Level 2</div><div class="shadow-desc">Modals, popovers</div></div>
+      <div class="shadow-card" style="box-shadow:0px 8px 30px -4px rgba(0,30,43,0.20)"><div class="shadow-name">Level 3</div><div class="shadow-desc">Toasts, command palettes</div></div>
+    </div>
+  </section>
+
+  <!-- Components -->
   <section class="section">
     <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Mongodb tokens.</p>
+    <p class="section-desc">Sample components styled with LeafyGreen tokens.</p>
+
     <div class="comp-grid">
-      <div class="comp-card">
-        <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+
+      <!-- Atlas Nav -->
+      <div class="comp-card dark" style="padding:0; overflow:hidden; grid-column: 1 / -1;">
+        <div class="atlas-nav">
+          <div class="atlas-nav-logo"><div class="leaf"></div> MongoDB</div>
+          <a class="atlas-nav-link active" href="#">Atlas</a>
+          <a class="atlas-nav-link" href="#">Charts</a>
+          <a class="atlas-nav-link" href="#">Triggers</a>
+          <a class="atlas-nav-link" href="#">Search</a>
+          <button class="atlas-nav-cta">New Cluster</button>
         </div>
       </div>
-      <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Mongodb Feature</h4>
-            <p>A component styled with the Mongodb design system tokens.</p>
+
+      <!-- Buttons (dark bg) -->
+      <div class="comp-card dark">
+        <h3>Buttons (Dark Surface)</h3>
+        <div class="btn-group" style="margin-bottom:12px">
+          <button class="btn btn-primary-dark">Create Database</button>
+          <button class="btn btn-secondary-dark">Cancel</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-danger">Drop Collection</button>
+        </div>
+      </div>
+
+      <!-- Buttons (light bg) -->
+      <div class="comp-card light">
+        <h3>Buttons (Light Surface)</h3>
+        <div class="btn-group" style="margin-bottom:12px">
+          <button class="btn btn-primary-light">Get Started</button>
+          <button class="btn btn-secondary-light">Documentation</button>
+        </div>
+      </div>
+
+      <!-- Query Result Panel -->
+      <div class="comp-card dark" style="padding:0; overflow:hidden; grid-column: 1 / -1;">
+        <div style="padding:16px 16px 8px"><h3 style="color:var(--gray-light2);font-size:14px;font-weight:600;margin-bottom:0">Document Viewer</h3></div>
+        <div style="padding: 0 16px 16px;">
+          <div class="query-panel">
+            <div class="query-toolbar">
+              <span class="query-toolbar-label">Query Results</span>
+              <div class="query-toolbar-dot"></div>
+              <span class="query-toolbar-count">3 docs</span>
+            </div>
+            <div class="query-body">
+              <div class="query-line"><span class="query-linenum">1</span><span class="query-code"><span class="syn-brace">{</span></span></div>
+              <div class="query-line"><span class="query-linenum">2</span><span class="query-code">  <span class="syn-key">"_id"</span><span class="syn-punct">:</span> <span class="syn-str">ObjectId("507f1f77bcf86cd799439011")</span><span class="syn-punct">,</span></span></div>
+              <div class="query-line"><span class="query-linenum">3</span><span class="query-code">  <span class="syn-key">"name"</span><span class="syn-punct">:</span> <span class="syn-str">"MongoDB Atlas"</span><span class="syn-punct">,</span></span></div>
+              <div class="query-line"><span class="query-linenum">4</span><span class="query-code">  <span class="syn-key">"version"</span><span class="syn-punct">:</span> <span class="syn-num">7.0</span><span class="syn-punct">,</span></span></div>
+              <div class="query-line"><span class="query-linenum">5</span><span class="query-code">  <span class="syn-key">"active"</span><span class="syn-punct">:</span> <span class="syn-bool">true</span><span class="syn-punct">,</span></span></div>
+              <div class="query-line"><span class="query-linenum">6</span><span class="query-code">  <span class="syn-key">"tags"</span><span class="syn-punct">:</span> <span class="syn-brace">[</span><span class="syn-str">"cloud"</span><span class="syn-punct">,</span> <span class="syn-str">"database"</span><span class="syn-punct">,</span> <span class="syn-str">"serverless"</span><span class="syn-brace">]</span><span class="syn-punct">,</span></span></div>
+              <div class="query-line"><span class="query-linenum">7</span><span class="query-code">  <span class="syn-key">"metrics"</span><span class="syn-punct">:</span> <span class="syn-brace">{</span> <span class="syn-key">"connections"</span><span class="syn-punct">:</span> <span class="syn-num">1247</span><span class="syn-punct">,</span> <span class="syn-key">"ops_per_sec"</span><span class="syn-punct">:</span> <span class="syn-num">85400</span> <span class="syn-brace">}</span></span></div>
+              <div class="query-line"><span class="query-linenum">8</span><span class="query-code"><span class="syn-brace">}</span></span></div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Aggregation Pipeline -->
+      <div class="comp-card dark" style="grid-column: 1 / -1;">
+        <h3>Aggregation Pipeline</h3>
+        <div style="max-width:500px">
+          <div class="pipeline-stage">
+            <div class="pipeline-header">
+              <span class="pipeline-num">1</span>
+              <span class="pipeline-op">$match</span>
+            </div>
+            <div class="pipeline-body"><span class="syn-brace">{</span> <span class="syn-key">"status"</span><span class="syn-punct">:</span> <span class="syn-str">"active"</span><span class="syn-punct">,</span> <span class="syn-key">"region"</span><span class="syn-punct">:</span> <span class="syn-str">"us-east-1"</span> <span class="syn-brace">}</span></div>
+          </div>
+          <div class="pipeline-connector"></div>
+          <div class="pipeline-stage">
+            <div class="pipeline-header">
+              <span class="pipeline-num">2</span>
+              <span class="pipeline-op">$group</span>
+            </div>
+            <div class="pipeline-body"><span class="syn-brace">{</span> <span class="syn-key">"_id"</span><span class="syn-punct">:</span> <span class="syn-str">"$region"</span><span class="syn-punct">,</span> <span class="syn-key">"total"</span><span class="syn-punct">:</span> <span class="syn-brace">{</span> <span class="syn-key">"$sum"</span><span class="syn-punct">:</span> <span class="syn-num">1</span> <span class="syn-brace">}</span> <span class="syn-brace">}</span></div>
+          </div>
+          <div class="pipeline-connector"></div>
+          <div class="pipeline-stage">
+            <div class="pipeline-header">
+              <span class="pipeline-num">3</span>
+              <span class="pipeline-op">$sort</span>
+            </div>
+            <div class="pipeline-body"><span class="syn-brace">{</span> <span class="syn-key">"total"</span><span class="syn-punct">:</span> <span class="syn-num">-1</span> <span class="syn-brace">}</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Banners -->
+      <div class="comp-card light" style="grid-column: 1 / -1;">
+        <h3>Status Banners</h3>
+        <div class="banner banner-success"><div class="banner-dot"></div>Cluster deployed successfully to us-east-1.</div>
+        <div class="banner banner-error"><div class="banner-dot"></div>Failed to connect: authentication error on replica set.</div>
+        <div class="banner banner-warning"><div class="banner-dot"></div>Index build in progress -- queries may be slower during this operation.</div>
+        <div class="banner banner-info"><div class="banner-dot"></div>MongoDB 7.0 is available. Upgrade your cluster to access new features.</div>
+      </div>
+
     </div>
   </section>
+
 </div>
 </body>
 </html>

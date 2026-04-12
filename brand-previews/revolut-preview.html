@@ -5,125 +5,323 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Revolut Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#8b8b8f&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --surface: #0c0c0e;
-    --surface-subtle: #1a1a1a;
-    --accent: #0666eb;
-    --text-primary: #ffffff;
-    --text-secondary: #8b8b8f;
-    --border: rgba(255,255,255,0.1);
-    --font: Inter, -apple-system, sans-serif;
+    --surface: #191C1F;
+    --surface-card: #1E2226;
+    --surface-raised: #252A2F;
+    --surface-overlay: #2C3238;
+    --accent: #7F84F6;
+    --accent-hover: #9599F8;
+    --accent-pressed: #6A6FE0;
+    --accent-muted: rgba(127,132,246,0.12);
+    --text-primary: #FFFFFF;
+    --text-secondary: #8B9098;
+    --text-tertiary: #5C6370;
+    --success: #4CD080;
+    --error: #F45B69;
+    --warning: #F5A623;
+    --border: rgba(255,255,255,0.08);
+    --border-prominent: rgba(255,255,255,0.15);
+    --border-transaction: rgba(255,255,255,0.05);
+    /* Aeonik Pro with system fallback */
+    --font: 'Aeonik Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.4; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 64px 24px; }
+
+  /* Brand Header */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
+    text-align: center; margin-bottom: 64px; padding: 48px 32px;
+    background: var(--surface-card); border-radius: 16px;
     border: 1px solid var(--border);
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
+  .brand-header h1 { font-size: 40px; font-weight: 700; line-height: 1.10; letter-spacing: -0.5px; color: var(--text-primary); margin-bottom: 12px; }
+  .brand-header h1 span { color: var(--accent); }
+  .brand-header .aesthetic { font-size: 17px; color: var(--text-secondary); margin-bottom: 20px; font-weight: 400; }
   .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
+  .brand-header .tag {
+    font-size: 11px; padding: 4px 12px;
+    background: var(--accent-muted); color: var(--accent);
+    border-radius: 9999px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.8px;
+  }
+
+  /* Section */
+  .section { margin-bottom: 64px; }
+  .section-title { font-size: 24px; font-weight: 600; line-height: 1.20; letter-spacing: -0.3px; margin-bottom: 8px; }
+  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; font-weight: 400; }
+
+  /* Color Swatches */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .color-swatch { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-card); }
+  .color-swatch .swatch-fill { height: 64px; }
   .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
+  .color-swatch .swatch-name { font-size: 13px; font-weight: 500; margin-bottom: 2px; }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-tertiary); font-weight: 400; }
+
+  /* Typography */
   .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .type-label { flex: 0 0 80px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; }
   .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
+  .type-meta { flex: 0 0 60px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 400; }
+
+  /* Spacing */
   .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
+  .spacing-label { flex: 0 0 50px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 500; }
+  .spacing-bar { height: 20px; background: var(--accent-muted); border-radius: 4px; border-left: 3px solid var(--accent); }
+  .spacing-value { font-size: 11px; color: var(--text-tertiary); min-width: 40px; font-feature-settings: "tnum"; }
+
+  /* Radius */
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+  .radius-box {
+    aspect-ratio: 1; background: var(--surface-card); border: 1px solid var(--border-prominent);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  }
+  .radius-box span { font-size: 11px; color: var(--text-tertiary); font-weight: 400; }
+
+  /* Shadows */
   .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
+  .shadow-card {
+    padding: 24px; border-radius: 16px; background: var(--surface-card);
+    min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end;
+    border: 1px solid var(--border);
+  }
+  .shadow-card .shadow-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-tertiary); }
+
+  /* Components */
   .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .comp-card { padding: 24px; background: var(--surface-card); border-radius: 16px; border: 1px solid var(--border); }
+  .comp-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 16px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; padding: 12px 24px; border-radius: 8px;
+    font-size: 15px; font-weight: 500; cursor: pointer; border: none;
+    transition: all 150ms ease; text-decoration: none; font-family: var(--font);
+  }
+  .btn-accent { background: var(--accent); color: #FFFFFF; }
+  .btn-accent:hover { background: var(--accent-hover); }
+  .btn-ghost { background: transparent; color: #FFFFFF; border: 1px solid var(--border-prominent); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.05); }
   .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #000 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Transaction list */
+  .tx-list { background: var(--surface-card); border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+  .tx-date { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-tertiary); padding: 16px 16px 8px; }
+  .tx-row {
+    display: flex; align-items: center; height: 64px; padding: 0 16px;
+    border-bottom: 1px solid var(--border-transaction); transition: background 100ms;
+  }
+  .tx-row:last-child { border-bottom: none; }
+  .tx-row:hover { background: rgba(255,255,255,0.03); }
+  .tx-icon {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--surface-raised);
+    display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+  }
+  .tx-info { flex: 1; margin-left: 12px; min-width: 0; }
+  .tx-name { font-size: 15px; font-weight: 500; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tx-category { font-size: 13px; font-weight: 400; color: var(--text-tertiary); }
+  .tx-amount { font-size: 15px; font-weight: 500; text-align: right; font-feature-settings: "tnum"; white-space: nowrap; }
+  .tx-amount.positive { color: var(--success); }
+  .tx-amount.neutral { color: var(--text-primary); }
+
+  /* Balance display */
+  .balance-section { text-align: left; margin-bottom: 24px; }
+  .balance-label { font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 4px; }
+  .balance-amount { font-size: 40px; font-weight: 700; line-height: 1.10; letter-spacing: -0.5px; font-feature-settings: "tnum"; }
+  .balance-change { font-size: 15px; font-weight: 500; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+  .balance-change.positive { color: var(--success); }
+  .balance-change.negative { color: var(--error); }
+
+  /* Metric card */
+  .metric-card { background: var(--surface-card); border-radius: 16px; padding: 24px; border: 1px solid var(--border); }
+  .metric-overline { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-tertiary); margin-bottom: 8px; }
+  .metric-value { font-size: 32px; font-weight: 600; line-height: 1.20; letter-spacing: -0.3px; font-feature-settings: "tnum"; }
+  .metric-trend { font-size: 13px; font-weight: 500; margin-top: 8px; display: inline-flex; align-items: center; gap: 4px; }
+  .metric-trend.up { color: var(--success); }
+  .metric-trend.down { color: var(--error); }
+
+  /* Status badges */
+  .badge { display: inline-flex; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; letter-spacing: 0.3px; }
+  .badge-success { background: rgba(76,208,128,0.12); color: var(--success); }
+  .badge-error { background: rgba(244,91,105,0.12); color: var(--error); }
+  .badge-warning { background: rgba(245,166,35,0.12); color: var(--warning); }
+  .badge-accent { background: var(--accent-muted); color: var(--accent); }
+
+  /* Pill chip */
+  .pill { display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 9999px; font-size: 13px; font-weight: 500; background: var(--accent-muted); color: var(--accent); }
 </style>
 </head>
 <body>
 <div class="container">
   <header class="brand-header">
-    <h1>Revolut</h1>
-    <p class="aesthetic">dark fintech with gradient energy</p>
+    <h1>R<span>e</span>volut</h1>
+    <p class="aesthetic">Dark-native fintech with restrained violet energy</p>
     <div class="tags">
-      <span class="tag">dark-fintech</span><span class="tag">gradient-accents</span><span class="tag">card-centric</span>
+      <span class="tag">dark-mode-native</span>
+      <span class="tag">financial-data-density</span>
+      <span class="tag">cornflower-violet-accent</span>
+      <span class="tag">card-centric-hierarchy</span>
     </div>
   </header>
 
+  <!-- Color Palette -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Revolut visual identity.</p>
+    <p class="section-desc">Core brand colors. Shark dark surfaces with Cornflower Blue accent designed for dark-first financial interfaces.</p>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#0c0c0e"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#0c0c0e</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#0666eb"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#0666eb</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#8b8b8f"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#8b8b8f</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#191C1F;border-bottom:1px solid rgba(255,255,255,0.08)"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#191C1F</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1E2226"></div><div class="swatch-info"><div class="swatch-name">surface-card</div><div class="swatch-hex">#1E2226</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#252A2F"></div><div class="swatch-info"><div class="swatch-name">surface-raised</div><div class="swatch-hex">#252A2F</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#2C3238"></div><div class="swatch-info"><div class="swatch-name">surface-overlay</div><div class="swatch-hex">#2C3238</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#7F84F6"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#7F84F6</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#9599F8"></div><div class="swatch-info"><div class="swatch-name">accent-hover</div><div class="swatch-hex">#9599F8</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#FFFFFF"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#FFFFFF</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#8B9098"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#8B9098</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#4CD080"></div><div class="swatch-info"><div class="swatch-name">success</div><div class="swatch-hex">#4CD080</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#F45B69"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#F45B69</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#F5A623"></div><div class="swatch-info"><div class="swatch-name">warning</div><div class="swatch-hex">#F5A623</div></div></div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Revolut branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Revolut Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">Aeonik Pro by CoType Foundry -- geometric sans-serif across all text. Tabular numerals for financial data.</p>
+    <div class="type-row"><span class="type-label">balance</span><span class="type-sample" style="font-size:40px;font-weight:700;line-height:1.10;letter-spacing:-0.5px;font-feature-settings:'tnum'">&pound;12,847.36</span><span class="type-meta">40px / 700</span></div>
+    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:32px;font-weight:600;line-height:1.20;letter-spacing:-0.3px">Manage your money</span><span class="type-meta">32px / 600</span></div>
+    <div class="type-row"><span class="type-label">heading</span><span class="type-sample" style="font-size:24px;font-weight:600;line-height:1.20;letter-spacing:-0.3px">Spending analytics</span><span class="type-meta">24px / 600</span></div>
+    <div class="type-row"><span class="type-label">body lg</span><span class="type-sample" style="font-size:17px;font-weight:400;line-height:1.40;color:var(--text-secondary)">Send money to 160+ countries instantly with the best exchange rates.</span><span class="type-meta">17px / 400</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:15px;font-weight:400;line-height:1.40;color:var(--text-secondary)">Your transaction was completed successfully.</span><span class="type-meta">15px / 400</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:13px;font-weight:400;line-height:1.40;color:var(--text-tertiary)">Today at 14:32 &middot; Groceries</span><span class="type-meta">13px / 400</span></div>
+    <div class="type-row"><span class="type-label">micro</span><span class="type-sample" style="font-size:11px;font-weight:500;line-height:1.20;letter-spacing:0.8px;text-transform:uppercase;color:var(--text-tertiary)">COMPLETED</span><span class="type-meta">11px / 500</span></div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
-    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
-    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
-    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
-    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
-    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <p class="section-desc">4/8px grid system. Tighter mobile margins reflect app-native density.</p>
+    <div class="spacing-row"><span class="spacing-label">4</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+    <div class="spacing-row"><span class="spacing-label">8</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">12</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">16</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">24</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">32</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">48</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">64</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
+    <div class="spacing-row"><span class="spacing-label">80</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
   </section>
 
+  <!-- Border Radius -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:4px"><span>4px</span><span>badges</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>8px</span><span>buttons</span></div>
+      <div class="radius-box" style="border-radius:12px"><span>12px</span><span>cards</span></div>
+      <div class="radius-box" style="border-radius:16px"><span>16px</span><span>panels</span></div>
+      <div class="radius-box" style="border-radius:20px"><span>20px</span><span>hero</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span>pill</span><span>chips</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Shadows</h2>
+    <p class="section-desc">Dark surfaces need heavy shadows. Elevation primarily through background color stepping.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none;">
+        <div class="shadow-name">Level 0</div><div class="shadow-desc">Flat -- background shift only</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:0px 2px 8px rgba(0,0,0,0.25);">
+        <div class="shadow-name">Level 1</div><div class="shadow-desc">Subtle lift for cards</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:0px 8px 24px -4px rgba(0,0,0,0.35),0px 2px 6px rgba(0,0,0,0.2);">
+        <div class="shadow-name">Level 2</div><div class="shadow-desc">Elevated -- dropdowns</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:0px 16px 48px -8px rgba(0,0,0,0.5),0px 4px 12px rgba(0,0,0,0.3);">
+        <div class="shadow-name">Level 3</div><div class="shadow-desc">Modal -- dialog overlays</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:0px 0px 24px rgba(127,132,246,0.15);">
+        <div class="shadow-name">Card Glow</div><div class="shadow-desc">Premium accent glow</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components -->
   <section class="section">
     <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Revolut tokens.</p>
+    <p class="section-desc">Sample components styled with Revolut tokens. Financial data density meets premium minimalism.</p>
+
     <div class="comp-grid">
+      <!-- Buttons -->
       <div class="comp-card">
         <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+        <div class="btn-group" style="margin-bottom:16px">
+          <button class="btn btn-accent">Send Money</button>
+          <button class="btn btn-ghost">Add Account</button>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span class="pill">All currencies</span>
+          <span class="badge badge-success">Completed</span>
+          <span class="badge badge-error">Failed</span>
+          <span class="badge badge-warning">Pending</span>
         </div>
       </div>
+
+      <!-- Metric Card -->
+      <div class="comp-card" style="padding:0">
+        <div class="metric-card">
+          <div class="metric-overline">Total spending</div>
+          <div class="metric-value">&pound;3,247.80</div>
+          <div class="metric-trend up">&#9650; 12.4% vs last month</div>
+        </div>
+      </div>
+
+      <!-- Balance Display -->
       <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Revolut Feature</h4>
-            <p>A component styled with the Revolut design system tokens.</p>
+        <h3>Account Balance</h3>
+        <div class="balance-section">
+          <div class="balance-label">Main account &middot; GBP</div>
+          <div class="balance-amount">&pound;12,847.36</div>
+          <div class="balance-change positive">&#9650; &pound;2,340.00 this month</div>
+        </div>
+      </div>
+
+      <!-- Transaction List -->
+      <div class="comp-card" style="padding:0;overflow:hidden">
+        <div style="padding:24px 16px 0"><h3 style="font-size:17px;font-weight:600;margin-bottom:0">Transactions</h3></div>
+        <div class="tx-list" style="border:none;border-radius:0">
+          <div class="tx-date">Today</div>
+          <div class="tx-row">
+            <div class="tx-icon">&#9749;</div>
+            <div class="tx-info"><div class="tx-name">Pret A Manger</div><div class="tx-category">Restaurants</div></div>
+            <div class="tx-amount neutral">-&pound;4.50</div>
+          </div>
+          <div class="tx-row">
+            <div class="tx-icon">&#128736;</div>
+            <div class="tx-info"><div class="tx-name">Apple</div><div class="tx-category">Shopping</div></div>
+            <div class="tx-amount neutral">-&pound;129.00</div>
+          </div>
+          <div class="tx-row">
+            <div class="tx-icon">&#8634;</div>
+            <div class="tx-info"><div class="tx-name">Refund - Amazon</div><div class="tx-category">Income</div></div>
+            <div class="tx-amount positive">+&pound;24.99</div>
+          </div>
+          <div class="tx-date">Yesterday</div>
+          <div class="tx-row">
+            <div class="tx-icon">&#127830;</div>
+            <div class="tx-info"><div class="tx-name">Tesco Express</div><div class="tx-category">Groceries</div></div>
+            <div class="tx-amount neutral">-&pound;32.17</div>
+          </div>
+          <div class="tx-row">
+            <div class="tx-icon">&#128652;</div>
+            <div class="tx-info"><div class="tx-name">TfL</div><div class="tx-category">Transport</div></div>
+            <div class="tx-amount neutral">-&pound;2.80</div>
           </div>
         </div>
       </div>

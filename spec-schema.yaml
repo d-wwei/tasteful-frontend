@@ -159,6 +159,27 @@ tokens_schema:
           - page-margin-desktop
           - page-margin-mobile
 
+      border:
+        required_tokens:
+          - radius-sm          # -> {border.radius-sm}
+          - radius-md          # -> {border.radius-md}
+          - radius-lg          # -> {border.radius-lg}
+          - radius-full        # -> {border.radius-full}
+
+      shadow:
+        required_tokens:
+          - shadow-sm          # -> {shadow.shadow-sm}
+          - shadow-md          # -> {shadow.shadow-md}
+          - shadow-lg          # -> {shadow.shadow-lg}
+
+      motion:
+        required_tokens:
+          - duration-fast      # -> {motion.duration-fast}
+          - duration-normal    # -> {motion.duration-normal}
+          - duration-slow      # -> {motion.duration-slow}
+          - easing-default     # -> {motion.easing-default}
+          - easing-exit        # -> {motion.easing-exit}
+
   # ---------------------------------------------------------------------------
   # Layer 3: Component Tokens — Component-scoped, reference semantics
   # These bind design decisions to specific UI components.

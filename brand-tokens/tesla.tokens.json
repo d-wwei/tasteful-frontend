@@ -1,156 +1,190 @@
 {
   "$extensions": {
     "brand": "tesla",
-    "source": "awesome-design-md",
-    "aesthetic": "radical subtraction with cinematic photography-first design",
+    "source": "tesla.com production CSS + brand manual analysis",
+    "aesthetic": "radical subtraction — full-viewport cinematic photography with near-zero UI chrome",
     "key-characteristics": [
-      "photography-first",
-      "single-blue-accent",
-      "zero-decoration"
+      "photography-first-full-bleed",
+      "monochromatic-palette",
+      "single-blue-accent-sparingly",
+      "transparent-navigation",
+      "extreme-negative-space",
+      "zero-decoration",
+      "light-font-weights"
     ]
   },
   "color": {
     "surface": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Primary background \u2014 white canvas for photography"
-    },
-    "surface-subtle": {
-      "$value": "#f4f4f4",
-      "$type": "color",
-      "$description": "Light Ash \u2014 subtle section differentiation"
+      "$description": "Pure white canvas — Tesla's default page background, a blank gallery wall for photography"
     },
     "surface-dark": {
-      "$value": "#171a20",
+      "$value": "#000000",
       "$type": "color",
-      "$description": "Carbon Dark \u2014 hero text overlays"
+      "$description": "True black — cinematic hero sections, vehicle showcase backgrounds, dark full-bleed zones"
+    },
+    "surface-section": {
+      "$value": "#f4f4f4",
+      "$type": "color",
+      "$description": "Near-white — subtle section differentiation on light pages, specs/configurator backgrounds"
     },
     "surface-glass": {
-      "$value": "rgba(255,255,255,0.75)",
+      "$value": "rgba(255,255,255,0.72)",
       "$type": "color",
-      "$description": "Frosted glass \u2014 nav backdrop on scroll"
+      "$description": "Frosted glass — navigation bar backdrop-filter overlay on scroll"
+    },
+    "surface-glass-dark": {
+      "$value": "rgba(0,0,0,0.72)",
+      "$type": "color",
+      "$description": "Dark frosted glass — navigation overlay on dark hero imagery"
     },
     "accent": {
       "$value": "#3e6ae1",
       "$type": "color",
-      "$description": "Electric Blue \u2014 sole chromatic color, primary CTA only"
+      "$description": "Tesla Blue — the SOLE chromatic color in the entire system. Used only on primary CTA buttons and critical interactive links. Extremely sparingly applied."
     },
     "accent-hover": {
-      "$value": "#3358c4",
+      "$value": "#3457b8",
       "$type": "color",
-      "$description": "Darker blue for hover states"
+      "$description": "Darker blue hover state for primary CTA"
     },
     "text-primary": {
       "$value": "#171a20",
       "$type": "color",
-      "$description": "Carbon Dark \u2014 primary text, blue undertone"
+      "$description": "Near-black with cool blue undertone — all headings and primary text on light surfaces"
     },
     "text-secondary": {
-      "$value": "#393c41",
-      "$type": "color",
-      "$description": "Graphite \u2014 body text and secondary content"
-    },
-    "text-tertiary": {
       "$value": "#5c5e62",
       "$type": "color",
-      "$description": "Pewter \u2014 tertiary text for sub-links"
+      "$description": "Medium gray — body copy, descriptive text, secondary information"
     },
-    "text-disabled": {
+    "text-tertiary": {
+      "$value": "#393c41",
+      "$type": "color",
+      "$description": "Dark gray — sub-navigation links, active menu items"
+    },
+    "text-muted": {
       "$value": "#8e8e8e",
       "$type": "color",
-      "$description": "Silver Fog \u2014 placeholder and disabled"
+      "$description": "Light gray — placeholder text, disabled states, footnotes"
     },
     "text-on-dark": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "White text on dark hero backgrounds"
+      "$description": "Pure white — text overlaid on dark hero imagery and black sections"
+    },
+    "text-on-dark-secondary": {
+      "$value": "#ababab",
+      "$type": "color",
+      "$description": "Muted white — secondary text on dark backgrounds"
     },
     "text-on-accent": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "White text on blue buttons"
-    },
-    "error": {
-      "$value": "#d30000",
-      "$type": "color",
-      "$description": "Error red \u2014 standard form errors"
-    },
-    "success": {
-      "$value": "#007d48",
-      "$type": "color",
-      "$description": "Success green \u2014 confirmation states"
+      "$description": "White text on the blue CTA button"
     },
     "border": {
-      "$value": "#eeeeee",
-      "$type": "color",
-      "$description": "Cloud Gray \u2014 light borders and dividers"
-    },
-    "border-subtle": {
       "$value": "#d0d1d2",
       "$type": "color",
-      "$description": "Pale Silver \u2014 subtle UI borders"
+      "$description": "Pale silver — thin dividers, specs table borders, configurator option outlines"
+    },
+    "border-subtle": {
+      "$value": "#e8e8e8",
+      "$type": "color",
+      "$description": "Near-invisible border — section separators, ghost button outlines"
+    },
+    "error": {
+      "$value": "#c00000",
+      "$type": "color",
+      "$description": "Error red — form validation only, never decorative"
+    },
+    "success": {
+      "$value": "#008a00",
+      "$type": "color",
+      "$description": "Success green — order confirmation, availability indicators"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "Universal Sans Display, -apple-system, Arial, sans-serif",
+      "$value": "\"Universal Sans Display\", \"Gotham SSm A\", \"Gotham SSm B\", Helvetica, Arial, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display/heading font"
+      "$description": "Display/heading font — Tesla switched from Gotham to Universal Sans Display in 2024"
     },
     "font-body": {
-      "$value": "Universal Sans Text, -apple-system, Arial, sans-serif",
+      "$value": "\"Universal Sans Text\", \"Gotham SSm A\", \"Gotham SSm B\", Helvetica, Arial, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body/UI font"
+      "$description": "Body/UI font — Universal Sans Text for readable running copy"
+    },
+    "scale-hero": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Hero headlines — vehicle names overlaid on full-bleed photography"
     },
     "scale-display": {
-      "$value": "48px",
+      "$value": "40px",
       "$type": "dimension",
-      "$description": "Display \u2014 hero headlines"
+      "$description": "Section headings — 'Experience' or 'Safety' section titles"
     },
-    "scale-section": {
-      "$value": "32px",
+    "scale-title": {
+      "$value": "24px",
       "$type": "dimension",
-      "$description": "Section headings"
+      "$description": "Feature titles — subsection headings, configurator option names"
     },
-    "scale-base": {
-      "$value": "16px",
+    "scale-body": {
+      "$value": "17px",
       "$type": "dimension",
-      "$description": "Standard body"
+      "$description": "Body text — Tesla uses 17px not 16px for body copy"
     },
     "scale-caption": {
       "$value": "14px",
       "$type": "dimension",
-      "$description": "Captions"
+      "$description": "Captions — nav links, footnotes, legal text"
     },
     "scale-small": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small text"
+      "$description": "Small print — disclaimers, price annotations"
     },
     "line-height-tight": {
-      "$value": "1.15",
+      "$value": "1.10",
       "$type": "number",
-      "$description": "Tight \u2014 headings"
+      "$description": "Ultra-tight — hero headlines over photography, near-collapsing for cinematic effect"
     },
-    "line-height-normal": {
+    "line-height-heading": {
+      "$value": "1.20",
+      "$type": "number",
+      "$description": "Heading line-height — section titles"
+    },
+    "line-height-body": {
       "$value": "1.50",
       "$type": "number",
-      "$description": "Normal \u2014 body"
+      "$description": "Body text — readable but not overly generous"
+    },
+    "weight-light": {
+      "$value": "300",
+      "$type": "number",
+      "$description": "Light — Tesla's DOMINANT weight. Most headings use 300, creating the airy, premium feel"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular — body copy weight"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium — CTA buttons, nav links, emphasized text. The HEAVIEST weight Tesla commonly uses"
     },
-    "weight-semibold": {
-      "$value": "600",
-      "$type": "number",
-      "$description": "Semibold"
+    "letter-spacing-tight": {
+      "$value": "-0.5px",
+      "$type": "dimension",
+      "$description": "Negative tracking on hero text — tighter for large display sizes"
+    },
+    "letter-spacing-normal": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "Default tracking"
     }
   },
   "spacing": {
@@ -162,59 +196,79 @@
     "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Micro — icon-to-label gap"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small — inline element spacing"
     },
     "md": {
-      "$value": "12px",
-      "$type": "dimension",
-      "$description": "Medium"
-    },
-    "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Medium — content block internal padding"
     },
-    "xl": {
+    "lg": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Large — card padding, element groups"
+    },
+    "xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Extra large — section internal padding"
     },
     "2xl": {
-      "$value": "32px",
-      "$type": "dimension",
-      "$description": "Double extra large"
-    },
-    "section-gap": {
       "$value": "80px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Double XL — content group separation"
     },
-    "container-max": {
-      "$value": "1200px",
+    "section-gap": {
+      "$value": "0px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Section gap — Tesla sections are flush edge-to-edge, separated by full-bleed imagery, not whitespace"
+    },
+    "section-padding-vertical": {
+      "$value": "120px",
+      "$type": "dimension",
+      "$description": "Vertical breathing room inside each full-viewport section"
+    },
+    "section-padding-vertical-lg": {
+      "$value": "200px",
+      "$type": "dimension",
+      "$description": "Hero and feature showcase sections — extreme negative space"
+    },
+    "content-max-width": {
+      "$value": "1120px",
+      "$type": "dimension",
+      "$description": "Max content width for text blocks — NOT for imagery which goes full-bleed"
+    },
+    "content-narrow": {
+      "$value": "680px",
+      "$type": "dimension",
+      "$description": "Narrow content column — centered text blocks under hero imagery"
     }
   },
   "border": {
-    "radius-standard": {
-      "$value": "4px",
+    "radius-none": {
+      "$value": "0px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "No radius — Tesla default. Most elements have sharp edges."
     },
-    "radius-comfortable": {
+    "radius-button": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Comfortable radius"
+      "$description": "Subtle rounding on CTA buttons — barely perceptible"
     },
-    "radius-pill": {
+    "radius-input": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Pill shape"
+      "$description": "Input fields and configurator controls"
+    },
+    "radius-card": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Rare card containers — configurator panels, modal dialogs"
     }
   },
   "shadow": {
@@ -229,59 +283,79 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat — Tesla's DEFAULT. Shadows are almost never used. Depth comes from photography layering and color contrast."
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
+          "offsetY": "1px",
+          "blur": "4px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0,0,0,0.06)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle elevation"
+      "$description": "Whisper — only for sticky nav on scroll, barely perceptible"
     }
   },
   "motion": {
-    "duration-fast": {
-      "$value": "150ms",
+    "duration-instant": {
+      "$value": "100ms",
       "$type": "duration",
-      "$description": "Quick interactions"
+      "$description": "Button hover, link underline"
     },
-    "duration-normal": {
-      "$value": "200ms",
+    "duration-fade": {
+      "$value": "300ms",
       "$type": "duration",
-      "$description": "Standard transitions"
+      "$description": "Content fade-in on scroll, section transitions"
+    },
+    "duration-page": {
+      "$value": "500ms",
+      "$type": "duration",
+      "$description": "Page transitions, hero image crossfade, parallax scroll animations"
+    },
+    "duration-cinematic": {
+      "$value": "800ms",
+      "$type": "duration",
+      "$description": "Cinematic hero entrance — vehicle reveal, initial page load animation"
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1],
       "$type": "cubicBezier",
-      "$description": "Standard ease"
+      "$description": "Standard ease-out — smooth deceleration"
+    },
+    "easing-cinematic": {
+      "$value": [0.16, 1, 0.3, 1],
+      "$type": "cubicBezier",
+      "$description": "Cinematic ease — aggressive deceleration for reveal animations"
+    },
+    "parallax-factor": {
+      "$value": "0.15",
+      "$type": "number",
+      "$description": "Parallax scroll rate — subtle depth on hero imagery"
     }
   },
   "breakpoint": {
     "mobile": {
-      "$value": "640px",
+      "$value": "600px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile breakpoint"
     },
     "tablet": {
-      "$value": "768px",
+      "$value": "900px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet breakpoint"
     },
     "desktop": {
-      "$value": "1024px",
+      "$value": "1200px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop breakpoint"
+    },
+    "wide": {
+      "$value": "1600px",
+      "$type": "dimension",
+      "$description": "Wide/4K breakpoint — hero imagery scales to fill viewport"
     }
   }
 }

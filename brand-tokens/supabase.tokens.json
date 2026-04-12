@@ -1,185 +1,327 @@
 {
   "$extensions": {
     "brand": "supabase",
-    "source": "awesome-design-md",
-    "aesthetic": "dark developer platform with green accents",
+    "source": "supabase.com/design-system + supabase.com/brand-assets + mobbin.com verified",
+    "aesthetic": "dark-mode-native developer platform — emerald green accents on near-black surfaces with border-defined depth",
     "key-characteristics": [
-      "dark-dev-platform",
-      "green-accent",
+      "dark-mode-native",
+      "emerald-green-accent",
+      "border-defined-depth",
+      "code-first-developer-tool",
       "postgres-inspired"
     ]
   },
   "color": {
     "surface": {
-      "$value": "#1c1c1c",
+      "$value": "#171717",
       "$type": "color",
-      "$description": "Primary background"
+      "$description": "Primary background — near-black canvas used across dashboard and website"
     },
     "surface-subtle": {
-      "$value": "#1a1a1a",
+      "$value": "#1c1c1c",
       "$type": "color",
-      "$description": "Secondary surface"
+      "$description": "Elevated surface — cards, panels, sidebar backgrounds"
+    },
+    "surface-overlay": {
+      "$value": "#232323",
+      "$type": "color",
+      "$description": "Overlay surface — modals, dropdowns, popovers"
+    },
+    "surface-code": {
+      "$value": "#11181C",
+      "$type": "color",
+      "$description": "Code block and SQL editor background — Bunker, the darkest surface"
     },
     "accent": {
       "$value": "#3ecf8e",
       "$type": "color",
-      "$description": "Primary accent color"
+      "$description": "Primary emerald green — CTAs, active states, success indicators"
     },
     "accent-hover": {
-      "$value": "#3ecf8e",
+      "$value": "#2da672",
       "$type": "color",
-      "$description": "Accent hover state"
+      "$description": "Darkened green for hover — maintains contrast on dark surfaces"
+    },
+    "accent-subtle": {
+      "$value": "rgba(62,207,142,0.12)",
+      "$type": "color",
+      "$description": "Low-opacity green — selected row backgrounds, subtle highlights"
+    },
+    "brand-green": {
+      "$value": "#34B27B",
+      "$type": "color",
+      "$description": "Jungle Green — official Supabase brand mark color per brand assets"
     },
     "text-primary": {
       "$value": "#ededed",
       "$type": "color",
-      "$description": "Primary text"
+      "$description": "Primary text — headings and important content on dark surfaces"
     },
     "text-secondary": {
       "$value": "#8f8f8f",
       "$type": "color",
-      "$description": "Secondary text"
+      "$description": "Secondary text — descriptions, body copy, metadata"
+    },
+    "text-tertiary": {
+      "$value": "#5c5c5c",
+      "$type": "color",
+      "$description": "Tertiary text — placeholders, disabled labels, timestamps"
     },
     "text-on-accent": {
-      "$value": "#000000",
+      "$value": "#030303",
       "$type": "color",
-      "$description": "Text on accent"
+      "$description": "Text on green accent backgrounds — near-black for maximum contrast"
+    },
+    "text-code": {
+      "$value": "#e0e0e0",
+      "$type": "color",
+      "$description": "Code text — slightly dimmer than primary for sustained reading"
     },
     "error": {
       "$value": "#f56565",
       "$type": "color",
-      "$description": "Error state"
+      "$description": "Destructive red — errors, delete confirmations, danger states"
+    },
+    "error-subtle": {
+      "$value": "rgba(245,101,101,0.12)",
+      "$type": "color",
+      "$description": "Error background tint — inline error messages, form validation"
     },
     "success": {
       "$value": "#3ecf8e",
       "$type": "color",
-      "$description": "Success state"
+      "$description": "Success green — shares accent color, confirming Supabase's green identity"
+    },
+    "warning": {
+      "$value": "#f5a623",
+      "$type": "color",
+      "$description": "Warning amber — caution states, deprecation notices"
+    },
+    "warning-subtle": {
+      "$value": "rgba(245,166,35,0.12)",
+      "$type": "color",
+      "$description": "Warning background tint"
     },
     "border": {
-      "$value": "rgba(255,255,255,0.1)",
+      "$value": "rgba(255,255,255,0.06)",
       "$type": "color",
-      "$description": "Default border"
+      "$description": "Default border — barely visible separation on dark surfaces"
+    },
+    "border-strong": {
+      "$value": "rgba(255,255,255,0.12)",
+      "$type": "color",
+      "$description": "Strong border — section dividers, active input outlines"
+    },
+    "border-focus": {
+      "$value": "#3ecf8e",
+      "$type": "color",
+      "$description": "Focus ring color — input focus, keyboard navigation"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Circular, -apple-system, BlinkMacSystemFont, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display and heading font — Supabase uses Circular across brand"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Circular, -apple-system, BlinkMacSystemFont, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body text — same Circular family for unified voice"
+    },
+    "font-mono": {
+      "$value": "'Source Code Pro', 'Office Code Pro', Menlo, monospace",
+      "$type": "fontFamily",
+      "$description": "Code and technical content — SQL editor, terminal output, inline code"
     },
     "scale-display": {
       "$value": "48px",
       "$type": "dimension",
-      "$description": "Display"
+      "$description": "Display — hero headlines, landing page titles"
     },
-    "scale-section": {
-      "$value": "32px",
+    "scale-h1": {
+      "$value": "36px",
       "$type": "dimension",
-      "$description": "Section"
+      "$description": "H1 — page titles, major section headers"
     },
-    "scale-base": {
-      "$value": "16px",
+    "scale-h2": {
+      "$value": "30px",
       "$type": "dimension",
-      "$description": "Body"
+      "$description": "H2 — section headings"
     },
-    "scale-caption": {
+    "scale-h3": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "H3 — subsection headings, card titles"
+    },
+    "scale-body-lg": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Body large — hero subtitles, lead paragraphs"
+    },
+    "scale-body": {
+      "$value": "15px",
+      "$type": "dimension",
+      "$description": "Body — standard body text (Supabase uses 15px, not 16px)"
+    },
+    "scale-sm": {
       "$value": "14px",
       "$type": "dimension",
-      "$description": "Caption"
+      "$description": "Small — captions, sidebar nav, table cells"
     },
-    "scale-small": {
-      "$value": "12px",
+    "scale-xs": {
+      "$value": "13px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Extra small — badges, timestamps, metadata"
+    },
+    "scale-code": {
+      "$value": "13px",
+      "$type": "dimension",
+      "$description": "Code — monospace content in editors and blocks"
     },
     "line-height-tight": {
       "$value": "1.15",
       "$type": "number",
-      "$description": "Tight"
+      "$description": "Tight — display and headings"
+    },
+    "line-height-snug": {
+      "$value": "1.35",
+      "$type": "number",
+      "$description": "Snug — H2, H3 subheadings"
     },
     "line-height-normal": {
-      "$value": "1.50",
+      "$value": "1.55",
       "$type": "number",
-      "$description": "Normal"
+      "$description": "Normal — body text, descriptions"
+    },
+    "line-height-code": {
+      "$value": "1.70",
+      "$type": "number",
+      "$description": "Code — generous spacing for readability in editors"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular — body text, descriptions"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium — buttons, labels, nav links"
     },
     "weight-semibold": {
       "$value": "600",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Semibold — headings, emphasis"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold — display headlines only"
+    },
+    "letter-spacing-tight": {
+      "$value": "-0.02em",
+      "$type": "dimension",
+      "$description": "Tight tracking — display and H1 headlines"
+    },
+    "letter-spacing-normal": {
+      "$value": "0",
+      "$type": "dimension",
+      "$description": "Normal tracking — body text"
+    },
+    "letter-spacing-wide": {
+      "$value": "0.08em",
+      "$type": "dimension",
+      "$description": "Wide tracking — overlines, badges, uppercase labels"
     }
   },
   "spacing": {
     "unit": {
-      "$value": "8px",
+      "$value": "4px",
       "$type": "dimension",
-      "$description": "Base unit"
+      "$description": "Base unit — Supabase uses a 4px grid"
     },
     "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "4px — tight internal padding"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "8px — compact gaps, icon padding"
     },
     "md": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "12px — standard input padding, list gaps"
     },
     "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "16px — card internal padding, section gaps"
     },
     "xl": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "24px — card padding, larger component gaps"
     },
     "2xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "32px — section content padding"
+    },
+    "3xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "48px — major section breaks"
     },
     "section-gap": {
       "$value": "80px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Section spacing — generous vertical rhythm between page sections"
     },
     "container-max": {
-      "$value": "1200px",
+      "$value": "1100px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Max container width — tighter than average for focused reading"
+    },
+    "sidebar-width": {
+      "$value": "240px",
+      "$type": "dimension",
+      "$description": "Dashboard sidebar width"
     }
   },
   "border": {
-    "radius-standard": {
+    "radius-sm": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small radius — badges, tags, inline code"
+    },
+    "radius-md": {
       "$value": "6px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Medium radius — buttons, inputs, table cells"
+    },
+    "radius-lg": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Large radius — cards, panels, dropdown menus"
+    },
+    "radius-xl": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Extra large radius — featured containers, hero sections"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill"
+      "$description": "Pill — status badges, tag chips"
+    },
+    "width-default": {
+      "$value": "1px",
+      "$type": "dimension",
+      "$description": "Default border width — border-defined depth is central to Supabase"
     }
   },
   "shadow": {
@@ -194,59 +336,95 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat — most elements use border-defined depth, not shadows"
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
-          "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "offsetY": "4px",
+          "blur": "12px",
+          "spread": "-2px",
+          "color": "rgba(0,0,0,0.40)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle"
+      "$description": "Subtle elevation — dropdowns, tooltips on dark backgrounds"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "24px",
+          "spread": "-4px",
+          "color": "rgba(0,0,0,0.50)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Modal elevation — dialogs, command palette"
+    },
+    "glow-accent": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(62,207,142,0.15)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Green glow — accent hover effects, selected active elements"
     }
   },
   "motion": {
     "duration-fast": {
-      "$value": "150ms",
+      "$value": "100ms",
       "$type": "duration",
-      "$description": "Fast"
+      "$description": "Fast — micro interactions, hover states"
     },
     "duration-normal": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Normal"
+      "$description": "Normal — transitions, state changes"
+    },
+    "duration-slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Slow — panel slides, modal entry"
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1.0],
       "$type": "cubicBezier",
-      "$description": "Ease"
+      "$description": "Ease-out — standard deceleration curve"
+    },
+    "easing-spring": {
+      "$value": [0.34, 1.56, 0.64, 1.0],
+      "$type": "cubicBezier",
+      "$description": "Spring — bouncy for interactive feedback"
     }
   },
   "breakpoint": {
     "mobile": {
       "$value": "640px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile breakpoint"
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet breakpoint"
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop breakpoint"
+    },
+    "wide": {
+      "$value": "1280px",
+      "$type": "dimension",
+      "$description": "Wide desktop breakpoint"
     }
   }
 }

@@ -5,130 +5,389 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tesla Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --surface: #ffffff;
-    --surface-subtle: #f4f4f4;
+    --surface-dark: #000000;
+    --surface-section: #f4f4f4;
+    --surface-glass: rgba(255,255,255,0.72);
     --accent: #3e6ae1;
+    --accent-hover: #3457b8;
     --text-primary: #171a20;
-    --text-secondary: #393c41;
-    --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    --text-secondary: #5c5e62;
+    --text-tertiary: #393c41;
+    --text-muted: #8e8e8e;
+    --text-on-dark: #ffffff;
+    --text-on-dark-secondary: #ababab;
+    --border: #d0d1d2;
+    --border-subtle: #e8e8e8;
+    --font-display: "Universal Sans Display", "Gotham SSm A", "Gotham SSm B", Helvetica, Arial, sans-serif;
+    --font-body: "Universal Sans Text", "Gotham SSm A", "Gotham SSm B", Helvetica, Arial, sans-serif;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
-  .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
+  html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
+
+  /* --- Navigation --- */
+  .nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 52px; padding: 0 40px;
+    background: transparent; transition: background 0.3s ease, box-shadow 0.3s ease;
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
-  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
-  .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
-  .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .nav--scrolled {
+    background: var(--surface-glass);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .nav__logo { font-family: var(--font-display); font-size: 17px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--text-on-dark); text-decoration: none; transition: color 0.3s; }
+  .nav--scrolled .nav__logo { color: var(--text-primary); }
+  .nav__links { display: flex; gap: 20px; list-style: none; }
+  .nav__links a { font-size: 14px; font-weight: 500; color: var(--text-on-dark); text-decoration: none; opacity: 0.9; transition: color 0.3s, opacity 0.2s; }
+  .nav__links a:hover { opacity: 0.65; }
+  .nav--scrolled .nav__links a { color: var(--text-tertiary); opacity: 1; }
+  .nav--scrolled .nav__links a:hover { opacity: 0.7; }
+  .nav__actions { display: flex; gap: 16px; align-items: center; }
+  .nav__icon { font-size: 14px; font-weight: 500; color: var(--text-on-dark); text-decoration: none; transition: color 0.3s; }
+  .nav--scrolled .nav__icon { color: var(--text-tertiary); }
+
+  /* --- Hero Section (full-bleed photography simulation) --- */
+  .hero {
+    width: 100%; height: 100vh; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 40%, #16213e 70%, #0f3460 100%);
+    display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+    padding-bottom: 120px; text-align: center;
+    scroll-snap-align: start;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.45) 100%);
+    z-index: 1;
+  }
+  .hero__content { position: relative; z-index: 2; }
+  .hero__title { font-family: var(--font-display); font-size: 64px; font-weight: 300; line-height: 1.10; letter-spacing: -0.5px; color: var(--text-on-dark); }
+  .hero__subtitle { font-size: 17px; font-weight: 400; color: var(--text-on-dark); opacity: 0.85; margin-top: 8px; }
+  .hero__ctas { display: flex; gap: 24px; justify-content: center; margin-top: 24px; }
+  .btn-primary { background: var(--accent); color: #ffffff; font-family: var(--font-body); font-size: 14px; font-weight: 500; padding: 8px 56px; border-radius: 4px; border: none; cursor: pointer; transition: opacity 0.3s ease; text-decoration: none; }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost { background: rgba(255,255,255,0.08); color: #ffffff; font-family: var(--font-body); font-size: 14px; font-weight: 500; padding: 8px 56px; border-radius: 4px; border: 3px solid #ffffff; cursor: pointer; transition: background 0.3s ease; text-decoration: none; backdrop-filter: blur(8px); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.15); }
+
+  /* --- Feature Section (split-screen photo + text) --- */
+  .feature {
+    width: 100%; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+    scroll-snap-align: start;
+  }
+  .feature--reverse { direction: rtl; }
+  .feature--reverse > * { direction: ltr; }
+  .feature__photo {
+    background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100%;
+  }
+  .feature__photo--alt {
+    background: linear-gradient(160deg, #0a0a0a 0%, #171a20 50%, #1a1a2e 100%);
+  }
+  .feature__content {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 64px; background: var(--surface);
+  }
+  .feature__label { font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 16px; }
+  .feature__heading { font-family: var(--font-display); font-size: 40px; font-weight: 300; line-height: 1.20; color: var(--text-primary); }
+  .feature__desc { font-size: 17px; font-weight: 400; line-height: 1.50; color: var(--text-secondary); margin-top: 16px; max-width: 480px; }
+  .feature__link { display: inline-block; margin-top: 24px; font-size: 14px; font-weight: 500; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--text-primary); padding-bottom: 2px; }
+  .feature__link:hover { opacity: 0.7; }
+
+  /* --- Specs Section --- */
+  .specs {
+    background: var(--surface); padding: 120px 24px; text-align: center;
+    scroll-snap-align: start;
+  }
+  .specs__title { font-family: var(--font-display); font-size: 40px; font-weight: 300; line-height: 1.20; color: var(--text-primary); margin-bottom: 80px; }
+  .specs__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; max-width: 1120px; margin: 0 auto; }
+  .spec-cell { text-align: center; padding: 48px 24px; border-bottom: 1px solid var(--border); }
+  .spec-cell:nth-last-child(-n+3) { border-bottom: none; }
+  .spec-value { font-family: var(--font-display); font-size: 24px; font-weight: 300; color: var(--text-primary); margin-bottom: 8px; }
+  .spec-label { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
+
+  /* --- Dark Photo Gallery Section --- */
+  .gallery-section {
+    width: 100%; height: 100vh; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+    padding-bottom: 120px; text-align: center;
+    scroll-snap-align: start;
+  }
+  .gallery-section--dark {
+    background: linear-gradient(180deg, #000000 0%, #0a0a0a 30%, #171a20 100%);
+  }
+  .gallery-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.5) 100%);
+    z-index: 1;
+  }
+  .gallery-section__content { position: relative; z-index: 2; }
+  .gallery-section__name { font-family: var(--font-display); font-size: 40px; font-weight: 300; color: var(--text-on-dark); }
+  .gallery-section__price { font-size: 17px; font-weight: 400; color: var(--text-on-dark); opacity: 0.8; margin-top: 8px; }
+  .gallery-section__ctas { display: flex; gap: 24px; justify-content: center; margin-top: 24px; }
+
+  /* --- Color Palette Display --- */
+  .tokens-section { background: var(--surface-section); padding: 120px 24px; scroll-snap-align: start; }
+  .tokens-container { max-width: 1120px; margin: 0 auto; }
+  .tokens-title { font-family: var(--font-display); font-size: 40px; font-weight: 300; line-height: 1.20; color: var(--text-primary); text-align: center; margin-bottom: 80px; }
+  .palette-row { display: flex; gap: 0; margin-bottom: 2px; }
+  .palette-swatch { flex: 1; height: 80px; display: flex; align-items: flex-end; padding: 10px 12px; position: relative; }
+  .palette-swatch span { font-size: 11px; font-weight: 400; }
+  .palette-swatch--light span { color: var(--text-primary); }
+  .palette-swatch--dark span { color: var(--text-on-dark); }
+
+  /* --- Typography Display --- */
+  .type-showcase { max-width: 1120px; margin: 0 auto; padding-top: 80px; }
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--border-subtle); }
+  .type-label { flex: 0 0 80px; font-size: 11px; color: var(--text-muted); text-align: right; font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px; }
+  .type-sample { flex: 1; color: var(--text-primary); }
+  .type-meta { flex: 0 0 100px; font-size: 11px; color: var(--text-muted); text-align: right; }
+
+  /* --- Spacing Display --- */
+  .spacing-showcase { max-width: 1120px; margin: 0 auto; padding-top: 80px; }
+  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+  .spacing-label { flex: 0 0 50px; font-size: 11px; color: var(--text-muted); text-align: right; }
+  .spacing-bar { height: 20px; background: var(--text-primary); opacity: 0.12; }
+  .spacing-value { font-size: 11px; color: var(--text-muted); min-width: 40px; }
+
+  /* --- Component Showcase --- */
+  .components-section { background: var(--surface); padding: 120px 24px; scroll-snap-align: start; }
+  .comp-container { max-width: 1120px; margin: 0 auto; }
+  .comp-title { font-family: var(--font-display); font-size: 40px; font-weight: 300; line-height: 1.20; color: var(--text-primary); text-align: center; margin-bottom: 80px; }
+  .comp-block { margin-bottom: 64px; }
+  .comp-block__label { font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 24px; }
+  .btn-ghost-dark { background: transparent; color: var(--text-primary); font-family: var(--font-body); font-size: 14px; font-weight: 500; padding: 8px 56px; border-radius: 4px; border: 3px solid var(--text-primary); cursor: pointer; transition: background 0.3s ease; text-decoration: none; }
+  .btn-ghost-dark:hover { background: rgba(23,26,32,0.05); }
+  .btn-link { background: none; border: none; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: var(--text-primary); border-bottom: 1px solid var(--text-primary); padding: 0 0 2px 0; cursor: pointer; text-decoration: none; }
+  .btn-link:hover { opacity: 0.7; }
+
+  @media (max-width: 900px) {
+    .feature { grid-template-columns: 1fr; }
+    .feature__photo { min-height: 50vh; }
+    .feature__content { padding: 48px 24px; }
+    .hero__title { font-size: 40px; }
+    .hero__ctas, .gallery-section__ctas { flex-direction: column; padding: 0 24px; }
+    .btn-primary, .btn-ghost, .btn-ghost-dark { width: 100%; text-align: center; }
+    .specs__grid { grid-template-columns: 1fr; }
+    .spec-cell:nth-last-child(-n+3) { border-bottom: 1px solid var(--border); }
+    .spec-cell:last-child { border-bottom: none; }
+    .nav__links { display: none; }
+    .palette-row { flex-direction: column; }
+    .palette-swatch { height: 56px; }
+  }
 </style>
 </head>
 <body>
-<div class="container">
-  <header class="brand-header">
-    <h1>Tesla</h1>
-    <p class="aesthetic">radical subtraction with cinematic photography-first design</p>
-    <div class="tags">
-      <span class="tag">photography-first</span><span class="tag">single-blue-accent</span><span class="tag">zero-decoration</span>
+
+<!-- Navigation (transparent overlay) -->
+<nav class="nav" id="mainNav">
+  <a href="#" class="nav__logo">Tesla</a>
+  <ul class="nav__links">
+    <li><a href="#">Vehicles</a></li>
+    <li><a href="#">Energy</a></li>
+    <li><a href="#">Charging</a></li>
+    <li><a href="#">Discover</a></li>
+    <li><a href="#">Shop</a></li>
+  </ul>
+  <div class="nav__actions">
+    <a href="#" class="nav__icon">Account</a>
+    <a href="#" class="nav__icon">Menu</a>
+  </div>
+</nav>
+
+<!-- Hero Section (full-bleed photography simulation) -->
+<section class="hero">
+  <div class="hero__content">
+    <h1 class="hero__title">Model S</h1>
+    <p class="hero__subtitle">From $71,090</p>
+    <div class="hero__ctas">
+      <a href="#" class="btn-primary">Custom Order</a>
+      <a href="#" class="btn-ghost">Demo Drive</a>
     </div>
-  </header>
+  </div>
+</section>
 
-  <section class="section">
-    <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Tesla visual identity.</p>
-    <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#3e6ae1"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#3e6ae1</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#171a20"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#171a20</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#393c41"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#393c41</div></div></div>
+<!-- Feature Section (split-screen) -->
+<section class="feature">
+  <div class="feature__photo"></div>
+  <div class="feature__content">
+    <span class="feature__label">Performance</span>
+    <h2 class="feature__heading">Quickest Acceleration</h2>
+    <p class="feature__desc">Go from zero to 60 mph in as little as 1.99 seconds with a Tesla vehicle designed for speed and responsiveness.</p>
+    <a href="#" class="feature__link">Learn More</a>
+  </div>
+</section>
+
+<!-- Feature Section (reversed) -->
+<section class="feature feature--reverse">
+  <div class="feature__photo feature__photo--alt"></div>
+  <div class="feature__content">
+    <span class="feature__label">Range</span>
+    <h2 class="feature__heading">Go Anywhere</h2>
+    <p class="feature__desc">Travel up to 405 miles on a single charge with the longest range electric vehicle ever produced.</p>
+    <a href="#" class="feature__link">Learn More</a>
+  </div>
+</section>
+
+<!-- Specs Section -->
+<section class="specs">
+  <h2 class="specs__title">Model S Specs</h2>
+  <div class="specs__grid">
+    <div class="spec-cell">
+      <div class="spec-value">1.99 s</div>
+      <div class="spec-label">0-60 mph</div>
     </div>
-  </section>
+    <div class="spec-cell">
+      <div class="spec-value">405 mi</div>
+      <div class="spec-label">Range (EPA est.)</div>
+    </div>
+    <div class="spec-cell">
+      <div class="spec-value">200 mph</div>
+      <div class="spec-label">Top Speed</div>
+    </div>
+    <div class="spec-cell">
+      <div class="spec-value">1,020 hp</div>
+      <div class="spec-label">Peak Power</div>
+    </div>
+    <div class="spec-cell">
+      <div class="spec-value">AWD</div>
+      <div class="spec-label">Dual Motor</div>
+    </div>
+    <div class="spec-cell">
+      <div class="spec-value">15 min</div>
+      <div class="spec-label">Supercharge 200 mi</div>
+    </div>
+  </div>
+</section>
 
-  <section class="section">
-    <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Tesla branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Tesla Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
-  </section>
+<!-- Dark Gallery Section -->
+<section class="gallery-section gallery-section--dark">
+  <div class="gallery-section__content">
+    <h2 class="gallery-section__name">Model 3</h2>
+    <p class="gallery-section__price">From $33,990</p>
+    <div class="gallery-section__ctas">
+      <a href="#" class="btn-primary">Custom Order</a>
+      <a href="#" class="btn-ghost">Learn More</a>
+    </div>
+  </div>
+</section>
 
-  <section class="section">
-    <h2 class="section-title">Spacing</h2>
-    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
-    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
-    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
-    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
-    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
-  </section>
+<!-- Design Tokens Showcase -->
+<section class="tokens-section">
+  <div class="tokens-container">
+    <h2 class="tokens-title">Color Palette</h2>
 
-  <section class="section">
-    <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Tesla tokens.</p>
-    <div class="comp-grid">
-      <div class="comp-card">
-        <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+    <!-- Primary palette row -->
+    <div class="palette-row">
+      <div class="palette-swatch palette-swatch--dark" style="background:#000000"><span>#000000 surface-dark</span></div>
+      <div class="palette-swatch palette-swatch--dark" style="background:#171a20"><span>#171a20 text-primary</span></div>
+      <div class="palette-swatch palette-swatch--dark" style="background:#393c41"><span>#393c41 text-tertiary</span></div>
+      <div class="palette-swatch palette-swatch--dark" style="background:#5c5e62"><span>#5c5e62 text-secondary</span></div>
+      <div class="palette-swatch palette-swatch--dark" style="background:#8e8e8e"><span>#8e8e8e text-muted</span></div>
+    </div>
+    <div class="palette-row">
+      <div class="palette-swatch palette-swatch--light" style="background:#d0d1d2"><span>#d0d1d2 border</span></div>
+      <div class="palette-swatch palette-swatch--light" style="background:#e8e8e8"><span>#e8e8e8 border-subtle</span></div>
+      <div class="palette-swatch palette-swatch--light" style="background:#f4f4f4"><span>#f4f4f4 surface-section</span></div>
+      <div class="palette-swatch palette-swatch--light" style="background:#ffffff; border: 1px solid #e8e8e8"><span>#ffffff surface</span></div>
+      <div class="palette-swatch palette-swatch--dark" style="background:#3e6ae1"><span>#3e6ae1 accent</span></div>
+    </div>
+
+    <!-- Typography showcase -->
+    <div class="type-showcase">
+      <h3 style="font-family:var(--font-display);font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text-secondary);margin-bottom:24px;">Typography Scale</h3>
+      <div class="type-row">
+        <span class="type-label">Hero</span>
+        <span class="type-sample" style="font-family:var(--font-display);font-size:48px;font-weight:300;line-height:1.10;letter-spacing:-0.5px">Model S Plaid</span>
+        <span class="type-meta">64px / 300</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">Display</span>
+        <span class="type-sample" style="font-family:var(--font-display);font-size:32px;font-weight:300;line-height:1.20">Quickest Acceleration</span>
+        <span class="type-meta">40px / 300</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">Title</span>
+        <span class="type-sample" style="font-family:var(--font-display);font-size:20px;font-weight:400;line-height:1.20">Range and Efficiency</span>
+        <span class="type-meta">24px / 400</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">Body</span>
+        <span class="type-sample" style="font-family:var(--font-body);font-size:17px;font-weight:400;line-height:1.50;color:var(--text-secondary)">Go from zero to 60 mph in as little as 1.99 seconds with instant torque.</span>
+        <span class="type-meta">17px / 400</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">Caption</span>
+        <span class="type-sample" style="font-family:var(--font-body);font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Vehicles Energy Charging Discover Shop</span>
+        <span class="type-meta">14px / 400</span>
+      </div>
+    </div>
+
+    <!-- Spacing showcase -->
+    <div class="spacing-showcase">
+      <h3 style="font-family:var(--font-display);font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text-secondary);margin-bottom:24px;">Spacing Scale</h3>
+      <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+      <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+      <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+      <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+      <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+      <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+      <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:120px"></div><span class="spacing-value">120px</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Component Showcase (on white) -->
+<section class="components-section">
+  <div class="comp-container">
+    <h2 class="comp-title">Component Samples</h2>
+
+    <div class="comp-block">
+      <div class="comp-block__label">Button Variants</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center">
+        <button class="btn-primary">Custom Order</button>
+        <button class="btn-ghost-dark">Demo Drive</button>
+        <a href="#" class="btn-link">Learn More</a>
+      </div>
+    </div>
+
+    <div class="comp-block">
+      <div class="comp-block__label">Spec Cell</div>
+      <div style="display:flex;gap:0;max-width:600px">
+        <div style="flex:1;text-align:center;padding:48px 24px;border-bottom:1px solid var(--border)">
+          <div style="font-family:var(--font-display);font-size:24px;font-weight:300;color:var(--text-primary);margin-bottom:8px">1.99 s</div>
+          <div style="font-size:14px;font-weight:400;color:var(--text-secondary)">0-60 mph</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:48px 24px;border-bottom:1px solid var(--border)">
+          <div style="font-family:var(--font-display);font-size:24px;font-weight:300;color:var(--text-primary);margin-bottom:8px">405 mi</div>
+          <div style="font-size:14px;font-weight:400;color:var(--text-secondary)">Range</div>
         </div>
       </div>
-      <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Tesla Feature</h4>
-            <p>A component styled with the Tesla design system tokens.</p>
-          </div>
-        </div>
+    </div>
+
+    <div class="comp-block">
+      <div class="comp-block__label">Text Hierarchy</div>
+      <div style="max-width:680px">
+        <p style="font-family:var(--font-display);font-size:40px;font-weight:300;line-height:1.20;color:var(--text-primary)">Electric vehicles, energy, and charging</p>
+        <p style="font-size:17px;font-weight:400;line-height:1.50;color:var(--text-secondary);margin-top:16px">Accelerating the world's transition to sustainable energy with electric cars, solar and integrated renewable energy solutions.</p>
+        <p style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-muted);margin-top:12px">Prices shown are before estimated savings. Actual savings may vary.</p>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>
+
+<script>
+  // Nav scroll behavior: transparent -> frosted glass
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.classList.add('nav--scrolled');
+    } else {
+      nav.classList.remove('nav--scrolled');
+    }
+  });
+</script>
 </body>
 </html>

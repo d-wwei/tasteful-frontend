@@ -161,6 +161,10 @@ For code implementation, hand off `.design/handoff/` to **design-to-code-runner*
 | `spec-schema.yaml` | | | | X | | |
 | `constraints/component-visual-specs.md` | | | | X | | |
 | `constraints/opentype-rules.md` | | | | X | | |
+| `constraints/typography-deep.md` | | | | X | | |
+| `constraints/color-deep.md` | | | | X | | |
+| `constraints/motion-deep.md` | | | | X | X | |
+| `constraints/motion-performance.md` | | | | X | X | |
 | `adapters/*.md` | | | | | X | |
 | `constraints/accessibility.md` | | | | | X | X |
 | `agent-prompts/{brand}.md` | | | | | X | |

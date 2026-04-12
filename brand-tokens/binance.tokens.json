@@ -26,7 +26,7 @@
       "$description": "Primary accent color"
     },
     "accent-hover": {
-      "$value": "#f0b90b",
+      "$value": "#f2c430",
       "$type": "color",
       "$description": "Accent hover state"
     },

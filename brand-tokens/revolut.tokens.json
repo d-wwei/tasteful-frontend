@@ -2,199 +2,457 @@
   "$extensions": {
     "brand": "revolut",
     "source": "awesome-design-md",
-    "aesthetic": "dark fintech with gradient energy",
+    "aesthetic": "dark-native fintech with restrained violet energy",
     "key-characteristics": [
-      "dark-fintech",
-      "gradient-accents",
-      "card-centric"
+      "dark-mode-native",
+      "financial-data-density",
+      "cornflower-violet-accent",
+      "card-centric-hierarchy"
     ]
   },
   "color": {
     "surface": {
-      "$value": "#0c0c0e",
+      "$value": "#191C1F",
       "$type": "color",
-      "$description": "Primary background"
+      "$description": "Primary background — Shark dark. The app's native canvas. Never pure black."
     },
     "surface-subtle": {
-      "$value": "#1a1a1a",
+      "$value": "#1E2226",
       "$type": "color",
-      "$description": "Secondary surface"
+      "$description": "Elevated card surface — one step lighter than Shark for layered hierarchy"
+    },
+    "surface-raised": {
+      "$value": "#252A2F",
+      "$type": "color",
+      "$description": "Raised containers, modal backgrounds, input fields on dark"
+    },
+    "surface-overlay": {
+      "$value": "#2C3238",
+      "$type": "color",
+      "$description": "Overlay surfaces — dropdown menus, tooltips, popovers"
+    },
+    "surface-input": {
+      "$value": "#23282D",
+      "$type": "color",
+      "$description": "Text input backgrounds — distinct from card surface for affordance"
     },
     "accent": {
-      "$value": "#0666eb",
+      "$value": "#7F84F6",
       "$type": "color",
-      "$description": "Primary accent color"
+      "$description": "Cornflower Blue — Revolut's signature violet-blue. Primary CTAs, active states, links."
     },
     "accent-hover": {
-      "$value": "#0666eb",
+      "$value": "#9599F8",
       "$type": "color",
-      "$description": "Accent hover state"
+      "$description": "Lighter cornflower for hover states — maintains readability on dark"
+    },
+    "accent-pressed": {
+      "$value": "#6A6FE0",
+      "$type": "color",
+      "$description": "Deeper cornflower for pressed/active states"
+    },
+    "accent-muted": {
+      "$value": "rgba(127,132,246,0.12)",
+      "$type": "color",
+      "$description": "Translucent cornflower for selected row backgrounds, badge fills"
+    },
+    "accent-on-dark": {
+      "$value": "#7F84F6",
+      "$type": "color",
+      "$description": "Accent on dark surfaces — same as primary, designed dark-first"
     },
     "text-primary": {
-      "$value": "#ffffff",
+      "$value": "#FFFFFF",
       "$type": "color",
-      "$description": "Primary text"
+      "$description": "Primary text — pure white for maximum contrast on Shark surfaces"
     },
     "text-secondary": {
-      "$value": "#8b8b8f",
+      "$value": "#8B9098",
       "$type": "color",
-      "$description": "Secondary text"
+      "$description": "Secondary text — cool-toned gray for descriptions, metadata, labels"
+    },
+    "text-tertiary": {
+      "$value": "#5C6370",
+      "$type": "color",
+      "$description": "Tertiary text — timestamps, disabled labels, footnotes"
     },
     "text-on-accent": {
-      "$value": "#000000",
+      "$value": "#FFFFFF",
       "$type": "color",
-      "$description": "Text on accent"
+      "$description": "Text on cornflower accent buttons — white for contrast"
     },
-    "error": {
-      "$value": "#ff5c5c",
+    "text-balance": {
+      "$value": "#FFFFFF",
       "$type": "color",
-      "$description": "Error state"
+      "$description": "Account balance display — maximum weight and contrast"
+    },
+    "text-currency": {
+      "$value": "#8B9098",
+      "$type": "color",
+      "$description": "Currency codes and symbols — secondary weight in financial displays"
     },
     "success": {
-      "$value": "#2ecc71",
+      "$value": "#4CD080",
       "$type": "color",
-      "$description": "Success state"
+      "$description": "Positive financial change — green for gains, completed transfers, verified status"
+    },
+    "success-text": {
+      "$value": "#4CD080",
+      "$type": "color",
+      "$description": "Success text on dark backgrounds — same green, no darkening needed"
+    },
+    "success-bg": {
+      "$value": "rgba(76,208,128,0.12)",
+      "$type": "color",
+      "$description": "Success badge background — translucent green on dark"
+    },
+    "error": {
+      "$value": "#F45B69",
+      "$type": "color",
+      "$description": "Negative financial change — red-pink for losses, failed transactions, alerts"
+    },
+    "error-text": {
+      "$value": "#F45B69",
+      "$type": "color",
+      "$description": "Error text on dark — same coral-red"
+    },
+    "error-bg": {
+      "$value": "rgba(244,91,105,0.12)",
+      "$type": "color",
+      "$description": "Error badge background — translucent red on dark"
+    },
+    "warning": {
+      "$value": "#F5A623",
+      "$type": "color",
+      "$description": "Warning state — amber for pending transactions, security alerts"
+    },
+    "warning-bg": {
+      "$value": "rgba(245,166,35,0.12)",
+      "$type": "color",
+      "$description": "Warning badge background — translucent amber on dark"
     },
     "border": {
-      "$value": "rgba(255,255,255,0.1)",
+      "$value": "rgba(255,255,255,0.08)",
       "$type": "color",
-      "$description": "Default border"
+      "$description": "Default border — subtle white-alpha separation on dark surfaces"
+    },
+    "border-prominent": {
+      "$value": "rgba(255,255,255,0.15)",
+      "$type": "color",
+      "$description": "Emphasized borders — card outlines, section dividers"
+    },
+    "border-active": {
+      "$value": "#7F84F6",
+      "$type": "color",
+      "$description": "Active/focused input border — cornflower accent"
+    },
+    "border-transaction": {
+      "$value": "rgba(255,255,255,0.05)",
+      "$type": "color",
+      "$description": "Transaction list item separators — nearly invisible hairlines"
+    },
+    "shadow-dark": {
+      "$value": "rgba(0,0,0,0.4)",
+      "$type": "color",
+      "$description": "Primary shadow on dark — heavy opacity needed for visibility"
+    },
+    "shadow-ambient": {
+      "$value": "rgba(0,0,0,0.25)",
+      "$type": "color",
+      "$description": "Ambient shadow — soft lift for cards on dark backgrounds"
+    },
+    "gradient-card-premium": {
+      "$value": "linear-gradient(135deg, #2C3238 0%, #1E2226 100%)",
+      "$type": "string",
+      "$description": "Premium card surface gradient — subtle depth for Metal/Premium tiers"
+    },
+    "gradient-accent": {
+      "$value": "linear-gradient(135deg, #7F84F6 0%, #6A6FE0 100%)",
+      "$type": "string",
+      "$description": "Accent gradient for featured CTAs and promotional elements"
     }
   },
   "typography": {
-    "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+    "font-primary": {
+      "$value": "'Aeonik Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Aeonik Pro by CoType Foundry — Revolut's custom geometric sans-serif. Used across all communications."
     },
-    "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+    "font-mono": {
+      "$value": "'SF Mono', 'Fira Code', 'Consolas', monospace",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Monospace for IBAN numbers, card numbers, reference codes"
+    },
+    "scale-balance": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Account balance — the largest number on screen"
     },
     "scale-display": {
-      "$value": "48px",
-      "$type": "dimension",
-      "$description": "Display"
-    },
-    "scale-section": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Section"
+      "$description": "Section headers, feature titles"
     },
-    "scale-base": {
-      "$value": "16px",
+    "scale-heading": {
+      "$value": "24px",
       "$type": "dimension",
-      "$description": "Body"
+      "$description": "Card titles, transaction detail headers"
+    },
+    "scale-subheading": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Sub-section headers, modal titles"
+    },
+    "scale-body-lg": {
+      "$value": "17px",
+      "$type": "dimension",
+      "$description": "Feature descriptions, onboarding text"
+    },
+    "scale-body": {
+      "$value": "15px",
+      "$type": "dimension",
+      "$description": "Standard body text, transaction descriptions"
     },
     "scale-caption": {
-      "$value": "14px",
+      "$value": "13px",
       "$type": "dimension",
-      "$description": "Caption"
+      "$description": "Metadata, timestamps, secondary labels"
     },
-    "scale-small": {
-      "$value": "12px",
+    "scale-micro": {
+      "$value": "11px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Badge text, currency codes, fine print"
     },
-    "line-height-tight": {
-      "$value": "1.15",
-      "$type": "number",
-      "$description": "Tight"
-    },
-    "line-height-normal": {
-      "$value": "1.50",
-      "$type": "number",
-      "$description": "Normal"
+    "scale-tabular": {
+      "$value": "15px",
+      "$type": "dimension",
+      "$description": "Financial amounts in lists — uses tabular numerals"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Body text, descriptions, secondary content"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Navigation, labels, buttons, transaction amounts"
     },
     "weight-semibold": {
       "$value": "600",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Section headings, account balances, CTAs"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Balance display — maximum emphasis for the primary number"
+    },
+    "line-height-tight": {
+      "$value": "1.10",
+      "$type": "number",
+      "$description": "Balance display, large numbers — compact vertical"
+    },
+    "line-height-snug": {
+      "$value": "1.20",
+      "$type": "number",
+      "$description": "Headings, card titles"
+    },
+    "line-height-normal": {
+      "$value": "1.40",
+      "$type": "number",
+      "$description": "Body text, descriptions"
+    },
+    "line-height-relaxed": {
+      "$value": "1.50",
+      "$type": "number",
+      "$description": "Long-form text, onboarding flows"
+    },
+    "tracking-balance": {
+      "$value": "-0.5px",
+      "$type": "dimension",
+      "$description": "Tight tracking on balance display"
+    },
+    "tracking-heading": {
+      "$value": "-0.3px",
+      "$type": "dimension",
+      "$description": "Slight tightening on section heads"
+    },
+    "tracking-normal": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "Body text — no adjustment"
+    },
+    "tracking-caps": {
+      "$value": "0.8px",
+      "$type": "dimension",
+      "$description": "All-caps labels and badges"
+    },
+    "opentype-tabular": {
+      "$value": "\"tnum\"",
+      "$type": "string",
+      "$description": "Tabular numerals for financial data — ensures column alignment in transaction lists"
+    },
+    "font-display": {
+      "$value": "'Aeonik Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "$type": "fontFamily",
+      "$description": "Alias for font-primary"
+    },
+    "font-body": {
+      "$value": "'Aeonik Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "$type": "fontFamily",
+      "$description": "Alias for font-primary"
     }
   },
   "spacing": {
     "unit": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Base unit"
+      "$description": "Base grid unit — all spacing derives from 4/8px grid"
     },
-    "xs": {
+    "2": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Micro gap — icon-to-badge, inline adjustments"
+    },
+    "4": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Tight padding — badges, compact pill interiors"
     },
-    "sm": {
+    "6": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Dense step — small button vertical padding"
+    },
+    "8": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Base unit — standard gap, list item padding"
     },
-    "md": {
+    "12": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Comfortable gap — card internal padding, button horizontal"
     },
-    "lg": {
+    "16": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Standard padding — card body, section internal spacing"
     },
-    "xl": {
+    "20": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Mobile page margin, generous card padding"
+    },
+    "24": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Card padding desktop, section sub-spacing"
     },
-    "2xl": {
+    "32": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Section internal spacing, large card padding"
     },
-    "section-gap": {
+    "40": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Section gap mobile"
+    },
+    "48": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Desktop section spacing"
+    },
+    "64": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Major section gap desktop"
+    },
+    "80": {
       "$value": "80px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Hero spacing, maximum section gap"
     },
-    "container-max": {
-      "$value": "1200px",
+    "page-margin-mobile": {
+      "$value": "16px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Mobile horizontal page margin — tighter than most brands"
+    },
+    "page-margin-desktop": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Desktop horizontal page margin"
+    },
+    "content-max-width": {
+      "$value": "1080px",
+      "$type": "dimension",
+      "$description": "Maximum content container width"
+    },
+    "transaction-row-height": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Standard transaction list row height — 44px touch target + padding"
+    },
+    "card-number-gap": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Gap between card number groups (4-digit clusters)"
     }
   },
   "border": {
-    "radius-standard": {
+    "radius-xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Badges, pills, small tags — minimal rounding"
+    },
+    "radius-sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Buttons, inputs, small cards — the workhorse radius"
+    },
+    "radius-md": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Standard cards, transaction list containers"
+    },
+    "radius-lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Feature cards, account summary panels, modal dialogs"
+    },
+    "radius-xl": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Hero elements, virtual card display, bottom sheets"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill"
+      "$description": "Pill buttons, category chips, status badges"
+    },
+    "radius-card-physical": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Physical card representation — matches real card corner ratio"
+    },
+    "width-default": {
+      "$value": "1px",
+      "$type": "dimension",
+      "$description": "Standard border width for separators and containers"
+    },
+    "width-active": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Active/focused input border width"
     }
   },
   "shadow": {
     "level-0": {
-      "$value": [
-        {
-          "offsetX": "0px",
-          "offsetY": "0px",
-          "blur": "0px",
-          "spread": "0px",
-          "color": "transparent"
-        }
-      ],
+      "$value": [],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat — no shadow. Most elements on dark surfaces rely on background color shifts, not shadows."
     },
     "level-1": {
       "$value": [
@@ -203,23 +461,86 @@
           "offsetY": "2px",
           "blur": "8px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0,0,0,0.25)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle"
+      "$description": "Subtle lift — cards on dark. Must be heavy enough to register against Shark background."
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "24px",
+          "spread": "-4px",
+          "color": "rgba(0,0,0,0.35)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "6px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.2)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Elevated — dropdowns, popovers, bottom sheets. Dual-layer for depth."
+    },
+    "level-3": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "16px",
+          "blur": "48px",
+          "spread": "-8px",
+          "color": "rgba(0,0,0,0.5)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "12px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.3)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Modal — dialog overlays, expanded card detail views"
+    },
+    "card-glow": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "24px",
+          "spread": "0px",
+          "color": "rgba(127,132,246,0.15)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Accent glow — premium card highlight, selected account indicator"
     }
   },
   "motion": {
+    "duration-instant": {
+      "$value": "100ms",
+      "$type": "duration",
+      "$description": "Instant feedback — button press, toggle snap"
+    },
     "duration-fast": {
       "$value": "150ms",
       "$type": "duration",
-      "$description": "Fast"
+      "$description": "Quick transitions — hover states, color changes"
     },
     "duration-normal": {
-      "$value": "200ms",
+      "$value": "250ms",
       "$type": "duration",
-      "$description": "Normal"
+      "$description": "Standard transitions — card expand, tab switch"
+    },
+    "duration-slow": {
+      "$value": "400ms",
+      "$type": "duration",
+      "$description": "Deliberate motion — page transitions, bottom sheet slide"
     },
     "easing-default": {
       "$value": [
@@ -229,24 +550,54 @@
         1
       ],
       "$type": "cubicBezier",
-      "$description": "Ease"
+      "$description": "Standard ease — smooth deceleration for most interactions"
+    },
+    "easing-spring": {
+      "$value": [
+        0.34,
+        1.56,
+        0.64,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Spring overshoot — card flip, balance counter animation"
+    },
+    "easing-exit": {
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Quick exit — dismissals, swipe-away"
     }
   },
   "breakpoint": {
     "mobile": {
+      "$value": "480px",
+      "$type": "dimension",
+      "$description": "Small mobile — compact layouts, single column"
+    },
+    "mobile-lg": {
       "$value": "640px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Large mobile — wider cards, 2-column grids for chips"
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet — sidebar navigation appears, 2-column layouts"
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop — full navigation, 3-column feature grids"
+    },
+    "desktop-lg": {
+      "$value": "1280px",
+      "$type": "dimension",
+      "$description": "Large desktop — max-width container, generous margins"
     }
   }
 }

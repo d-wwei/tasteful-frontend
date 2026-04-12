@@ -1,185 +1,302 @@
 {
   "$extensions": {
     "brand": "uber",
-    "source": "awesome-design-md",
-    "aesthetic": "dark ride-share with monochromatic precision",
+    "source": "base.uber.com design system, uber.com production CSS, Uber brand book",
+    "aesthetic": "dark ride-share with monochromatic precision -- black canvas, white signal, luminance-based depth",
     "key-characteristics": [
-      "dark-minimalism",
-      "monochromatic",
-      "move-forward"
+      "dark-native",
+      "monochromatic-restraint",
+      "bold-direct-typography",
+      "luminance-elevation",
+      "photography-driven"
     ]
   },
   "color": {
     "surface": {
       "$value": "#000000",
       "$type": "color",
-      "$description": "Primary background"
+      "$description": "Primary background -- pure black canvas, the brand's emotional foundation"
     },
     "surface-subtle": {
+      "$value": "#141414",
+      "$type": "color",
+      "$description": "Elevated dark surface -- cards, panels, navigation overlays"
+    },
+    "surface-raised": {
       "$value": "#1a1a1a",
       "$type": "color",
-      "$description": "Secondary surface"
+      "$description": "Second-tier elevation -- modals, popovers, active card states"
+    },
+    "surface-light": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Light-mode variant surface -- app screens, maps, content areas"
+    },
+    "surface-light-subtle": {
+      "$value": "#f6f6f6",
+      "$type": "color",
+      "$description": "Light-mode secondary surface -- sidebar backgrounds, input fields"
     },
     "accent": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Primary accent color"
+      "$description": "Primary accent -- white on black, the only chromatic signal on dark surfaces"
     },
     "accent-hover": {
-      "$value": "#ffffff",
+      "$value": "rgba(255,255,255,0.85)",
       "$type": "color",
-      "$description": "Accent hover state"
+      "$description": "Accent hover state -- slightly dimmed white"
     },
     "text-primary": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Primary text"
+      "$description": "Primary text on dark -- pure white for headings and body"
     },
     "text-secondary": {
       "$value": "#afafaf",
       "$type": "color",
-      "$description": "Secondary text"
+      "$description": "Secondary text on dark -- descriptions, metadata, inactive nav"
+    },
+    "text-tertiary": {
+      "$value": "#6b6b6b",
+      "$type": "color",
+      "$description": "Tertiary text on dark -- timestamps, fine print, disabled states"
     },
     "text-on-accent": {
       "$value": "#000000",
       "$type": "color",
-      "$description": "Text on accent"
+      "$description": "Text on white accent buttons -- pure black"
+    },
+    "text-on-light": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "Primary text on light surfaces"
+    },
+    "text-on-light-secondary": {
+      "$value": "#5e5e5e",
+      "$type": "color",
+      "$description": "Secondary text on light surfaces"
+    },
+    "uber-green": {
+      "$value": "#06c167",
+      "$type": "color",
+      "$description": "Uber Eats green -- sub-brand accent, success states"
+    },
+    "uber-blue": {
+      "$value": "#276ef1",
+      "$type": "color",
+      "$description": "Uber Freight blue -- focus rings, link highlights, sub-brand accent"
+    },
+    "warning": {
+      "$value": "#f5a623",
+      "$type": "color",
+      "$description": "Warning/caution state -- surge pricing, alerts"
     },
     "error": {
       "$value": "#e11d48",
       "$type": "color",
-      "$description": "Error state"
+      "$description": "Error/destructive state -- cancellation, critical alerts"
     },
     "success": {
       "$value": "#06c167",
       "$type": "color",
-      "$description": "Success state"
+      "$description": "Success/positive state -- trip confirmed, payment processed"
     },
-    "border": {
-      "$value": "rgba(255,255,255,0.1)",
+    "border-dark": {
+      "$value": "rgba(255,255,255,0.08)",
       "$type": "color",
-      "$description": "Default border"
+      "$description": "Border on dark surfaces -- barely visible white edge"
+    },
+    "border-dark-prominent": {
+      "$value": "rgba(255,255,255,0.15)",
+      "$type": "color",
+      "$description": "Prominent border on dark -- dividers, active states"
+    },
+    "border-light": {
+      "$value": "#e2e2e2",
+      "$type": "color",
+      "$description": "Border on light surfaces"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "\"Uber Move\", system-ui, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display/heading font -- Uber Move for large type (headings, hero, metrics)"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "\"Uber Move Text\", system-ui, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body/text font -- Uber Move Text optimized for smaller sizes"
     },
     "scale-display": {
-      "$value": "48px",
+      "$value": "52px",
       "$type": "dimension",
-      "$description": "Display"
+      "$description": "Display -- hero headlines, landing page primary text"
     },
-    "scale-section": {
-      "$value": "32px",
+    "scale-heading": {
+      "$value": "36px",
       "$type": "dimension",
-      "$description": "Section"
+      "$description": "Heading -- section titles, page-level headings"
     },
-    "scale-base": {
+    "scale-title": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Title -- card headings, modal titles, feature names"
+    },
+    "scale-subtitle": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Subtitle -- subheadings, nav items, emphasized body"
+    },
+    "scale-body": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Body"
+      "$description": "Body -- primary reading text"
     },
     "scale-caption": {
       "$value": "14px",
       "$type": "dimension",
-      "$description": "Caption"
+      "$description": "Caption -- metadata, labels, secondary information"
     },
     "scale-small": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small -- fine print, badges, timestamps"
     },
     "line-height-tight": {
-      "$value": "1.15",
+      "$value": "1.10",
       "$type": "number",
-      "$description": "Tight"
+      "$description": "Tight -- display and heading text, maximizes impact"
+    },
+    "line-height-snug": {
+      "$value": "1.25",
+      "$type": "number",
+      "$description": "Snug -- titles, subtitles, medium-length text"
     },
     "line-height-normal": {
       "$value": "1.50",
       "$type": "number",
-      "$description": "Normal"
+      "$description": "Normal -- body text, paragraphs"
+    },
+    "letter-spacing-tight": {
+      "$value": "-0.02em",
+      "$type": "dimension",
+      "$description": "Tight tracking -- display sizes (52px+) for visual density"
+    },
+    "letter-spacing-normal": {
+      "$value": "0",
+      "$type": "dimension",
+      "$description": "Normal tracking -- body and title sizes"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular -- body text, descriptions"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium -- headings, emphasis, Uber Move display weight"
     },
-    "weight-semibold": {
-      "$value": "600",
+    "weight-bold": {
+      "$value": "700",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Bold -- strong emphasis, metric values, hero headlines"
     }
   },
   "spacing": {
     "unit": {
-      "$value": "8px",
-      "$type": "dimension",
-      "$description": "Base unit"
-    },
-    "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Base unit -- Uber uses a strict 4px grid"
     },
-    "sm": {
+    "2xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Micro -- icon-to-label gap, tight inline spacing"
+    },
+    "xs": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Extra small -- inner padding, compact elements"
     },
-    "md": {
+    "sm": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Small -- button padding vertical, list item gaps"
     },
-    "lg": {
+    "md": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Medium -- standard component padding, card body gaps"
     },
-    "xl": {
+    "lg": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Large -- section inner padding, card padding"
     },
-    "2xl": {
+    "xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Extra large -- card padding generous, between-component gaps"
+    },
+    "2xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Double extra large -- section dividers, hero inner spacing"
     },
     "section-gap": {
-      "$value": "80px",
+      "$value": "96px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Section spacing -- between major page sections (80-120px range)"
+    },
+    "section-padding": {
+      "$value": "80px 64px",
+      "$type": "dimension",
+      "$description": "Section padding -- vertical / horizontal for desktop sections"
     },
     "container-max": {
       "$value": "1200px",
       "$type": "dimension",
       "$description": "Max container width"
+    },
+    "container-narrow": {
+      "$value": "800px",
+      "$type": "dimension",
+      "$description": "Narrow container -- text-heavy content, pricing cards"
     }
   },
   "border": {
+    "radius-none": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "None -- sharp-edged elements when needed"
+    },
+    "radius-sm": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small -- badges, tags, compact elements"
+    },
     "radius-standard": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Standard -- buttons, cards, inputs (Uber's primary radius)"
+    },
+    "radius-lg": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Large -- featured cards, modals, hero containers"
+    },
+    "radius-xl": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Extra large -- prominent panels, bottom sheets"
     },
     "radius-pill": {
-      "$value": "9999px",
+      "$value": "999px",
       "$type": "dimension",
-      "$description": "Pill"
+      "$description": "Pill -- tags, status badges, toggle switches"
     }
   },
   "shadow": {
@@ -194,59 +311,125 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat -- no elevation, flush with surface"
     },
-    "level-1": {
+    "level-1-dark": {
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
-          "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgba(255,255,255,0.05)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle"
+      "$description": "Subtle luminance border -- card edges on dark, barely visible glow"
+    },
+    "level-2-dark": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgba(255,255,255,0.08)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(255,255,255,0.04)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Elevated luminance -- modals, dropdowns, floating panels on dark"
+    },
+    "level-1-light": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.12)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Standard elevation on light -- cards, panels"
+    },
+    "level-2-light": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.16)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Deep elevation on light -- modals, dropdowns"
     }
   },
   "motion": {
+    "duration-micro": {
+      "$value": "100ms",
+      "$type": "duration",
+      "$description": "Micro -- hover state changes, opacity shifts"
+    },
     "duration-fast": {
       "$value": "150ms",
       "$type": "duration",
-      "$description": "Fast"
+      "$description": "Fast -- button presses, toggle switches, small interactions"
     },
     "duration-normal": {
-      "$value": "200ms",
+      "$value": "250ms",
       "$type": "duration",
-      "$description": "Normal"
+      "$description": "Normal -- page transitions, card reveals, panel slides"
+    },
+    "duration-slow": {
+      "$value": "400ms",
+      "$type": "duration",
+      "$description": "Slow -- full-screen transitions, map animations"
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1.0],
       "$type": "cubicBezier",
-      "$description": "Ease"
+      "$description": "Ease-out -- Uber's default, feels direct and confident"
+    },
+    "easing-enter": {
+      "$value": [0.0, 0.0, 0.2, 1.0],
+      "$type": "cubicBezier",
+      "$description": "Enter/decelerate -- elements arriving on screen"
+    },
+    "easing-exit": {
+      "$value": [0.4, 0.0, 1.0, 1.0],
+      "$type": "cubicBezier",
+      "$description": "Exit/accelerate -- elements leaving screen"
     }
   },
   "breakpoint": {
     "mobile": {
-      "$value": "640px",
+      "$value": "480px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile -- single-column, compact"
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet -- 8-column grid"
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop -- 12-column grid"
+    },
+    "wide": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Wide desktop -- max container breakpoint"
     }
   }
 }

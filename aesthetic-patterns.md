@@ -336,7 +336,7 @@ Mapping to existing Tier 3 sections:
 ---
 
 ### Pattern 11: Polish Pass
-**Source**: All four brands (the gap between "done" and "shipped")
+**Source**: impeccable-style-universal/polish
 **Trigger**: When the feature is functionally complete and entering final quality pass. Keywords: "polish," "refinement," "final pass," "shipping," "detail sweep," "pixel perfect"
 **Rule**: Polish is a systematic audit across multiple dimensions, executed in a specific order of impact. The sequence: alignment and spacing first (structural defects are most visible), then typography consistency (hierarchy must be airtight), then interaction states (every interactive element needs all eight states), then micro-transitions (state changes must be animated appropriately), then content/copy consistency. Polish is never random -- it follows a checklist.
 **Token impact**:
@@ -356,7 +356,7 @@ Mapping to existing Tier 3 sections:
 ---
 
 ### Pattern 12: Quality Audit
-**Source**: Systematic quality assessment methodology across accessibility, performance, theming, responsive design, and anti-patterns
+**Source**: impeccable-style-universal/audit
 **Trigger**: When evaluating the overall quality of an interface before or after implementation. Keywords: "audit," "review," "quality check," "assessment," "evaluation," "compliance check," "design QA"
 **Rule**: A quality audit documents issues without fixing them. It generates a prioritized report organized by severity (critical, high, medium, low) across five dimensions. The audit starts with an anti-pattern check (does this look AI-generated?), then moves through accessibility, performance, theming, and responsive design. Every finding includes location, severity, impact description, standard violated (if applicable), and recommended fix. The output is a triage-ready document, not a narrative.
 **Token impact**:
@@ -372,7 +372,7 @@ Mapping to existing Tier 3 sections:
 ---
 
 ### Pattern 13: Amplify Impact
-**Source**: Techniques for increasing visual impact in designs that feel too safe, generic, or visually underwhelming
+**Source**: impeccable-style-universal/bolder
 **Trigger**: When the design is functional but feels flat, boring, or indistinguishable from templates. Keywords: "bolder," "more impact," "more dramatic," "more personality," "more energy," "make it pop," "amplify," "hero moment," "visual drama"
 **Rule**: Bold design is confident design -- it makes deliberate choices at extreme ends of the spectrum rather than safe choices in the middle. The core technique is contrast amplification: make big things BIGGER, small things smaller, heavy things heavier, light things lighter. Pick ONE hero moment per viewport and make it unmistakable. Every other element exists to support that focal point.
 **Token impact**:
@@ -388,7 +388,7 @@ Mapping to existing Tier 3 sections:
 ---
 
 ### Pattern 14: Color Strategy
-**Source**: OKLCH-based color system design with semantic frameworks, tinted neutrals, and measured restraint
+**Source**: impeccable-style-universal/colorize
 **Trigger**: When establishing or refining the color system for a project. Keywords: "color palette," "color system," "colorize," "add color," "color strategy," "too monochromatic," "needs warmth," "color meaning"
 **Rule**: Strategic color introduction follows a precise hierarchy: understand the current color state, identify where color adds meaning (not just decoration), choose 2-4 chromatic colors beyond neutrals, assign each color a semantic role, then distribute according to the 60-30-10 rule by visual weight. Color works because of restraint -- every color usage must have a purpose. The system should be built in OKLCH for perceptual uniformity.
 **Token impact**:

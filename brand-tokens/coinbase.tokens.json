@@ -1,185 +1,317 @@
 {
   "$extensions": {
     "brand": "coinbase",
-    "source": "awesome-design-md",
-    "aesthetic": "clean fintech trust with blue precision",
+    "source": "coinbase-design-system-cds-2024",
+    "aesthetic": "institutional crypto trust — clean white surfaces, Coinbase Blue restraint, financial-grade data clarity",
     "key-characteristics": [
-      "trust-blue",
-      "clean-surfaces",
-      "financial-clarity"
+      "coinbase-blue-restraint",
+      "white-surface-foundation",
+      "crypto-data-density",
+      "institutional-trust",
+      "system-font-precision"
     ]
   },
   "color": {
     "surface": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Primary background"
+      "$description": "Primary background — pure white, the trust-foundation of Coinbase UI"
     },
     "surface-subtle": {
-      "$value": "#f8f8f8",
+      "$value": "#f9fafb",
       "$type": "color",
-      "$description": "Secondary surface"
+      "$description": "Secondary surface (CDS gray50) — cards, table rows, sidebar backgrounds"
+    },
+    "surface-elevated": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Elevated card surface on subtle backgrounds — white on gray50"
     },
     "accent": {
       "$value": "#0052ff",
       "$type": "color",
-      "$description": "Primary accent color"
+      "$description": "Coinbase Blue (CDS blue500 / bgPrimary) — primary interactive color"
     },
     "accent-hover": {
-      "$value": "#0052ff",
+      "$value": "#014cec",
       "$type": "color",
-      "$description": "Accent hover state"
+      "$description": "Coinbase Blue hover (CDS blue550) — darkened interactive state"
+    },
+    "accent-subtle": {
+      "$value": "#eef4ff",
+      "$type": "color",
+      "$description": "Accent tint — selected rows, active tab backgrounds, badge fills"
     },
     "text-primary": {
       "$value": "#0a0b0d",
       "$type": "color",
-      "$description": "Primary text"
+      "$description": "Primary text (CDS black / Woodsmoke) — near-black with warm undertone"
     },
     "text-secondary": {
       "$value": "#5b616e",
       "$type": "color",
-      "$description": "Secondary text"
+      "$description": "Secondary text (CDS gray700) — labels, descriptions, metadata"
+    },
+    "text-tertiary": {
+      "$value": "#9397a0",
+      "$type": "color",
+      "$description": "Tertiary text (CDS gray500) — placeholders, disabled states, timestamps"
     },
     "text-on-accent": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Text on accent"
+      "$description": "Text on Coinbase Blue backgrounds"
     },
     "error": {
-      "$value": "#d0021b",
+      "$value": "#cf202f",
       "$type": "color",
-      "$description": "Error state"
+      "$description": "Error / negative (CDS red500) — price drops, form errors, destructive actions"
     },
     "success": {
-      "$value": "#00a478",
+      "$value": "#098551",
       "$type": "color",
-      "$description": "Success state"
+      "$description": "Success / positive (CDS green500) — price gains, confirmations, completed states"
+    },
+    "warning": {
+      "$value": "#ed702f",
+      "$type": "color",
+      "$description": "Warning / caution (CDS amber500) — pending states, risk alerts, gas fee warnings"
     },
     "border": {
-      "$value": "#e5e5e5",
+      "$value": "#dcdfe4",
       "$type": "color",
-      "$description": "Default border"
+      "$description": "Default border (CDS gray200) — card edges, dividers, table lines"
+    },
+    "border-subtle": {
+      "$value": "#eef0f3",
+      "$type": "color",
+      "$description": "Subtle border (CDS gray100) — inner dividers, row separators"
+    },
+    "dark-surface": {
+      "$value": "#0a0b0d",
+      "$type": "color",
+      "$description": "Dark mode surface (CDS black / Woodsmoke)"
+    },
+    "dark-surface-elevated": {
+      "$value": "#1a1d21",
+      "$type": "color",
+      "$description": "Dark mode elevated surface (CDS gray900)"
+    },
+    "dark-text-primary": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Dark mode primary text"
+    },
+    "dark-text-secondary": {
+      "$value": "#9397a0",
+      "$type": "color",
+      "$description": "Dark mode secondary text (CDS gray500)"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "'Coinbase Sans', Inter, -apple-system, BlinkMacSystemFont, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display / headline font — Coinbase Sans (custom by Moniker, 2022) with Inter fallback"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "'Coinbase Sans', Inter, -apple-system, BlinkMacSystemFont, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body / UI font — same family, unified type system"
+    },
+    "font-mono": {
+      "$value": "'Coinbase Mono', 'JetBrains Mono', 'SF Mono', monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace — transaction hashes, addresses, code blocks"
     },
     "scale-display": {
       "$value": "48px",
       "$type": "dimension",
-      "$description": "Display"
+      "$description": "Display — hero headlines, marketing pages"
     },
-    "scale-section": {
-      "$value": "32px",
+    "scale-title1": {
+      "$value": "36px",
       "$type": "dimension",
-      "$description": "Section"
+      "$description": "Title 1 — page-level headings"
     },
-    "scale-base": {
+    "scale-title2": {
+      "$value": "28px",
+      "$type": "dimension",
+      "$description": "Title 2 — section headings"
+    },
+    "scale-title3": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Title 3 — card titles, subsection headings"
+    },
+    "scale-headline": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Headline — prominent labels, feature names"
+    },
+    "scale-body": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Body"
+      "$description": "Body — standard content text"
     },
-    "scale-caption": {
+    "scale-label": {
       "$value": "14px",
       "$type": "dimension",
-      "$description": "Caption"
+      "$description": "Label — form labels, nav links, secondary UI"
     },
-    "scale-small": {
+    "scale-caption": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Caption — timestamps, disclaimers, table headers"
+    },
+    "scale-legal": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Legal — fine print, regulatory disclaimers"
     },
     "line-height-tight": {
       "$value": "1.15",
       "$type": "number",
-      "$description": "Tight"
+      "$description": "Tight — display and title text"
     },
     "line-height-normal": {
       "$value": "1.50",
       "$type": "number",
-      "$description": "Normal"
+      "$description": "Normal — body text, descriptions"
+    },
+    "line-height-relaxed": {
+      "$value": "1.65",
+      "$type": "number",
+      "$description": "Relaxed — long-form content, help articles"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular — body text, descriptions"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium — buttons, labels, nav links"
     },
     "weight-semibold": {
       "$value": "600",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Semibold — headings, metric values, emphasis"
+    },
+    "letter-spacing-tight": {
+      "$value": "-0.02em",
+      "$type": "dimension",
+      "$description": "Display/title tracking — tightened for large sizes"
+    },
+    "letter-spacing-normal": {
+      "$value": "0",
+      "$type": "dimension",
+      "$description": "Body tracking — default"
+    },
+    "letter-spacing-wide": {
+      "$value": "0.06em",
+      "$type": "dimension",
+      "$description": "Caption uppercase tracking — table headers, labels"
     }
   },
   "spacing": {
     "unit": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Base unit"
+      "$description": "Base unit — all spacing derives from 8px grid"
+    },
+    "0": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "None"
     },
     "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Extra small (0.5 units) — icon gaps, tight padding"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small (1 unit) — inline element spacing"
     },
     "md": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Medium (1.5 units) — button padding, list gaps"
     },
     "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Large (2 units) — card padding, form gaps"
     },
     "xl": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Extra large (3 units) — section inner padding"
     },
     "2xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "2XL (4 units) — card body padding, group spacing"
+    },
+    "3xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "3XL (6 units) — section padding, marketing gaps"
+    },
+    "4xl": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "4XL (8 units) — page-level section margins"
     },
     "section-gap": {
       "$value": "80px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Section gap (10 units) — between major page sections"
     },
     "container-max": {
       "$value": "1200px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Max container width — marketing pages"
+    },
+    "container-narrow": {
+      "$value": "680px",
+      "$type": "dimension",
+      "$description": "Narrow container — article content, auth flows"
     }
   },
   "border": {
-    "radius-standard": {
+    "radius-none": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "No radius — table cells, inline elements"
+    },
+    "radius-sm": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small radius (CDS 100) — badges, tags, chips"
+    },
+    "radius-md": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Medium radius (CDS 200) — buttons, inputs, standard cards"
+    },
+    "radius-lg": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Large radius (CDS 300) — featured cards, modals"
+    },
+    "radius-xl": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "XL radius (CDS 400) — hero containers, marketing cards"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill"
+      "$description": "Pill (CDS 1000) — toggle pills, rounded badges, avatar circles"
     }
   },
   "shadow": {
@@ -194,59 +326,106 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat — no elevation"
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.05)"
+        },
+        {
+          "offsetX": "0px",
           "offsetY": "2px",
           "blur": "8px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0,0,0,0.04)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle"
+      "$description": "Subtle — cards, dropdowns (CDS bgElevation1)"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.08)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "32px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.06)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Elevated — modals, popovers, tooltips (CDS bgElevation2)"
     }
   },
   "motion": {
+    "duration-instant": {
+      "$value": "100ms",
+      "$type": "duration",
+      "$description": "Instant — button press, toggle"
+    },
     "duration-fast": {
       "$value": "150ms",
       "$type": "duration",
-      "$description": "Fast"
+      "$description": "Fast — hover states, micro-interactions"
     },
     "duration-normal": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Normal"
+      "$description": "Normal — card transitions, accordion"
+    },
+    "duration-slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Slow — page transitions, modal entry"
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1],
       "$type": "cubicBezier",
-      "$description": "Ease"
+      "$description": "Ease — standard easing"
+    },
+    "easing-enter": {
+      "$value": [0, 0, 0.2, 1],
+      "$type": "cubicBezier",
+      "$description": "Enter — element appearing"
+    },
+    "easing-exit": {
+      "$value": [0.4, 0, 1, 1],
+      "$type": "cubicBezier",
+      "$description": "Exit — element leaving"
     }
   },
   "breakpoint": {
     "mobile": {
-      "$value": "640px",
+      "$value": "480px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile — phone layouts"
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet — portrait tablet, small laptop"
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop — standard desktop"
+    },
+    "wide": {
+      "$value": "1280px",
+      "$type": "dimension",
+      "$description": "Wide — large monitors, trading dashboards"
     }
   }
 }

@@ -1,205 +1,302 @@
 {
   "$extensions": {
     "brand": "bmw",
-    "source": "awesome-design-md",
-    "aesthetic": "automotive precision with industrial geometry",
+    "source": "BMW Group Brand Guidelines / awesome-design-md / bmwgroup.com press materials",
+    "aesthetic": "precision engineering showroom — angular, clinical, restrained",
     "key-characteristics": [
       "zero-border-radius",
-      "light-weight-display",
-      "showroom-lighting"
+      "light-weight-display-type",
+      "showroom-white-surfaces",
+      "singular-blue-accent",
+      "industrial-geometry"
     ]
   },
   "color": {
     "surface": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Primary surface \u2014 card backgrounds"
+      "$description": "Pure White — primary surface, showroom-clean canvas. BMW's digital presence starts from clinical white, never cream or off-white."
     },
     "surface-subtle": {
       "$value": "#f5f5f5",
       "$type": "color",
-      "$description": "Light alternate surface"
+      "$description": "Whisper Gray — alternate surface for section contrast, content wells, and grouped card backgrounds."
     },
     "surface-dark": {
       "$value": "#1a1a1a",
       "$type": "color",
-      "$description": "Dark hero sections"
+      "$description": "Carbon Black — hero sections, dark mode surfaces. Near-black with no blue or warm cast, like carbon fiber."
+    },
+    "surface-elevated": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "White — elevated cards on subtle backgrounds. Elevation comes from shadow, not surface color shift."
+    },
+    "surface-silver": {
+      "$value": "#e8e8ed",
+      "$type": "color",
+      "$description": "Brushed Silver — secondary panels, divider backgrounds. Cool metallic gray evoking aluminum trim."
     },
     "accent": {
       "$value": "#1c69d4",
       "$type": "color",
-      "$description": "BMW Blue \u2014 singular interactive accent"
+      "$description": "BMW Blue — the singular interactive accent. Used exclusively for CTAs, active states, and progress indicators. Never decorative."
     },
     "accent-hover": {
       "$value": "#0653b6",
       "$type": "color",
-      "$description": "BMW Focus Blue \u2014 active states"
+      "$description": "BMW Focus Blue — darker active/hover state. Shifts deeper, not lighter, reflecting precision click feedback."
+    },
+    "accent-muted": {
+      "$value": "#e8f0fb",
+      "$type": "color",
+      "$description": "Blue Tint — very light blue for selected states, active table rows, subtle highlights. Never used as a surface fill."
     },
     "text-primary": {
       "$value": "#262626",
       "$type": "color",
-      "$description": "Near Black \u2014 primary text"
+      "$description": "Charcoal — primary text on light surfaces. Not pure black, but close. Cool-neutral without warmth."
     },
     "text-secondary": {
       "$value": "#757575",
       "$type": "color",
-      "$description": "Meta Gray \u2014 secondary text"
+      "$description": "Meta Gray — body copy, descriptions, secondary information. Medium-weight neutral."
     },
     "text-tertiary": {
-      "$value": "#bbbbbb",
+      "$value": "#b0b0b0",
       "$type": "color",
-      "$description": "Silver \u2014 tertiary text"
+      "$description": "Silver Text — captions, timestamps, disabled labels. Light enough to recede, dark enough to read."
     },
     "text-on-dark": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "White text on dark backgrounds"
+      "$description": "White text on Carbon Black backgrounds. Full white, no reduction."
+    },
+    "text-on-dark-secondary": {
+      "$value": "#a0a0a0",
+      "$type": "color",
+      "$description": "Silver on dark — secondary text on Carbon Black. Cool gray, no warm tint."
     },
     "text-on-accent": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "White on BMW Blue"
+      "$description": "White on BMW Blue. Full contrast for CTA legibility."
     },
     "error": {
       "$value": "#d30000",
       "$type": "color",
-      "$description": "Error red"
+      "$description": "Signal Red — error states, destructive actions. Pure red with no orange warmth, like a BMW instrument cluster warning."
     },
     "success": {
       "$value": "#007d48",
       "$type": "color",
-      "$description": "Success green"
+      "$description": "Racing Green — success confirmations, positive status. Deep, desaturated green that does not compete with BMW Blue."
+    },
+    "warning": {
+      "$value": "#e5a100",
+      "$type": "color",
+      "$description": "Amber — caution states, intermediate status. Instrument-cluster amber."
     },
     "border": {
       "$value": "#e0e0e0",
       "$type": "color",
-      "$description": "Light border"
+      "$description": "Light Steel — default border, dividers, table rules. Cool neutral, never warm."
+    },
+    "border-strong": {
+      "$value": "#c0c0c0",
+      "$type": "color",
+      "$description": "Medium Steel — emphasized borders, input outlines on focus-adjacent states."
+    },
+    "border-on-dark": {
+      "$value": "#333333",
+      "$type": "color",
+      "$description": "Dark border — dividers on Carbon Black sections. Barely visible structural line."
     }
   },
   "typography": {
     "font-display": {
-      "$value": "BMWTypeNextLatin Light, Helvetica, Arial, sans-serif",
+      "$value": "'BMWTypeNext', 'BMW Type Next Latin', Helvetica, Arial, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display/heading font"
+      "$description": "Display/heading typeface — BMWTypeNext is proprietary. Light (300) weight for display sizes creates the signature airy, engineered look. Helvetica is the primary fallback, not system-ui."
     },
     "font-body": {
-      "$value": "BMWTypeNextLatin, Helvetica, Arial, sans-serif",
+      "$value": "'BMWTypeNext', 'BMW Type Next Latin', Helvetica, Arial, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body/UI font"
+      "$description": "Body/UI typeface — same family, Regular (400) weight. The font is geometric, wide-set, and neutral with slight humanist touches."
+    },
+    "font-mono": {
+      "$value": "'SF Mono', 'Consolas', 'Liberation Mono', monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace — for VIN numbers, technical specs, configurator codes. Never used decoratively."
     },
     "scale-display": {
-      "$value": "48px",
+      "$value": "56px",
       "$type": "dimension",
-      "$description": "Display \u2014 hero headlines"
+      "$description": "Display — hero headlines. Weight 300 (Light). The light weight at large sizes is BMW's typographic signature."
     },
     "scale-section": {
-      "$value": "32px",
+      "$value": "36px",
       "$type": "dimension",
-      "$description": "Section headings"
+      "$description": "Section — major section headings. Weight 400 (Regular)."
+    },
+    "scale-subheading": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Subheading — card titles, subsection heads. Weight 400."
+    },
+    "scale-body-large": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Body Large — lead paragraphs, featured descriptions. Weight 300."
     },
     "scale-base": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Standard body"
+      "$description": "Base — standard body text. Weight 400."
     },
     "scale-caption": {
       "$value": "14px",
       "$type": "dimension",
-      "$description": "Captions"
+      "$description": "Caption — metadata, labels, secondary info. Weight 400."
     },
     "scale-small": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small text"
+      "$description": "Small — legal text, fine print. Weight 400."
+    },
+    "scale-overline": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Overline — category labels, eyebrow text. Weight 700, letter-spacing 1.5px, uppercase."
     },
     "line-height-tight": {
-      "$value": "1.15",
+      "$value": "1.10",
       "$type": "number",
-      "$description": "Tight \u2014 headings"
+      "$description": "Tight — display headlines at 56px. Minimal leading for engineered precision."
+    },
+    "line-height-heading": {
+      "$value": "1.20",
+      "$type": "number",
+      "$description": "Heading — section and subheading levels."
     },
     "line-height-normal": {
       "$value": "1.50",
       "$type": "number",
-      "$description": "Normal \u2014 body"
+      "$description": "Normal — body text. Slightly tighter than editorial brands. Efficient, not luxurious."
+    },
+    "line-height-relaxed": {
+      "$value": "1.65",
+      "$type": "number",
+      "$description": "Relaxed — long-form content, accessibility contexts."
+    },
+    "letter-spacing-tight": {
+      "$value": "-0.5px",
+      "$type": "dimension",
+      "$description": "Tight — display headlines. Negative tracking tightens large light-weight type."
+    },
+    "letter-spacing-normal": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "Normal — body and subheading text."
+    },
+    "letter-spacing-wide": {
+      "$value": "1.5px",
+      "$type": "dimension",
+      "$description": "Wide — overline labels, category tags. Uppercase text gets expanded tracking."
+    },
+    "weight-light": {
+      "$value": "300",
+      "$type": "number",
+      "$description": "Light — display headlines. The defining BMW typographic weight at large sizes."
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular — body text, section headings, UI elements."
     },
-    "weight-medium": {
-      "$value": "500",
+    "weight-bold": {
+      "$value": "700",
       "$type": "number",
-      "$description": "Medium"
-    },
-    "weight-semibold": {
-      "$value": "600",
-      "$type": "number",
-      "$description": "Semibold"
+      "$description": "Bold — overline labels, emphasis within body, navigation active states."
     }
   },
   "spacing": {
     "unit": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Base grid unit"
+      "$description": "Base grid unit — all spacing is a multiple of 8px."
     },
-    "xs": {
+    "2xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Micro — icon-to-label gaps, inline element spacing."
     },
-    "sm": {
+    "xs": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Extra small — tight element spacing, small padding."
     },
-    "md": {
+    "sm": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Small — button padding (vertical), compact card gaps."
     },
-    "lg": {
+    "md": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Medium — standard card padding, input padding, grid gaps."
     },
-    "xl": {
+    "lg": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Large — section element spacing, card content padding."
     },
-    "2xl": {
+    "xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Extra large — component group spacing."
+    },
+    "2xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Section internal padding."
+    },
+    "3xl": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Section padding horizontal on desktop."
     },
     "section-gap": {
-      "$value": "80px",
+      "$value": "96px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Vertical gap between major page sections. Generous but disciplined."
     },
     "container-max": {
-      "$value": "1200px",
+      "$value": "1440px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Max container width — wider than many brands, reflecting BMW's widescreen cinematic layouts."
+    },
+    "container-content": {
+      "$value": "960px",
+      "$type": "dimension",
+      "$description": "Max content width — text and form content within the wider container."
     }
   },
   "border": {
-    "radius-standard": {
+    "radius-none": {
       "$value": "0px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Zero radius — BMW's signature. Cards, buttons, inputs, images all use sharp 0px corners. This is the default and the rule, not the exception."
     },
-    "radius-comfortable": {
-      "$value": "0px",
+    "radius-minimal": {
+      "$value": "2px",
       "$type": "dimension",
-      "$description": "Comfortable radius"
+      "$description": "Minimal radius — only for small interactive elements (toggles, chips) where sharp corners feel physically uncomfortable at tiny sizes."
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill shape"
+      "$description": "Pill shape — tags and status badges only. The contrast with zero-radius rectangles makes pills read as metadata, not containers."
     }
   },
   "shadow": {
@@ -214,59 +311,106 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat — no elevation. Default state for most elements. BMW prefers flat surfaces with border delineation."
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "3px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.06)"
+        },
+        {
+          "offsetX": "0px",
           "offsetY": "2px",
           "blur": "8px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0,0,0,0.04)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle elevation"
+      "$description": "Subtle elevation — hover states on cards, dropdown menus. Barely perceptible lift, like a panel hovering 1mm above a showroom display."
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.08)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "32px",
+          "spread": "-4px",
+          "color": "rgba(0,0,0,0.06)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Modal elevation — dialogs, popovers, configurator overlays. Noticeable but controlled."
     }
   },
   "motion": {
-    "duration-fast": {
-      "$value": "150ms",
+    "duration-instant": {
+      "$value": "100ms",
       "$type": "duration",
-      "$description": "Quick interactions"
+      "$description": "Instant — micro-interactions (button press feedback, toggle state)."
     },
-    "duration-normal": {
+    "duration-fast": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Standard transitions"
+      "$description": "Fast — standard hover transitions, opacity changes."
+    },
+    "duration-normal": {
+      "$value": "350ms",
+      "$type": "duration",
+      "$description": "Normal — panel slides, accordion reveals, tab transitions."
+    },
+    "duration-slow": {
+      "$value": "600ms",
+      "$type": "duration",
+      "$description": "Slow — hero image fades, page-level transitions, configurator 3D rotations."
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1.0],
       "$type": "cubicBezier",
-      "$description": "Standard ease"
+      "$description": "Standard ease — smooth deceleration for most transitions."
+    },
+    "easing-enter": {
+      "$value": [0.0, 0.0, 0.2, 1.0],
+      "$type": "cubicBezier",
+      "$description": "Enter ease — elements appearing on screen (fade in, slide in)."
+    },
+    "easing-exit": {
+      "$value": [0.4, 0.0, 1.0, 1.0],
+      "$type": "cubicBezier",
+      "$description": "Exit ease — elements leaving screen."
     }
   },
   "breakpoint": {
     "mobile": {
       "$value": "640px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile breakpoint."
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet breakpoint."
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop breakpoint."
+    },
+    "wide": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Wide desktop — BMW uses wide cinematic layouts that fill large screens."
     }
   }
 }

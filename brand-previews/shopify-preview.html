@@ -3,128 +3,288 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shopify Brand Tokens Preview</title>
+<title>Shopify (Polaris) Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#6d7175&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --surface: #ffffff;
-    --surface-subtle: #f8f8f8;
-    --accent: #008060;
-    --text-primary: #202223;
-    --text-secondary: #6d7175;
-    --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    --bg: #f1f1f1;
+    --bg-surface: #ffffff;
+    --bg-surface-hover: #f7f7f7;
+    --bg-surface-secondary: #f7f7f7;
+    --bg-fill-brand: #303030;
+    --bg-fill-brand-hover: #1a1a1a;
+    --bg-fill-success: #047b5d;
+    --bg-fill-critical: #c70a24;
+    --bg-fill-warning: #ffb800;
+    --bg-fill-info: #91d0ff;
+    --text: #303030;
+    --text-secondary: #616161;
+    --text-link: #005bd3;
+    --text-success: #014b40;
+    --text-critical: #8e0b21;
+    --text-inverse: #e3e3e3;
+    --border: #e3e3e3;
+    --icon: #4a4a4a;
+    --shadow-100: 0px 1px 0px 0px rgba(26, 26, 26, 0.07);
+    --shadow-200: 0px 3px 1px -1px rgba(26, 26, 26, 0.07);
+    --shadow-300: 0px 4px 6px -2px rgba(26, 26, 26, 0.20);
+    --shadow-bevel-button: inset 0 -1px 0 0 rgba(0,0,0,0.2), inset 0 1px 0 0 rgba(255,255,255,0.04);
+    --shadow-bevel-pressed: inset 0 2px 1px 0 rgba(0,0,0,0.2), inset 0 1px 1px 0 rgba(0,0,0,0.12);
+    --shadow-border-inset: 0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.43; font-size: 14px; font-weight: 450; }
+  .container { max-width: 1040px; margin: 0 auto; padding: 32px 20px; }
+
+  /* Brand Header Card */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
+    text-align: center; margin-bottom: 32px; padding: 48px 32px;
+    background: var(--bg-surface); border-radius: 12px;
     border: 1px solid var(--border);
+    box-shadow: var(--shadow-100);
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
+  .brand-header h1 { font-size: 40px; font-weight: 700; line-height: 48px; letter-spacing: -0.54px; color: var(--text); margin-bottom: 8px; }
+  .brand-header .aesthetic { font-size: 14px; color: var(--text-secondary); margin-bottom: 16px; font-weight: 450; }
   .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
-  .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .brand-header .tag { font-size: 11px; padding: 2px 8px; background: var(--bg-fill-brand); color: #ffffff; border-radius: 9999px; font-weight: 550; letter-spacing: 0; }
+
+  .section { margin-bottom: 32px; background: var(--bg-surface); border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-100); padding: 20px; }
+  .section-title { font-size: 20px; font-weight: 650; line-height: 28px; letter-spacing: -0.2px; margin-bottom: 4px; }
+  .section-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; font-weight: 450; line-height: 20px; }
+
+  /* Color Swatches */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-bottom: 16px; }
+  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-surface); }
+  .color-swatch .swatch-fill { height: 56px; }
+  .color-swatch .swatch-info { padding: 8px; }
+  .color-swatch .swatch-name { font-size: 11px; font-weight: 550; margin-bottom: 2px; line-height: 16px; }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); font-weight: 450; line-height: 16px; }
+
+  /* Typography Scale */
+  .type-row { display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .type-row:last-child { border-bottom: none; }
+  .type-label { flex: 0 0 80px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 550; line-height: 16px; }
   .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .type-meta { flex: 0 0 90px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 450; font-family: ui-monospace, SFMono-Regular, monospace; }
+
+  /* Spacing Scale */
+  .spacing-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; font-weight: 550; }
+  .spacing-bar { height: 20px; background: var(--bg-fill-brand); border-radius: 4px; opacity: 0.3; }
+  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; font-family: ui-monospace, SFMono-Regular, monospace; }
+
+  /* Radius Demo */
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 12px; }
+  .radius-box { aspect-ratio: 1; background: var(--bg-surface-secondary); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .radius-box span { font-size: 11px; color: var(--text-secondary); font-weight: 450; }
+
+  /* Shadow Demo */
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+  .shadow-card { padding: 16px; border-radius: 12px; background: var(--bg-surface); border: 1px solid var(--border); min-height: 80px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .shadow-card .shadow-name { font-size: 12px; font-weight: 650; margin-bottom: 2px; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); font-weight: 450; }
+
+  /* Components */
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 30px; line-height: 40px; letter-spacing: -0.3px; } }
+  .comp-card { padding: 20px; background: var(--bg-surface); border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-100); }
+  .comp-card h3 { font-size: 14px; font-weight: 650; margin-bottom: 16px; line-height: 20px; }
+
+  /* Polaris Buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 550; cursor: pointer; border: none; transition: background 150ms cubic-bezier(0.25, 0.1, 0.25, 1); text-decoration: none; min-height: 36px; font-family: var(--font); line-height: 20px; }
+  .btn-primary { background: var(--bg-fill-brand); color: #ffffff; box-shadow: var(--shadow-bevel-button); }
+  .btn-primary:hover { background: var(--bg-fill-brand-hover); }
+  .btn-default { background: var(--bg-surface); color: var(--text); box-shadow: var(--shadow-border-inset), var(--shadow-bevel-button); }
+  .btn-default:hover { background: var(--bg-surface-hover); }
+  .btn-critical { background: var(--bg-fill-critical); color: #ffffff; box-shadow: var(--shadow-bevel-button); }
+  .btn-success-plain { background: none; border: none; color: var(--text-link); font-size: 14px; font-weight: 550; padding: 8px 12px; cursor: pointer; }
+  .btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Resource List Item */
+  .resource-list { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-100); }
+  .resource-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--bg-surface); border-bottom: 1px solid var(--border); cursor: pointer; transition: background 100ms; }
+  .resource-item:last-child { border-bottom: none; }
+  .resource-item:hover { background: var(--bg-surface-hover); }
+  .resource-thumb { width: 40px; height: 40px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-surface-secondary); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .resource-thumb svg { width: 20px; height: 20px; color: var(--icon); }
+  .resource-content { flex: 1; min-width: 0; }
+  .resource-title { font-size: 14px; font-weight: 550; line-height: 20px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .resource-subtitle { font-size: 13px; font-weight: 450; line-height: 20px; color: var(--text-secondary); margin-top: 2px; }
+  .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 9999px; font-size: 11px; font-weight: 550; line-height: 16px; }
+  .badge-success { background: rgba(4, 123, 93, 0.12); color: #014b40; }
+  .badge-draft { background: rgba(97, 97, 97, 0.12); color: #616161; }
+  .badge-critical { background: rgba(199, 10, 36, 0.12); color: #8e0b21; }
+  .resource-price { font-size: 14px; font-weight: 450; line-height: 20px; color: var(--text); flex-shrink: 0; }
+
+  /* Metric Card */
+  .metric-value { font-size: 30px; font-weight: 650; line-height: 40px; letter-spacing: -0.3px; color: var(--text); }
+  .metric-label { font-size: 13px; font-weight: 450; line-height: 20px; color: var(--text-secondary); margin-bottom: 4px; }
+  .metric-trend { font-size: 13px; font-weight: 550; margin-top: 4px; }
+  .metric-trend.positive { color: var(--bg-fill-success); }
+  .metric-trend.negative { color: var(--bg-fill-critical); }
+
+  /* Nav Bar Demo */
+  .nav-demo { background: var(--bg-fill-brand); border-radius: 8px; padding: 0 16px; height: 56px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .nav-logo { color: #ffffff; font-size: 20px; font-weight: 700; letter-spacing: -0.2px; }
+  .nav-search { background: rgba(255,255,255,0.12); color: var(--text-inverse); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; font-size: 14px; font-weight: 450; font-family: var(--font); flex: 1; max-width: 360px; margin: 0 16px; outline: none; }
+  .nav-search::placeholder { color: rgba(255,255,255,0.5); }
+  .nav-avatar { width: 28px; height: 28px; border-radius: 9999px; background: var(--bg-fill-success); color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 650; }
 </style>
 </head>
 <body>
 <div class="container">
   <header class="brand-header">
     <h1>Shopify</h1>
-    <p class="aesthetic">commerce green with polaris design system</p>
+    <p class="aesthetic">Polaris design system — merchant-focused admin with bevel-shadow depth</p>
     <div class="tags">
-      <span class="tag">polaris-system</span><span class="tag">commerce-green</span><span class="tag">merchant-friendly</span>
+      <span class="tag">polaris-design-system</span>
+      <span class="tag">admin-surface-gray</span>
+      <span class="tag">commerce-green-accent</span>
+      <span class="tag">bevel-shadow-depth</span>
     </div>
   </header>
 
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Shopify visual identity.</p>
+    <p class="section-desc">Polaris color tokens — neutral surfaces, dark brand fill, semantic status colors.</p>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#008060"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#008060</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#202223"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#202223</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#6d7175"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#6d7175</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f1f1f1"></div><div class="swatch-info"><div class="swatch-name">bg (canvas)</div><div class="swatch-hex">#f1f1f1</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">bg-surface</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#303030"></div><div class="swatch-info"><div class="swatch-name">brand fill</div><div class="swatch-hex">#303030</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#303030"></div><div class="swatch-info"><div class="swatch-name">text</div><div class="swatch-hex">#303030</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#616161"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#616161</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#005bd3"></div><div class="swatch-info"><div class="swatch-name">text-link</div><div class="swatch-hex">#005bd3</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#047b5d"></div><div class="swatch-info"><div class="swatch-name">success</div><div class="swatch-hex">#047b5d</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#c70a24"></div><div class="swatch-info"><div class="swatch-name">critical</div><div class="swatch-hex">#c70a24</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffb800"></div><div class="swatch-info"><div class="swatch-name">warning</div><div class="swatch-hex">#ffb800</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#e3e3e3"></div><div class="swatch-info"><div class="swatch-name">border</div><div class="swatch-hex">#e3e3e3</div></div></div>
     </div>
   </section>
 
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Shopify branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Shopify Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">Inter type scale with Polaris weights (450/550/650/700) and 4px-grid line heights.</p>
+    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:700;line-height:48px;letter-spacing:-0.54px">Shopify Admin</span><span class="type-meta">40/48 w700</span></div>
+    <div class="type-row"><span class="type-label">heading xl</span><span class="type-sample" style="font-size:30px;font-weight:650;line-height:40px;letter-spacing:-0.3px">Section Heading</span><span class="type-meta">30/40 w650</span></div>
+    <div class="type-row"><span class="type-label">heading lg</span><span class="type-sample" style="font-size:24px;font-weight:650;line-height:32px;letter-spacing:-0.2px">Card Title</span><span class="type-meta">24/32 w650</span></div>
+    <div class="type-row"><span class="type-label">heading md</span><span class="type-sample" style="font-size:20px;font-weight:650;line-height:28px;letter-spacing:-0.2px">Subheading</span><span class="type-meta">20/28 w650</span></div>
+    <div class="type-row"><span class="type-label">body lg</span><span class="type-sample" style="font-size:16px;font-weight:450;line-height:24px;color:var(--text-secondary)">Prominent description text for marketing contexts</span><span class="type-meta">16/24 w450</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:14px;font-weight:450;line-height:20px;color:var(--text-secondary)">Standard body text for admin interfaces</span><span class="type-meta">14/20 w450</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:13px;font-weight:450;line-height:20px;color:var(--text-secondary)">Caption and metadata text</span><span class="type-meta">13/20 w450</span></div>
+    <div class="type-row"><span class="type-label">small</span><span class="type-sample" style="font-size:12px;font-weight:450;line-height:16px;color:var(--text-secondary)">Small labels and fine print</span><span class="type-meta">12/16 w450</span></div>
+    <div class="type-row"><span class="type-label">badge</span><span class="type-sample" style="font-size:11px;font-weight:550;line-height:16px;color:var(--text-secondary)">BADGE TEXT</span><span class="type-meta">11/16 w550</span></div>
   </section>
 
   <section class="section">
-    <h2 class="section-title">Spacing</h2>
-    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
-    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
-    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
-    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
-    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-desc">Polaris 4px base unit spacing tokens.</p>
+    <div class="spacing-row"><span class="spacing-label">100</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+    <div class="spacing-row"><span class="spacing-label">200</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">300</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">400</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">500</span><div class="spacing-bar" style="width:20px"></div><span class="spacing-value">20px</span></div>
+    <div class="spacing-row"><span class="spacing-label">600</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">800</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">1000</span><div class="spacing-bar" style="width:40px"></div><span class="spacing-value">40px</span></div>
+    <div class="spacing-row"><span class="spacing-label">1200</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">1600</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Polaris radius token scale.</p>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:2px"><span>050</span><span>2px</span></div>
+      <div class="radius-box" style="border-radius:4px"><span>100</span><span>4px</span></div>
+      <div class="radius-box" style="border-radius:6px"><span>150</span><span>6px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>200</span><span>8px</span></div>
+      <div class="radius-box" style="border-radius:12px"><span>300</span><span>12px</span></div>
+      <div class="radius-box" style="border-radius:16px"><span>400</span><span>16px</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span>full</span><span>pill</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Shadow Scale</h2>
+    <p class="section-desc">Polaris elevation tokens — from resting cards to modal overlays.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:0px 1px 0px 0px rgba(26,26,26,0.07)"><div class="shadow-name">shadow-100</div><div class="shadow-desc">Cards, resting state</div></div>
+      <div class="shadow-card" style="box-shadow:0px 3px 1px -1px rgba(26,26,26,0.07)"><div class="shadow-name">shadow-200</div><div class="shadow-desc">Raised cards, popovers</div></div>
+      <div class="shadow-card" style="box-shadow:0px 4px 6px -2px rgba(26,26,26,0.20)"><div class="shadow-name">shadow-300</div><div class="shadow-desc">Dropdowns, tooltips</div></div>
+      <div class="shadow-card" style="box-shadow:0px 8px 16px -4px rgba(26,26,26,0.22)"><div class="shadow-name">shadow-400</div><div class="shadow-desc">Modals, drawers</div></div>
+      <div class="shadow-card" style="box-shadow:0px 20px 20px -8px rgba(26,26,26,0.28)"><div class="shadow-name">shadow-600</div><div class="shadow-desc">Top-level overlays</div></div>
+    </div>
   </section>
 
   <section class="section">
     <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Shopify tokens.</p>
+    <p class="section-desc">Sample components styled with Polaris design tokens.</p>
+
+    <!-- Admin Nav Demo -->
+    <div class="nav-demo">
+      <span class="nav-logo">shopify</span>
+      <input class="nav-search" type="text" placeholder="Search">
+      <span class="nav-avatar">M</span>
+    </div>
+
     <div class="comp-grid">
       <div class="comp-card">
-        <h3>Buttons</h3>
+        <h3>Polaris Buttons</h3>
         <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+          <button class="btn btn-primary">Primary action</button>
+          <button class="btn btn-default">Default</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-critical">Delete</button>
+          <button class="btn-success-plain">Learn more</button>
         </div>
       </div>
+
       <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Shopify Feature</h4>
-            <p>A component styled with the Shopify design system tokens.</p>
+        <h3>Status Badges</h3>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+          <span class="badge badge-success">Active</span>
+          <span class="badge badge-draft">Draft</span>
+          <span class="badge badge-critical">Archived</span>
+        </div>
+        <h3 style="margin-top:12px">Metric Card</h3>
+        <div class="metric-label">Total sales</div>
+        <div class="metric-value">$12,489</div>
+        <div class="metric-trend positive">+14.2% from last month</div>
+      </div>
+    </div>
+
+    <!-- Resource List Demo -->
+    <div style="margin-top:16px">
+      <h3 style="font-size:14px;font-weight:650;line-height:20px;margin-bottom:12px">Product Resource List</h3>
+      <div class="resource-list">
+        <div class="resource-item">
+          <div class="resource-thumb"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M3 8h14"/></svg></div>
+          <div class="resource-content">
+            <div class="resource-title">Classic Cotton T-Shirt</div>
+            <div class="resource-subtitle">SKU: CCTS-001</div>
           </div>
+          <span class="badge badge-success">Active</span>
+          <span class="resource-price">$29.99</span>
+        </div>
+        <div class="resource-item">
+          <div class="resource-thumb"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M3 8h14"/></svg></div>
+          <div class="resource-content">
+            <div class="resource-title">Organic Blend Hoodie</div>
+            <div class="resource-subtitle">SKU: OBH-042</div>
+          </div>
+          <span class="badge badge-draft">Draft</span>
+          <span class="resource-price">$64.00</span>
+        </div>
+        <div class="resource-item">
+          <div class="resource-thumb"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M3 8h14"/></svg></div>
+          <div class="resource-content">
+            <div class="resource-title">Vintage Denim Jacket</div>
+            <div class="resource-subtitle">SKU: VDJ-118</div>
+          </div>
+          <span class="badge badge-critical">Archived</span>
+          <span class="resource-price">$119.00</span>
         </div>
       </div>
     </div>

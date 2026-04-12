@@ -3,132 +3,607 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bmw Brand Tokens Preview</title>
+<title>BMW Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
     --surface: #ffffff;
     --surface-subtle: #f5f5f5;
+    --surface-dark: #1a1a1a;
+    --surface-silver: #e8e8ed;
     --accent: #1c69d4;
+    --accent-hover: #0653b6;
+    --accent-muted: #e8f0fb;
     --text-primary: #262626;
     --text-secondary: #757575;
-    --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    --text-tertiary: #b0b0b0;
+    --text-on-dark: #ffffff;
+    --text-on-dark-secondary: #a0a0a0;
+    --border: #e0e0e0;
+    --border-strong: #c0c0c0;
+    --border-on-dark: #333333;
+    --error: #d30000;
+    --success: #007d48;
+    --warning: #e5a100;
+    --font: 'BMWTypeNext', 'BMW Type Next Latin', Helvetica, Arial, sans-serif;
+    --font-mono: 'SF Mono', Consolas, 'Liberation Mono', monospace;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+
+  body {
+    font-family: var(--font);
+    background: var(--surface);
+    color: var(--text-primary);
+    line-height: 1.50;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container { max-width: 1440px; margin: 0 auto; padding: 64px 24px; }
+
+  /* ── Brand Header (Dark Cinematic) ── */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
+    background: var(--surface-dark);
+    padding: 80px 48px;
+    margin-bottom: 96px;
+    border: 1px solid var(--border-on-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: var(--accent);
+  }
+  .brand-header .overline {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-on-dark-secondary);
+    margin-bottom: 16px;
+  }
+  .brand-header h1 {
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1.10;
+    letter-spacing: -0.5px;
+    color: var(--text-on-dark);
+    margin-bottom: 16px;
+  }
+  .brand-header .aesthetic {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-on-dark-secondary);
+    margin-bottom: 24px;
+    max-width: 560px;
+  }
+  .brand-header .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .brand-header .tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    background: transparent;
+    color: var(--text-on-dark-secondary);
+    border: 1px solid var(--border-on-dark);
+  }
+
+  /* ── Section ── */
+  .section { margin-bottom: 96px; }
+  .section-overline {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.20;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .section-desc {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    max-width: 640px;
+  }
+
+  /* ── Color Grid ── */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--border);
     border: 1px solid var(--border);
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
-  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
-  .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
-  .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .color-swatch { background: var(--surface); }
+  .color-swatch .swatch-fill { height: 80px; }
+  .color-swatch .swatch-info { padding: 12px 16px; }
+  .color-swatch .swatch-name {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 2px;
+    color: var(--text-primary);
+  }
+  .color-swatch .swatch-hex {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+  }
+
+  /* ── Typography ── */
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-label {
+    flex: 0 0 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-align: right;
+  }
+  .type-sample { flex: 1; color: var(--text-primary); }
+  .type-meta {
+    flex: 0 0 80px;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-tertiary);
+    text-align: right;
+  }
+
+  /* ── Spacing ── */
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .spacing-label {
+    flex: 0 0 60px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-align: right;
+  }
+  .spacing-bar {
+    height: 24px;
+    background: var(--accent);
+    opacity: 0.15;
+    border-left: 2px solid var(--accent);
+  }
+  .spacing-value {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    min-width: 40px;
+  }
+
+  /* ── Border Radius ── */
+  .radius-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 24px;
+  }
+  .radius-box {
+    aspect-ratio: 1;
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .radius-box .radius-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .radius-box .radius-value {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-tertiary);
+  }
+
+  /* ── Shadow ── */
+  .shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .shadow-card {
+    padding: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .shadow-card .shadow-name {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+  }
+  .shadow-card .shadow-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  /* ── Components ── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 768px) {
+    .comp-grid { grid-template-columns: 1fr; }
+    .brand-header h1 { font-size: 36px; }
+    .brand-header { padding: 48px 24px; }
+    .section-title { font-size: 28px; }
+  }
+
+  .comp-card {
+    padding: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .comp-card h3 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    border-radius: 0;
+    transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+    text-decoration: none;
+  }
+  .btn-accent {
+    background: var(--accent);
+    color: #ffffff;
+  }
+  .btn-accent:hover { background: var(--accent-hover); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+  }
+  .btn-outline:hover {
+    background: var(--text-primary);
+    color: var(--surface);
+  }
+  .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  /* ── Vehicle Card ── */
+  .vehicle-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .vehicle-card-img {
+    height: 200px;
+    background: var(--surface-subtle);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .vehicle-card-img .placeholder-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-tertiary);
+    letter-spacing: 0.5px;
+  }
+  .vehicle-card-body { padding: 32px; }
+  .vehicle-card-body .model-name {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.20;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .vehicle-card-body .tagline {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+  .specs-row {
+    display: flex;
+    gap: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .spec-item { display: flex; flex-direction: column; }
+  .spec-value {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--text-primary);
+    line-height: 1.20;
+  }
+  .spec-unit {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  /* ── Status Tokens ── */
+  .status-grid {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+  }
 </style>
 </head>
 <body>
 <div class="container">
+
+  <!-- ── Brand Header ── -->
   <header class="brand-header">
-    <h1>Bmw</h1>
-    <p class="aesthetic">automotive precision with industrial geometry</p>
+    <p class="overline">Brand Design System</p>
+    <h1>BMW</h1>
+    <p class="aesthetic">Precision engineering showroom. Angular geometry, clinical white surfaces, singular blue accent. Every corner is sharp, every color is deliberate.</p>
     <div class="tags">
-      <span class="tag">zero-border-radius</span><span class="tag">light-weight-display</span><span class="tag">showroom-lighting</span>
+      <span class="tag">Zero Border-Radius</span>
+      <span class="tag">Light-Weight Display</span>
+      <span class="tag">Showroom White</span>
+      <span class="tag">Singular Blue Accent</span>
+      <span class="tag">Industrial Geometry</span>
     </div>
   </header>
 
+  <!-- ── Color Palette ── -->
   <section class="section">
+    <p class="section-overline">Visual Identity</p>
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Bmw visual identity.</p>
+    <p class="section-desc">Core brand colors defining the BMW digital identity. Pure neutral surfaces, a single blue accent, and a restrained status palette.</p>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#1c69d4"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#1c69d4</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#262626"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#262626</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#757575"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#757575</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">Surface</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f5f5f5"></div><div class="swatch-info"><div class="swatch-name">Surface Subtle</div><div class="swatch-hex">#f5f5f5</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1a1a1a"></div><div class="swatch-info"><div class="swatch-name">Carbon Black</div><div class="swatch-hex">#1a1a1a</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#e8e8ed"></div><div class="swatch-info"><div class="swatch-name">Brushed Silver</div><div class="swatch-hex">#e8e8ed</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1c69d4"></div><div class="swatch-info"><div class="swatch-name">BMW Blue</div><div class="swatch-hex">#1c69d4</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#0653b6"></div><div class="swatch-info"><div class="swatch-name">Focus Blue</div><div class="swatch-hex">#0653b6</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#262626"></div><div class="swatch-info"><div class="swatch-name">Charcoal</div><div class="swatch-hex">#262626</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#757575"></div><div class="swatch-info"><div class="swatch-name">Meta Gray</div><div class="swatch-hex">#757575</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#b0b0b0"></div><div class="swatch-info"><div class="swatch-name">Silver Text</div><div class="swatch-hex">#b0b0b0</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#e0e0e0"></div><div class="swatch-info"><div class="swatch-name">Light Steel</div><div class="swatch-hex">#e0e0e0</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#d30000"></div><div class="swatch-info"><div class="swatch-name">Signal Red</div><div class="swatch-hex">#d30000</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#007d48"></div><div class="swatch-info"><div class="swatch-name">Racing Green</div><div class="swatch-hex">#007d48</div></div></div>
     </div>
   </section>
 
+  <!-- ── Typography ── -->
   <section class="section">
+    <p class="section-overline">Type System</p>
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Bmw branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Bmw Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">BMWTypeNext with Helvetica fallback. Light weight (300) at display sizes is the brand signature.</p>
+    <div class="type-row">
+      <span class="type-label">Display</span>
+      <span class="type-sample" style="font-size:48px;font-weight:300;line-height:1.10;letter-spacing:-0.5px">BMW Design</span>
+      <span class="type-meta">56px / 300</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Section</span>
+      <span class="type-sample" style="font-size:32px;font-weight:400;line-height:1.20">Section Heading</span>
+      <span class="type-meta">36px / 400</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Subheading</span>
+      <span class="type-sample" style="font-size:22px;font-weight:400;line-height:1.20">Subheading</span>
+      <span class="type-meta">24px / 400</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Body Large</span>
+      <span class="type-sample" style="font-size:18px;font-weight:300;line-height:1.50;color:var(--text-secondary)">Lead paragraph text for featured descriptions</span>
+      <span class="type-meta">18px / 300</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Body</span>
+      <span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.50;color:var(--text-secondary)">Standard body text for content and descriptions</span>
+      <span class="type-meta">16px / 400</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Caption</span>
+      <span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata text</span>
+      <span class="type-meta">14px / 400</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Overline</span>
+      <span class="type-sample" style="font-size:11px;font-weight:700;line-height:1.25;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-secondary)">Category Label</span>
+      <span class="type-meta">11px / 700</span>
+    </div>
   </section>
 
+  <!-- ── Spacing ── -->
   <section class="section">
-    <h2 class="section-title">Spacing</h2>
-    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
-    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
-    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
-    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
-    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <p class="section-overline">Layout</p>
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-desc">8px base grid. All spacing is a multiple of the base unit.</p>
+    <div class="spacing-row"><span class="spacing-label">2xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
+    <div class="spacing-row"><span class="spacing-label">Section</span><div class="spacing-bar" style="width:96px"></div><span class="spacing-value">96px</span></div>
   </section>
 
+  <!-- ── Border Radius ── -->
   <section class="section">
-    <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Bmw tokens.</p>
+    <p class="section-overline">Geometry</p>
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Zero radius is the default and the rule. Sharp corners define BMW's angular precision.</p>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:0px"><span class="radius-name">None</span><span class="radius-value">0px</span></div>
+      <div class="radius-box" style="border-radius:2px"><span class="radius-name">Minimal</span><span class="radius-value">2px</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span class="radius-name">Pill</span><span class="radius-value">9999px</span></div>
+    </div>
+  </section>
+
+  <!-- ── Shadows ── -->
+  <section class="section">
+    <p class="section-overline">Elevation</p>
+    <h2 class="section-title">Shadows</h2>
+    <p class="section-desc">Minimal and surgical. Resting state is flat. Shadow appears on hover or for modal overlays.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none">
+        <div class="shadow-name">Level 0 — Flat</div>
+        <div class="shadow-desc">Default resting state. No elevation.</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:0px 1px 3px rgba(0,0,0,0.06), 0px 2px 8px rgba(0,0,0,0.04)">
+        <div class="shadow-name">Level 1 — Hover</div>
+        <div class="shadow-desc">Subtle lift on interactive cards.</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:0px 4px 16px rgba(0,0,0,0.08), 0px 12px 32px -4px rgba(0,0,0,0.06)">
+        <div class="shadow-name">Level 2 — Modal</div>
+        <div class="shadow-desc">Dialogs, popovers, configurator overlays.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Components ── -->
+  <section class="section">
+    <p class="section-overline">Components</p>
+    <h2 class="section-title">UI Components</h2>
+    <p class="section-desc">Sample components demonstrating BMW's angular, restrained design system.</p>
     <div class="comp-grid">
+
+      <!-- Buttons -->
       <div class="comp-card">
         <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+        <div class="btn-group" style="margin-bottom:24px">
+          <button class="btn btn-accent">Configure</button>
+          <button class="btn btn-outline">Explore</button>
         </div>
-      </div>
-      <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Bmw Feature</h4>
-            <p>A component styled with the Bmw design system tokens.</p>
+        <div style="display:flex;gap:24px;flex-wrap:wrap">
+          <div class="status-chip">
+            <span class="status-dot" style="background:var(--success)"></span>
+            <span style="color:var(--success)">Available</span>
+          </div>
+          <div class="status-chip">
+            <span class="status-dot" style="background:var(--warning)"></span>
+            <span style="color:var(--warning)">Limited</span>
+          </div>
+          <div class="status-chip">
+            <span class="status-dot" style="background:var(--error)"></span>
+            <span style="color:var(--error)">Sold Out</span>
           </div>
         </div>
       </div>
+
+      <!-- Metric Card -->
+      <div class="comp-card" style="border-top:2px solid var(--accent)">
+        <h3>Metric Display</h3>
+        <div style="margin-bottom:8px">
+          <span style="font-size:48px;font-weight:300;line-height:1.10;letter-spacing:-0.5px;color:var(--text-primary)">523</span>
+          <span style="font-size:20px;font-weight:300;color:var(--text-secondary);margin-left:4px">hp</span>
+        </div>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.50">Maximum output from the twin-turbocharged inline-six. Peak torque delivered at 1,800 rpm.</p>
+      </div>
+
+      <!-- Vehicle Showcase Card -->
+      <div class="comp-card" style="padding:0;grid-column:span 2">
+        <div class="vehicle-card">
+          <div class="vehicle-card-img">
+            <span class="placeholder-text">Vehicle Photography — 16:9</span>
+          </div>
+          <div class="vehicle-card-body">
+            <h4 class="model-name">BMW iX xDrive50</h4>
+            <p class="tagline">The Ultimate Electric Driving Machine</p>
+            <div class="specs-row">
+              <div class="spec-item">
+                <span class="spec-value">523</span>
+                <span class="spec-unit">Horsepower</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-value">3.8</span>
+                <span class="spec-unit">0-60 mph (sec)</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-value">324</span>
+                <span class="spec-unit">Range (mi)</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-value">111.5</span>
+                <span class="spec-unit">Battery (kWh)</span>
+              </div>
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-accent">Configure</button>
+              <button class="btn btn-outline">Explore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
+
 </div>
 </body>
 </html>

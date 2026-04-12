@@ -1,126 +1,228 @@
 {
   "$extensions": {
     "brand": "webflow",
-    "source": "awesome-design-md",
-    "aesthetic": "designer-first with blue CTA precision",
+    "source": "brand.webflow.com/design-guidelines",
+    "aesthetic": "visual-builder precision -- dark canvas, electric blue accents, geometric type",
     "key-characteristics": [
-      "designer-first",
-      "blue-precision",
-      "visual-builder"
+      "dark-canvas-native",
+      "electric-blue-accent",
+      "geometric-sans",
+      "tool-ui-precision",
+      "monochromatic-discipline"
     ]
   },
   "color": {
     "surface": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Primary background"
+      "$description": "Primary light background (marketing pages)"
     },
     "surface-subtle": {
-      "$value": "#f8f8f8",
+      "$value": "#f0f0f0",
       "$type": "color",
-      "$description": "Secondary surface"
+      "$description": "Gray 100 -- secondary light surface, card backgrounds"
+    },
+    "surface-dark": {
+      "$value": "#080808",
+      "$type": "color",
+      "$description": "Primary dark background (editor, dark marketing sections)"
+    },
+    "surface-dark-elevated": {
+      "$value": "#171717",
+      "$type": "color",
+      "$description": "Gray 900 -- elevated panels on dark canvas"
+    },
+    "surface-dark-card": {
+      "$value": "#222222",
+      "$type": "color",
+      "$description": "Gray 800 -- cards and containers on dark backgrounds"
     },
     "accent": {
-      "$value": "#4353ff",
+      "$value": "#146ef5",
       "$type": "color",
-      "$description": "Primary accent color"
+      "$description": "Webflow Blue -- primary brand accent, CTAs, interactive elements"
     },
     "accent-hover": {
-      "$value": "#4353ff",
+      "$value": "#1060d4",
       "$type": "color",
-      "$description": "Accent hover state"
+      "$description": "Webflow Blue darkened for hover states"
+    },
+    "accent-light": {
+      "$value": "rgba(20, 110, 245, 0.12)",
+      "$type": "color",
+      "$description": "Blue tint for selection highlights and focus rings"
     },
     "text-primary": {
-      "$value": "#1a1a1a",
+      "$value": "#080808",
       "$type": "color",
-      "$description": "Primary text"
+      "$description": "Primary text on light surfaces"
     },
     "text-secondary": {
-      "$value": "#6b6b6b",
+      "$value": "#5a5a5a",
       "$type": "color",
-      "$description": "Secondary text"
+      "$description": "Gray 600 -- secondary text, descriptions"
+    },
+    "text-tertiary": {
+      "$value": "#757575",
+      "$type": "color",
+      "$description": "Gray 500 -- metadata, captions, placeholders"
+    },
+    "text-on-dark": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Primary text on dark surfaces"
+    },
+    "text-on-dark-secondary": {
+      "$value": "#ababab",
+      "$type": "color",
+      "$description": "Gray 300 -- secondary text on dark surfaces"
     },
     "text-on-accent": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Text on accent"
+      "$description": "Text on Webflow Blue backgrounds"
     },
     "error": {
-      "$value": "#ee4444",
+      "$value": "#ee1d36",
       "$type": "color",
-      "$description": "Error state"
+      "$description": "Error state -- Webflow Red"
     },
     "success": {
-      "$value": "#38a169",
+      "$value": "#00d722",
       "$type": "color",
-      "$description": "Success state"
+      "$description": "Success state -- Webflow Green"
     },
-    "border": {
+    "warning": {
+      "$value": "#ffae13",
+      "$type": "color",
+      "$description": "Warning state -- Webflow Yellow"
+    },
+    "border-light": {
       "$value": "#e5e5e5",
       "$type": "color",
-      "$description": "Default border"
+      "$description": "Borders on light surfaces"
+    },
+    "border-dark": {
+      "$value": "#363636",
+      "$type": "color",
+      "$description": "Gray 700 -- borders on dark surfaces"
+    },
+    "selection": {
+      "$value": "rgba(20, 110, 245, 0.95)",
+      "$type": "color",
+      "$description": "Text selection background (official brand spec)"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Poppins, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display/heading font (Google fallback for WF Visual Sans)"
     },
     "font-body": {
       "$value": "Inter, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body text font"
     },
-    "scale-display": {
-      "$value": "48px",
+    "font-mono": {
+      "$value": "'JetBrains Mono', 'Fira Code', monospace",
+      "$type": "fontFamily",
+      "$description": "Code and editor UI font"
+    },
+    "scale-h0": {
+      "$value": "128px",
       "$type": "dimension",
-      "$description": "Display"
+      "$description": "Hero display -- 8rem (brand spec H0)"
     },
-    "scale-section": {
-      "$value": "32px",
+    "scale-h1": {
+      "$value": "85px",
       "$type": "dimension",
-      "$description": "Section"
+      "$description": "Page title -- 5.313rem (brand spec H1)"
     },
-    "scale-base": {
+    "scale-h2": {
+      "$value": "56px",
+      "$type": "dimension",
+      "$description": "Section heading -- 3.5rem (brand spec H2)"
+    },
+    "scale-h3": {
+      "$value": "37px",
+      "$type": "dimension",
+      "$description": "Subsection -- 2.313rem (brand spec H3)"
+    },
+    "scale-h4": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Card title -- 1.5rem (brand spec H4)"
+    },
+    "scale-h5": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Body"
+      "$description": "Small heading -- 1rem (brand spec H5)"
+    },
+    "scale-body-xxl": {
+      "$value": "34px",
+      "$type": "dimension",
+      "$description": "Paragraph XXL -- 2.125rem"
+    },
+    "scale-body-xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Paragraph XL -- 1.5rem"
+    },
+    "scale-body": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Standard body -- 1rem"
+    },
+    "scale-body-sm": {
+      "$value": "15px",
+      "$type": "dimension",
+      "$description": "Small body -- 0.9375rem"
     },
     "scale-caption": {
-      "$value": "14px",
+      "$value": "10px",
       "$type": "dimension",
-      "$description": "Caption"
+      "$description": "Caption -- 0.625rem"
     },
-    "scale-small": {
-      "$value": "12px",
+    "line-height-heading": {
+      "$value": "1.04",
+      "$type": "number",
+      "$description": "Heading line-height (104% -- extremely tight, brand spec)"
+    },
+    "line-height-subheading": {
+      "$value": "1.30",
+      "$type": "number",
+      "$description": "Subheading line-height (H4-H5)"
+    },
+    "line-height-body": {
+      "$value": "1.60",
+      "$type": "number",
+      "$description": "Body line-height (160% -- generous)"
+    },
+    "letter-spacing-heading": {
+      "$value": "0.01em",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Heading letter-spacing (1%)"
     },
-    "line-height-tight": {
-      "$value": "1.15",
-      "$type": "number",
-      "$description": "Tight"
-    },
-    "line-height-normal": {
-      "$value": "1.50",
-      "$type": "number",
-      "$description": "Normal"
+    "letter-spacing-subheading": {
+      "$value": "0.02em",
+      "$type": "dimension",
+      "$description": "Subheading letter-spacing (2%)"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular weight -- body text"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium weight -- eyebrows, labels"
     },
     "weight-semibold": {
       "$value": "600",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Semibold -- all headings (brand spec)"
     }
   },
   "spacing": {
@@ -140,46 +242,66 @@
       "$description": "Small"
     },
     "md": {
-      "$value": "12px",
+      "$value": "16px",
       "$type": "dimension",
       "$description": "Medium"
     },
     "lg": {
-      "$value": "16px",
+      "$value": "24px",
       "$type": "dimension",
       "$description": "Large"
     },
     "xl": {
-      "$value": "24px",
+      "$value": "32px",
       "$type": "dimension",
       "$description": "Extra large"
     },
     "2xl": {
-      "$value": "32px",
+      "$value": "48px",
       "$type": "dimension",
       "$description": "Double extra large"
     },
-    "section-gap": {
-      "$value": "80px",
+    "3xl": {
+      "$value": "64px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Triple extra large"
+    },
+    "section-gap": {
+      "$value": "120px",
+      "$type": "dimension",
+      "$description": "Section spacing (generous like brand site)"
     },
     "container-max": {
-      "$value": "1200px",
+      "$value": "1280px",
       "$type": "dimension",
       "$description": "Max container width"
     }
   },
   "border": {
+    "radius-sm": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small radius -- badges, tags"
+    },
     "radius-standard": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Standard radius -- buttons, inputs, small cards"
+    },
+    "radius-lg": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Large radius -- cards, panels"
+    },
+    "radius-xl": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Extra large -- feature containers"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill"
+      "$description": "Pill -- tags, badges"
     }
   },
   "shadow": {
@@ -194,47 +316,92 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat -- no elevation"
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "3px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.06)"
+        },
+        {
+          "offsetX": "0px",
           "offsetY": "2px",
           "blur": "8px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0,0,0,0.04)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle"
+      "$description": "Subtle -- cards on light surfaces"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.08)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "32px",
+          "spread": "-4px",
+          "color": "rgba(0,0,0,0.06)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Medium -- dropdowns, floating panels"
+    },
+    "glow-accent": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "3px",
+          "color": "rgba(20,110,245,0.25)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Blue glow -- focus rings, active states"
     }
   },
   "motion": {
     "duration-fast": {
-      "$value": "150ms",
+      "$value": "120ms",
       "$type": "duration",
-      "$description": "Fast"
+      "$description": "Fast -- micro-interactions, hover"
     },
     "duration-normal": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Normal"
+      "$description": "Normal -- state transitions"
+    },
+    "duration-slow": {
+      "$value": "350ms",
+      "$type": "duration",
+      "$description": "Slow -- page transitions, panel reveals"
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1],
       "$type": "cubicBezier",
-      "$description": "Ease"
+      "$description": "Ease-out -- default"
+    },
+    "easing-spring": {
+      "$value": [0.34, 1.56, 0.64, 1],
+      "$type": "cubicBezier",
+      "$description": "Spring -- playful overshoot for UI interactions"
     }
   },
   "breakpoint": {
     "mobile": {
-      "$value": "640px",
+      "$value": "480px",
       "$type": "dimension",
       "$description": "Mobile"
     },
@@ -244,9 +411,14 @@
       "$description": "Tablet"
     },
     "desktop": {
-      "$value": "1024px",
+      "$value": "992px",
       "$type": "dimension",
       "$description": "Desktop"
+    },
+    "wide": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Wide desktop"
     }
   }
 }

@@ -5,130 +5,446 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Raycast Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --surface: #0a0a0a;
-    --surface-subtle: #1a1a1a;
-    --accent: #ff6363;
-    --text-primary: #ffffff;
-    --text-secondary: #999999;
-    --border: rgba(255,255,255,0.1);
-    --font: Inter, -apple-system, sans-serif;
+    --surface: #191A1F;
+    --surface-raised: #23252B;
+    --surface-elevated: #2C2E36;
+    --surface-overlay: #363840;
+    --surface-glass: rgba(25, 26, 31, 0.72);
+    --accent: #FF6363;
+    --accent-hover: #FF7A7A;
+    --accent-gradient: linear-gradient(135deg, #FF6363 0%, #E84393 100%);
+    --accent-gradient-ext: linear-gradient(135deg, #FF6B17 0%, #FF6363 40%, #E84393 100%);
+    --accent-subtle: rgba(255, 99, 99, 0.10);
+    --selection: rgba(255, 99, 99, 0.16);
+    --text-primary: #ECECEC;
+    --text-secondary: rgba(255, 255, 255, 0.55);
+    --text-tertiary: rgba(255, 255, 255, 0.35);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-default: rgba(255, 255, 255, 0.10);
+    --border-strong: rgba(255, 255, 255, 0.16);
+    --success: #63BA89;
+    --warning: #FF6B17;
+    --error: #F84141;
+    --info: #6AB7FB;
+    --purple: #C58AFA;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, monospace;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
+  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.45; letter-spacing: -0.01em; -webkit-font-smoothing: antialiased; }
   .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+
+  /* Brand Header */
   .brand-header {
     text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
+    background: var(--surface-glass);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border-radius: 16px;
+    border: 1px solid var(--border-default);
+    position: relative;
+    overflow: hidden;
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
+  .brand-header::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent-gradient);
+  }
+  .brand-header h1 {
+    font-size: 48px; font-weight: 600; line-height: 1.15; letter-spacing: -0.025em;
+    background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 12px;
+  }
+  .brand-header .aesthetic { font-size: 15px; color: var(--text-secondary); margin-bottom: 20px; font-style: italic; }
   .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .brand-header .tag {
+    font-size: 11px; padding: 4px 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em;
+    background: var(--accent-subtle); color: var(--accent); border-radius: 9999px;
+    border: 1px solid rgba(255,99,99,0.15);
+  }
+
+  /* Sections */
   .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
+  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; letter-spacing: -0.025em; margin-bottom: 8px; }
   .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
+
+  /* Color Grid */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .color-swatch {
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border-default);
+    background: var(--surface-raised);
+  }
   .color-swatch .swatch-fill { height: 72px; }
   .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .color-swatch .swatch-name { font-size: 11px; font-weight: 500; margin-bottom: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+  /* Typography */
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border-subtle); }
+  .type-label { flex: 0 0 80px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
   .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
+  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-family: var(--font-mono); }
+
+  /* Spacing */
   .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
+  .spacing-label { flex: 0 0 60px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 500; font-family: var(--font-mono); }
+  .spacing-bar { height: 24px; background: var(--accent-gradient); border-radius: 4px; opacity: 0.7; }
+  .spacing-value { font-size: 11px; color: var(--text-tertiary); min-width: 40px; font-family: var(--font-mono); }
+
+  /* Radius */
   .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
+  .radius-box {
+    aspect-ratio: 1; background: rgba(255,255,255,0.03); border: 1px solid var(--border-default);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  }
+  .radius-box span { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+  /* Shadow */
   .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
+  .shadow-card {
+    padding: 24px; border-radius: 12px; background: var(--surface-raised); min-height: 100px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    border: 1px solid var(--border-subtle);
+  }
+  .shadow-card .shadow-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-tertiary); }
+
+  /* Components */
   .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .comp-card {
+    padding: 32px; background: rgba(255,255,255,0.03); border-radius: 12px;
+    border: 1px solid var(--border-default);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+  }
+  .comp-card h3 { font-size: 15px; font-weight: 500; margin-bottom: 20px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px; border-radius: 8px; font-size: 15px; font-weight: 500;
+    cursor: pointer; border: none; transition: all 0.15s ease;
+    text-decoration: none; font-family: var(--font); letter-spacing: -0.01em;
+  }
+  .btn-gradient {
+    background: var(--accent-gradient); color: #ffffff;
+    box-shadow: 0 0 12px rgba(255,99,99,0.20);
+  }
+  .btn-gradient:hover { box-shadow: 0 0 20px rgba(255,99,99,0.30); filter: brightness(1.05); }
+  .btn-ghost {
+    background: rgba(255,255,255,0.04); color: var(--text-primary);
+    border: 1px solid var(--border-default);
+    backdrop-filter: blur(8px);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: var(--border-strong); }
   .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #000 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Command Palette Demo */
+  .cmd-palette {
+    background: var(--surface); border: 1px solid var(--border-default); border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px -8px rgba(0,0,0,0.50), 0 8px 16px -4px rgba(0,0,0,0.30);
+  }
+  .cmd-search {
+    height: 52px; padding: 0 16px; background: var(--surface-raised);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .cmd-search-icon { color: var(--text-tertiary); font-size: 15px; }
+  .cmd-search-text { font-size: 15px; color: var(--text-primary); font-weight: 400; }
+  .cmd-results { padding: 8px; }
+  .cmd-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 12px; border-radius: 6px; cursor: pointer;
+    transition: background 60ms ease;
+  }
+  .cmd-item:hover { background: var(--selection); }
+  .cmd-item-icon {
+    width: 20px; height: 20px; border-radius: 4px;
+    background: var(--accent-subtle);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: var(--accent);
+  }
+  .cmd-item-label { font-size: 13px; font-weight: 500; flex: 1; }
+  .cmd-item-shortcut {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+    color: var(--text-tertiary); background: rgba(255,255,255,0.06);
+    padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08);
+  }
+  .cmd-action-bar {
+    height: 40px; background: var(--surface-raised);
+    border-top: 1px solid var(--border-subtle);
+    display: flex; align-items: center; padding: 0 12px; gap: 16px;
+  }
+  .cmd-action-item {
+    font-size: 11px; font-weight: 500; color: var(--text-secondary);
+    letter-spacing: 0.04em; display: flex; align-items: center; gap: 4px;
+  }
+
+  /* Extension Card */
+  .ext-card {
+    background: rgba(255,255,255,0.03); border-radius: 12px;
+    border: 1px solid var(--border-default); overflow: hidden;
+  }
+  .ext-card-hero {
+    height: 120px; position: relative;
+    background: var(--accent-gradient-ext);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ext-card-hero span { font-size: 36px; filter: grayscale(0.3); }
+  .ext-card-body { padding: 20px; }
+  .ext-card-body h4 { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+  .ext-card-body p { font-size: 13px; color: var(--text-secondary); line-height: 1.45; }
+  .ext-card-footer {
+    padding: 12px 20px; border-top: 1px solid var(--border-subtle);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .ext-card-footer .install-count { font-size: 11px; color: var(--text-tertiary); font-weight: 500; }
+  .ext-card-footer .install-btn {
+    font-size: 11px; font-weight: 500; color: var(--accent);
+    background: var(--accent-subtle); padding: 4px 12px; border-radius: 6px;
+    border: none; cursor: pointer;
+  }
+
+  /* Glass Demo */
+  .glass-demo {
+    position: relative; border-radius: 16px; overflow: hidden; height: 280px;
+    background: var(--accent-gradient-ext);
+  }
+  .glass-demo-panel {
+    position: absolute; bottom: 20px; left: 20px; right: 20px;
+    background: var(--surface-glass);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid var(--border-default);
+    border-radius: 12px; padding: 20px;
+  }
+  .glass-demo-panel h4 { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+  .glass-demo-panel p { font-size: 13px; color: var(--text-secondary); }
+
+  /* Gradient Section */
+  .gradient-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .gradient-grid { grid-template-columns: 1fr; } }
+  .gradient-swatch { height: 80px; border-radius: 12px; display: flex; align-items: flex-end; padding: 12px; }
+  .gradient-swatch span { font-size: 11px; font-weight: 500; color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+
+  /* Semantic Colors */
+  .semantic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+  .semantic-chip {
+    display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+    background: var(--surface-raised); border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+  }
+  .semantic-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .semantic-label { font-size: 13px; font-weight: 500; }
 </style>
 </head>
 <body>
 <div class="container">
   <header class="brand-header">
     <h1>Raycast</h1>
-    <p class="aesthetic">dark command palette with vibrant gradient accents</p>
+    <p class="aesthetic">macOS-native dark launcher -- glass panels, vibrant gradient accents, keyboard-first</p>
     <div class="tags">
-      <span class="tag">dark-launcher-ui</span><span class="tag">vibrant-gradients</span><span class="tag">command-palette</span>
+      <span class="tag">macos-native</span>
+      <span class="tag">glass-morphism</span>
+      <span class="tag">vibrant-gradient</span>
+      <span class="tag">keyboard-first</span>
+      <span class="tag">command-palette</span>
     </div>
   </header>
 
+  <!-- Color Palette -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Raycast visual identity.</p>
+    <p class="section-desc">Dark surfaces, vibrant accent gradient, macOS-native grays with cool-blue undertone.</p>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#0a0a0a"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#0a0a0a</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ff6363"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#ff6363</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#999999"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#999999</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#191A1F"></div><div class="swatch-info"><div class="swatch-name">Surface</div><div class="swatch-hex">#191A1F</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#23252B"></div><div class="swatch-info"><div class="swatch-name">Raised</div><div class="swatch-hex">#23252B</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#2C2E36"></div><div class="swatch-info"><div class="swatch-name">Elevated</div><div class="swatch-hex">#2C2E36</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#363840"></div><div class="swatch-info"><div class="swatch-name">Overlay</div><div class="swatch-hex">#363840</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#FF6363"></div><div class="swatch-info"><div class="swatch-name">Accent</div><div class="swatch-hex">#FF6363</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#E84393"></div><div class="swatch-info"><div class="swatch-name">Gradient End</div><div class="swatch-hex">#E84393</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ECECEC"></div><div class="swatch-info"><div class="swatch-name">Text Primary</div><div class="swatch-hex">#ECECEC</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:rgba(255,255,255,0.55)"></div><div class="swatch-info"><div class="swatch-name">Text Secondary</div><div class="swatch-hex">white 55%</div></div></div>
     </div>
   </section>
 
+  <!-- Gradients -->
   <section class="section">
-    <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Raycast branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Raycast Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <h2 class="section-title">Brand Gradients</h2>
+    <p class="section-desc">The vibrant red-to-pink gradient is Raycast's most recognizable visual element.</p>
+    <div class="gradient-grid">
+      <div class="gradient-swatch" style="background: linear-gradient(135deg, #FF6363 0%, #E84393 100%)"><span>Brand Gradient</span></div>
+      <div class="gradient-swatch" style="background: linear-gradient(135deg, #FF6B17 0%, #FF6363 40%, #E84393 100%)"><span>Extended Gradient</span></div>
+      <div class="gradient-swatch" style="background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.00) 100%); border: 1px solid var(--border-default);"><span style="color: var(--text-tertiary); text-shadow: none;">Surface Gradient</span></div>
+    </div>
   </section>
 
+  <!-- Semantic Colors -->
+  <section class="section">
+    <h2 class="section-title">Semantic Colors</h2>
+    <p class="section-desc">Matching Raycast theme system: red, orange, green, blue, purple.</p>
+    <div class="semantic-grid">
+      <div class="semantic-chip"><div class="semantic-dot" style="background: #F84141"></div><span class="semantic-label">Error</span></div>
+      <div class="semantic-chip"><div class="semantic-dot" style="background: #FF6B17"></div><span class="semantic-label">Warning</span></div>
+      <div class="semantic-chip"><div class="semantic-dot" style="background: #63BA89"></div><span class="semantic-label">Success</span></div>
+      <div class="semantic-chip"><div class="semantic-dot" style="background: #6AB7FB"></div><span class="semantic-label">Info</span></div>
+      <div class="semantic-chip"><div class="semantic-dot" style="background: #C58AFA"></div><span class="semantic-label">Purple</span></div>
+      <div class="semantic-chip"><div class="semantic-dot" style="background: #FF6363"></div><span class="semantic-label">Accent</span></div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="section">
+    <h2 class="section-title">Typography</h2>
+    <p class="section-desc">macOS-native scale: 15px base, negative tracking, three weights.</p>
+    <div class="type-row"><span class="type-label">Display</span><span class="type-sample" style="font-size:42px;font-weight:600;line-height:1.15;letter-spacing:-0.025em">Raycast Design</span><span class="type-meta">48px</span></div>
+    <div class="type-row"><span class="type-label">Section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2;letter-spacing:-0.025em">Section Heading</span><span class="type-meta">32px</span></div>
+    <div class="type-row"><span class="type-label">Title</span><span class="type-sample" style="font-size:18px;font-weight:500;line-height:1.3;letter-spacing:-0.01em">Extension Title</span><span class="type-meta">20px</span></div>
+    <div class="type-row"><span class="type-label">Base</span><span class="type-sample" style="font-size:15px;font-weight:400;line-height:1.45;color:var(--text-secondary);letter-spacing:-0.01em">Command description text at 15px</span><span class="type-meta">15px</span></div>
+    <div class="type-row"><span class="type-label">Small</span><span class="type-sample" style="font-size:13px;font-weight:500;line-height:1.45;color:var(--text-secondary);letter-spacing:-0.01em">Action bar label text</span><span class="type-meta">13px</span></div>
+    <div class="type-row"><span class="type-label">Caption</span><span class="type-sample" style="font-size:11px;font-weight:500;line-height:1.4;color:var(--text-tertiary);letter-spacing:0.04em;text-transform:uppercase">Keyboard Hint</span><span class="type-meta">11px</span></div>
+    <div class="type-row"><span class="type-label">Mono</span><span class="type-sample" style="font-family:var(--font-mono);font-size:12px;font-weight:400;line-height:1.4;color:var(--text-secondary)">cmd + shift + p</span><span class="type-meta">12px</span></div>
+  </section>
+
+  <!-- Spacing -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
+    <p class="section-desc">4px base grid for compact launcher density.</p>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
     <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
     <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
     <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
     <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
     <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
     <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
   </section>
 
+  <!-- Border Radius -->
   <section class="section">
-    <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Raycast tokens.</p>
-    <div class="comp-grid">
-      <div class="comp-card">
-        <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
-        </div>
+    <h2 class="section-title">Border Radius</h2>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:4px"><span>4px</span><span>sm</span></div>
+      <div class="radius-box" style="border-radius:6px"><span>6px</span><span>md</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>8px</span><span>lg</span></div>
+      <div class="radius-box" style="border-radius:12px"><span>12px</span><span>xl</span></div>
+      <div class="radius-box" style="border-radius:16px"><span>16px</span><span>2xl</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span>pill</span><span>9999px</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Shadows & Effects</h2>
+    <p class="section-desc">Shadows for floating panels only. Cards use background opacity for elevation.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow: none;">
+        <div class="shadow-name">Level 0 -- Flat</div>
+        <div class="shadow-desc">List items, action bar elements</div>
       </div>
-      <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Raycast Feature</h4>
-            <p>A component styled with the Raycast design system tokens.</p>
-          </div>
-        </div>
+      <div class="shadow-card" style="box-shadow: 0 1px 4px rgba(0,0,0,0.20), 0 1px 2px -1px rgba(0,0,0,0.12);">
+        <div class="shadow-name">Level 1 -- Subtle</div>
+        <div class="shadow-desc">Raised panels, sidebar edge</div>
+      </div>
+      <div class="shadow-card" style="box-shadow: 0 8px 24px -4px rgba(0,0,0,0.35), 0 4px 8px -2px rgba(0,0,0,0.20);">
+        <div class="shadow-name">Level 2 -- Elevated</div>
+        <div class="shadow-desc">Command palette, modals</div>
+      </div>
+      <div class="shadow-card" style="box-shadow: 0 16px 48px -8px rgba(0,0,0,0.50), 0 8px 16px -4px rgba(0,0,0,0.30);">
+        <div class="shadow-name">Level 3 -- Dramatic</div>
+        <div class="shadow-desc">Launcher window, critical overlays</div>
+      </div>
+      <div class="shadow-card" style="box-shadow: 0 0 12px rgba(255,99,99,0.20), 0 0 4px rgba(255,99,99,0.10);">
+        <div class="shadow-name">Accent Glow</div>
+        <div class="shadow-desc">CTA buttons, loading indicator halo</div>
       </div>
     </div>
   </section>
+
+  <!-- Components -->
+  <section class="section">
+    <h2 class="section-title">Components</h2>
+    <p class="section-desc">Sample components styled with Raycast design tokens.</p>
+    <div class="comp-grid">
+
+      <!-- Buttons -->
+      <div class="comp-card">
+        <h3>Buttons</h3>
+        <div class="btn-group" style="margin-bottom:16px">
+          <button class="btn btn-gradient">Download Raycast</button>
+          <button class="btn btn-ghost">Learn More</button>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span class="cmd-item-shortcut">&#8984;K</span>
+          <span class="cmd-item-shortcut">&#8984;&#8679;P</span>
+          <span class="cmd-item-shortcut">&#9166; Enter</span>
+        </div>
+      </div>
+
+      <!-- Command Palette -->
+      <div class="comp-card" style="padding:0;background:transparent;border:none;backdrop-filter:none;-webkit-backdrop-filter:none">
+        <div class="cmd-palette">
+          <div class="cmd-search">
+            <span class="cmd-search-icon">&#128269;</span>
+            <span class="cmd-search-text">Search commands...</span>
+          </div>
+          <div class="cmd-results">
+            <div class="cmd-item" style="background:var(--selection)">
+              <div class="cmd-item-icon">&#9889;</div>
+              <span class="cmd-item-label">Clipboard History</span>
+              <span class="cmd-item-shortcut">&#8984;&#8679;V</span>
+            </div>
+            <div class="cmd-item">
+              <div class="cmd-item-icon">&#128187;</div>
+              <span class="cmd-item-label">Window Management</span>
+              <span class="cmd-item-shortcut">&#8984;&#8963;W</span>
+            </div>
+            <div class="cmd-item">
+              <div class="cmd-item-icon">&#128221;</div>
+              <span class="cmd-item-label">Create Snippet</span>
+              <span class="cmd-item-shortcut">&#8984;&#8679;S</span>
+            </div>
+          </div>
+          <div class="cmd-action-bar">
+            <span class="cmd-action-item">Open <span class="cmd-item-shortcut" style="margin-left:4px">&#9166;</span></span>
+            <span class="cmd-action-item">Actions <span class="cmd-item-shortcut" style="margin-left:4px">&#8984;K</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extension Card -->
+      <div class="comp-card" style="padding:0;background:transparent;border:none;backdrop-filter:none;-webkit-backdrop-filter:none">
+        <div class="ext-card">
+          <div class="ext-card-hero"><span>&#128268;</span></div>
+          <div class="ext-card-body">
+            <h4>Color Picker</h4>
+            <p>Pick and organize colors, everywhere on your Mac.</p>
+          </div>
+          <div class="ext-card-footer">
+            <span class="install-count">124k installs</span>
+            <button class="install-btn">Install</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Glass Panel Demo -->
+      <div class="comp-card" style="padding:0;background:transparent;border:none;backdrop-filter:none;-webkit-backdrop-filter:none">
+        <div class="glass-demo">
+          <div class="glass-demo-panel">
+            <h4>Glass Panel</h4>
+            <p>backdrop-filter: blur(40px) saturate(180%) on translucent rgba background</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </div>
 </body>
 </html>

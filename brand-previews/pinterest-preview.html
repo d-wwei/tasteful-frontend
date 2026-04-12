@@ -5,125 +5,349 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pinterest Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#767676&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --surface: #ffffff;
-    --surface-subtle: #f8f8f8;
+    --surface-secondary: #f9f9f9;
+    --surface-tertiary: #f1f1f1;
+    --surface-wash: #e9e9e9;
     --accent: #e60023;
-    --text-primary: #333333;
+    --accent-hover: #cc0000;
+    --accent-light: #ffe0e0;
+    --text-primary: #111111;
     --text-secondary: #767676;
-    --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    --text-tertiary: #a5a5a5;
+    --text-link: #0074e8;
+    --border: #cdcdcd;
+    --border-light: #e9e9e9;
+    --success: #008753;
+    --warning: #bd5b00;
+    --info: #0074e8;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --radius-sm: 8px;
+    --radius-standard: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --radius-pill: 999px;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
+  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.4; }
   .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+
+  /* Header */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
+    text-align: center; margin-bottom: 64px; padding: 48px 32px;
+    background: var(--surface); border-radius: var(--radius-standard);
+    border: 1px solid var(--border-light);
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
+  .brand-header h1 { font-size: 36px; font-weight: 700; line-height: 1.2; color: var(--accent); margin-bottom: 12px; }
+  .brand-header .aesthetic { font-size: 16px; color: var(--text-secondary); margin-bottom: 16px; }
   .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
-  .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .brand-header .tag { font-size: 12px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: var(--radius-pill); font-weight: 600; }
+
+  /* Sections */
+  .section { margin-bottom: 64px; }
+  .section-title { font-size: 28px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+  .section-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+
+  /* Color Swatches */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .color-swatch { border-radius: var(--radius-standard); overflow: hidden; border: 1px solid var(--border-light); }
+  .color-swatch .swatch-fill { height: 64px; }
+  .color-swatch .swatch-info { padding: 8px 10px; background: var(--surface); }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; color: var(--text-primary); }
   .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+
+  /* Typography */
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border-light); }
+  .type-label { flex: 0 0 90px; font-size: 12px; color: var(--text-secondary); text-align: right; font-weight: 600; }
   .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
+  .type-meta { flex: 0 0 50px; font-size: 12px; color: var(--text-secondary); text-align: right; }
+
+  /* Spacing */
   .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
   .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
+  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.5; }
+  .spacing-value { font-size: 12px; color: var(--text-secondary); min-width: 40px; }
+
+  /* Radius */
   .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .radius-box { aspect-ratio: 1; background: var(--surface-tertiary); border: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
   .radius-box span { font-size: 11px; color: var(--text-secondary); }
+
+  /* Shadows */
   .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
+  .shadow-card { padding: 24px; border-radius: var(--radius-standard); background: var(--surface); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .shadow-card .shadow-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .shadow-card .shadow-desc { font-size: 12px; color: var(--text-secondary); }
+
+  /* Components */
   .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
+  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 28px; } }
+  .comp-card { padding: 24px; background: var(--surface); border-radius: var(--radius-standard); border: 1px solid var(--border-light); }
+  .comp-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 200ms ease; text-decoration: none; font-family: var(--font); min-height: 40px; }
+  .btn-pill { border-radius: var(--radius-pill); }
+  .btn-rounded { border-radius: var(--radius-sm); }
   .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .btn-accent:hover { background: var(--accent-hover); }
+  .btn-secondary { background: var(--surface-tertiary); color: var(--text-primary); }
+  .btn-secondary:hover { background: var(--surface-wash); }
+  .btn-outline { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
   .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Search Bar */
+  .search-bar {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--surface-tertiary); border-radius: var(--radius-pill);
+    padding: 8px 16px; font-size: 16px; color: var(--text-secondary);
+    border: 2px solid transparent; transition: all 200ms ease;
+  }
+  .search-bar:focus-within { background: var(--surface); border-color: var(--text-link); }
+  .search-bar input { border: none; background: none; outline: none; font-size: 16px; font-family: var(--font); color: var(--text-primary); flex: 1; }
+  .search-bar input::placeholder { color: var(--text-secondary); }
+  .search-bar svg { flex-shrink: 0; }
+
+  /* Pin Card */
+  .pin-card { border-radius: var(--radius-standard); overflow: hidden; cursor: pointer; position: relative; break-inside: avoid; margin-bottom: 16px; }
+  .pin-card img, .pin-card .pin-placeholder { width: 100%; display: block; border-radius: var(--radius-standard); }
+  .pin-card .pin-placeholder { background: linear-gradient(135deg, var(--accent-light) 0%, var(--surface-tertiary) 100%); }
+  .pin-card .pin-overlay {
+    position: absolute; inset: 0; background: rgba(0,0,0,0.4); opacity: 0;
+    transition: opacity 200ms ease; border-radius: var(--radius-standard);
+    display: flex; align-items: flex-start; justify-content: flex-end; padding: 12px;
+  }
+  .pin-card:hover .pin-overlay { opacity: 1; }
+  .pin-card .save-btn {
+    background: var(--accent); color: #ffffff; border: none;
+    padding: 8px 16px; border-radius: var(--radius-pill);
+    font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--font);
+  }
+  .pin-card .pin-info { padding: 8px 4px; }
+  .pin-card .pin-title { font-size: 14px; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+  .pin-card .pin-source { font-size: 12px; color: var(--text-secondary); margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+
+  /* Masonry Grid */
+  .masonry { column-count: 4; column-gap: 16px; }
+  @media (max-width: 1024px) { .masonry { column-count: 3; } }
+  @media (max-width: 768px) { .masonry { column-count: 2; } }
+  @media (max-width: 480px) { .masonry { column-count: 2; column-gap: 8px; } .pin-card { margin-bottom: 8px; } }
+
+  /* Nav */
+  .nav-bar {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--surface); padding: 8px 16px; border-radius: var(--radius-standard);
+    border: 1px solid var(--border-light); margin-bottom: 24px;
+  }
+  .nav-logo { color: var(--accent); font-weight: 700; font-size: 20px; flex-shrink: 0; }
+  .nav-search { flex: 1; }
+  .nav-icons { display: flex; gap: 12px; flex-shrink: 0; }
+  .nav-icon { width: 24px; height: 24px; border-radius: 50%; background: var(--surface-tertiary); }
+
+  /* Status Colors */
+  .status-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  @media (max-width: 600px) { .status-grid { grid-template-columns: repeat(2, 1fr); } }
+  .status-card { padding: 16px; border-radius: var(--radius-standard); color: #ffffff; }
+  .status-card .status-label { font-size: 12px; font-weight: 600; opacity: 0.9; margin-bottom: 4px; }
+  .status-card .status-hex { font-size: 14px; font-weight: 700; }
 </style>
 </head>
 <body>
 <div class="container">
   <header class="brand-header">
     <h1>Pinterest</h1>
-    <p class="aesthetic">visual discovery with red brand accent</p>
+    <p class="aesthetic">warm visual discovery -- clean white canvas, restrained red accent, soft rounded geometry</p>
     <div class="tags">
-      <span class="tag">red-brand</span><span class="tag">visual-discovery</span><span class="tag">pin-grid-layout</span>
+      <span class="tag">pinterest-red</span><span class="tag">masonry-grid</span><span class="tag">rounded-16px</span><span class="tag">gestalt-system</span><span class="tag">content-first</span>
     </div>
   </header>
 
+  <!-- Color Palette -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Pinterest visual identity.</p>
+    <p class="section-desc">Gestalt design system colors. Neutral chrome with Pinterest Red as the sole chromatic accent.</p>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff; border-bottom: 1px solid #e9e9e9"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f9f9f9"></div><div class="swatch-info"><div class="swatch-name">surface-2nd</div><div class="swatch-hex">#f9f9f9</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f1f1f1"></div><div class="swatch-info"><div class="swatch-name">surface-3rd</div><div class="swatch-hex">#f1f1f1</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#e60023"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#e60023</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#333333"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#333333</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#cc0000"></div><div class="swatch-info"><div class="swatch-name">accent-hover</div><div class="swatch-hex">#cc0000</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffe0e0"></div><div class="swatch-info"><div class="swatch-name">accent-light</div><div class="swatch-hex">#ffe0e0</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#111111"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#111111</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#767676"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#767676</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#0074e8"></div><div class="swatch-info"><div class="swatch-name">link</div><div class="swatch-hex">#0074e8</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#cdcdcd"></div><div class="swatch-info"><div class="swatch-name">border</div><div class="swatch-hex">#cdcdcd</div></div></div>
+    </div>
+    <div class="status-grid">
+      <div class="status-card" style="background:#e60023"><div class="status-label">Error</div><div class="status-hex">#e60023</div></div>
+      <div class="status-card" style="background:#008753"><div class="status-label">Success</div><div class="status-hex">#008753</div></div>
+      <div class="status-card" style="background:#bd5b00"><div class="status-label">Warning</div><div class="status-hex">#bd5b00</div></div>
+      <div class="status-card" style="background:#0074e8"><div class="status-label">Info</div><div class="status-hex">#0074e8</div></div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Pinterest branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Pinterest Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">Gestalt type scale: 6 sizes (12-36px), 3 weights (400/600/700). Pinterest Sans with system fallback.</p>
+    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:36px;font-weight:700;line-height:1.2">Visual Discovery</span><span class="type-meta">36px</span></div>
+    <div class="type-row"><span class="type-label">heading</span><span class="type-sample" style="font-size:28px;font-weight:700;line-height:1.2">Find your inspiration</span><span class="type-meta">28px</span></div>
+    <div class="type-row"><span class="type-label">subheading</span><span class="type-sample" style="font-size:20px;font-weight:600;line-height:1.3">Browse trending ideas</span><span class="type-meta">20px</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.4;color:var(--text-secondary)">Standard body text for descriptions and content</span><span class="type-meta">16px</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.4;color:var(--text-secondary)">Pin metadata and timestamps</span><span class="type-meta">14px</span></div>
+    <div class="type-row"><span class="type-label">small</span><span class="type-sample" style="font-size:12px;font-weight:400;line-height:1.4;color:var(--text-secondary)">Badges, labels, counts</span><span class="type-meta">12px</span></div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
-    <h2 class="section-title">Spacing</h2>
+    <h2 class="section-title">Spacing (4px grid)</h2>
+    <p class="section-desc">Gestalt uses a 4px base grid. All values are multiples of 4.</p>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
     <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
     <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
     <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
     <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
     <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
   </section>
 
+  <!-- Border Radius -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Soft rounded geometry. 16px standard for cards, 999px pill for buttons.</p>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:8px"><span>sm</span><span>8px</span></div>
+      <div class="radius-box" style="border-radius:16px"><span>standard</span><span>16px</span></div>
+      <div class="radius-box" style="border-radius:24px"><span>lg</span><span>24px</span></div>
+      <div class="radius-box" style="border-radius:32px"><span>xl</span><span>32px</span></div>
+      <div class="radius-box" style="border-radius:999px"><span>pill</span><span>999px</span></div>
+      <div class="radius-box" style="border-radius:50%"><span>circle</span><span>50%</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Elevation</h2>
+    <p class="section-desc">Flat at rest. Shadow appears on hover. Stronger elevation for modals.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="border: 1px solid var(--border-light)"><div class="shadow-name">level-0 (rest)</div><div class="shadow-desc">No shadow -- flat on canvas</div></div>
+      <div class="shadow-card" style="box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06)"><div class="shadow-name">level-1 (hover)</div><div class="shadow-desc">Subtle lift on interaction</div></div>
+      <div class="shadow-card" style="box-shadow: 0 4px 16px rgba(0,0,0,0.12)"><div class="shadow-name">level-2 (modal)</div><div class="shadow-desc">Modals, sheets, flyouts</div></div>
+      <div class="shadow-card" style="box-shadow: 0 8px 32px rgba(0,0,0,0.16)"><div class="shadow-name">level-3 (popover)</div><div class="shadow-desc">Tooltips, popovers</div></div>
+    </div>
+  </section>
+
+  <!-- Components: Nav Bar -->
   <section class="section">
     <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Pinterest tokens.</p>
+    <p class="section-desc">Core UI components styled with Pinterest Gestalt tokens.</p>
+
+    <div class="nav-bar">
+      <div class="nav-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.993 3.995-.282 1.193.599 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.091.375-.293 1.199-.334 1.363-.053.225-.174.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+      </div>
+      <div class="nav-search">
+        <div class="search-bar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#767676" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" placeholder="Search for ideas">
+        </div>
+      </div>
+      <div class="nav-icons">
+        <div class="nav-icon"></div>
+        <div class="nav-icon"></div>
+        <div class="nav-icon"></div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="comp-grid" style="margin-bottom: 24px">
+      <div class="comp-card">
+        <h3>Buttons (Pill)</h3>
+        <div class="btn-group" style="margin-bottom: 12px">
+          <button class="btn btn-pill btn-accent">Save</button>
+          <button class="btn btn-pill btn-secondary">Follow</button>
+          <button class="btn btn-pill btn-outline">Share</button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-secondary); margin-top: 8px">Primary = pill + red. Secondary = pill + gray. Outline for tertiary.</p>
+      </div>
+      <div class="comp-card">
+        <h3>Search Bar</h3>
+        <div class="search-bar" style="margin-bottom: 8px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#767676" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" placeholder="Search for easy dinner recipes">
+        </div>
+        <p style="font-size: 12px; color: var(--text-secondary)">Pill-shaped, #f1f1f1 background, blue border on focus.</p>
+      </div>
+    </div>
+
+    <!-- Pin Cards in Masonry -->
+    <div class="comp-card" style="margin-bottom: 24px">
+      <h3 style="margin-bottom: 4px">Masonry Grid (Pin Cards)</h3>
+      <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px">Variable-height pins, 16px gutter, hover reveals Save button. The signature Pinterest layout.</p>
+      <div class="masonry">
+        <div class="pin-card">
+          <div class="pin-placeholder" style="height: 280px"></div>
+          <div class="pin-overlay"><button class="save-btn">Save</button></div>
+          <div class="pin-info"><div class="pin-title">Minimalist kitchen design</div><div class="pin-source">architecturaldigest.com</div></div>
+        </div>
+        <div class="pin-card">
+          <div class="pin-placeholder" style="height: 200px; background: linear-gradient(135deg, #ffe0e0 0%, #f9f9f9 100%)"></div>
+          <div class="pin-overlay"><button class="save-btn">Save</button></div>
+          <div class="pin-info"><div class="pin-title">Easy weeknight pasta</div><div class="pin-source">bonappetit.com</div></div>
+        </div>
+        <div class="pin-card">
+          <div class="pin-placeholder" style="height: 340px; background: linear-gradient(135deg, #e9e9e9 0%, #f1f1f1 100%)"></div>
+          <div class="pin-overlay"><button class="save-btn">Save</button></div>
+          <div class="pin-info"><div class="pin-title">Scandinavian living room</div><div class="pin-source">dezeen.com</div></div>
+        </div>
+        <div class="pin-card">
+          <div class="pin-placeholder" style="height: 240px; background: linear-gradient(135deg, #f1f1f1 0%, #ffe0e0 100%)"></div>
+          <div class="pin-overlay"><button class="save-btn">Save</button></div>
+          <div class="pin-info"><div class="pin-title">Summer outfit inspo</div><div class="pin-source">vogue.com</div></div>
+        </div>
+        <div class="pin-card">
+          <div class="pin-placeholder" style="height: 300px; background: linear-gradient(180deg, #f9f9f9 0%, #e9e9e9 100%)"></div>
+          <div class="pin-overlay"><button class="save-btn">Save</button></div>
+          <div class="pin-info"><div class="pin-title">DIY plant shelf</div><div class="pin-source">apartmenttherapy.com</div></div>
+        </div>
+        <div class="pin-card">
+          <div class="pin-placeholder" style="height: 220px; background: linear-gradient(135deg, #ffe0e0 0%, #e9e9e9 100%)"></div>
+          <div class="pin-overlay"><button class="save-btn">Save</button></div>
+          <div class="pin-info"><div class="pin-title">Ceramic vase collection</div><div class="pin-source">etsy.com</div></div>
+        </div>
+        <div class="pin-card">
+          <div class="pin-placeholder" style="height: 320px; background: linear-gradient(135deg, #f1f1f1 0%, #f9f9f9 100%)"></div>
+          <div class="pin-overlay"><button class="save-btn">Save</button></div>
+          <div class="pin-info"><div class="pin-title">Bathroom tile patterns</div><div class="pin-source">domino.com</div></div>
+        </div>
+        <div class="pin-card">
+          <div class="pin-placeholder" style="height: 260px; background: linear-gradient(135deg, #e9e9e9 0%, #ffe0e0 100%)"></div>
+          <div class="pin-overlay"><button class="save-btn">Save</button></div>
+          <div class="pin-info"><div class="pin-title">Homemade bread recipe</div><div class="pin-source">kingarthurbaking.com</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Card -->
     <div class="comp-grid">
       <div class="comp-card">
-        <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+        <h3>Metric Card</h3>
+        <div style="padding: 16px; background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius-standard);">
+          <div style="font-size: 14px; color: var(--text-secondary); margin-bottom: 4px;">Monthly saves</div>
+          <div style="font-size: 28px; font-weight: 700; color: var(--text-primary);">2.4M</div>
+          <div style="font-size: 14px; font-weight: 600; color: var(--success); margin-top: 4px;">+12.3%</div>
         </div>
       </div>
       <div class="comp-card">
         <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Pinterest Feature</h4>
-            <p>A component styled with the Pinterest design system tokens.</p>
+        <div style="background: var(--surface); border-radius: var(--radius-standard); border: 1px solid var(--border-light); overflow: hidden;">
+          <div style="height: 120px; background: linear-gradient(135deg, var(--accent-light) 0%, var(--surface-tertiary) 100%);"></div>
+          <div style="padding: 16px;">
+            <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">Trending this week</div>
+            <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.4;">Discover what people are saving and sharing right now.</div>
           </div>
         </div>
       </div>

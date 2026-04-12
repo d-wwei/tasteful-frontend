@@ -5,130 +5,367 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meta Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#65676b&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --surface: #ffffff;
-    --surface-subtle: #f8f8f8;
+    --surface-subtle: #f0f2f5;
+    --surface-hover: #f2f3f5;
+    --surface-active: #e4e6eb;
+    --surface-blue-tint: #ebf5ff;
     --accent: #0064e0;
-    --text-primary: #1c1e21;
+    --accent-hover: #0058c5;
+    --accent-light: #0080fb;
+    --green: #42b72a;
+    --red: #e41e3f;
+    --warning: #f7b928;
+    --text-primary: #050505;
     --text-secondary: #65676b;
-    --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    --text-tertiary: #8a8d91;
+    --border: #dadde1;
+    --border-subtle: #e4e6eb;
+    --border-strong: #bec3c9;
+    --dark-surface: #18191a;
+    --dark-card: #242526;
+    --font-display: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --font-body: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  body { font-family: var(--font-body); background: var(--surface-subtle); color: var(--text-primary); line-height: 1.34; font-size: 15px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 48px 20px; }
+
+  /* Brand Header */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
+    text-align: center; margin-bottom: 48px; padding: 56px 32px;
+    background: var(--surface); border-radius: 8px;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.10);
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
+  .brand-header h1 {
+    font-family: var(--font-display); font-size: 48px; font-weight: 700;
+    line-height: 1.15; letter-spacing: -0.5px; color: var(--text-primary); margin-bottom: 12px;
+  }
+  .brand-header h1 span { color: var(--accent); }
+  .brand-header .aesthetic { font-size: 17px; color: var(--text-secondary); margin-bottom: 20px; }
   .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
+  .brand-header .tag {
+    font-size: 12px; padding: 6px 16px; background: var(--surface-subtle);
+    color: var(--text-secondary); border-radius: 9999px; font-weight: 600;
+  }
+  .brand-header .tag.blue { background: var(--accent); color: #ffffff; }
+
+  /* Sections */
+  .section { margin-bottom: 48px; }
+  .section-card { background: var(--surface); border-radius: 8px; padding: 32px; box-shadow: 0px 1px 2px rgba(0,0,0,0.10); }
+  .section-title {
+    font-family: var(--font-display); font-size: 24px; font-weight: 600;
+    line-height: 1.25; margin-bottom: 8px; color: var(--text-primary);
+  }
+  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; }
+
+  /* Color Swatches */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border-subtle); background: var(--surface); }
+  .color-swatch .swatch-fill { height: 64px; }
   .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; color: var(--text-primary); }
   .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
-  .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
+
+  /* Typography */
+  .type-row { display: flex; align-items: baseline; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--border-subtle); }
+  .type-label { flex: 0 0 80px; font-size: 12px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .type-sample { flex: 1; color: var(--text-primary); }
+  .type-meta { flex: 0 0 60px; font-size: 11px; color: var(--text-tertiary); text-align: right; }
+
+  /* Spacing */
+  .spacing-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .spacing-label { flex: 0 0 50px; font-size: 12px; color: var(--text-secondary); text-align: right; font-weight: 500; }
+  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.5; }
   .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
+
+  /* Radius */
   .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .radius-box {
+    aspect-ratio: 1; background: var(--surface-subtle); border: 2px solid var(--accent);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    opacity: 0.7;
+  }
+  .radius-box span { font-size: 11px; color: var(--text-secondary); font-weight: 500; }
+
+  /* Shadows */
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+  .shadow-card {
+    padding: 20px; border-radius: 8px; background: var(--surface); min-height: 90px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
   .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  /* Components */
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
+  .comp-card { padding: 24px; background: var(--surface); border-radius: 8px; box-shadow: 0px 1px 2px rgba(0,0,0,0.10); }
+  .comp-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 16px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 10px 24px; border-radius: 8px; font-size: 15px; font-weight: 600;
+    cursor: pointer; border: none; transition: all 200ms ease; text-decoration: none;
+    font-family: var(--font-body);
+  }
+  .btn-primary {
+    background: var(--accent); color: #ffffff;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.05), inset 0px 1px 0px rgba(255,255,255,0.15);
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary { background: var(--surface-active); color: var(--text-primary); }
+  .btn-secondary:hover { background: var(--border); }
   .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .btn-outline:hover { background: var(--surface-blue-tint); }
   .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Feed Card */
+  .feed-card { background: var(--surface); border-radius: 8px; box-shadow: 0px 1px 2px rgba(0,0,0,0.10); overflow: hidden; }
+  .feed-header { display: flex; align-items: center; gap: 12px; padding: 16px 16px 0; }
+  .feed-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); flex-shrink: 0; }
+  .feed-name { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+  .feed-time { font-size: 13px; color: var(--text-secondary); }
+  .feed-body { padding: 8px 16px 12px; font-size: 15px; line-height: 1.34; color: var(--text-primary); }
+  .feed-media { width: 100%; height: 200px; background: linear-gradient(135deg, #ebf5ff 0%, #f0f2f5 60%, #e4e6eb 100%); }
+  .feed-reactions { display: flex; justify-content: space-between; padding: 10px 16px; border-top: 1px solid var(--border-subtle); }
+  .feed-reactions span { font-size: 15px; color: var(--text-secondary); }
+  .feed-actions { display: flex; border-top: 1px solid var(--border-subtle); padding: 4px 8px; }
+  .feed-action-btn {
+    flex: 1; padding: 8px 0; text-align: center; font-size: 15px; font-weight: 600;
+    color: var(--text-secondary); border: none; background: none; cursor: pointer;
+    border-radius: 4px; transition: background 100ms ease; font-family: var(--font-body);
+  }
+  .feed-action-btn:hover { background: var(--surface-hover); }
+  .feed-action-btn.active { color: var(--accent); }
+
+  /* Notification Badge */
+  .notif-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 20px; height: 20px; padding: 0 6px; border-radius: 9999px;
+    background: var(--red); color: #ffffff; font-size: 12px; font-weight: 700;
+  }
+
+  /* Search Bar */
+  .search-bar {
+    display: flex; align-items: center; gap: 8px; padding: 8px 16px;
+    background: var(--surface-subtle); border-radius: 9999px;
+    border: none; font-size: 15px; color: var(--text-tertiary);
+    font-family: var(--font-body); width: 100%; max-width: 320px;
+  }
+
+  /* Dark Mode Preview */
+  .dark-preview {
+    background: var(--dark-surface); border-radius: 8px; padding: 32px; margin-top: 20px;
+  }
+  .dark-preview .dark-card {
+    background: var(--dark-card); border-radius: 8px; padding: 20px;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.20);
+  }
+  .dark-preview h4 { color: #e4e6eb; font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .dark-preview p { color: #b0b3b8; font-size: 15px; line-height: 1.34; }
 </style>
 </head>
 <body>
 <div class="container">
+
+  <!-- Brand Header -->
   <header class="brand-header">
-    <h1>Meta</h1>
-    <p class="aesthetic">social platform with blue connectivity</p>
+    <h1><span>Meta</span> Design System</h1>
+    <p class="aesthetic">Open, optimistic connectivity -- light-filled social spaces that feel effortless and human</p>
     <div class="tags">
-      <span class="tag">meta-blue</span><span class="tag">social-platform</span><span class="tag">connected-design</span>
+      <span class="tag blue">Meta Blue</span>
+      <span class="tag">Optimistic Type</span>
+      <span class="tag">Card Architecture</span>
+      <span class="tag">Pill Interactions</span>
+      <span class="tag">Social Feed</span>
     </div>
   </header>
 
+  <!-- Color Palette -->
   <section class="section">
-    <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Meta visual identity.</p>
-    <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#0064e0"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#0064e0</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#1c1e21"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#1c1e21</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#65676b"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#65676b</div></div></div>
+    <div class="section-card">
+      <h2 class="section-title">Color Palette</h2>
+      <p class="section-desc">Core brand colors defining the Meta visual identity. White cards, gray pages, blue accents.</p>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff; border-bottom:1px solid #e4e6eb"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#f0f2f5"></div><div class="swatch-info"><div class="swatch-name">page fill</div><div class="swatch-hex">#f0f2f5</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#0064e0"></div><div class="swatch-info"><div class="swatch-name">Meta Blue</div><div class="swatch-hex">#0064e0</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#0080fb"></div><div class="swatch-info"><div class="swatch-name">light blue</div><div class="swatch-hex">#0080fb</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#050505"></div><div class="swatch-info"><div class="swatch-name">text primary</div><div class="swatch-hex">#050505</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#65676b"></div><div class="swatch-info"><div class="swatch-name">text secondary</div><div class="swatch-hex">#65676b</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#42b72a"></div><div class="swatch-info"><div class="swatch-name">success</div><div class="swatch-hex">#42b72a</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#e41e3f"></div><div class="swatch-info"><div class="swatch-name">error / notif</div><div class="swatch-hex">#e41e3f</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#f7b928"></div><div class="swatch-info"><div class="swatch-name">warning</div><div class="swatch-hex">#f7b928</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#dadde1"></div><div class="swatch-info"><div class="swatch-name">border</div><div class="swatch-hex">#dadde1</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ebf5ff"></div><div class="swatch-info"><div class="swatch-name">blue tint</div><div class="swatch-hex">#ebf5ff</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#18191a"></div><div class="swatch-info"><div class="swatch-name">dark surface</div><div class="swatch-hex">#18191a</div></div></div>
+      </div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
-    <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Meta branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Meta Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <div class="section-card">
+      <h2 class="section-title">Typography</h2>
+      <p class="section-desc">Type scale for Meta branded components. Base size is 15px, not 16px.</p>
+      <div class="type-row">
+        <span class="type-label">display</span>
+        <span class="type-sample" style="font-size:40px;font-weight:700;line-height:1.15;letter-spacing:-0.5px">Meta Design</span>
+        <span class="type-meta">48px / 700</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">section</span>
+        <span class="type-sample" style="font-size:28px;font-weight:700;line-height:1.25">Section Heading</span>
+        <span class="type-meta">32px / 700</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">title</span>
+        <span class="type-sample" style="font-size:22px;font-weight:600;line-height:1.25">Card Title</span>
+        <span class="type-meta">24px / 600</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">subtitle</span>
+        <span class="type-sample" style="font-size:18px;font-weight:600;line-height:1.34">Subtitle text</span>
+        <span class="type-meta">20px / 600</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">base</span>
+        <span class="type-sample" style="font-size:15px;font-weight:400;line-height:1.34;color:var(--text-secondary)">Standard body text at 15px -- the actual Facebook base</span>
+        <span class="type-meta">15px / 400</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">caption</span>
+        <span class="type-sample" style="font-size:13px;font-weight:400;line-height:1.34;color:var(--text-secondary)">Timestamps and metadata</span>
+        <span class="type-meta">13px / 400</span>
+      </div>
+      <div class="type-row">
+        <span class="type-label">small</span>
+        <span class="type-sample" style="font-size:12px;font-weight:400;line-height:1.25;color:var(--text-tertiary)">Badge and fine print</span>
+        <span class="type-meta">12px / 400</span>
+      </div>
+    </div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
-    <h2 class="section-title">Spacing</h2>
-    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
-    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
-    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
-    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
-    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <div class="section-card">
+      <h2 class="section-title">Spacing</h2>
+      <p class="section-desc">4px base grid. Tighter spacing than most systems for feed density.</p>
+      <div class="spacing-row"><span class="spacing-label">2xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+      <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+      <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+      <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+      <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:20px"></div><span class="spacing-value">20px</span></div>
+      <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+      <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+      <div class="spacing-row"><span class="spacing-label">feed</span><div class="spacing-bar" style="width:100px; max-width:100%"></div><span class="spacing-value">680px</span></div>
+    </div>
   </section>
 
+  <!-- Border Radius -->
   <section class="section">
-    <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Meta tokens.</p>
-    <div class="comp-grid">
-      <div class="comp-card">
-        <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+    <div class="section-card">
+      <h2 class="section-title">Border Radius</h2>
+      <p class="section-desc">Two-radius vocabulary: 8px for structure, pill for interaction.</p>
+      <div class="radius-grid">
+        <div class="radius-box" style="border-radius:4px"><span>4px</span><span>tags</span></div>
+        <div class="radius-box" style="border-radius:8px"><span>8px</span><span>cards</span></div>
+        <div class="radius-box" style="border-radius:12px"><span>12px</span><span>dialogs</span></div>
+        <div class="radius-box" style="border-radius:16px"><span>16px</span><span>stories</span></div>
+        <div class="radius-box" style="border-radius:20px"><span>20px</span><span>bubbles</span></div>
+        <div class="radius-box" style="border-radius:9999px"><span>pill</span><span>search</span></div>
+        <div class="radius-box" style="border-radius:50%"><span>50%</span><span>avatar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <div class="section-card">
+      <h2 class="section-title">Elevation</h2>
+      <p class="section-desc">Utilitarian shadows communicating z-index, not decoration.</p>
+      <div class="shadow-grid">
+        <div class="shadow-card" style="box-shadow: none; border: 1px solid var(--border-subtle);">
+          <div class="shadow-name">level-0</div><div class="shadow-desc">Flat -- inline content</div>
+        </div>
+        <div class="shadow-card" style="box-shadow: 0px 1px 2px rgba(0,0,0,0.10);">
+          <div class="shadow-name">level-1</div><div class="shadow-desc">Card -- feed posts</div>
+        </div>
+        <div class="shadow-card" style="box-shadow: 0px 2px 8px rgba(0,0,0,0.10), 0px 1px 2px rgba(0,0,0,0.06);">
+          <div class="shadow-name">level-2</div><div class="shadow-desc">Popover -- dropdowns</div>
+        </div>
+        <div class="shadow-card" style="box-shadow: 0px 12px 28px rgba(0,0,0,0.12), 0px 2px 4px rgba(0,0,0,0.04);">
+          <div class="shadow-name">level-3</div><div class="shadow-desc">Modal -- dialogs</div>
         </div>
       </div>
-      <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Meta Feature</h4>
-            <p>A component styled with the Meta design system tokens.</p>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section class="section">
+    <div class="section-card">
+      <h2 class="section-title">Components</h2>
+      <p class="section-desc">Sample components styled with Meta tokens.</p>
+      <div class="comp-grid">
+
+        <!-- Buttons -->
+        <div class="comp-card">
+          <h3>Buttons</h3>
+          <div class="btn-group" style="margin-bottom:16px">
+            <button class="btn btn-primary">Primary Action</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <button class="btn btn-outline">Outline</button>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div class="search-bar">Search Meta...</div>
+            <span class="notif-badge">3</span>
+          </div>
+        </div>
+
+        <!-- Feed Card -->
+        <div class="comp-card" style="padding:0; overflow:hidden;">
+          <div class="feed-card">
+            <div class="feed-header">
+              <div class="feed-avatar"></div>
+              <div>
+                <div class="feed-name">Alex Johnson</div>
+                <div class="feed-time">2h ago</div>
+              </div>
+            </div>
+            <div class="feed-body">Building something exciting with the Meta design system. The card architecture makes everything feel clean and connected.</div>
+            <div class="feed-media"></div>
+            <div class="feed-reactions">
+              <span>42 reactions</span>
+              <span>12 comments</span>
+            </div>
+            <div class="feed-actions">
+              <button class="feed-action-btn active">Like</button>
+              <button class="feed-action-btn">Comment</button>
+              <button class="feed-action-btn">Share</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Dark Mode Preview -->
+      <div class="dark-preview">
+        <div class="dark-card">
+          <h4>Dark Mode Card</h4>
+          <p>Same card architecture, inverted colors. #18191a page, #242526 card surface.</p>
+          <div style="margin-top:16px; display:flex; gap:12px;">
+            <button class="btn btn-primary" style="font-size:15px;">Primary</button>
+            <button class="btn" style="background:#3a3b3c; color:#e4e6eb; font-size:15px;">Secondary</button>
           </div>
         </div>
       </div>
     </div>
   </section>
+
 </div>
 </body>
 </html>

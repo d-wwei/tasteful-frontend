@@ -1,185 +1,447 @@
 {
   "$extensions": {
     "brand": "meta",
-    "source": "awesome-design-md",
-    "aesthetic": "social platform with blue connectivity",
+    "source": "meta-brand-resource-center",
+    "aesthetic": "open, optimistic connectivity — light-filled social spaces that feel effortless and human",
     "key-characteristics": [
-      "meta-blue",
-      "social-platform",
-      "connected-design"
+      "meta-blue-accent",
+      "optimistic-typography",
+      "airy-white-surfaces",
+      "social-card-architecture",
+      "pill-shaped-interactions"
     ]
   },
   "color": {
     "surface": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Primary background"
+      "$description": "Primary background — pure white canvas, the air through which content breathes"
     },
     "surface-subtle": {
-      "$value": "#f8f8f8",
+      "$value": "#f0f2f5",
       "$type": "color",
-      "$description": "Secondary surface"
+      "$description": "Secondary background — Facebook gray, used for page-level fill behind cards"
+    },
+    "surface-card": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Card and post surface — white, the dominant container color across all Meta products"
+    },
+    "surface-hover": {
+      "$value": "#f2f3f5",
+      "$type": "color",
+      "$description": "Hover state for interactive surfaces — subtle cool-neutral lift"
+    },
+    "surface-active": {
+      "$value": "#e4e6eb",
+      "$type": "color",
+      "$description": "Active/pressed state background — visible depression feedback"
+    },
+    "surface-overlay": {
+      "$value": "rgba(0,0,0,0.4)",
+      "$type": "color",
+      "$description": "Modal/dialog backdrop overlay — standard Meta dimming"
+    },
+    "surface-blue-tint": {
+      "$value": "#ebf5ff",
+      "$type": "color",
+      "$description": "Selected/active state tint — lightest Meta Blue for active nav items, selected states"
     },
     "accent": {
       "$value": "#0064e0",
       "$type": "color",
-      "$description": "Primary accent color"
+      "$description": "Meta Blue primary — the defining brand color, used for CTAs, links, and key interactive elements"
     },
     "accent-hover": {
-      "$value": "#0064e0",
+      "$value": "#0058c5",
       "$type": "color",
-      "$description": "Accent hover state"
+      "$description": "Meta Blue hover — slightly deeper for hover feedback on blue elements"
+    },
+    "accent-active": {
+      "$value": "#004da6",
+      "$type": "color",
+      "$description": "Meta Blue active/pressed — deepest blue for pressed state"
+    },
+    "accent-light": {
+      "$value": "#0080fb",
+      "$type": "color",
+      "$description": "Meta Light Blue — secondary blue for highlights, badges, and lighter UI accents"
+    },
+    "accent-secondary": {
+      "$value": "#42b72a",
+      "$type": "color",
+      "$description": "Green accent — online indicators, positive actions, Messenger/WhatsApp crossover"
     },
     "text-primary": {
-      "$value": "#1c1e21",
+      "$value": "#050505",
       "$type": "color",
-      "$description": "Primary text"
+      "$description": "Primary text — near-black, slightly warmer than pure #000, used for names and headlines"
     },
     "text-secondary": {
       "$value": "#65676b",
       "$type": "color",
-      "$description": "Secondary text"
+      "$description": "Secondary text — cool medium gray for timestamps, captions, metadata"
+    },
+    "text-tertiary": {
+      "$value": "#8a8d91",
+      "$type": "color",
+      "$description": "Tertiary text — placeholder text, disabled labels, de-emphasized content"
+    },
+    "text-link": {
+      "$value": "#0064e0",
+      "$type": "color",
+      "$description": "Link text — Meta Blue, consistent with accent for all text links"
     },
     "text-on-accent": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Text on accent"
+      "$description": "Text on blue buttons and surfaces — always pure white"
+    },
+    "text-on-dark": {
+      "$value": "#e4e6eb",
+      "$type": "color",
+      "$description": "Primary text on dark surfaces — light gray for dark mode readability"
     },
     "error": {
       "$value": "#e41e3f",
       "$type": "color",
-      "$description": "Error state"
+      "$description": "Error/danger — Facebook red, used for notifications, errors, and destructive actions"
+    },
+    "error-bg": {
+      "$value": "#ffebe9",
+      "$type": "color",
+      "$description": "Error background tint — soft red wash for error containers"
     },
     "success": {
       "$value": "#42b72a",
       "$type": "color",
-      "$description": "Success state"
+      "$description": "Success — Facebook green, online status, confirmations, positive actions"
+    },
+    "success-bg": {
+      "$value": "#e6f6e2",
+      "$type": "color",
+      "$description": "Success background tint — soft green wash for success containers"
+    },
+    "warning": {
+      "$value": "#f7b928",
+      "$type": "color",
+      "$description": "Warning — amber, used for caution states and attention signals"
+    },
+    "warning-bg": {
+      "$value": "#fff8e1",
+      "$type": "color",
+      "$description": "Warning background tint — soft amber wash for warning containers"
+    },
+    "notification": {
+      "$value": "#e41e3f",
+      "$type": "color",
+      "$description": "Notification badge — same red as error, the unmistakable Facebook notification dot"
+    },
+    "focus": {
+      "$value": "#0064e0",
+      "$type": "color",
+      "$description": "Focus ring — Meta Blue outline for keyboard accessibility"
     },
     "border": {
-      "$value": "#e5e5e5",
+      "$value": "#dadde1",
       "$type": "color",
-      "$description": "Default border"
+      "$description": "Default border — light cool gray, the standard card/input separator"
+    },
+    "border-subtle": {
+      "$value": "#e4e6eb",
+      "$type": "color",
+      "$description": "Subtle border — lighter than default, used for inner dividers within cards"
+    },
+    "border-strong": {
+      "$value": "#bec3c9",
+      "$type": "color",
+      "$description": "Strong border — more visible for emphasized containers and input focus"
+    },
+    "border-dark": {
+      "$value": "#3e4042",
+      "$type": "color",
+      "$description": "Dark mode border — for containers on dark backgrounds"
+    },
+    "dark-surface": {
+      "$value": "#18191a",
+      "$type": "color",
+      "$description": "Dark mode page background — Facebook dark mode near-black"
+    },
+    "dark-surface-card": {
+      "$value": "#242526",
+      "$type": "color",
+      "$description": "Dark mode card surface — elevated dark container"
+    },
+    "dark-surface-hover": {
+      "$value": "#3a3b3c",
+      "$type": "color",
+      "$description": "Dark mode hover — visible hover state on dark surfaces"
+    },
+    "reaction-like": {
+      "$value": "#0064e0",
+      "$type": "color",
+      "$description": "Like reaction — Meta Blue thumbs up"
+    },
+    "reaction-love": {
+      "$value": "#f33e58",
+      "$type": "color",
+      "$description": "Love reaction — warm pink-red heart"
+    },
+    "reaction-haha": {
+      "$value": "#f7b928",
+      "$type": "color",
+      "$description": "Haha reaction — bright yellow"
+    },
+    "reaction-wow": {
+      "$value": "#f7b928",
+      "$type": "color",
+      "$description": "Wow reaction — bright yellow (shared with haha)"
+    },
+    "reaction-sad": {
+      "$value": "#f7b928",
+      "$type": "color",
+      "$description": "Sad reaction — yellow (face color base)"
+    },
+    "reaction-angry": {
+      "$value": "#e9710f",
+      "$type": "color",
+      "$description": "Angry reaction — deep orange"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Optimistic Display, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display/headline font — Meta's custom Optimistic typeface for large headings and marketing"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Optimistic Text, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body/UI font — Optimistic Text for body copy, buttons, labels, and all interface text"
+    },
+    "font-system": {
+      "$value": "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif",
+      "$type": "fontFamily",
+      "$description": "System fallback stack — used in product UI when Optimistic is unavailable"
+    },
+    "font-mono": {
+      "$value": "SFMono-Regular, Menlo, Consolas, Courier New, monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace — for code blocks, developer tools, and technical content"
     },
     "scale-display": {
       "$value": "48px",
       "$type": "dimension",
-      "$description": "Display"
+      "$description": "Display — hero headlines and marketing headlines — 3rem"
     },
     "scale-section": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Section"
+      "$description": "Section — page section headings — 2rem"
+    },
+    "scale-title": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Title — card headings, modal titles — 1.5rem"
+    },
+    "scale-subtitle": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Subtitle — sub-headings, intro text — 1.25rem"
+    },
+    "scale-body-lg": {
+      "$value": "17px",
+      "$type": "dimension",
+      "$description": "Body large — post body text, expanded content — 1.0625rem"
     },
     "scale-base": {
-      "$value": "16px",
+      "$value": "15px",
       "$type": "dimension",
-      "$description": "Body"
+      "$description": "Base — standard body and UI text — 0.9375rem (Facebook's actual base)"
     },
     "scale-caption": {
-      "$value": "14px",
+      "$value": "13px",
       "$type": "dimension",
-      "$description": "Caption"
+      "$description": "Caption — timestamps, metadata, secondary labels — 0.8125rem"
     },
     "scale-small": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small — badges, notification counts, fine print — 0.75rem"
+    },
+    "scale-micro": {
+      "$value": "10px",
+      "$type": "dimension",
+      "$description": "Micro — reaction counts inline, minimal labels — 0.625rem"
     },
     "line-height-tight": {
       "$value": "1.15",
       "$type": "number",
-      "$description": "Tight"
+      "$description": "Tight — display and hero headlines"
+    },
+    "line-height-snug": {
+      "$value": "1.25",
+      "$type": "number",
+      "$description": "Snug — section headings and titles"
     },
     "line-height-normal": {
+      "$value": "1.34",
+      "$type": "number",
+      "$description": "Normal — Facebook's standard body line-height, tighter than most to maximize feed density"
+    },
+    "line-height-relaxed": {
       "$value": "1.50",
       "$type": "number",
-      "$description": "Normal"
+      "$description": "Relaxed — long-form content, marketing pages, reading experiences"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular — body text, captions, timestamps"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium — nav items, secondary labels, emphasis within text"
     },
     "weight-semibold": {
       "$value": "600",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Semibold — section headings, card titles, button text"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold — display headlines, user names in feed, strong emphasis"
+    },
+    "letter-spacing-tight": {
+      "$value": "-0.5px",
+      "$type": "dimension",
+      "$description": "Tight — display headlines for visual density"
+    },
+    "letter-spacing-normal": {
+      "$value": "normal",
+      "$type": "dimension",
+      "$description": "Normal — body and UI text, no adjustment"
+    },
+    "letter-spacing-wide": {
+      "$value": "0.5px",
+      "$type": "dimension",
+      "$description": "Wide — overline labels, uppercase text, small badges"
     }
   },
   "spacing": {
     "unit": {
-      "$value": "8px",
-      "$type": "dimension",
-      "$description": "Base unit"
-    },
-    "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Base unit — Meta uses a 4px grid for sub-component spacing"
     },
-    "sm": {
+    "2xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Micro spacing — inline element gaps, reaction margins"
+    },
+    "xs": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Extra small — icon-to-text gaps, badge padding"
     },
-    "md": {
+    "sm": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Small — inner card padding, compact control spacing"
     },
-    "lg": {
+    "md": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Medium — standard card padding, list item spacing"
+    },
+    "lg": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Large — section inner padding, generous card padding"
     },
     "xl": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Extra large — feed card side padding, column gaps"
     },
     "2xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Double extra large — section vertical padding, card stacking gap"
+    },
+    "3xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Section gap — vertical space between major feed sections"
     },
     "section-gap": {
       "$value": "80px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Page section gap — space between marketing page sections"
+    },
+    "page-margin-desktop": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Page margin desktop — horizontal padding on marketing pages"
+    },
+    "page-margin-mobile": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Page margin mobile — horizontal padding on mobile"
     },
     "container-max": {
+      "$value": "1128px",
+      "$type": "dimension",
+      "$description": "Max container width — Facebook feed column max-width"
+    },
+    "container-wide": {
       "$value": "1200px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Wide container — marketing pages, full-width layouts"
+    },
+    "feed-width": {
+      "$value": "680px",
+      "$type": "dimension",
+      "$description": "Feed column width — the sacred News Feed single-column width"
     }
   },
   "border": {
+    "radius-xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small — inline tags, tiny badges"
+    },
     "radius-standard": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Standard — cards, inputs, buttons, the workhorse radius across Meta products"
+    },
+    "radius-md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Medium — dialogs, popovers, elevated cards"
+    },
+    "radius-lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large — stories thumbnails, featured containers"
+    },
+    "radius-xl": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Extra large — Messenger bubbles, large interactive cards"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill"
+      "$description": "Pill — reaction pills, search bars, chip filters, the signature Meta shape"
+    },
+    "radius-circle": {
+      "$value": "50%",
+      "$type": "dimension",
+      "$description": "Circle — profile avatars, story rings, online indicators"
     }
   },
   "shadow": {
@@ -194,59 +456,150 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat — no shadow, inline content within cards"
     },
     "level-1": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.10)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Subtle — standard card shadow, feed posts on gray background"
+    },
+    "level-2": {
       "$value": [
         {
           "offsetX": "0px",
           "offsetY": "2px",
           "blur": "8px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0,0,0,0.10)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.06)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle"
+      "$description": "Elevated — popovers, dropdown menus, tooltips"
+    },
+    "level-3": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "28px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.12)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.04)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Floating — modals, dialogs, full-screen overlays"
+    },
+    "button-primary": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "1px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.05)"
+        },
+        {
+          "inset": true,
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "rgba(255,255,255,0.15)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Button primary — subtle outer shadow + inset highlight for 3D feel"
     }
   },
   "motion": {
+    "duration-instant": {
+      "$value": "100ms",
+      "$type": "duration",
+      "$description": "Instant — hover states, cursor changes"
+    },
     "duration-fast": {
       "$value": "150ms",
       "$type": "duration",
-      "$description": "Fast"
+      "$description": "Fast — button presses, toggle switches"
     },
     "duration-normal": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Normal"
+      "$description": "Normal — dropdowns opening, card transitions"
+    },
+    "duration-slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Slow — modal entrance, page transitions"
+    },
+    "duration-deliberate": {
+      "$value": "500ms",
+      "$type": "duration",
+      "$description": "Deliberate — complex animations, reaction popups"
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1],
       "$type": "cubicBezier",
-      "$description": "Ease"
+      "$description": "Ease — standard CSS ease, Meta's default for most transitions"
+    },
+    "easing-enter": {
+      "$value": [0.0, 0.0, 0.2, 1],
+      "$type": "cubicBezier",
+      "$description": "Enter — decelerate into position, used for modals and dropdowns appearing"
+    },
+    "easing-exit": {
+      "$value": [0.4, 0.0, 1, 1],
+      "$type": "cubicBezier",
+      "$description": "Exit — accelerate out, used for closing overlays and dismissals"
+    },
+    "easing-spring": {
+      "$value": [0.34, 1.56, 0.64, 1],
+      "$type": "cubicBezier",
+      "$description": "Spring — bouncy overshoot, used for reaction animations and Like button press"
     }
   },
   "breakpoint": {
     "mobile": {
-      "$value": "640px",
+      "$value": "480px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile — single column feed, stacked layout"
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet — sidebar appears, two-column navigation begins"
     },
     "desktop": {
-      "$value": "1024px",
+      "$value": "992px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop — three-column layout (nav + feed + contacts sidebar)"
+    },
+    "desktop-wide": {
+      "$value": "1200px",
+      "$type": "dimension",
+      "$description": "Desktop wide — full layout with generous margins"
     }
   }
 }

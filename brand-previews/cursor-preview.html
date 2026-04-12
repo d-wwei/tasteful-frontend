@@ -5,130 +5,633 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cursor Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --surface: #0d0d0d;
-    --surface-subtle: #1a1a1a;
-    --accent: #00bcd4;
-    --text-primary: #e0e0e0;
-    --text-secondary: #808080;
-    --border: rgba(255,255,255,0.1);
-    --font: Inter, -apple-system, sans-serif;
+    --surface: #14120b;
+    --surface-subtle: #1b1913;
+    --surface-elevated: #26241e;
+    --surface-overlay: #201e18;
+    --accent: #4c9df3;
+    --accent-hover: #6bb0f7;
+    --accent-muted: rgba(76, 157, 243, 0.12);
+    --text-primary: #d7d6d5;
+    --text-secondary: #8a8884;
+    --text-tertiary: #5c5a56;
+    --error: #f14c4c;
+    --success: #73c991;
+    --warning: #e5c07b;
+    --border: rgba(255, 255, 255, 0.07);
+    --border-prominent: rgba(255, 255, 255, 0.12);
+    --ai-glow: rgba(76, 157, 243, 0.08);
+    --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.25);
+    --shadow-2: 0 8px 24px -4px rgba(0, 0, 0, 0.40);
+    --glow-accent: 0 0 12px rgba(76, 157, 243, 0.20);
+    --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --radius-sm: 4px;
+    --radius-standard: 6px;
+    --radius-comfortable: 8px;
+    --radius-large: 12px;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  body {
+    font-family: var(--font-ui);
+    background: var(--surface);
+    color: var(--text-primary);
+    line-height: 1.50;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 48px 24px; }
+
+  /* Brand Header */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
+    text-align: center;
+    margin-bottom: 80px;
+    padding: 64px 32px;
+    background: var(--surface-subtle);
+    border-radius: var(--radius-large);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.4;
+  }
+  .brand-header h1 {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  .brand-header .aesthetic {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .brand-header .tags {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .brand-header .tag {
+    font-size: 11px;
+    padding: 4px 12px;
+    background: var(--accent-muted);
+    color: var(--accent);
+    border-radius: 9999px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid rgba(76, 157, 243, 0.20);
+  }
+
+  /* Section */
+  .section { margin-bottom: 80px; }
+  .section-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  /* Color Grid */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .color-swatch {
+    border-radius: var(--radius-comfortable);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface-subtle);
+    transition: border-color 200ms;
+  }
+  .color-swatch:hover { border-color: var(--border-prominent); }
+  .color-swatch .swatch-fill { height: 64px; }
+  .color-swatch .swatch-info { padding: 10px 12px; }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+  /* Typography */
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-label {
+    flex: 0 0 80px;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-align: right;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .type-sample { flex: 1; }
+  .type-meta {
+    flex: 0 0 60px;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-align: right;
+    font-family: var(--font-mono);
+  }
+
+  /* Spacing */
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .spacing-label {
+    flex: 0 0 48px;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-align: right;
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+  .spacing-bar {
+    height: 20px;
+    background: var(--accent);
+    border-radius: 3px;
+    opacity: 0.5;
+  }
+  .spacing-value {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    min-width: 36px;
+    font-family: var(--font-mono);
+  }
+
+  /* Radius */
+  .radius-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+  }
+  .radius-box {
+    aspect-ratio: 1;
+    background: var(--surface-subtle);
+    border: 1px solid var(--border-prominent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .radius-box span {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-family: var(--font-mono);
+  }
+  .radius-box .radius-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-family: var(--font-ui);
+  }
+
+  /* Shadows */
+  .shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+  }
+  .shadow-card {
+    padding: 24px;
+    border-radius: var(--radius-comfortable);
+    background: var(--surface-subtle);
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     border: 1px solid var(--border);
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
-  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
-  .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
-  .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .shadow-card .shadow-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-tertiary); }
+
+  /* Components */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 768px) {
+    .comp-grid { grid-template-columns: 1fr; }
+    .brand-header h1 { font-size: 36px; }
+    .brand-header { padding: 48px 20px; }
+    .section-title { font-size: 28px; }
+  }
+  .comp-card {
+    padding: 24px;
+    background: var(--surface-subtle);
+    border-radius: var(--radius-comfortable);
+    border: 1px solid var(--border);
+  }
+  .comp-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: var(--radius-standard);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 150ms ease-out;
+    text-decoration: none;
+    font-family: var(--font-ui);
+  }
+  .btn-accent {
+    background: var(--accent);
+    color: #ffffff;
+  }
+  .btn-accent:hover {
+    background: var(--accent-hover);
+    box-shadow: var(--glow-accent);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-prominent);
+  }
+  .btn-outline:hover {
+    border-color: rgba(255, 255, 255, 0.24);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 10px 12px;
+  }
+  .btn-ghost:hover { color: var(--text-primary); }
   .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #000 100%); }
+
+  /* Sample Card */
+  .sample-card {
+    background: var(--surface);
+    border-radius: var(--radius-comfortable);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .sample-card-img {
+    height: 100px;
+    background: var(--surface);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .sample-card-img::before {
+    content: '{ }';
+    font-family: var(--font-mono);
+    font-size: 32px;
+    color: var(--accent);
+    opacity: 0.25;
+  }
   .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .sample-card-body h4 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .sample-card-body p { font-size: 13px; color: var(--text-secondary); line-height: 1.50; }
+
+  /* Chat Panel Preview */
+  .chat-panel {
+    background: var(--surface);
+    border-radius: var(--radius-comfortable);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 320px;
+  }
+  .chat-header {
+    height: 48px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .chat-header-title { font-size: 13px; font-weight: 500; }
+  .chat-header-model {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+  }
+  .chat-messages { flex: 1; padding: 16px; overflow-y: auto; }
+  .chat-msg { margin-bottom: 12px; }
+  .chat-msg-user {
+    background: var(--surface-elevated);
+    border-radius: var(--radius-comfortable);
+    padding: 10px 14px;
+    max-width: 85%;
+    margin-left: auto;
+    font-size: 13px;
+    line-height: 1.50;
+  }
+  .chat-msg-ai { font-size: 13px; line-height: 1.50; }
+  .chat-msg-ai .code-block {
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-standard);
+    padding: 10px 14px;
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.60;
+    color: var(--text-primary);
+    overflow-x: auto;
+  }
+  .chat-input-area {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .chat-input {
+    width: 100%;
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-comfortable);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    outline: none;
+    transition: border-color 150ms;
+  }
+  .chat-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(76, 157, 243, 0.15);
+  }
+  .chat-input::placeholder { color: var(--text-tertiary); }
+
+  /* Code Suggestion Preview */
+  .code-suggestion {
+    background: var(--surface);
+    border-radius: var(--radius-comfortable);
+    border: 1px solid var(--border);
+    padding: 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.60;
+    overflow-x: auto;
+  }
+  .code-line { display: flex; }
+  .code-ln {
+    flex: 0 0 32px;
+    color: var(--text-tertiary);
+    text-align: right;
+    padding-right: 12px;
+    user-select: none;
+  }
+  .code-text { flex: 1; }
+  .code-ghost { color: rgba(138, 136, 132, 0.45); }
+  .code-ghost-line {
+    background: var(--ai-glow);
+    border-left: 2px solid rgba(76, 157, 243, 0.30);
+    padding-left: 8px;
+    margin-left: -10px;
+  }
+  .code-keyword { color: #c586c0; }
+  .code-func { color: #dcdcaa; }
+  .code-string { color: #ce9178; }
+  .code-comment { color: var(--text-tertiary); font-style: italic; }
+  .tab-hint {
+    display: inline-block;
+    font-size: 10px;
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--text-secondary);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* Semantic Colors */
+  .semantic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+  .semantic-item {
+    padding: 16px;
+    border-radius: var(--radius-standard);
+    text-align: center;
+    border: 1px solid var(--border);
+    background: var(--surface-subtle);
+  }
+  .semantic-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+  }
+  .semantic-label { font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+  .semantic-hex { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); }
 </style>
 </head>
 <body>
 <div class="container">
+
+  <!-- Brand Header -->
   <header class="brand-header">
     <h1>Cursor</h1>
-    <p class="aesthetic">dark AI-native code editor with electric accents</p>
+    <p class="aesthetic">Warm-dark IDE workspace -- obsidian surfaces, blue-steel intelligence accents</p>
     <div class="tags">
-      <span class="tag">dark-code-editor</span><span class="tag">electric-accent</span><span class="tag">ai-native</span>
+      <span class="tag">warm-dark-ide</span>
+      <span class="tag">blue-accent-intelligence</span>
+      <span class="tag">monospace-gothic-pairing</span>
+      <span class="tag">code-first-density</span>
+      <span class="tag">agentic-workspace</span>
     </div>
   </header>
 
+  <!-- Color Palette -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Cursor visual identity.</p>
+    <p class="section-desc">Warm-dark surfaces with blue intelligence accent. Every gray carries a brown undertone.</p>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#0d0d0d"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#0d0d0d</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#00bcd4"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#00bcd4</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#e0e0e0"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#e0e0e0</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#808080"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#808080</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#14120b"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#14120b</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1b1913"></div><div class="swatch-info"><div class="swatch-name">surface-subtle</div><div class="swatch-hex">#1b1913</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#26241e"></div><div class="swatch-info"><div class="swatch-name">surface-elevated</div><div class="swatch-hex">#26241e</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#201e18"></div><div class="swatch-info"><div class="swatch-name">surface-overlay</div><div class="swatch-hex">#201e18</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#4c9df3"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#4c9df3</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#6bb0f7"></div><div class="swatch-info"><div class="swatch-name">accent-hover</div><div class="swatch-hex">#6bb0f7</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#d7d6d5"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#d7d6d5</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#8a8884"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#8a8884</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#5c5a56"></div><div class="swatch-info"><div class="swatch-name">text-tertiary</div><div class="swatch-hex">#5c5a56</div></div></div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:500; color:var(--text-secondary); margin-bottom:12px; margin-top:24px; text-transform:uppercase; letter-spacing:0.06em;">Semantic Colors</h3>
+    <div class="semantic-grid">
+      <div class="semantic-item"><div class="semantic-dot" style="background:#f14c4c"></div><div class="semantic-label">Error</div><div class="semantic-hex">#f14c4c</div></div>
+      <div class="semantic-item"><div class="semantic-dot" style="background:#73c991"></div><div class="semantic-label">Success</div><div class="semantic-hex">#73c991</div></div>
+      <div class="semantic-item"><div class="semantic-dot" style="background:#e5c07b"></div><div class="semantic-label">Warning</div><div class="semantic-hex">#e5c07b</div></div>
+      <div class="semantic-item"><div class="semantic-dot" style="background:#4c9df3"></div><div class="semantic-label">Info</div><div class="semantic-hex">#4c9df3</div></div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Cursor branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Cursor Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">Cursor Gothic for UI, Berkeley Mono for code. Tight letter-spacing on headlines, developer-dense base size.</p>
+    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:44px;font-weight:700;line-height:1.15;letter-spacing:-0.02em">Build with agents</span><span class="type-meta">56px</span></div>
+    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:30px;font-weight:700;line-height:1.15;letter-spacing:-0.02em">Section heading</span><span class="type-meta">36px</span></div>
+    <div class="type-row"><span class="type-label">subsect.</span><span class="type-sample" style="font-size:22px;font-weight:700;line-height:1.20">Feature title</span><span class="type-meta">24px</span></div>
+    <div class="type-row"><span class="type-label">body lg</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.50;color:var(--text-secondary)">Lead paragraph text for descriptions</span><span class="type-meta">17px</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.50;color:var(--text-secondary)">Standard body text and interface labels</span><span class="type-meta">14px</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:12px;font-weight:400;line-height:1.33;color:var(--text-tertiary)">Metadata and breadcrumbs</span><span class="type-meta">12px</span></div>
+    <div class="type-row"><span class="type-label">code</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.60;color:var(--text-primary);font-family:var(--font-mono)">const agent = new CursorAgent();</span><span class="type-meta">14px</span></div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
+    <p class="section-desc">4px base grid. Developer-dense tool layouts with compact padding.</p>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
     <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
     <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
     <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
     <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
     <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">sect</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
   </section>
 
+  <!-- Border Radius -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Crisp geometry for developer tooling. No radius above 12px on standard components.</p>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:4px"><span>4px</span><span class="radius-label">sm</span></div>
+      <div class="radius-box" style="border-radius:6px"><span>6px</span><span class="radius-label">standard</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>8px</span><span class="radius-label">comfortable</span></div>
+      <div class="radius-box" style="border-radius:12px"><span>12px</span><span class="radius-label">large</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span>pill</span><span class="radius-label">badge</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Shadows</h2>
+    <p class="section-desc">Heavy shadows for dark surfaces. Accent glow for AI-active elements.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none">
+        <div class="shadow-name">Level 0</div>
+        <div class="shadow-desc">Flat -- no elevation</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-1)">
+        <div class="shadow-name">Level 1</div>
+        <div class="shadow-desc">0 2px 8px rgba(0,0,0,0.25)</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-2)">
+        <div class="shadow-name">Level 2</div>
+        <div class="shadow-desc">0 8px 24px rgba(0,0,0,0.40)</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:var(--glow-accent); border-color:var(--accent)">
+        <div class="shadow-name" style="color:var(--accent)">Accent Glow</div>
+        <div class="shadow-desc">0 0 12px rgba(76,157,243,0.20)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components -->
   <section class="section">
     <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Cursor tokens.</p>
+    <p class="section-desc">Sample components demonstrating the Cursor design language.</p>
     <div class="comp-grid">
+
+      <!-- Buttons -->
       <div class="comp-card">
         <h3>Buttons</h3>
         <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+          <button class="btn btn-accent">Get Started</button>
+          <button class="btn btn-outline">Learn More</button>
+          <button class="btn btn-ghost">Dismiss</button>
         </div>
       </div>
+
+      <!-- Content Card -->
       <div class="comp-card">
         <h3>Content Card</h3>
         <div class="sample-card">
           <div class="sample-card-img"></div>
           <div class="sample-card-body">
-            <h4>Cursor Feature</h4>
-            <p>A component styled with the Cursor design system tokens.</p>
+            <h4>Agentic Development</h4>
+            <p>Build software with AI agents that understand your entire codebase.</p>
           </div>
         </div>
       </div>
+
+      <!-- AI Chat Panel -->
+      <div class="comp-card" style="grid-column: 1 / -1;">
+        <h3>AI Chat Panel</h3>
+        <div class="chat-panel">
+          <div class="chat-header">
+            <span class="chat-header-title">Agent</span>
+            <span class="chat-header-model">composer-2</span>
+          </div>
+          <div class="chat-messages">
+            <div class="chat-msg"><div class="chat-msg-user">Refactor the auth middleware to use JWT tokens</div></div>
+            <div class="chat-msg"><div class="chat-msg-ai">
+              I'll update the auth middleware to use JWT. Here's the change:
+              <div class="code-block">import jwt from 'jsonwebtoken';<br><br>export const authenticate = (req, res, next) => {<br>&nbsp;&nbsp;const token = req.headers.authorization?.split(' ')[1];<br>&nbsp;&nbsp;const decoded = jwt.verify(token, process.env.JWT_SECRET);<br>&nbsp;&nbsp;req.user = decoded;<br>&nbsp;&nbsp;next();<br>};</div>
+            </div></div>
+          </div>
+          <div class="chat-input-area">
+            <input class="chat-input" type="text" placeholder="Ask a follow-up...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Inline Code Suggestion -->
+      <div class="comp-card" style="grid-column: 1 / -1;">
+        <h3>Inline Code Suggestion</h3>
+        <div class="code-suggestion">
+          <div class="code-line"><span class="code-ln">14</span><span class="code-text"><span class="code-keyword">async function</span> <span class="code-func">fetchUser</span>(id: string) {</span></div>
+          <div class="code-line"><span class="code-ln">15</span><span class="code-text">&nbsp;&nbsp;<span class="code-keyword">const</span> response = <span class="code-keyword">await</span> <span class="code-func">fetch</span>(<span class="code-string">`/api/users/${id}`</span>);</span></div>
+          <div class="code-line code-ghost-line"><span class="code-ln">16</span><span class="code-text">&nbsp;&nbsp;<span class="code-ghost">if (!response.ok) {</span><span class="tab-hint">Tab</span></span></div>
+          <div class="code-line code-ghost-line"><span class="code-ln">17</span><span class="code-text"><span class="code-ghost">&nbsp;&nbsp;&nbsp;&nbsp;throw new Error(`User ${id} not found`);</span></span></div>
+          <div class="code-line code-ghost-line"><span class="code-ln">18</span><span class="code-text"><span class="code-ghost">&nbsp;&nbsp;}</span></span></div>
+          <div class="code-line"><span class="code-ln">19</span><span class="code-text">&nbsp;&nbsp;<span class="code-keyword">return</span> response.<span class="code-func">json</span>();</span></div>
+          <div class="code-line"><span class="code-ln">20</span><span class="code-text">}</span></div>
+        </div>
+      </div>
+
     </div>
   </section>
+
 </div>
 </body>
 </html>

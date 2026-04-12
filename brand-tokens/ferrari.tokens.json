@@ -1,210 +1,312 @@
 {
   "$extensions": {
     "brand": "ferrari",
-    "source": "awesome-design-md",
-    "aesthetic": "digital editorial with chiaroscuro drama",
+    "source": "ferrari.com + brand-research",
+    "aesthetic": "cinematic chiaroscuro — deep black surfaces, surgical Rosso Corsa accents, Italian luxury restraint",
     "key-characteristics": [
-      "chiaroscuro-layout",
-      "ferrari-red-sparse",
-      "precision-engineering"
+      "cinematic-darkness",
+      "rosso-corsa-restraint",
+      "racing-heritage-precision",
+      "photography-driven",
+      "italian-luxury"
     ]
   },
   "color": {
     "surface": {
-      "$value": "#000000",
+      "$value": "#0c0c0c",
       "$type": "color",
-      "$description": "Absolute Black \u2014 hero sections, cinematic backgrounds"
+      "$description": "Nero Profondo — primary background, cinematic depth, not pure black to allow layering"
+    },
+    "surface-elevated": {
+      "$value": "#161616",
+      "$type": "color",
+      "$description": "Carbon Fiber — card surfaces, elevated panels, vehicle spec containers"
     },
     "surface-subtle": {
-      "$value": "#303030",
+      "$value": "#1e1e1e",
       "$type": "color",
-      "$description": "Dark Surface \u2014 footer, newsletter sections"
+      "$description": "Grigio Scuro — secondary surfaces, footer, navigation dropdowns"
     },
-    "surface-light": {
-      "$value": "#ffffff",
+    "surface-overlay": {
+      "$value": "rgba(0, 0, 0, 0.85)",
       "$type": "color",
-      "$description": "White \u2014 editorial content panels"
+      "$description": "Overlay — modal backdrops, image overlays for text legibility"
     },
     "accent": {
-      "$value": "#da291c",
+      "$value": "#dc0000",
       "$type": "color",
-      "$description": "Ferrari Red \u2014 Rosso Corsa, extreme sparseness"
+      "$description": "Rosso Corsa — THE Ferrari red, used with extreme restraint: CTAs, active states, brand moments only"
     },
     "accent-hover": {
-      "$value": "#b01e0a",
+      "$value": "#ff1a1a",
       "$type": "color",
-      "$description": "Dark Red \u2014 hover/pressed states"
+      "$description": "Rosso Vivace — brighter red for hover/focus, never at rest"
+    },
+    "accent-muted": {
+      "$value": "#8b0000",
+      "$type": "color",
+      "$description": "Rosso Scuro — darkened red for pressed states, subtle red accents on dark surfaces"
+    },
+    "accent-secondary": {
+      "$value": "#c5a258",
+      "$type": "color",
+      "$description": "Oro Ferrari — gold accent for Scuderia badges, premium tier indicators, heritage elements"
     },
     "text-primary": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "White text on dark backgrounds"
+      "$description": "Bianco Puro — headlines, vehicle names, primary content on dark surfaces"
     },
     "text-secondary": {
-      "$value": "#666666",
+      "$value": "#999999",
       "$type": "color",
-      "$description": "Dark Gray \u2014 subdued labels"
+      "$description": "Argento — body copy, descriptions, secondary information"
     },
     "text-tertiary": {
-      "$value": "#8f8f8f",
+      "$value": "#666666",
       "$type": "color",
-      "$description": "Mid Gray \u2014 metadata"
-    },
-    "text-on-light": {
-      "$value": "#181818",
-      "$type": "color",
-      "$description": "Near Black \u2014 body text on white panels"
+      "$description": "Grigio Medio — metadata, timestamps, technical specs labels"
     },
     "text-on-accent": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "White on Ferrari Red"
+      "$description": "White on Rosso Corsa — CTA text, badges on red"
+    },
+    "text-on-gold": {
+      "$value": "#0c0c0c",
+      "$type": "color",
+      "$description": "Near-black on gold — premium tier badges"
     },
     "error": {
-      "$value": "#f13a2c",
+      "$value": "#ff3333",
       "$type": "color",
-      "$description": "Warning Red \u2014 semantic alerts"
+      "$description": "Error Red — distinct from Rosso Corsa, lighter and more orange to differentiate from brand red"
     },
     "success": {
-      "$value": "#03904a",
+      "$value": "#00b050",
       "$type": "color",
-      "$description": "Success Green \u2014 positive status"
+      "$description": "Verde Semaforo — green light, racing start signal, positive status"
+    },
+    "warning": {
+      "$value": "#f5a623",
+      "$type": "color",
+      "$description": "Giallo Modena — amber warning, Ferrari's secondary heritage color (the Prancing Horse background)"
     },
     "info": {
-      "$value": "#4c98b9",
+      "$value": "#4a9eff",
       "$type": "color",
-      "$description": "Info Blue \u2014 informational callouts"
+      "$description": "Info Blue — informational callouts, neutral against the red palette"
     },
-    "border": {
-      "$value": "#d2d2d2",
+    "border-default": {
+      "$value": "rgba(255, 255, 255, 0.08)",
       "$type": "color",
-      "$description": "Light Gray \u2014 borders on white panels"
+      "$description": "Whisper border — barely visible containment on dark surfaces"
+    },
+    "border-hover": {
+      "$value": "rgba(255, 255, 255, 0.15)",
+      "$type": "color",
+      "$description": "Hover border — slightly more visible on interaction"
+    },
+    "border-accent": {
+      "$value": "rgba(220, 0, 0, 0.30)",
+      "$type": "color",
+      "$description": "Red glow border — active/selected state with Rosso Corsa tint"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "FerrariSans, Arial, Helvetica, sans-serif",
+      "$value": "'Ferrari Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display/heading font"
+      "$description": "Display/headline font — Ferrari Sans is proprietary, fallbacks chosen for similar geometric precision"
     },
     "font-body": {
-      "$value": "FerrariSans, Arial, Helvetica, sans-serif",
+      "$value": "'Ferrari Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body/UI font"
+      "$description": "Body/UI font — same family, different weights create hierarchy"
+    },
+    "font-mono": {
+      "$value": "'SF Mono', 'Roboto Mono', 'Courier New', monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace — vehicle specs, lap times, performance data"
+    },
+    "scale-hero": {
+      "$value": "72px",
+      "$type": "dimension",
+      "$description": "Hero — vehicle name reveals, cinematic headlines, one per page maximum"
     },
     "scale-display": {
       "$value": "48px",
       "$type": "dimension",
-      "$description": "Display \u2014 hero headlines"
+      "$description": "Display — section anchors, model family names"
     },
     "scale-section": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Section headings"
+      "$description": "Section — subsection headings, feature titles"
+    },
+    "scale-subheading": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Subheading — card titles, spec category headers"
+    },
+    "scale-body-large": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Body Large — lead paragraphs, vehicle descriptions"
     },
     "scale-base": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Standard body"
+      "$description": "Base — standard body text"
     },
     "scale-caption": {
       "$value": "14px",
       "$type": "dimension",
-      "$description": "Captions"
+      "$description": "Caption — image captions, secondary actions"
     },
     "scale-small": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small text"
+      "$description": "Small — legal text, fine print"
+    },
+    "scale-overline": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Overline — category labels, all-caps tags above headlines"
     },
     "line-height-tight": {
+      "$value": "1.05",
+      "$type": "number",
+      "$description": "Tight — hero headlines, vehicle names, maximum drama"
+    },
+    "line-height-heading": {
       "$value": "1.15",
       "$type": "number",
-      "$description": "Tight \u2014 headings"
+      "$description": "Heading — display and section headings"
     },
     "line-height-normal": {
-      "$value": "1.50",
+      "$value": "1.55",
       "$type": "number",
-      "$description": "Normal \u2014 body"
+      "$description": "Normal — body text, comfortable reading"
+    },
+    "line-height-relaxed": {
+      "$value": "1.70",
+      "$type": "number",
+      "$description": "Relaxed — long-form editorial, vehicle stories"
+    },
+    "letter-spacing-tight": {
+      "$value": "-0.02em",
+      "$type": "dimension",
+      "$description": "Tight tracking — hero and display headlines"
+    },
+    "letter-spacing-normal": {
+      "$value": "0em",
+      "$type": "dimension",
+      "$description": "Normal tracking — body text"
+    },
+    "letter-spacing-wide": {
+      "$value": "0.12em",
+      "$type": "dimension",
+      "$description": "Wide tracking — overlines, uppercase labels, navigation"
+    },
+    "weight-light": {
+      "$value": "300",
+      "$type": "number",
+      "$description": "Light — large display text for elegance"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular — body text"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium — subheadings, emphasized body"
     },
-    "weight-semibold": {
-      "$value": "600",
+    "weight-bold": {
+      "$value": "700",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Bold — section headings, vehicle names, primary emphasis"
     }
   },
   "spacing": {
     "unit": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Base grid unit"
+      "$description": "Base grid unit — all spacing derives from this"
     },
     "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Extra small — icon-to-label gaps, tight badge padding"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small — inline element spacing"
     },
     "md": {
-      "$value": "12px",
-      "$type": "dimension",
-      "$description": "Medium"
-    },
-    "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Medium — standard component padding"
     },
-    "xl": {
+    "lg": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Large — card padding, group gaps"
     },
-    "2xl": {
+    "xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Extra large — section sub-spacing"
+    },
+    "2xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Double extra large — major content blocks"
+    },
+    "3xl": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Triple extra large — section top/bottom padding"
     },
     "section-gap": {
-      "$value": "80px",
+      "$value": "120px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Section spacing — cinematic breathing room between content blocks"
     },
     "container-max": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Max container width — wider than typical for edge-to-edge photography"
+    },
+    "content-max": {
       "$value": "1200px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Max content width — text and card grids"
     }
   },
   "border": {
-    "radius-standard": {
-      "$value": "2px",
+    "radius-none": {
+      "$value": "0px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Sharp — buttons, precision edges, engineering feel"
     },
-    "radius-comfortable": {
+    "radius-subtle": {
       "$value": "2px",
       "$type": "dimension",
-      "$description": "Comfortable radius"
+      "$description": "Subtle — input fields, small chips"
+    },
+    "radius-standard": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Standard — cards, containers, moderate softness"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill shape"
+      "$description": "Pill — tags, status badges"
     }
   },
   "shadow": {
@@ -219,42 +321,88 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat — no elevation, default state"
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
+          "offsetY": "4px",
+          "blur": "16px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0, 0, 0, 0.40)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle elevation"
+      "$description": "Subtle lift — cards on dark surfaces need heavier shadows to register"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "32px",
+          "spread": "0px",
+          "color": "rgba(0, 0, 0, 0.60)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Elevated — modals, dropdowns, prominent panels"
+    },
+    "red-glow": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "20px",
+          "spread": "-4px",
+          "color": "rgba(220, 0, 0, 0.25)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Red glow — hover state on Rosso Corsa CTAs, active navigation"
     }
   },
   "motion": {
-    "duration-fast": {
-      "$value": "150ms",
+    "duration-instant": {
+      "$value": "100ms",
       "$type": "duration",
-      "$description": "Quick interactions"
+      "$description": "Instant — hover color shifts, micro-interactions"
     },
-    "duration-normal": {
+    "duration-fast": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Standard transitions"
+      "$description": "Fast — button state changes, tooltip reveals"
+    },
+    "duration-normal": {
+      "$value": "350ms",
+      "$type": "duration",
+      "$description": "Normal — card transitions, panel slides"
+    },
+    "duration-slow": {
+      "$value": "600ms",
+      "$type": "duration",
+      "$description": "Slow — page section reveals, hero image transitions"
+    },
+    "duration-cinematic": {
+      "$value": "1000ms",
+      "$type": "duration",
+      "$description": "Cinematic — vehicle reveal animations, full-screen transitions"
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1.0],
       "$type": "cubicBezier",
-      "$description": "Standard ease"
+      "$description": "Standard ease — general UI transitions"
+    },
+    "easing-dramatic": {
+      "$value": [0.16, 1, 0.3, 1],
+      "$type": "cubicBezier",
+      "$description": "Dramatic ease-out — vehicle reveals, hero transitions, cinematic entrances"
+    },
+    "easing-precision": {
+      "$value": [0.4, 0, 0.2, 1],
+      "$type": "cubicBezier",
+      "$description": "Precision — spec counter animations, data reveals"
     }
   },
   "breakpoint": {
@@ -272,6 +420,11 @@
       "$value": "1024px",
       "$type": "dimension",
       "$description": "Desktop"
+    },
+    "wide": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Wide — full photography breakpoint"
     }
   }
 }

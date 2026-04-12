@@ -62,12 +62,16 @@ frontend-design/
 ├── aesthetic-patterns.md             # 10+ 可编码视觉模式（品牌分析提炼）
 ├── constraints/
 │   ├── accessibility.md              # 设计层无障碍、触控、性能规则
-│   ├── components.md                 # 组件模式、导航、布局
-│   ├── component-visual-specs.md     # 组件行为 + 视觉规格模板
+│   ├── code-rules.md                 # 代码级规则（供 design-to-code-runner 使用）
+│   ├── color-deep.md                 # 色彩系统深度知识
 │   ├── component-css-specs.md        # CSS 级组件实现
-│   ├── responsive-strategies.md      # 断点行为、折叠规则
+│   ├── component-visual-specs.md     # 组件行为 + 视觉规格模板
+│   ├── components.md                 # 组件模式、导航、布局
+│   ├── motion-deep.md                # 动效时序、缓动、编排
+│   ├── motion-performance.md         # 动效渲染、FLIP、层提升
 │   ├── opentype-rules.md             # OpenType 特性使用指南
-│   └── code-rules.md                 # 代码级规则（供 design-to-code-runner 使用）
+│   ├── responsive-strategies.md      # 断点行为、折叠规则
+│   └── typography-deep.md            # 排版系统深度知识
 ├── brand-tokens/                     # 66+ 品牌参考令牌库
 │   └── {brand}.tokens.json
 ├── brand-guardrails/                 # 品牌级规则护栏

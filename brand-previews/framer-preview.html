@@ -5,130 +5,764 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Framer Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#999999&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400&display=swap');
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
-    --surface: #0d0d0d;
-    --surface-subtle: #1a1a1a;
+    --canvas: #0a0a0a;
+    --panel: #141414;
+    --elevated: #1c1c1c;
+    --subtle: #1a1a1a;
+    --hover: #252525;
+    --translucent: rgba(255,255,255,0.04);
+    --translucent-hover: rgba(255,255,255,0.08);
     --accent: #0099ff;
+    --accent-hover: #33adff;
+    --accent-deep: #0055ff;
+    --accent-glow: rgba(0,153,255,0.15);
+    --accent-tint: rgba(0,153,255,0.08);
     --text-primary: #ffffff;
     --text-secondary: #999999;
-    --border: rgba(255,255,255,0.1);
-    --font: Inter, -apple-system, sans-serif;
+    --text-tertiary: #666666;
+    --text-on-accent: #000000;
+    --error: #ff3b30;
+    --success: #30d158;
+    --warning: #ff9f0a;
+    --border: rgba(255,255,255,0.08);
+    --border-subtle: rgba(255,255,255,0.05);
+    --border-prominent: rgba(255,255,255,0.12);
+    --focus-ring: rgba(0,153,255,0.5);
+    --overlay: rgba(0,0,0,0.75);
+    --font: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Fira Code', 'SF Mono', ui-monospace, monospace;
+    --spring: cubic-bezier(0.2, 0.9, 0.3, 1.0);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
+
+  body {
+    font-family: var(--font);
+    background: var(--canvas);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+
+  /* Header */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
+    text-align: center;
+    margin-bottom: 80px;
+    padding: 80px 32px;
+    background: var(--panel);
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
-  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .brand-header::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: 25%;
+    width: 50%;
+    height: 160%;
+    background: radial-gradient(ellipse at 50% 60%, rgba(0,153,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand-header h1 {
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -1.44px;
+    margin-bottom: 16px;
+    position: relative;
+    color: var(--text-primary);
+  }
+  .brand-header .aesthetic {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .brand-header .tags {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .brand-header .tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    background: var(--translucent);
+    color: var(--text-tertiary);
+    border-radius: 9999px;
+    border: 1px solid var(--border-subtle);
+    transition: all 250ms var(--spring);
+  }
+  .brand-header .tag:hover {
+    background: var(--accent-tint);
+    color: var(--accent);
+    border-color: rgba(0,153,255,0.2);
+  }
+
+  /* Section */
   .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
-  .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .section-title {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.20;
+    letter-spacing: -0.48px;
+    margin-bottom: 8px;
+  }
+  .section-desc {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  /* Color Swatches */
+  .color-group { margin-bottom: 28px; }
+  .color-group-title {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+  }
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px;
+  }
+  .color-swatch {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    background: var(--panel);
+    transition: border-color 250ms var(--spring);
+  }
+  .color-swatch:hover { border-color: var(--border-prominent); }
+  .color-swatch .swatch-fill { height: 60px; }
+  .color-swatch .swatch-info { padding: 8px 10px; }
+  .color-swatch .swatch-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  .color-swatch .swatch-hex {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+  }
+
+  /* Typography Scale */
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-label {
+    flex: 0 0 100px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-align: right;
+  }
   .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #000 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .type-meta {
+    flex: 0 0 90px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-align: right;
+  }
+
+  /* Spacing */
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .spacing-label {
+    flex: 0 0 60px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-align: right;
+  }
+  .spacing-bar {
+    height: 20px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-deep) 100%);
+    border-radius: 4px;
+    opacity: 0.5;
+    transition: opacity 250ms var(--spring);
+  }
+  .spacing-bar:hover { opacity: 1; }
+  .spacing-value {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    min-width: 40px;
+  }
+
+  /* Border Radius */
+  .radius-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+  }
+  .radius-box {
+    aspect-ratio: 1;
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 250ms var(--spring);
+  }
+  .radius-box:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(0,153,255,0.1);
+  }
+  .radius-box .radius-name {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  .radius-box .radius-val {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-tertiary);
+  }
+
+  /* Shadow Cards */
+  .shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .shadow-card {
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--elevated);
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 250ms var(--spring);
+  }
+  .shadow-card:hover { transform: translateY(-2px); }
+  .shadow-card .shadow-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .shadow-card .shadow-desc {
+    font-size: 10px;
+    color: var(--text-tertiary);
+  }
+
+  /* Motion Preview */
+  .motion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .motion-card {
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--panel);
+    border: 1px solid var(--border-subtle);
+    text-align: center;
+  }
+  .motion-card .motion-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .motion-card .motion-value {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+  }
+  .motion-demo {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    border-radius: 8px;
+    margin: 0 auto;
+    cursor: pointer;
+    position: relative;
+  }
+  .motion-card:hover .motion-demo-spring {
+    transform: scale(1.3);
+    transition: transform 400ms cubic-bezier(0.2, 0.9, 0.3, 1.0);
+  }
+  .motion-demo-spring { transition: transform 400ms cubic-bezier(0.2, 0.9, 0.3, 1.0); }
+  .motion-card:hover .motion-demo-ease-out {
+    transform: translateX(20px);
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .motion-demo-ease-out { transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .motion-card:hover .motion-demo-bounce {
+    transform: translateY(-15px);
+    transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .motion-demo-bounce { transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+  /* Components */
+  .component-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 768px) {
+    .component-section { grid-template-columns: 1fr; }
+    .brand-header h1 { font-size: 48px; letter-spacing: -0.96px; }
+    .type-label { flex: 0 0 70px; }
+    .type-meta { flex: 0 0 60px; }
+  }
+
+  .comp-card {
+    padding: 24px;
+    background: var(--panel);
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    transition: border-color 250ms var(--spring);
+  }
+  .comp-card:hover { border-color: var(--border); }
+  .comp-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 250ms var(--spring);
+    text-decoration: none;
+  }
+  .btn-accent {
+    background: var(--accent);
+    color: var(--text-on-accent);
+  }
+  .btn-accent:hover {
+    background: var(--accent-hover);
+    transform: scale(1.02);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-prominent);
+    font-weight: 500;
+  }
+  .btn-ghost:hover {
+    background: var(--translucent);
+    border-color: rgba(255,255,255,0.2);
+  }
+  .btn-subtle {
+    background: var(--translucent);
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 6px;
+  }
+  .btn-subtle:hover {
+    background: var(--translucent-hover);
+    color: var(--text-primary);
+  }
+  .btn-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Input */
+  .input-field {
+    width: 100%;
+    padding: 8px 12px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 400;
+    background: var(--elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    outline: none;
+    transition: all 250ms var(--spring);
+  }
+  .input-field:focus {
+    border-color: var(--focus-ring);
+    box-shadow: 0 0 0 2px rgba(0,153,255,0.15);
+  }
+  .input-field::placeholder { color: var(--text-tertiary); }
+  .input-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    margin-bottom: 4px;
+  }
+  .input-group { margin-bottom: 12px; }
+
+  /* Sample Card */
+  .sample-card {
+    background: var(--elevated);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: all 250ms var(--spring);
+  }
+  .sample-card:hover {
+    border-color: var(--border-prominent);
+    box-shadow: 0 0 20px rgba(0,153,255,0.06);
+  }
+  .sample-card-img {
+    height: 120px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 50%, var(--panel) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .sample-card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+  }
+  .sample-card-body { padding: 16px 20px; }
+  .sample-card-body h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: -0.2px;
+  }
+  .sample-card-body p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .sample-card-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .sample-card-meta .pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    background: var(--translucent);
+    border-radius: 9999px;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-tertiary);
+  }
+
+  /* Toolbar Preview */
+  .toolbar-preview {
+    background: var(--panel);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 8px;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    width: fit-content;
+    margin-bottom: 16px;
+  }
+  .tool-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 150ms var(--spring);
+  }
+  .tool-btn:hover {
+    background: var(--translucent);
+    color: var(--text-secondary);
+  }
+  .tool-btn.active {
+    background: var(--accent-tint);
+    color: var(--accent);
+  }
+  .tool-sep {
+    width: 1px;
+    height: 24px;
+    background: var(--border-subtle);
+    margin: 0 4px;
+  }
 </style>
 </head>
 <body>
+
 <div class="container">
+
+  <!-- Header -->
   <header class="brand-header">
     <h1>Framer</h1>
-    <p class="aesthetic">creative dark with vibrant purple energy</p>
+    <p class="aesthetic">Motion-native creative tool -- electric blue on dark canvas</p>
     <div class="tags">
-      <span class="tag">dark-creative</span><span class="tag">vibrant-purple</span><span class="tag">motion-design</span>
+      <span class="tag">dark-canvas-native</span>
+      <span class="tag">electric-blue-accent</span>
+      <span class="tag">spring-physics-easing</span>
+      <span class="tag">glassmorphic-panels</span>
+      <span class="tag">inter-variable</span>
+      <span class="tag">motion-design-tool</span>
     </div>
   </header>
 
+  <!-- Color Palette -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Framer visual identity.</p>
-    <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#0d0d0d"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#0d0d0d</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#0099ff"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#0099ff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#999999"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#999999</div></div></div>
+    <p class="section-desc">Dark canvas foundation with a single chromatic signal -- Framer Blue. Surfaces step up through controlled brightness, borders use semi-transparent white.</p>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Surfaces</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#0a0a0a"></div><div class="swatch-info"><div class="swatch-name">canvas</div><div class="swatch-hex">#0a0a0a</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#141414"></div><div class="swatch-info"><div class="swatch-name">panel</div><div class="swatch-hex">#141414</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#1a1a1a"></div><div class="swatch-info"><div class="swatch-name">subtle</div><div class="swatch-hex">#1a1a1a</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#1c1c1c"></div><div class="swatch-info"><div class="swatch-name">elevated</div><div class="swatch-hex">#1c1c1c</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#252525"></div><div class="swatch-info"><div class="swatch-name">hover</div><div class="swatch-hex">#252525</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Translucent</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.05)"></div><div class="swatch-info"><div class="swatch-name">translucent</div><div class="swatch-hex">rgba(w,0.04)</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.05)"></div><div class="swatch-info"><div class="swatch-name">translucent-hover</div><div class="swatch-hex">rgba(w,0.08)</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(0,153,255,0.08);border:1px solid rgba(0,153,255,0.15)"></div><div class="swatch-info"><div class="swatch-name">accent-tint</div><div class="swatch-hex">rgba(b,0.08)</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Accent</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#0099ff"></div><div class="swatch-info"><div class="swatch-name">framer-blue</div><div class="swatch-hex">#0099ff</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#33adff"></div><div class="swatch-info"><div class="swatch-name">blue-hover</div><div class="swatch-hex">#33adff</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#0055ff"></div><div class="swatch-info"><div class="swatch-name">deep-blue</div><div class="swatch-hex">#0055ff</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Text</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">primary</div><div class="swatch-hex">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#999999"></div><div class="swatch-info"><div class="swatch-name">secondary</div><div class="swatch-hex">#999999</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#666666"></div><div class="swatch-info"><div class="swatch-name">tertiary</div><div class="swatch-hex">#666666</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Status</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ff3b30"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#ff3b30</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#30d158"></div><div class="swatch-info"><div class="swatch-name">success</div><div class="swatch-hex">#30d158</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ff9f0a"></div><div class="swatch-info"><div class="swatch-name">warning</div><div class="swatch-hex">#ff9f0a</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Border</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(255,255,255,0.05)"></div><div class="swatch-info"><div class="swatch-name">subtle</div><div class="swatch-hex">rgba(w,0.05)</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(255,255,255,0.08)"></div><div class="swatch-info"><div class="swatch-name">standard</div><div class="swatch-hex">rgba(w,0.08)</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(255,255,255,0.12)"></div><div class="swatch-info"><div class="swatch-name">prominent</div><div class="swatch-hex">rgba(w,0.12)</div></div></div>
+      </div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
-    <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Framer branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Framer Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <h2 class="section-title">Typography Scale</h2>
+    <p class="section-desc">Inter across the board. Bold (700) for display impact, semibold (600) for section headings, medium (500) for UI, regular (400) for reading. Negative tracking at display sizes.</p>
+
+    <div class="type-row"><span class="type-label">display-xl</span><span class="type-sample" style="font-size:64px;font-weight:700;line-height:1.1;letter-spacing:-0.96px">Design</span><span class="type-meta">64px / w700</span></div>
+    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:48px;font-weight:700;line-height:1.1;letter-spacing:-0.96px">Ship faster</span><span class="type-meta">48px / w700</span></div>
+    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:36px;font-weight:600;line-height:1.2;letter-spacing:-0.48px">Motion design</span><span class="type-meta">36px / w600</span></div>
+    <div class="type-row"><span class="type-label">heading</span><span class="type-sample" style="font-size:24px;font-weight:600;line-height:1.2;letter-spacing:-0.48px">Component library</span><span class="type-meta">24px / w600</span></div>
+    <div class="type-row"><span class="type-label">subheading</span><span class="type-sample" style="font-size:20px;font-weight:600;line-height:1.25">Canvas tools</span><span class="type-meta">20px / w600</span></div>
+    <div class="type-row"><span class="type-label">body-lg</span><span class="type-sample" style="font-size:18px;font-weight:400;line-height:1.6;color:var(--text-secondary)">Build production-ready sites with real components and responsive layouts</span><span class="type-meta">18px / w400</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard reading text for documentation and feature descriptions</span><span class="type-meta">16px / w400</span></div>
+    <div class="type-row"><span class="type-label">small</span><span class="type-sample" style="font-size:14px;font-weight:500;line-height:1.43;color:var(--text-secondary)">Navigation links, toolbar text</span><span class="type-meta">14px / w500</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:13px;font-weight:400;line-height:1.4;color:var(--text-tertiary)">Metadata, timestamps</span><span class="type-meta">13px / w400</span></div>
+    <div class="type-row"><span class="type-label">label</span><span class="type-sample" style="font-size:12px;font-weight:500;line-height:1.33;color:var(--text-tertiary)">Button text, panel labels</span><span class="type-meta">12px / w500</span></div>
+    <div class="type-row"><span class="type-label">micro</span><span class="type-sample" style="font-size:11px;font-weight:500;line-height:1.27;letter-spacing:0.2px;color:var(--text-tertiary)">INSPECTOR FIELDS</span><span class="type-meta">11px / w500</span></div>
+    <div class="type-row"><span class="type-label">mono</span><span class="type-sample" style="font-family:var(--font-mono);font-size:14px;font-weight:400;line-height:1.5;color:var(--text-secondary)">const spring = useSpring({ ... })</span><span class="type-meta">14px / mono</span></div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
-    <h2 class="section-title">Spacing</h2>
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-desc">8px base grid. Dense tool UI at the small end, generous marketing breathing room at the large end.</p>
+
+    <div class="spacing-row"><span class="spacing-label">2xs</span><div class="spacing-bar" style="width:2px"></div><span class="spacing-value">2px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
     <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
     <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
     <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
     <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
     <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
     <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <div class="spacing-row"><span class="spacing-label">hero</span><div class="spacing-bar" style="width:120px"></div><span class="spacing-value">120px</span></div>
   </section>
 
+  <!-- Border Radius -->
   <section class="section">
-    <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Framer tokens.</p>
-    <div class="comp-grid">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Functional rounding. 6px for buttons and inputs, 8px for cards, 12px for panels, 16px+ for hero containers. Full pills for tags.</p>
+
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:4px"><span class="radius-name">xs</span><span class="radius-val">4px</span></div>
+      <div class="radius-box" style="border-radius:6px"><span class="radius-name">sm</span><span class="radius-val">6px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span class="radius-name">md</span><span class="radius-val">8px</span></div>
+      <div class="radius-box" style="border-radius:12px"><span class="radius-name">lg</span><span class="radius-val">12px</span></div>
+      <div class="radius-box" style="border-radius:16px"><span class="radius-name">xl</span><span class="radius-val">16px</span></div>
+      <div class="radius-box" style="border-radius:24px"><span class="radius-name">2xl</span><span class="radius-val">24px</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span class="radius-name">pill</span><span class="radius-val">9999px</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Shadow System</h2>
+    <p class="section-desc">Real shadows on dark canvas (high opacity needed). Plus the signature blue glow for featured elements.</p>
+
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none;border:1px solid var(--border-subtle)"><span class="shadow-name">Level 0 - Flat</span><span class="shadow-desc">Canvas level, no elevation</span></div>
+      <div class="shadow-card" style="box-shadow:0 1px 2px rgba(0,0,0,0.3)"><span class="shadow-name">Level 1 - Subtle</span><span class="shadow-desc">Toolbar buttons</span></div>
+      <div class="shadow-card" style="box-shadow:0 4px 12px rgba(0,0,0,0.4)"><span class="shadow-name">Level 2 - Card</span><span class="shadow-desc">Floating panels, dropdowns</span></div>
+      <div class="shadow-card" style="box-shadow:0 8px 24px rgba(0,0,0,0.5),0 2px 4px rgba(0,0,0,0.3)"><span class="shadow-name">Level 3 - Modal</span><span class="shadow-desc">Dialogs, command palettes</span></div>
+      <div class="shadow-card" style="box-shadow:0 0 20px rgba(0,153,255,0.15)"><span class="shadow-name">Glow - Accent</span><span class="shadow-desc">Blue glow energy signature</span></div>
+      <div class="shadow-card" style="box-shadow:0 0 0 2px rgba(0,153,255,0.5)"><span class="shadow-name">Focus Ring</span><span class="shadow-desc">Keyboard focus indicator</span></div>
+    </div>
+  </section>
+
+  <!-- Motion -->
+  <section class="section">
+    <h2 class="section-title">Motion Curves</h2>
+    <p class="section-desc">Spring-physics DNA. Every transition uses the spring bezier (slight overshoot) or ease-out (decelerating). Hover to preview.</p>
+
+    <div class="motion-grid">
+      <div class="motion-card">
+        <div class="motion-name">Spring</div>
+        <div class="motion-value">cubic-bezier(0.2, 0.9, 0.3, 1.0)</div>
+        <div class="motion-demo motion-demo-spring"></div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">Ease Out</div>
+        <div class="motion-value">cubic-bezier(0.16, 1, 0.3, 1)</div>
+        <div class="motion-demo motion-demo-ease-out"></div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">Bounce</div>
+        <div class="motion-value">cubic-bezier(0.34, 1.56, 0.64, 1)</div>
+        <div class="motion-demo motion-demo-bounce"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section class="section">
+    <h2 class="section-title">Component Preview</h2>
+    <p class="section-desc">Framer-styled components: dark canvas native, spring-physics transitions, electric blue accents.</p>
+
+    <div class="component-section">
       <div class="comp-card">
         <h3>Buttons</h3>
         <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+          <button class="btn btn-accent">Start for free</button>
+          <button class="btn btn-ghost">Learn more</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-subtle">Templates</button>
+          <button class="btn btn-subtle" style="color:var(--accent)">View all</button>
         </div>
       </div>
+
       <div class="comp-card">
-        <h3>Content Card</h3>
+        <h3>Form Input</h3>
+        <div class="input-group">
+          <label class="input-label">Project name</label>
+          <input type="text" class="input-field" placeholder="My new site">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Custom domain</label>
+          <input type="text" class="input-field" placeholder="example.com">
+        </div>
+        <button class="btn btn-accent" style="width:100%">Create project</button>
+      </div>
+
+      <div class="comp-card" style="grid-column: 1 / -1;">
+        <h3>Canvas Toolbar</h3>
+        <div class="toolbar-preview">
+          <button class="tool-btn active" title="Select">&#9654;</button>
+          <button class="tool-btn" title="Hand">&#9995;</button>
+          <button class="tool-btn" title="Frame">&#9633;</button>
+          <div class="tool-sep"></div>
+          <button class="tool-btn" title="Text">T</button>
+          <button class="tool-btn" title="Shape">&#9678;</button>
+          <button class="tool-btn" title="Component">&#10697;</button>
+          <div class="tool-sep"></div>
+          <button class="tool-btn" title="Comment">&#128172;</button>
+        </div>
         <div class="sample-card">
           <div class="sample-card-img"></div>
           <div class="sample-card-body">
-            <h4>Framer Feature</h4>
-            <p>A component styled with the Framer design system tokens.</p>
+            <h4>Interactive Prototype</h4>
+            <p>A motion-rich component built with Framer's canvas tools, spring animations, and responsive breakpoints.</p>
+            <div class="sample-card-meta">
+              <span class="pill">Component</span>
+              <span class="pill">Published</span>
+              <span style="font-size:12px;color:var(--text-tertiary)">Edited 3m ago</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
 </div>
 </body>
 </html>

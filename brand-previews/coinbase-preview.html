@@ -5,130 +5,377 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coinbase Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#5b616e&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --surface: #ffffff;
-    --surface-subtle: #f8f8f8;
+    --surface-subtle: #f9fafb;
+    --surface-elevated: #ffffff;
     --accent: #0052ff;
+    --accent-hover: #014cec;
+    --accent-tint: #eef4ff;
     --text-primary: #0a0b0d;
     --text-secondary: #5b616e;
-    --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    --text-tertiary: #9397a0;
+    --border: #dcdfe4;
+    --border-subtle: #eef0f3;
+    --error: #cf202f;
+    --success: #098551;
+    --warning: #ed702f;
+    --dark-surface: #0a0b0d;
+    --dark-elevated: #1a1d21;
+    --font: 'Coinbase Sans', Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Coinbase Mono', 'JetBrains Mono', 'SF Mono', monospace;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 64px 24px; }
+
+  /* Brand Header */
   .brand-header {
     text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
+    background: var(--surface); border-radius: 16px;
+    border: 1px solid var(--border-subtle);
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
+  .brand-header h1 { font-size: 48px; font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 12px; }
+  .brand-header .accent-bar { width: 48px; height: 4px; background: var(--accent); border-radius: 2px; margin: 0 auto 16px; }
+  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 20px; font-weight: 400; }
   .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--surface-subtle); color: var(--text-secondary); border-radius: 9999px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--border-subtle); }
+
+  /* Sections */
   .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
+  .section-title { font-size: 28px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .section-desc { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.5; }
+
+  /* Color Grid */
   .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
+  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border-subtle); background: var(--surface); }
   .color-swatch .swatch-fill { height: 72px; }
   .color-swatch .swatch-info { padding: 10px 12px; }
   .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+  /* Typography */
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border-subtle); }
+  .type-label { flex: 0 0 80px; font-size: 12px; color: var(--text-tertiary); text-align: right; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
   .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
+  .type-meta { flex: 0 0 60px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-family: var(--font-mono); }
+
+  /* Spacing */
   .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
+  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-tertiary); text-align: right; font-weight: 500; }
+  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.15; }
+  .spacing-bar-fill { height: 100%; background: var(--accent); border-radius: 4px; }
+  .spacing-value { font-size: 11px; color: var(--text-tertiary); min-width: 40px; font-family: var(--font-mono); }
+
+  /* Radius */
   .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
   .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
+  .radius-box span { font-size: 11px; color: var(--text-tertiary); }
+
+  /* Shadows */
   .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .shadow-card { padding: 24px; border-radius: 12px; background: var(--surface); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
   .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-tertiary); }
+
+  /* Components */
   .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
+  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border-subtle); }
+  .comp-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 150ms ease; text-decoration: none; font-family: var(--font); }
   .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .btn-accent:hover { background: var(--accent-hover); }
+  .btn-outline { background: var(--surface); color: var(--text-primary); border: 1px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-ghost { background: transparent; color: var(--accent); }
+  .btn-ghost:hover { background: var(--accent-tint); }
   .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
-  .sample-card-body { padding: 16px; }
+
+  /* Sample Card */
+  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border-subtle); overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 2px 8px rgba(0,0,0,0.04); }
+  .sample-card-img { height: 120px; background: var(--surface-subtle); display: flex; align-items: center; justify-content: center; }
+  .sample-card-img svg { width: 48px; height: 48px; color: var(--accent); }
+  .sample-card-body { padding: 20px; }
   .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
   .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Price Ticker */
+  .ticker-card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 24px; }
+  .ticker-top { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .ticker-icon { width: 40px; height: 40px; border-radius: 50%; background: #f7931a; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 16px; }
+  .ticker-icon.eth { background: #627eea; }
+  .ticker-name { font-size: 16px; font-weight: 600; }
+  .ticker-symbol { font-size: 14px; color: var(--text-tertiary); }
+  .ticker-price { font-size: 28px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  .ticker-change { font-size: 14px; font-weight: 500; margin-top: 4px; }
+  .ticker-change.up { color: var(--success); }
+  .ticker-change.down { color: var(--error); }
+  .ticker-actions { display: flex; gap: 8px; margin-top: 20px; }
+  .ticker-actions .btn { flex: 1; justify-content: center; padding: 10px 16px; }
+
+  /* Dark Section */
+  .dark-section { background: var(--dark-surface); padding: 64px 0; margin: 0 -24px 80px; }
+  .dark-section .container { padding-top: 0; padding-bottom: 0; }
+  .dark-section .section-title { color: #ffffff; }
+  .dark-section .section-desc { color: var(--text-tertiary); }
+  .dark-card { background: var(--dark-elevated); border-radius: 12px; padding: 24px; border: 1px solid rgba(255,255,255,0.08); }
+  .dark-card h4 { color: #ffffff; font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .dark-card p { color: var(--text-tertiary); font-size: 14px; line-height: 1.5; }
+  .dark-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 768px) { .dark-grid { grid-template-columns: 1fr; } }
+
+  /* Table */
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th { font-size: 12px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.06em; text-align: left; padding: 12px 16px; background: var(--surface-subtle); }
+  .data-table th:last-child { text-align: right; }
+  .data-table td { padding: 16px; border-bottom: 1px solid var(--border-subtle); font-size: 14px; font-variant-numeric: tabular-nums; }
+  .data-table td:last-child { text-align: right; }
+  .data-table tr:hover td { background: var(--surface-subtle); }
+  .asset-cell { display: flex; align-items: center; gap: 12px; }
+  .asset-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: white; }
+  .asset-name { font-weight: 500; color: var(--text-primary); }
+  .positive { color: var(--success); font-weight: 500; }
+  .negative { color: var(--error); font-weight: 500; }
 </style>
 </head>
 <body>
 <div class="container">
   <header class="brand-header">
     <h1>Coinbase</h1>
-    <p class="aesthetic">clean fintech trust with blue precision</p>
+    <div class="accent-bar"></div>
+    <p class="aesthetic">Institutional crypto trust — clean white surfaces, Coinbase Blue restraint, financial-grade data clarity</p>
     <div class="tags">
-      <span class="tag">trust-blue</span><span class="tag">clean-surfaces</span><span class="tag">financial-clarity</span>
+      <span class="tag">coinbase-blue-restraint</span>
+      <span class="tag">white-surface-foundation</span>
+      <span class="tag">crypto-data-density</span>
+      <span class="tag">institutional-trust</span>
+      <span class="tag">system-font-precision</span>
     </div>
   </header>
 
+  <!-- Color Palette -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Coinbase visual identity.</p>
+    <p class="section-desc">CDS semantic colors defining the Coinbase visual identity. Blue is reserved for interaction; green/red for financial direction.</p>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff; border-bottom: 1px solid #eef0f3"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f9fafb"></div><div class="swatch-info"><div class="swatch-name">surface-subtle</div><div class="swatch-hex">#f9fafb</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#0052ff"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#0052ff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#014cec"></div><div class="swatch-info"><div class="swatch-name">accent-hover</div><div class="swatch-hex">#014cec</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#eef4ff"></div><div class="swatch-info"><div class="swatch-name">accent-tint</div><div class="swatch-hex">#eef4ff</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#0a0b0d"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#0a0b0d</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#5b616e"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#5b616e</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#9397a0"></div><div class="swatch-info"><div class="swatch-name">text-tertiary</div><div class="swatch-hex">#9397a0</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#dcdfe4"></div><div class="swatch-info"><div class="swatch-name">border</div><div class="swatch-hex">#dcdfe4</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#eef0f3"></div><div class="swatch-info"><div class="swatch-name">border-subtle</div><div class="swatch-hex">#eef0f3</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#cf202f"></div><div class="swatch-info"><div class="swatch-name">error / negative</div><div class="swatch-hex">#cf202f</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#098551"></div><div class="swatch-info"><div class="swatch-name">success / positive</div><div class="swatch-hex">#098551</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ed702f"></div><div class="swatch-info"><div class="swatch-name">warning</div><div class="swatch-hex">#ed702f</div></div></div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Coinbase branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Coinbase Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">Coinbase Sans (by Moniker, 2022) with Inter fallback. Unified type system — one family, strict weight discipline.</p>
+    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15;letter-spacing:-0.02em">Coinbase Design</span><span class="type-meta">48px</span></div>
+    <div class="type-row"><span class="type-label">title 1</span><span class="type-sample" style="font-size:30px;font-weight:600;line-height:1.20;letter-spacing:-0.02em">Page Heading</span><span class="type-meta">36px</span></div>
+    <div class="type-row"><span class="type-label">title 2</span><span class="type-sample" style="font-size:24px;font-weight:600;line-height:1.25;letter-spacing:-0.01em">Section Heading</span><span class="type-meta">28px</span></div>
+    <div class="type-row"><span class="type-label">title 3</span><span class="type-sample" style="font-size:20px;font-weight:600;line-height:1.25">Card Title</span><span class="type-meta">24px</span></div>
+    <div class="type-row"><span class="type-label">headline</span><span class="type-sample" style="font-size:17px;font-weight:600;line-height:1.30">Feature Name</span><span class="type-meta">20px</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content and descriptions</span><span class="type-meta">16px</span></div>
+    <div class="type-row"><span class="type-label">label</span><span class="type-sample" style="font-size:14px;font-weight:500;line-height:1.43;color:var(--text-secondary)">Navigation links and form labels</span><span class="type-meta">14px</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:12px;font-weight:500;line-height:1.33;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">Table header caption</span><span class="type-meta">12px</span></div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
-    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
-    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
-    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
-    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
-    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <p class="section-desc">8px base grid. Dense for trading data, generous for marketing surfaces.</p>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"><div class="spacing-bar-fill"></div></div><span class="spacing-value">4px</span></div>
+    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"><div class="spacing-bar-fill"></div></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"><div class="spacing-bar-fill"></div></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"><div class="spacing-bar-fill"></div></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"><div class="spacing-bar-fill"></div></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"><div class="spacing-bar-fill"></div></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:48px"><div class="spacing-bar-fill"></div></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">4xl</span><div class="spacing-bar" style="width:64px"><div class="spacing-bar-fill"></div></div><span class="spacing-value">64px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"><div class="spacing-bar-fill"></div></div><span class="spacing-value">80px</span></div>
   </section>
 
+  <!-- Border Radius -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:4px"><span>sm / 4px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>md / 8px</span></div>
+      <div class="radius-box" style="border-radius:12px"><span>lg / 12px</span></div>
+      <div class="radius-box" style="border-radius:16px"><span>xl / 16px</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span>pill / 9999px</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Elevation</h2>
+    <p class="section-desc">Subtle, functional elevation. Level-1 for inline cards, Level-2 for overlapping UI only.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="border: 1px solid var(--border-subtle);">
+        <div class="shadow-name">Level 0</div>
+        <div class="shadow-desc">Flat — no shadow, border only</div>
+      </div>
+      <div class="shadow-card" style="box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 2px 8px rgba(0,0,0,0.04);">
+        <div class="shadow-name">Level 1</div>
+        <div class="shadow-desc">Subtle — cards, dropdowns</div>
+      </div>
+      <div class="shadow-card" style="box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);">
+        <div class="shadow-name">Level 2</div>
+        <div class="shadow-desc">Elevated — modals, popovers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components -->
   <section class="section">
     <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Coinbase tokens.</p>
+    <p class="section-desc">Sample components styled with Coinbase design tokens.</p>
     <div class="comp-grid">
       <div class="comp-card">
         <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+        <div class="btn-group" style="margin-bottom:16px">
+          <button class="btn btn-accent">Get started</button>
+          <button class="btn btn-outline">Learn more</button>
+          <button class="btn btn-ghost">View all</button>
         </div>
       </div>
       <div class="comp-card">
         <h3>Content Card</h3>
         <div class="sample-card">
-          <div class="sample-card-img"></div>
+          <div class="sample-card-img">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+          </div>
           <div class="sample-card-body">
-            <h4>Coinbase Feature</h4>
-            <p>A component styled with the Coinbase design system tokens.</p>
+            <h4>Earn crypto rewards</h4>
+            <p>Put your crypto to work earning rewards on Coinbase.</p>
+          </div>
+        </div>
+      </div>
+      <div class="comp-card">
+        <h3>Price Ticker</h3>
+        <div class="ticker-card">
+          <div class="ticker-top">
+            <div class="ticker-icon">B</div>
+            <div>
+              <div class="ticker-name">Bitcoin</div>
+              <div class="ticker-symbol">BTC</div>
+            </div>
+          </div>
+          <div class="ticker-price">$67,234.18</div>
+          <div class="ticker-change up">+2.34% today</div>
+          <div class="ticker-actions">
+            <button class="btn btn-accent">Buy</button>
+            <button class="btn btn-outline">Sell</button>
+          </div>
+        </div>
+      </div>
+      <div class="comp-card">
+        <h3>Price Ticker (Negative)</h3>
+        <div class="ticker-card">
+          <div class="ticker-top">
+            <div class="ticker-icon eth">E</div>
+            <div>
+              <div class="ticker-name">Ethereum</div>
+              <div class="ticker-symbol">ETH</div>
+            </div>
+          </div>
+          <div class="ticker-price">$3,456.72</div>
+          <div class="ticker-change down">-1.12% today</div>
+          <div class="ticker-actions">
+            <button class="btn btn-accent">Buy</button>
+            <button class="btn btn-outline">Sell</button>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Data Table -->
+  <section class="section">
+    <h2 class="section-title">Portfolio Table</h2>
+    <p class="section-desc">Financial data with tabular numerics, green/red price direction, and dense row spacing.</p>
+    <div style="border: 1px solid var(--border-subtle); border-radius: 12px; overflow: hidden;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Price</th>
+            <th>24h Change</th>
+            <th>Holdings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="asset-cell"><div class="asset-icon" style="background:#f7931a">B</div><div class="asset-name">Bitcoin<br><span style="font-size:12px;color:var(--text-tertiary);font-weight:400">BTC</span></div></div></td>
+            <td style="font-weight:500">$67,234.18</td>
+            <td class="positive">+2.34%</td>
+            <td>0.4521 BTC</td>
+          </tr>
+          <tr>
+            <td><div class="asset-cell"><div class="asset-icon" style="background:#627eea">E</div><div class="asset-name">Ethereum<br><span style="font-size:12px;color:var(--text-tertiary);font-weight:400">ETH</span></div></div></td>
+            <td style="font-weight:500">$3,456.72</td>
+            <td class="negative">-1.12%</td>
+            <td>2.8400 ETH</td>
+          </tr>
+          <tr>
+            <td><div class="asset-cell"><div class="asset-icon" style="background:#2775ca">U</div><div class="asset-name">USD Coin<br><span style="font-size:12px;color:var(--text-tertiary);font-weight:400">USDC</span></div></div></td>
+            <td style="font-weight:500">$1.00</td>
+            <td style="color:var(--text-tertiary)">0.00%</td>
+            <td>5,000.00 USDC</td>
+          </tr>
+          <tr>
+            <td><div class="asset-cell"><div class="asset-icon" style="background:#345d9d">S</div><div class="asset-name">Solana<br><span style="font-size:12px;color:var(--text-tertiary);font-weight:400">SOL</span></div></div></td>
+            <td style="font-weight:500">$142.56</td>
+            <td class="positive">+5.67%</td>
+            <td>28.0000 SOL</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Dark Mode Preview -->
+  <section class="section" style="margin-bottom:0">
+    <h2 class="section-title">Dark Mode</h2>
+    <p class="section-desc">Dark variant for trading interfaces and mobile apps.</p>
+  </section>
+</div>
+<div class="dark-section">
+  <div class="container">
+    <div class="dark-grid">
+      <div class="dark-card">
+        <h4>Portfolio Value</h4>
+        <p style="font-size:28px;font-weight:600;color:#ffffff;font-variant-numeric:tabular-nums;margin:12px 0 4px">$42,891.36</p>
+        <p style="color:#098551;font-weight:500;font-size:14px">+$1,234.56 (2.96%) today</p>
+      </div>
+      <div class="dark-card">
+        <h4>Wallet Address</h4>
+        <p style="font-family:var(--font-mono);color:#9397a0;font-size:14px;margin-top:12px;word-break:break-all">0x742d...2bD28</p>
+        <p style="margin-top:8px"><span style="display:inline-block;padding:4px 10px;background:rgba(0,82,255,0.15);color:#5b8cff;border-radius:9999px;font-size:11px;font-weight:500">Connected</span></p>
+      </div>
+      <div class="dark-card">
+        <h4>Gas Fees</h4>
+        <p style="font-size:20px;font-weight:600;color:#ffffff;margin-top:12px">12 Gwei</p>
+        <p style="color:#ed702f;font-size:12px;font-weight:500;margin-top:4px">Network busy</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" style="padding-top:0; padding-bottom:48px; text-align:center;">
+  <p style="font-size:12px; color:var(--text-tertiary);">Coinbase brand tokens preview. Colors sourced from Coinbase Design System (CDS) and CDP developer documentation.</p>
 </div>
 </body>
 </html>

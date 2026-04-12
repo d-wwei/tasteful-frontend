@@ -1,227 +1,595 @@
 {
   "$extensions": {
     "brand": "shopify",
-    "source": "awesome-design-md",
-    "aesthetic": "commerce green with polaris design system",
+    "source": "polaris-react.shopify.com/tokens",
+    "aesthetic": "Polaris design system — merchant-focused admin UI with restrained commerce-green accents, bevel shadows for tactile depth, and dense information hierarchy optimized for daily workflow tools",
     "key-characteristics": [
-      "polaris-system",
-      "commerce-green",
-      "merchant-friendly"
+      "polaris-design-system",
+      "admin-surface-gray",
+      "commerce-green-accent",
+      "bevel-shadow-depth",
+      "merchant-workflow-density"
     ]
   },
   "color": {
+    "bg": {
+      "$value": "rgba(241, 241, 241, 1)",
+      "$type": "color",
+      "$description": "Page background — neutral gray canvas behind cards (--p-color-bg)"
+    },
+    "bg-surface": {
+      "$value": "rgba(255, 255, 255, 1)",
+      "$type": "color",
+      "$description": "Card/panel surface — white content containers (--p-color-bg-surface)"
+    },
+    "bg-surface-hover": {
+      "$value": "rgba(247, 247, 247, 1)",
+      "$type": "color",
+      "$description": "Surface hover state (--p-color-bg-surface-hover)"
+    },
+    "bg-surface-active": {
+      "$value": "rgba(243, 243, 243, 1)",
+      "$type": "color",
+      "$description": "Surface active/pressed state (--p-color-bg-surface-active)"
+    },
+    "bg-surface-secondary": {
+      "$value": "rgba(247, 247, 247, 1)",
+      "$type": "color",
+      "$description": "Secondary surface — filters, sidebars (--p-color-bg-surface-secondary)"
+    },
+    "bg-surface-tertiary": {
+      "$value": "rgba(243, 243, 243, 1)",
+      "$type": "color",
+      "$description": "Tertiary surface — nested containers (--p-color-bg-surface-tertiary)"
+    },
+    "bg-fill-brand": {
+      "$value": "rgba(48, 48, 48, 1)",
+      "$type": "color",
+      "$description": "Brand fill — primary buttons, dark UI chrome (#303030)"
+    },
+    "bg-fill-brand-hover": {
+      "$value": "rgba(26, 26, 26, 1)",
+      "$type": "color",
+      "$description": "Brand fill hover — darker on interaction (#1a1a1a)"
+    },
+    "bg-fill-success": {
+      "$value": "rgba(4, 123, 93, 1)",
+      "$type": "color",
+      "$description": "Success fill — Shopify Green for positive states (#047b5d)"
+    },
+    "bg-fill-critical": {
+      "$value": "rgba(199, 10, 36, 1)",
+      "$type": "color",
+      "$description": "Critical fill — destructive actions (#c70a24)"
+    },
+    "bg-fill-warning": {
+      "$value": "rgba(255, 184, 0, 1)",
+      "$type": "color",
+      "$description": "Warning fill — caution states (#ffb800)"
+    },
+    "bg-fill-info": {
+      "$value": "rgba(145, 208, 255, 1)",
+      "$type": "color",
+      "$description": "Info fill — informational badges (#91d0ff)"
+    },
+    "text": {
+      "$value": "rgba(48, 48, 48, 1)",
+      "$type": "color",
+      "$description": "Primary text — #303030, warm near-black (--p-color-text)"
+    },
+    "text-secondary": {
+      "$value": "rgba(97, 97, 97, 1)",
+      "$type": "color",
+      "$description": "Secondary text — #616161 for descriptions, metadata (--p-color-text-secondary)"
+    },
+    "text-link": {
+      "$value": "rgba(0, 91, 211, 1)",
+      "$type": "color",
+      "$description": "Link text — interactive blue (#005bd3)"
+    },
+    "text-success": {
+      "$value": "rgba(1, 75, 64, 1)",
+      "$type": "color",
+      "$description": "Success text — deep green for positive messaging (#014b40)"
+    },
+    "text-critical": {
+      "$value": "rgba(142, 11, 33, 1)",
+      "$type": "color",
+      "$description": "Critical text — error messaging (#8e0b21)"
+    },
+    "text-inverse": {
+      "$value": "rgba(227, 227, 227, 1)",
+      "$type": "color",
+      "$description": "Inverse text — light text on dark surfaces (#e3e3e3)"
+    },
+    "border": {
+      "$value": "rgba(227, 227, 227, 1)",
+      "$type": "color",
+      "$description": "Default border — #e3e3e3 subtle containment (--p-color-border)"
+    },
+    "border-focus": {
+      "$value": "rgba(0, 91, 211, 1)",
+      "$type": "color",
+      "$description": "Focus ring border — interactive blue (#005bd3)"
+    },
+    "icon": {
+      "$value": "rgba(74, 74, 74, 1)",
+      "$type": "color",
+      "$description": "Default icon color (#4a4a4a)"
+    },
+    "icon-success": {
+      "$value": "rgba(4, 123, 93, 1)",
+      "$type": "color",
+      "$description": "Success icon — Shopify Green (#047b5d)"
+    },
+    "icon-critical": {
+      "$value": "rgba(226, 44, 56, 1)",
+      "$type": "color",
+      "$description": "Critical icon — red for errors (#e22c38)"
+    },
     "surface": {
-      "$value": "#ffffff",
+      "$value": "rgba(241, 241, 241, 1)",
       "$type": "color",
       "$description": "Primary background"
     },
     "surface-subtle": {
-      "$value": "#f8f8f8",
+      "$value": "rgba(255, 255, 255, 1)",
       "$type": "color",
       "$description": "Secondary surface"
     },
     "accent": {
-      "$value": "#008060",
+      "$value": "rgba(48, 48, 48, 1)",
       "$type": "color",
-      "$description": "Primary accent color"
+      "$description": "Primary accent color (brand fill)"
     },
     "accent-hover": {
-      "$value": "#008060",
+      "$value": "rgba(26, 26, 26, 1)",
       "$type": "color",
       "$description": "Accent hover state"
     },
     "text-primary": {
-      "$value": "#202223",
+      "$value": "rgba(48, 48, 48, 1)",
       "$type": "color",
       "$description": "Primary text"
     },
-    "text-secondary": {
-      "$value": "#6d7175",
-      "$type": "color",
-      "$description": "Secondary text"
-    },
-    "text-on-accent": {
-      "$value": "#ffffff",
-      "$type": "color",
-      "$description": "Text on accent"
-    },
     "error": {
-      "$value": "#d82c0d",
+      "$value": "rgba(199, 10, 36, 1)",
       "$type": "color",
-      "$description": "Error state"
+      "$description": "Error/critical state"
     },
     "success": {
-      "$value": "#008060",
+      "$value": "rgba(4, 123, 93, 1)",
       "$type": "color",
       "$description": "Success state"
-    },
-    "border": {
-      "$value": "#e5e5e5",
-      "$type": "color",
-      "$description": "Default border"
     }
   },
   "typography": {
-    "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+    "font-sans": {
+      "$value": "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Polaris sans — Inter with system fallback stack (--p-font-family-sans)"
     },
-    "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+    "font-mono": {
+      "$value": "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Polaris mono — for code and data inputs (--p-font-family-mono)"
     },
-    "scale-display": {
-      "$value": "48px",
+    "size-275": {
+      "$value": "11px",
       "$type": "dimension",
-      "$description": "Display"
+      "$description": "Smallest — badges, fine print (--p-font-size-275)"
     },
-    "scale-section": {
-      "$value": "32px",
-      "$type": "dimension",
-      "$description": "Section"
-    },
-    "scale-base": {
-      "$value": "16px",
-      "$type": "dimension",
-      "$description": "Body"
-    },
-    "scale-caption": {
-      "$value": "14px",
-      "$type": "dimension",
-      "$description": "Caption"
-    },
-    "scale-small": {
+    "size-300": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Caption — labels, metadata (--p-font-size-300)"
     },
-    "line-height-tight": {
-      "$value": "1.15",
-      "$type": "number",
-      "$description": "Tight"
+    "size-325": {
+      "$value": "13px",
+      "$type": "dimension",
+      "$description": "Small body — dense UI text (--p-font-size-325)"
     },
-    "line-height-normal": {
-      "$value": "1.50",
-      "$type": "number",
-      "$description": "Normal"
+    "size-350": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Base body — Polaris default body size (--p-font-size-350)"
+    },
+    "size-400": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large body — prominent descriptions (--p-font-size-400)"
+    },
+    "size-500": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Subheading — card titles, section labels (--p-font-size-500)"
+    },
+    "size-600": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Page heading — primary page titles (--p-font-size-600)"
+    },
+    "size-750": {
+      "$value": "30px",
+      "$type": "dimension",
+      "$description": "Large heading — hero content (--p-font-size-750)"
+    },
+    "size-900": {
+      "$value": "36px",
+      "$type": "dimension",
+      "$description": "Display — marketing hero headlines (--p-font-size-900)"
+    },
+    "size-1000": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Largest display — maximum heading size (--p-font-size-1000)"
+    },
+    "line-height-400": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Compact line-height for small text"
+    },
+    "line-height-500": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Standard body line-height (14px body)"
+    },
+    "line-height-600": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Relaxed body line-height (16px body)"
+    },
+    "line-height-800": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Heading line-height"
+    },
+    "line-height-1000": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Large heading line-height"
+    },
+    "line-height-1200": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Display line-height"
     },
     "weight-regular": {
-      "$value": "400",
+      "$value": "450",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular weight — Polaris uses 450, not standard 400 (--p-font-weight-regular)"
     },
     "weight-medium": {
-      "$value": "500",
+      "$value": "550",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium weight — emphasis, buttons (--p-font-weight-medium)"
     },
     "weight-semibold": {
-      "$value": "600",
+      "$value": "650",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Semibold — headings, strong emphasis (--p-font-weight-semibold)"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold — rare, display headlines only (--p-font-weight-bold)"
+    },
+    "letter-spacing-densest": {
+      "$value": "-0.54px",
+      "$type": "dimension",
+      "$description": "Densest tracking — large display text"
+    },
+    "letter-spacing-denser": {
+      "$value": "-0.3px",
+      "$type": "dimension",
+      "$description": "Denser tracking — headings"
+    },
+    "letter-spacing-dense": {
+      "$value": "-0.2px",
+      "$type": "dimension",
+      "$description": "Dense tracking — subheadings"
+    },
+    "letter-spacing-normal": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "Normal tracking — body text"
+    },
+    "font-display": {
+      "$value": "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+      "$type": "fontFamily",
+      "$description": "Alias for font-sans"
+    },
+    "font-body": {
+      "$value": "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+      "$type": "fontFamily",
+      "$description": "Alias for font-sans"
     }
   },
   "spacing": {
-    "unit": {
-      "$value": "8px",
+    "space-0": {
+      "$value": "0px",
       "$type": "dimension",
-      "$description": "Base unit"
+      "$description": "Zero (--p-space-0)"
     },
-    "xs": {
+    "space-025": {
+      "$value": "1px",
+      "$type": "dimension",
+      "$description": "Hairline — borders, dividers (--p-space-025)"
+    },
+    "space-050": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Micro — icon gaps (--p-space-050)"
+    },
+    "space-100": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Base unit — Polaris 4px grid foundation (--p-space-100)"
     },
-    "sm": {
+    "space-150": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Tight — inline spacing (--p-space-150)"
+    },
+    "space-200": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small — button gaps, compact padding (--p-space-200)"
     },
-    "md": {
+    "space-300": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Medium — card internal gaps (--p-space-300)"
     },
-    "lg": {
+    "space-400": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Standard — card padding, section gaps (--p-space-400)"
     },
-    "xl": {
+    "space-500": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Comfortable — page padding (--p-space-500)"
+    },
+    "space-600": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Generous — section spacing (--p-space-600)"
     },
-    "2xl": {
+    "space-800": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Large — page section gaps (--p-space-800)"
     },
-    "section-gap": {
-      "$value": "80px",
+    "space-1000": {
+      "$value": "40px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "XL — major section breaks (--p-space-1000)"
     },
-    "container-max": {
-      "$value": "1200px",
+    "space-1200": {
+      "$value": "48px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "2XL — page-level spacing (--p-space-1200)"
+    },
+    "space-1600": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "3XL — hero sections (--p-space-1600)"
+    },
+    "card-padding": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Card internal padding — Polaris card standard (--p-space-card-padding)"
+    },
+    "card-gap": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Gap between card content blocks (--p-space-card-gap)"
+    },
+    "table-cell-padding": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Table cell padding — dense data display (--p-space-table-cell-padding)"
+    },
+    "button-group-gap": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Gap between buttons in a group (--p-space-button-group-gap)"
     }
   },
   "border": {
-    "radius-standard": {
+    "radius-0": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "No radius (--p-border-radius-0)"
+    },
+    "radius-050": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Subtle — badges, pills (--p-border-radius-050)"
+    },
+    "radius-100": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small — inputs, inline elements (--p-border-radius-100)"
+    },
+    "radius-150": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Standard — buttons (--p-border-radius-150)"
+    },
+    "radius-200": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Medium — cards, modals, the Polaris card default (--p-border-radius-200)"
     },
-    "radius-pill": {
+    "radius-300": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Large — featured containers, banners (--p-border-radius-300)"
+    },
+    "radius-400": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "XL — hero panels (--p-border-radius-400)"
+    },
+    "radius-full": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill"
+      "$description": "Pill — full round for badges/avatars (--p-border-radius-full)"
+    },
+    "width-025": {
+      "$value": "1px",
+      "$type": "dimension",
+      "$description": "Default border width — most borders (--p-border-width-025)"
+    },
+    "width-050": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Thick border — emphasis, focus rings (--p-border-width-050)"
     }
   },
   "shadow": {
-    "level-0": {
+    "shadow-0": {
+      "$value": "none",
+      "$type": "shadow",
+      "$description": "Flat — no elevation (--p-shadow-0)"
+    },
+    "shadow-100": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "rgba(26, 26, 26, 0.07)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Minimal — card resting state, subtle depth (--p-shadow-100)"
+    },
+    "shadow-200": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "3px",
+          "blur": "1px",
+          "spread": "-1px",
+          "color": "rgba(26, 26, 26, 0.07)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Low — popovers, raised cards (--p-shadow-200)"
+    },
+    "shadow-300": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "6px",
+          "spread": "-2px",
+          "color": "rgba(26, 26, 26, 0.20)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Medium — dropdowns, tooltips (--p-shadow-300)"
+    },
+    "shadow-400": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "16px",
+          "spread": "-4px",
+          "color": "rgba(26, 26, 26, 0.22)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "High — modals, drawers (--p-shadow-400)"
+    },
+    "shadow-500": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "20px",
+          "spread": "-8px",
+          "color": "rgba(26, 26, 26, 0.24)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Higher — layered overlays (--p-shadow-500)"
+    },
+    "shadow-600": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "20px",
+          "blur": "20px",
+          "spread": "-8px",
+          "color": "rgba(26, 26, 26, 0.28)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Highest — top-level modals (--p-shadow-600)"
+    },
+    "shadow-border-inset": {
       "$value": [
         {
           "offsetX": "0px",
           "offsetY": "0px",
           "blur": "0px",
-          "spread": "0px",
-          "color": "transparent"
+          "spread": "1px",
+          "color": "rgba(0, 0, 0, 0.08)",
+          "inset": true
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
-    },
-    "level-1": {
-      "$value": [
-        {
-          "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
-          "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
-        }
-      ],
-      "$type": "shadow",
-      "$description": "Subtle"
+      "$description": "Inset border — hairline inset for inputs (--p-shadow-border-inset)"
     }
   },
   "motion": {
-    "duration-fast": {
+    "duration-0": {
+      "$value": "0ms",
+      "$type": "duration",
+      "$description": "Instant (--p-motion-duration-0)"
+    },
+    "duration-50": {
+      "$value": "50ms",
+      "$type": "duration",
+      "$description": "Micro — color changes, opacity (--p-motion-duration-50)"
+    },
+    "duration-100": {
+      "$value": "100ms",
+      "$type": "duration",
+      "$description": "Fast — button presses, toggles (--p-motion-duration-100)"
+    },
+    "duration-150": {
       "$value": "150ms",
       "$type": "duration",
-      "$description": "Fast"
+      "$description": "Quick — hover states, small transforms (--p-motion-duration-150)"
     },
-    "duration-normal": {
+    "duration-200": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Normal"
+      "$description": "Standard — most interactions (--p-motion-duration-200)"
     },
-    "easing-default": {
+    "duration-300": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Moderate — panels, drawers opening (--p-motion-duration-300)"
+    },
+    "duration-400": {
+      "$value": "400ms",
+      "$type": "duration",
+      "$description": "Slow — page transitions, modals (--p-motion-duration-400)"
+    },
+    "duration-500": {
+      "$value": "500ms",
+      "$type": "duration",
+      "$description": "Deliberate — complex animations (--p-motion-duration-500)"
+    },
+    "ease": {
       "$value": [
         0.25,
         0.1,
@@ -229,24 +597,74 @@
         1
       ],
       "$type": "cubicBezier",
-      "$description": "Ease"
+      "$description": "Default — responsive start, controlled finish (--p-motion-ease)"
+    },
+    "ease-in": {
+      "$value": [
+        0.42,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Accelerate — elements leaving view (--p-motion-ease-in)"
+    },
+    "ease-out": {
+      "$value": [
+        0.19,
+        0.91,
+        0.38,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Decelerate — elements entering view (--p-motion-ease-out)"
+    },
+    "ease-in-out": {
+      "$value": [
+        0.42,
+        0,
+        0.58,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Symmetric — system-triggered transitions (--p-motion-ease-in-out)"
+    },
+    "linear": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Constant — spinners, progress bars (--p-motion-linear)"
     }
   },
   "breakpoint": {
-    "mobile": {
-      "$value": "640px",
+    "xs": {
+      "$value": "0px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Base — all viewports (--p-breakpoints-xs)"
     },
-    "tablet": {
+    "sm": {
+      "$value": "490px",
+      "$type": "dimension",
+      "$description": "Small — large phones (--p-breakpoints-sm)"
+    },
+    "md": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Medium — tablets (--p-breakpoints-md)"
     },
-    "desktop": {
-      "$value": "1024px",
+    "lg": {
+      "$value": "1040px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Large — desktops (--p-breakpoints-lg)"
+    },
+    "xl": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "XL — wide desktops (--p-breakpoints-xl)"
     }
   }
 }

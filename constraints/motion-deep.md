@@ -42,6 +42,8 @@ Longer travel distance requires slightly longer duration. An element moving 20px
 
 Never exceed 500ms for any single UI animation. Beyond that, the interface feels sluggish regardless of how smooth the motion is.
 
+> Note: The accessibility baseline (constraints/accessibility.md) sets a stricter 400ms ceiling for most transitions. 500ms is the hard maximum reserved for the most complex animations (full-screen morph, multi-element layout shifts). Default to 400ms when in doubt.
+
 ---
 
 ## Easing: Exponential Curves

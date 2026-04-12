@@ -84,5 +84,23 @@
     "section-gap": { "$value": "{spacing.space-20}", "$type": "dimension", "$description": "80px — between major sections" },
     "page-margin-desktop": { "$value": "{spacing.space-16}", "$type": "dimension", "$description": "64px desktop margin" },
     "page-margin-mobile": { "$value": "{spacing.space-4}", "$type": "dimension", "$description": "16px mobile margin" }
+  },
+  "border": {
+    "radius-sm": { "$value": "{border.radius-sm}", "$type": "dimension" },
+    "radius-md": { "$value": "{border.radius-md}", "$type": "dimension" },
+    "radius-lg": { "$value": "{border.radius-lg}", "$type": "dimension" },
+    "radius-full": { "$value": "{border.radius-full}", "$type": "dimension" }
+  },
+  "shadow": {
+    "shadow-sm": { "$value": "{shadow.shadow-sm}", "$type": "shadow" },
+    "shadow-md": { "$value": "{shadow.shadow-md}", "$type": "shadow" },
+    "shadow-lg": { "$value": "{shadow.shadow-lg}", "$type": "shadow" }
+  },
+  "motion": {
+    "duration-fast": { "$value": "{motion.duration-fast}", "$type": "duration" },
+    "duration-normal": { "$value": "{motion.duration-normal}", "$type": "duration" },
+    "duration-slow": { "$value": "{motion.duration-slow}", "$type": "duration" },
+    "easing-default": { "$value": "{motion.easing-default}", "$type": "cubicBezier" },
+    "easing-exit": { "$value": "{motion.easing-exit}", "$type": "cubicBezier" }
   }
 }

@@ -1,185 +1,517 @@
 {
   "$extensions": {
     "brand": "posthog",
-    "source": "awesome-design-md",
-    "aesthetic": "quirky product analytics with hedgehog personality",
+    "source": "posthog.com/handbook/brand + posthog.com/components",
+    "aesthetic": "bold developer analytics -- playful, anti-corporate, data-obsessed",
     "key-characteristics": [
-      "quirky-brand",
-      "data-visualization",
-      "developer-friendly"
+      "analytics-native",
+      "developer-playful",
+      "dark-mode-first",
+      "data-visualization-heavy",
+      "anti-corporate-personality"
     ]
   },
   "color": {
     "surface": {
+      "$value": "#1d1f27",
+      "$type": "color",
+      "$description": "Primary dark background -- PostHog's native dark canvas for dashboards and app chrome"
+    },
+    "surface-light": {
+      "$value": "#f9f9f9",
+      "$type": "color",
+      "$description": "Light mode background -- clean near-white for marketing pages and docs"
+    },
+    "surface-elevated": {
+      "$value": "#2c2e38",
+      "$type": "color",
+      "$description": "Elevated card surface on dark -- sidebar panels, dashboard cards, modals"
+    },
+    "surface-elevated-light": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Primary background"
+      "$description": "Elevated card surface on light -- white cards on near-white background"
     },
-    "surface-subtle": {
-      "$value": "#f8f8f8",
+    "surface-input": {
+      "$value": "#35374a",
       "$type": "color",
-      "$description": "Secondary surface"
+      "$description": "Input field and dropdown background on dark surfaces"
+    },
+    "surface-hover": {
+      "$value": "#3b3d4f",
+      "$type": "color",
+      "$description": "Row hover, list item hover, sidebar item active on dark"
+    },
+    "surface-code": {
+      "$value": "#1a1a2e",
+      "$type": "color",
+      "$description": "Code block and terminal background -- slightly cooler than main dark surface"
+    },
+    "surface-yellow-highlight": {
+      "$value": "#484427",
+      "$type": "color",
+      "$description": "Muted yellow highlight for feature flags, experiment banners on dark"
     },
     "accent": {
       "$value": "#f54e00",
       "$type": "color",
-      "$description": "Primary accent color"
+      "$description": "PostHog Orange -- the signature brand color, used for primary CTAs and brand moments only"
     },
     "accent-hover": {
-      "$value": "#f54e00",
+      "$value": "#e04600",
       "$type": "color",
-      "$description": "Accent hover state"
+      "$description": "Darker orange for hover/pressed states on primary buttons"
+    },
+    "accent-light": {
+      "$value": "#fff1eb",
+      "$type": "color",
+      "$description": "Faint orange tint for light-mode hover backgrounds and selected states"
+    },
+    "accent-muted": {
+      "$value": "#3d2a1f",
+      "$type": "color",
+      "$description": "Muted warm-dark tone for orange-tinted backgrounds on dark surfaces"
     },
     "text-primary": {
+      "$value": "#eeefe9",
+      "$type": "color",
+      "$description": "Primary text on dark -- slightly warm off-white, never pure white"
+    },
+    "text-primary-light": {
       "$value": "#151515",
       "$type": "color",
-      "$description": "Primary text"
+      "$description": "Primary text on light surfaces -- near-black"
     },
     "text-secondary": {
-      "$value": "#7a7a7a",
+      "$value": "#9ba0aa",
       "$type": "color",
-      "$description": "Secondary text"
+      "$description": "Secondary text on dark -- muted cool gray for descriptions and metadata"
+    },
+    "text-secondary-light": {
+      "$value": "#6b7280",
+      "$type": "color",
+      "$description": "Secondary text on light surfaces"
+    },
+    "text-tertiary": {
+      "$value": "#6b7280",
+      "$type": "color",
+      "$description": "De-emphasized text, timestamps, helper text on dark"
     },
     "text-on-accent": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Text on accent"
+      "$description": "White text on orange accent buttons and badges"
     },
-    "error": {
+    "text-link": {
       "$value": "#f54e00",
       "$type": "color",
-      "$description": "Error state"
+      "$description": "Link text color -- uses brand orange for high visibility"
+    },
+    "error": {
+      "$value": "#f44336",
+      "$type": "color",
+      "$description": "Error/danger -- slightly warmer red than Material, distinct from brand orange"
+    },
+    "error-bg": {
+      "$value": "#3d1f1f",
+      "$type": "color",
+      "$description": "Error background tint on dark surfaces"
     },
     "success": {
-      "$value": "#4caf50",
+      "$value": "#77b96c",
       "$type": "color",
-      "$description": "Success state"
+      "$description": "Success/positive -- muted green that works on both dark and light"
+    },
+    "success-bg": {
+      "$value": "#1f3d24",
+      "$type": "color",
+      "$description": "Success background tint on dark surfaces"
+    },
+    "warning": {
+      "$value": "#f1a82c",
+      "$type": "color",
+      "$description": "Warning/caution -- warm amber distinct from brand orange"
+    },
+    "warning-bg": {
+      "$value": "#3d3420",
+      "$type": "color",
+      "$description": "Warning background tint on dark surfaces"
+    },
+    "info": {
+      "$value": "#1d8aed",
+      "$type": "color",
+      "$description": "Informational state -- standard blue for notices and tooltips"
     },
     "border": {
-      "$value": "#e5e5e5",
+      "$value": "#3b3d4f",
       "$type": "color",
-      "$description": "Default border"
+      "$description": "Default border on dark -- subtle separation without visual weight"
+    },
+    "border-light": {
+      "$value": "#e5e7eb",
+      "$type": "color",
+      "$description": "Default border on light surfaces"
+    },
+    "border-strong": {
+      "$value": "#565869",
+      "$type": "color",
+      "$description": "Emphasized border on dark -- table headers, active input focus ring"
+    },
+    "border-accent": {
+      "$value": "#f54e00",
+      "$type": "color",
+      "$description": "Accent border for active tabs, selected states, focus indicators"
+    },
+    "focus": {
+      "$value": "#1d8aed",
+      "$type": "color",
+      "$description": "Focus ring color -- blue for accessibility contrast against orange brand"
+    },
+    "chart-1": {
+      "$value": "#1d8aed",
+      "$type": "color",
+      "$description": "Chart series 1 -- primary blue for trends and main metric"
+    },
+    "chart-2": {
+      "$value": "#6c3ff2",
+      "$type": "color",
+      "$description": "Chart series 2 -- purple for secondary data series"
+    },
+    "chart-3": {
+      "$value": "#f54e00",
+      "$type": "color",
+      "$description": "Chart series 3 -- brand orange for highlighted/target series"
+    },
+    "chart-4": {
+      "$value": "#42b983",
+      "$type": "color",
+      "$description": "Chart series 4 -- teal-green for success/positive metrics"
+    },
+    "chart-5": {
+      "$value": "#f1a82c",
+      "$type": "color",
+      "$description": "Chart series 5 -- amber for warning/attention series"
+    },
+    "chart-6": {
+      "$value": "#ff6384",
+      "$type": "color",
+      "$description": "Chart series 6 -- pink-coral for additional contrast"
+    },
+    "chart-7": {
+      "$value": "#36a2eb",
+      "$type": "color",
+      "$description": "Chart series 7 -- lighter blue for extended palettes"
+    },
+    "chart-8": {
+      "$value": "#9966ff",
+      "$type": "color",
+      "$description": "Chart series 8 -- light purple for extended palettes"
+    },
+    "funnel-step": {
+      "$value": "#1d8aed",
+      "$type": "color",
+      "$description": "Funnel step fill -- semi-transparent blue bars in conversion funnels"
+    },
+    "funnel-drop": {
+      "$value": "#565869",
+      "$type": "color",
+      "$description": "Funnel drop-off area -- muted gray for lost users between steps"
+    },
+    "retention-high": {
+      "$value": "#1d8aed",
+      "$type": "color",
+      "$description": "Retention heatmap high value -- saturated blue for strong retention"
+    },
+    "retention-low": {
+      "$value": "#1d1f27",
+      "$type": "color",
+      "$description": "Retention heatmap low value -- fades into dark surface for poor retention"
+    },
+    "neutral-50": {
+      "$value": "#f9f9f9",
+      "$type": "color",
+      "$description": "Lightest neutral"
+    },
+    "neutral-100": {
+      "$value": "#f0f0f0",
+      "$type": "color",
+      "$description": "Light gray"
+    },
+    "neutral-200": {
+      "$value": "#e5e7eb",
+      "$type": "color",
+      "$description": "Border light"
+    },
+    "neutral-300": {
+      "$value": "#d1d5db",
+      "$type": "color",
+      "$description": "Disabled elements on light"
+    },
+    "neutral-400": {
+      "$value": "#9ba0aa",
+      "$type": "color",
+      "$description": "Placeholder text"
+    },
+    "neutral-500": {
+      "$value": "#6b7280",
+      "$type": "color",
+      "$description": "Secondary text"
+    },
+    "neutral-600": {
+      "$value": "#565869",
+      "$type": "color",
+      "$description": "Strong border dark"
+    },
+    "neutral-700": {
+      "$value": "#3b3d4f",
+      "$type": "color",
+      "$description": "Default border dark"
+    },
+    "neutral-800": {
+      "$value": "#2c2e38",
+      "$type": "color",
+      "$description": "Elevated surface dark"
+    },
+    "neutral-900": {
+      "$value": "#1d1f27",
+      "$type": "color",
+      "$description": "Primary surface dark"
+    },
+    "neutral-950": {
+      "$value": "#111318",
+      "$type": "color",
+      "$description": "Deepest dark -- sidebar, overlays"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "IBM Plex Sans, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Headlines and display text -- IBM Plex Sans Variable, PostHog's brand font with humanist character"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "IBM Plex Sans, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body and UI text -- same family, unifying the whole product around a single typeface"
     },
-    "scale-display": {
-      "$value": "48px",
+    "font-mono": {
+      "$value": "Source Code Pro, JetBrains Mono, Menlo, monospace",
+      "$type": "fontFamily",
+      "$description": "Code, HogQL queries, technical output -- developer-friendly monospace"
+    },
+    "scale-overline": {
+      "$value": "11px",
       "$type": "dimension",
-      "$description": "Display"
+      "$description": "Uppercase overline labels, chart axis labels"
     },
-    "scale-section": {
-      "$value": "32px",
-      "$type": "dimension",
-      "$description": "Section"
-    },
-    "scale-base": {
-      "$value": "16px",
-      "$type": "dimension",
-      "$description": "Body"
-    },
-    "scale-caption": {
-      "$value": "14px",
-      "$type": "dimension",
-      "$description": "Caption"
-    },
-    "scale-small": {
+    "scale-label": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Badges, small metadata, table headers"
+    },
+    "scale-caption": {
+      "$value": "13px",
+      "$type": "dimension",
+      "$description": "Sidebar nav items, tooltip text, chart legends"
+    },
+    "scale-small": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Secondary body text, button labels, dropdown items"
+    },
+    "scale-base": {
+      "$value": "15px",
+      "$type": "dimension",
+      "$description": "Standard body text -- PostHog uses 15px as app body default"
+    },
+    "scale-lg": {
+      "$value": "17px",
+      "$type": "dimension",
+      "$description": "Lead paragraphs, intro text on marketing pages"
+    },
+    "scale-xl": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Card titles, feature headings"
+    },
+    "scale-2xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Section headings within dashboards and settings"
+    },
+    "scale-3xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Page titles, major section headings"
+    },
+    "scale-4xl": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Hero subheading on marketing pages"
+    },
+    "scale-display": {
+      "$value": "56px",
+      "$type": "dimension",
+      "$description": "Hero display text -- bold and punchy, not oversized"
     },
     "line-height-tight": {
       "$value": "1.15",
       "$type": "number",
-      "$description": "Tight"
+      "$description": "Display and hero headings -- compact for impact"
+    },
+    "line-height-snug": {
+      "$value": "1.25",
+      "$type": "number",
+      "$description": "Section headings and card titles"
     },
     "line-height-normal": {
       "$value": "1.50",
       "$type": "number",
-      "$description": "Normal"
+      "$description": "Body text -- comfortable reading without excessive spacing"
+    },
+    "line-height-relaxed": {
+      "$value": "1.65",
+      "$type": "number",
+      "$description": "Documentation and long-form content"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Body text and descriptions"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Button text, nav labels, emphasized body"
     },
     "weight-semibold": {
       "$value": "600",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Headings and section titles -- PostHog prefers semibold over bold for headlines"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Display headlines and hero text -- reserved for maximum impact"
+    },
+    "letter-spacing-tight": {
+      "$value": "-0.02em",
+      "$type": "dimension",
+      "$description": "Negative tracking on display and hero text for tighter headlines"
+    },
+    "letter-spacing-overline": {
+      "$value": "0.08em",
+      "$type": "dimension",
+      "$description": "Wide tracking on uppercase overline labels"
     }
   },
   "spacing": {
     "unit": {
-      "$value": "8px",
+      "$value": "4px",
       "$type": "dimension",
-      "$description": "Base unit"
+      "$description": "Base grid unit -- PostHog uses 4px grid for dense analytics layouts"
+    },
+    "2xs": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Micro gaps -- icon-to-label in compact toolbar items"
     },
     "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Tight inline spacing -- badge padding, compact list gaps"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small gaps -- button padding vertical, table cell padding"
     },
     "md": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Standard gap -- form field spacing, button padding horizontal"
     },
     "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Card internal padding small, sidebar item padding"
     },
     "xl": {
-      "$value": "24px",
+      "$value": "20px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Card padding standard, content block margins"
     },
     "2xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Dashboard card padding, modal content padding"
+    },
+    "3xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Section internal padding, large card bodies"
+    },
+    "4xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Page section vertical padding on marketing pages"
     },
     "section-gap": {
-      "$value": "80px",
+      "$value": "64px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Vertical spacing between major page sections"
+    },
+    "page-margin-desktop": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Page content margin on desktop -- tighter than marketing sites because of sidebar nav"
+    },
+    "page-margin-mobile": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Page content margin on mobile"
     },
     "container-max": {
       "$value": "1200px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Maximum content width for marketing pages"
+    },
+    "container-app": {
+      "$value": "100%",
+      "$type": "dimension",
+      "$description": "App layout fills available width -- sidebar + main content model"
+    },
+    "sidebar-width": {
+      "$value": "220px",
+      "$type": "dimension",
+      "$description": "Navigation sidebar width in the app shell"
     }
   },
   "border": {
-    "radius-standard": {
+    "radius-sm": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small elements -- badges, inline code, chips"
+    },
+    "radius-md": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Buttons, inputs, dropdowns -- the workhorse radius"
+    },
+    "radius-lg": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Cards, modals, dashboard tiles"
+    },
+    "radius-xl": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Featured containers, marketing cards"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill"
+      "$description": "Pill-shaped badges, toggle switches, small status indicators"
     }
   },
   "shadow": {
@@ -194,59 +526,137 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat -- no elevation, used for inline elements and flat cards with border-only containment"
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
+          "offsetY": "1px",
+          "blur": "3px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.12)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
           "spread": "0px",
           "color": "rgba(0,0,0,0.08)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle"
+      "$description": "Subtle lift -- dropdowns, tooltips, popovers on dark surfaces"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.20)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.12)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Elevated -- modals, command palette, expanded menus"
+    },
+    "level-3": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "32px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.30)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Heavy lift -- full-screen overlays, dragged elements (use sparingly)"
+    },
+    "glow-accent": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(245,78,0,0.25)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Orange glow -- CTA hover emphasis on dark backgrounds, sparingly used"
     }
   },
   "motion": {
+    "duration-instant": {
+      "$value": "75ms",
+      "$type": "duration",
+      "$description": "Instant feedback -- toggle switches, checkbox ticks"
+    },
     "duration-fast": {
       "$value": "150ms",
       "$type": "duration",
-      "$description": "Fast"
+      "$description": "Fast transitions -- hover states, button press, tab switch"
     },
     "duration-normal": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Normal"
+      "$description": "Standard transitions -- dropdowns, tooltips, sidebar collapse"
+    },
+    "duration-slow": {
+      "$value": "350ms",
+      "$type": "duration",
+      "$description": "Deliberate transitions -- modal entrance, chart animations, page transitions"
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1],
       "$type": "cubicBezier",
-      "$description": "Ease"
+      "$description": "Standard ease -- smooth and predictable"
+    },
+    "easing-entrance": {
+      "$value": [0.0, 0.0, 0.2, 1],
+      "$type": "cubicBezier",
+      "$description": "Deceleration -- elements entering view"
+    },
+    "easing-exit": {
+      "$value": [0.4, 0.0, 1, 1],
+      "$type": "cubicBezier",
+      "$description": "Acceleration -- elements leaving view"
+    },
+    "easing-chart": {
+      "$value": [0.4, 0.0, 0.2, 1],
+      "$type": "cubicBezier",
+      "$description": "Chart-specific easing -- data point transitions and bar growth"
     }
   },
   "breakpoint": {
     "mobile": {
       "$value": "640px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile -- single column, bottom nav, stacked dashboard cards"
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet -- collapsible sidebar, 2-column insight grid"
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop -- persistent sidebar, full dashboard grid"
+    },
+    "wide": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Wide desktop -- expanded chart widths, multi-panel layouts"
     }
   }
 }

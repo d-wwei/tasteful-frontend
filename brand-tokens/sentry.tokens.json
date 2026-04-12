@@ -1,185 +1,321 @@
 {
   "$extensions": {
     "brand": "sentry",
-    "source": "awesome-design-md",
-    "aesthetic": "dark error tracking with purple accent",
+    "source": "sentry.design + blog.sentry.io + develop.sentry.dev",
+    "aesthetic": "data-dense monitoring dashboard with restrained purple accent",
     "key-characteristics": [
-      "dark-dev-tool",
-      "purple-accent",
-      "error-focused"
+      "monochromatic-purple-neutrals",
+      "error-severity-color-system",
+      "tactile-depth-interaction",
+      "data-dense-information-display"
     ]
   },
   "color": {
     "surface": {
-      "$value": "#1c1023",
+      "$value": "#f9f8ff",
       "$type": "color",
-      "$description": "Primary background"
+      "$description": "Primary background -- faintly purple-tinted off-white (Sentry light dashboard)"
     },
     "surface-subtle": {
-      "$value": "#1a1a1a",
+      "$value": "#ffffff",
       "$type": "color",
-      "$description": "Secondary surface"
+      "$description": "Card and panel surface -- clean white for data containers"
+    },
+    "surface-dark": {
+      "$value": "#1F1633",
+      "$type": "color",
+      "$description": "Dark surface -- deep aubergine for dark mode and hero sections"
+    },
+    "surface-recessed": {
+      "$value": "#ececf1",
+      "$type": "color",
+      "$description": "Recessed input fields and code blocks -- tactile depth cue"
     },
     "accent": {
-      "$value": "#6c5fc7",
+      "$value": "#6a5fc1",
       "$type": "color",
-      "$description": "Primary accent color"
+      "$description": "Sentry Purple -- primary interactive accent for links, buttons, active states"
     },
     "accent-hover": {
-      "$value": "#6c5fc7",
+      "$value": "#8277cf",
       "$type": "color",
-      "$description": "Accent hover state"
+      "$description": "Purple hover -- lighter variant for hover/focus lift"
+    },
+    "accent-subtle": {
+      "$value": "rgba(106, 95, 193, 0.08)",
+      "$type": "color",
+      "$description": "Purple wash -- faint purple tint for selected rows, active tabs"
     },
     "text-primary": {
-      "$value": "#eae1f5",
+      "$value": "#2B1D38",
       "$type": "color",
-      "$description": "Primary text"
+      "$description": "Primary text -- deep plum-black (gray500 from Sentry theme)"
     },
     "text-secondary": {
-      "$value": "#827d8f",
+      "$value": "#776589",
       "$type": "color",
-      "$description": "Secondary text"
+      "$description": "Secondary text -- muted purple-gray for descriptions and labels (gray400)"
+    },
+    "text-tertiary": {
+      "$value": "#9386A0",
+      "$type": "color",
+      "$description": "Tertiary text -- softer purple-gray for metadata and timestamps (gray300)"
     },
     "text-on-accent": {
-      "$value": "#000000",
+      "$value": "#ffffff",
       "$type": "color",
-      "$description": "Text on accent"
+      "$description": "Text on purple accent backgrounds"
+    },
+    "text-on-dark": {
+      "$value": "#E7E1EC",
+      "$type": "color",
+      "$description": "Text on dark surfaces -- pale lavender (gray100)"
     },
     "error": {
-      "$value": "#f55459",
+      "$value": "#e1567c",
       "$type": "color",
-      "$description": "Error state"
+      "$description": "Fatal/Error severity -- Sentry's signature pink-red for critical issues"
+    },
+    "error-subtle": {
+      "$value": "rgba(225, 86, 124, 0.12)",
+      "$type": "color",
+      "$description": "Error background wash for error-level issue rows"
+    },
+    "warning": {
+      "$value": "#f4834f",
+      "$type": "color",
+      "$description": "Warning severity -- Sentry coral-orange"
+    },
+    "warning-subtle": {
+      "$value": "rgba(244, 131, 79, 0.12)",
+      "$type": "color",
+      "$description": "Warning background wash for warning-level issue rows"
+    },
+    "info": {
+      "$value": "#f2b712",
+      "$type": "color",
+      "$description": "Info severity -- Sentry gold-yellow for informational events"
+    },
+    "info-subtle": {
+      "$value": "rgba(242, 183, 18, 0.12)",
+      "$type": "color",
+      "$description": "Info background wash for info-level rows"
     },
     "success": {
-      "$value": "#3ecf8e",
+      "$value": "#19ab27",
       "$type": "color",
-      "$description": "Success state"
+      "$description": "Resolved/Success -- bright green for healthy states and resolved issues"
+    },
+    "success-subtle": {
+      "$value": "rgba(25, 171, 39, 0.12)",
+      "$type": "color",
+      "$description": "Success background wash for resolved issue rows"
+    },
+    "debug": {
+      "$value": "#0099e0",
+      "$type": "color",
+      "$description": "Debug severity -- blue for debug-level events"
     },
     "border": {
-      "$value": "rgba(255,255,255,0.1)",
+      "$value": "#cfcfdb",
       "$type": "color",
-      "$description": "Default border"
+      "$description": "Default border -- cool purple-gray from Sentry's neutral scale"
+    },
+    "border-light": {
+      "$value": "#ececf1",
+      "$type": "color",
+      "$description": "Subtle border -- for table rows, card dividers"
+    },
+    "chart-purple": {
+      "$value": "#6a5fc1",
+      "$type": "color",
+      "$description": "Chart series 1 -- primary purple"
+    },
+    "chart-pink": {
+      "$value": "#e1567c",
+      "$type": "color",
+      "$description": "Chart series 2 -- error pink"
+    },
+    "chart-orange": {
+      "$value": "#f4834f",
+      "$type": "color",
+      "$description": "Chart series 3 -- warning orange"
+    },
+    "chart-teal": {
+      "$value": "#4EDAD0",
+      "$type": "color",
+      "$description": "Chart series 4 -- teal for secondary data"
+    },
+    "chart-blue": {
+      "$value": "#48A5DB",
+      "$type": "color",
+      "$description": "Chart series 5 -- blue for tertiary data"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Rubik, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display and heading font -- Sentry's primary brand typeface"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Rubik, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body text font -- Rubik for all UI text"
+    },
+    "font-mono": {
+      "$value": "'IBM Plex Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace for stack traces, code blocks, and error details"
     },
     "scale-display": {
-      "$value": "48px",
+      "$value": "40px",
       "$type": "dimension",
-      "$description": "Display"
+      "$description": "Display -- hero headlines on desktop (2.5rem)"
     },
     "scale-section": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Section"
+      "$description": "Section -- page-level headings (2rem)"
+    },
+    "scale-title": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Title -- card and panel headings (1.5rem)"
+    },
+    "scale-subtitle": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Subtitle -- sub-section headings (1.25rem)"
     },
     "scale-base": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Body"
+      "$description": "Body -- standard readable size (1rem)"
     },
     "scale-caption": {
       "$value": "14px",
       "$type": "dimension",
-      "$description": "Caption"
+      "$description": "Caption -- labels, metadata, table headers (0.875rem)"
     },
     "scale-small": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small -- badges, timestamps, line numbers"
+    },
+    "scale-code": {
+      "$value": "13px",
+      "$type": "dimension",
+      "$description": "Code -- stack trace and code block text"
     },
     "line-height-tight": {
-      "$value": "1.15",
+      "$value": "1.20",
       "$type": "number",
-      "$description": "Tight"
+      "$description": "Tight -- headings and display text"
     },
     "line-height-normal": {
       "$value": "1.50",
       "$type": "number",
-      "$description": "Normal"
+      "$description": "Normal -- body text and descriptions"
+    },
+    "line-height-code": {
+      "$value": "1.65",
+      "$type": "number",
+      "$description": "Code -- generous for stack trace readability"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular -- body text, descriptions"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium -- buttons, labels, emphasized text"
     },
-    "weight-semibold": {
-      "$value": "600",
+    "weight-bold": {
+      "$value": "700",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Bold -- headings, metric values"
     }
   },
   "spacing": {
     "unit": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Base unit"
+      "$description": "Base spacing unit"
     },
     "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Extra small -- inline gaps, badge padding"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small -- icon-text gaps, tight padding"
     },
     "md": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Medium -- list item padding, compact card gaps"
     },
     "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Large -- standard card padding, section gaps"
     },
     "xl": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Extra large -- panel padding, between-card gaps"
     },
     "2xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Double extra large -- section-level padding"
+    },
+    "3xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Triple extra large -- page-level vertical rhythm"
     },
     "section-gap": {
-      "$value": "80px",
+      "$value": "64px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Section gap -- between major page sections"
     },
     "container-max": {
       "$value": "1200px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Max container width for dashboard layouts"
+    },
+    "sidebar-width": {
+      "$value": "220px",
+      "$type": "dimension",
+      "$description": "Standard sidebar width for navigation panels"
     }
   },
   "border": {
+    "radius-small": {
+      "$value": "3px",
+      "$type": "dimension",
+      "$description": "Small -- badges, tags, inline elements (0.1875rem)"
+    },
     "radius-standard": {
       "$value": "6px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Standard -- inputs, buttons, cards (0.375rem)"
+    },
+    "radius-medium": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Medium -- panels, containers (0.5rem)"
     },
     "radius-pill": {
-      "$value": "9999px",
+      "$value": "2em",
       "$type": "dimension",
-      "$description": "Pill"
+      "$description": "Pill -- primary CTA buttons, SCRAPS tactile style"
     }
   },
   "shadow": {
@@ -194,59 +330,95 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat -- no elevation"
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
+          "offsetY": "1px",
+          "blur": "4px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(43, 29, 56, 0.08)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle"
+      "$description": "Subtle -- cards and containers at rest"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(43, 29, 56, 0.12)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Elevated -- hover states, dropdowns, modals"
+    },
+    "focus-ring": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "15px",
+          "spread": "0px",
+          "color": "rgba(106, 95, 193, 0.20)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Focus ring -- purple glow for focused inputs (SCRAPS tactile focus)"
     }
   },
   "motion": {
     "duration-fast": {
-      "$value": "150ms",
+      "$value": "100ms",
       "$type": "duration",
-      "$description": "Fast"
+      "$description": "Fast -- micro-interactions, hover color shifts"
     },
     "duration-normal": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Normal"
+      "$description": "Normal -- button state changes, panel transitions"
+    },
+    "duration-slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Slow -- modal entrance, panel expansion"
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1],
       "$type": "cubicBezier",
-      "$description": "Ease"
+      "$description": "Standard ease -- default transition curve"
+    },
+    "easing-bounce": {
+      "$value": [0.34, 1.56, 0.64, 1],
+      "$type": "cubicBezier",
+      "$description": "Bounce -- SCRAPS tactile button lift effect"
     }
   },
   "breakpoint": {
     "mobile": {
       "$value": "640px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile breakpoint"
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet breakpoint"
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop breakpoint"
+    },
+    "wide": {
+      "$value": "1280px",
+      "$type": "dimension",
+      "$description": "Wide desktop -- full dashboard with sidebar"
     }
   }
 }

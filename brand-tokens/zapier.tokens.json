@@ -1,185 +1,467 @@
 {
   "$extensions": {
     "brand": "zapier",
-    "source": "awesome-design-md",
-    "aesthetic": "automation with orange brand energy",
+    "source": "brand.zapier.com, fonts.zapier.com, Zinnia design system",
+    "aesthetic": "warm automation energy — friendly orange on cream canvas, playful but professional",
     "key-characteristics": [
-      "orange-automation",
-      "workflow-visual",
-      "integration-hub"
+      "warm-orange-automation",
+      "cream-canvas-surface",
+      "degular-display-type",
+      "workflow-visual-language",
+      "approachable-professional"
     ]
   },
   "color": {
     "surface": {
-      "$value": "#ffffff",
+      "$value": "#fffdf9",
       "$type": "color",
-      "$description": "Primary background"
+      "$description": "Primary background — Bridal Heath, warm near-white with peach undertone"
     },
     "surface-subtle": {
-      "$value": "#f8f8f8",
+      "$value": "#fff3e6",
       "$type": "color",
-      "$description": "Secondary surface"
+      "$description": "Secondary background for cards and sections — Serenade, warm cream with orange glow"
+    },
+    "surface-white": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Pure white for high-contrast containers, inputs, and modal overlays"
+    },
+    "surface-warm": {
+      "$value": "#ffecd2",
+      "$type": "color",
+      "$description": "Warm interactive surface — light peach for button backgrounds and hover states"
+    },
+    "surface-dark": {
+      "$value": "#2d1f14",
+      "$type": "color",
+      "$description": "Dark containers and elevated dark elements — espresso brown with orange warmth"
+    },
+    "surface-deep": {
+      "$value": "#201515",
+      "$type": "color",
+      "$description": "Dark-theme page background — Zapier Earth, cocoa-tinted near-black from brand.zapier.com"
+    },
+    "surface-overlay": {
+      "$value": "rgba(32,21,21,0.06)",
+      "$type": "color",
+      "$description": "Transparent warm overlay for subtle elevation and depth on light surfaces"
     },
     "accent": {
-      "$value": "#ff4a00",
+      "$value": "#ff4f00",
       "$type": "color",
-      "$description": "Primary accent color"
+      "$description": "Primary action color — Zap Orange, International Orange per brand.zapier.com, the energy of automation"
     },
     "accent-hover": {
-      "$value": "#ff4a00",
+      "$value": "#e64500",
       "$type": "color",
-      "$description": "Accent hover state"
+      "$description": "Accent hover/pressed — slightly deeper orange for interactive feedback"
+    },
+    "accent-secondary": {
+      "$value": "#fd7622",
+      "$type": "color",
+      "$description": "Secondary accent — Pumpkin, warm sibling of Zap Orange for gradients and secondary emphasis"
+    },
+    "accent-tertiary": {
+      "$value": "#ffc43e",
+      "$type": "color",
+      "$description": "Tertiary accent — Sunglow, warm gold for badges, highlights, and tertiary signals"
+    },
+    "accent-success": {
+      "$value": "#13d0ab",
+      "$type": "color",
+      "$description": "Success accent — Java teal, used for connected/active Zap status indicators"
+    },
+    "accent-info": {
+      "$value": "#499df3",
+      "$type": "color",
+      "$description": "Info accent — Picton Blue, used for informational states and links"
     },
     "text-primary": {
-      "$value": "#2d2e2e",
+      "$value": "#201515",
       "$type": "color",
-      "$description": "Primary text"
+      "$description": "Primary text — Zapier Earth, warm cocoa-black from brand palette, never pure black"
     },
     "text-secondary": {
-      "$value": "#6b6b6b",
+      "$value": "#594a42",
       "$type": "color",
-      "$description": "Secondary text"
+      "$description": "Secondary body text — warm brown-gray for descriptions and body copy"
+    },
+    "text-tertiary": {
+      "$value": "#8c7b72",
+      "$type": "color",
+      "$description": "Tertiary text — warm taupe for metadata, timestamps, and de-emphasized content"
+    },
+    "text-button": {
+      "$value": "#3d2e25",
+      "$type": "color",
+      "$description": "Button text on light warm surfaces — deep warm brown"
+    },
+    "text-link": {
+      "$value": "#ff4f00",
+      "$type": "color",
+      "$description": "Link text — Zap Orange, consistent with primary accent for navigation signals"
+    },
+    "text-on-dark": {
+      "$value": "#c4b5ab",
+      "$type": "color",
+      "$description": "Text on dark surfaces — warm sand-tinted silver for readability on Earth backgrounds"
     },
     "text-on-accent": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Text on accent"
+      "$description": "Text on Zap Orange buttons — pure white for maximum contrast"
     },
     "error": {
-      "$value": "#ff4a00",
+      "$value": "#d4351c",
       "$type": "color",
-      "$description": "Error state"
+      "$description": "Error/danger state — warm red that harmonizes with orange palette without looking like accent"
     },
     "success": {
-      "$value": "#2ecc71",
+      "$value": "#13d0ab",
       "$type": "color",
-      "$description": "Success state"
+      "$description": "Success state — Java teal, signals connected/active automation status"
+    },
+    "warning": {
+      "$value": "#ffc43e",
+      "$type": "color",
+      "$description": "Warning state — Sunglow gold, warm alert without red urgency"
+    },
+    "focus": {
+      "$value": "#499df3",
+      "$type": "color",
+      "$description": "Focus ring for inputs — Picton Blue, contrasts with warm palette for clear accessibility"
     },
     "border": {
-      "$value": "#e5e5e5",
+      "$value": "#f0e6d8",
       "$type": "color",
-      "$description": "Default border"
+      "$description": "Default border — warm cream with peachy undertone, soft containment"
+    },
+    "border-subtle": {
+      "$value": "#f5ece0",
+      "$type": "color",
+      "$description": "Subtle border — barely visible warm cream for card edges"
+    },
+    "border-prominent": {
+      "$value": "#e0d1c2",
+      "$type": "color",
+      "$description": "Prominent border — warm tan for section dividers and emphasized containment"
+    },
+    "border-dark": {
+      "$value": "#3d2e25",
+      "$type": "color",
+      "$description": "Dark-theme border — deep warm brown maintaining orange-family warmth"
+    },
+    "border-accent": {
+      "$value": "#ff4f00",
+      "$type": "color",
+      "$description": "Accent border — Zap Orange for active states, selected items, and focus indicators"
+    },
+    "neutral-100": {
+      "$value": "#fffdf9",
+      "$type": "color",
+      "$description": "Lightest neutral — Bridal Heath"
+    },
+    "neutral-200": {
+      "$value": "#fff3e6",
+      "$type": "color",
+      "$description": "Light neutral — Serenade cream"
+    },
+    "neutral-300": {
+      "$value": "#f5ece0",
+      "$type": "color",
+      "$description": "Light neutral — warm linen"
+    },
+    "neutral-400": {
+      "$value": "#e0d1c2",
+      "$type": "color",
+      "$description": "Mid-light neutral — warm tan"
+    },
+    "neutral-500": {
+      "$value": "#c4b5ab",
+      "$type": "color",
+      "$description": "Mid neutral — warm sand"
+    },
+    "neutral-600": {
+      "$value": "#a3927f",
+      "$type": "color",
+      "$description": "Mid-dark neutral — warm khaki"
+    },
+    "neutral-700": {
+      "$value": "#8c7b72",
+      "$type": "color",
+      "$description": "Dark neutral — warm taupe"
+    },
+    "neutral-800": {
+      "$value": "#594a42",
+      "$type": "color",
+      "$description": "Darker neutral — warm brown"
+    },
+    "neutral-850": {
+      "$value": "#3d2e25",
+      "$type": "color",
+      "$description": "Deep neutral — espresso"
+    },
+    "neutral-900": {
+      "$value": "#2d1f14",
+      "$type": "color",
+      "$description": "Deepest neutral — dark espresso"
+    },
+    "neutral-950": {
+      "$value": "#201515",
+      "$type": "color",
+      "$description": "Near-black neutral — Zapier Earth"
     }
   },
   "typography": {
-    "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+    "font-headline": {
+      "$value": "Degular, system-ui, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Headline/display font — Degular by Oh No Type Co, Zapier's custom brand typeface for all headings"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Inter, system-ui, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body/UI font — Inter for navigation, buttons, labels, and body text"
     },
-    "scale-display": {
-      "$value": "48px",
-      "$type": "dimension",
-      "$description": "Display"
+    "font-mono": {
+      "$value": "'JetBrains Mono', 'Fira Code', monospace",
+      "$type": "fontFamily",
+      "$description": "Code font — for code blocks, API references, and Zap configuration snippets"
     },
-    "scale-section": {
-      "$value": "32px",
+    "scale-overline": {
+      "$value": "11px",
       "$type": "dimension",
-      "$description": "Section"
+      "$description": "Uppercase overline labels — step labels, Zap status indicators"
     },
-    "scale-base": {
-      "$value": "16px",
+    "scale-label": {
+      "$value": "12px",
       "$type": "dimension",
-      "$description": "Body"
+      "$description": "Badges, app labels, and small UI text — 0.75rem"
     },
     "scale-caption": {
       "$value": "14px",
       "$type": "dimension",
-      "$description": "Caption"
+      "$description": "Metadata, helper text, and descriptions — 0.875rem"
     },
-    "scale-small": {
-      "$value": "12px",
+    "scale-base": {
+      "$value": "16px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Standard body and button text — 1rem"
+    },
+    "scale-body": {
+      "$value": "17px",
+      "$type": "dimension",
+      "$description": "Landing page body text — slightly larger for readability — 1.06rem"
+    },
+    "scale-lg": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Intro paragraphs and hero subtitles — 1.25rem"
+    },
+    "scale-xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Card titles and feature headings — 1.5rem"
+    },
+    "scale-2xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Section headings — 2rem"
+    },
+    "scale-3xl": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Major section anchors — 2.5rem"
+    },
+    "scale-4xl": {
+      "$value": "52px",
+      "$type": "dimension",
+      "$description": "Page hero headings — 3.25rem"
+    },
+    "scale-display": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Display/hero — maximum impact, campaign-level presence — 4rem"
     },
     "line-height-tight": {
-      "$value": "1.15",
+      "$value": "1.10",
       "$type": "number",
-      "$description": "Tight"
+      "$description": "Tightest heading line-height — display and hero headings"
+    },
+    "line-height-snug": {
+      "$value": "1.20",
+      "$type": "number",
+      "$description": "Section headings and feature titles"
+    },
+    "line-height-heading": {
+      "$value": "1.30",
+      "$type": "number",
+      "$description": "Card titles and smaller headings — comfortable reading"
     },
     "line-height-normal": {
-      "$value": "1.50",
+      "$value": "1.43",
       "$type": "number",
-      "$description": "Normal"
+      "$description": "Caption and label text"
+    },
+    "line-height-relaxed": {
+      "$value": "1.55",
+      "$type": "number",
+      "$description": "Body text — readable and approachable, Zapier's friendly spacing"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Standard weight for body text, descriptions, and UI elements"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium weight for buttons, labels, and emphasized body text"
     },
     "weight-semibold": {
       "$value": "600",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Semibold for section headings and strong emphasis"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold for display headings and hero text — Degular at maximum presence"
+    },
+    "letter-spacing-tight": {
+      "$value": "-0.02em",
+      "$type": "dimension",
+      "$description": "Tighter tracking for display and hero headings in Degular"
+    },
+    "letter-spacing-normal": {
+      "$value": "0em",
+      "$type": "dimension",
+      "$description": "Default tracking for body text"
+    },
+    "letter-spacing-wide": {
+      "$value": "0.06em",
+      "$type": "dimension",
+      "$description": "Wide tracking for uppercase overline labels and step indicators"
+    },
+    "font-display": {
+      "$value": "Degular, system-ui, -apple-system, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Alias for font-headline"
     }
   },
   "spacing": {
     "unit": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Base unit"
+      "$description": "Base grid unit — 8px system"
     },
-    "xs": {
+    "2xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Micro spacing — inline icon gaps, tight stacking"
+    },
+    "xs": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Extra small — badge padding, tight element gaps"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small — base unit, icon padding, compact gaps"
     },
     "md": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Medium — button padding, input internal spacing"
     },
     "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Large — card internal padding, comfortable gaps"
     },
     "xl": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Extra large — section internal padding, card body spacing"
     },
     "2xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Card padding standard, section sub-spacing"
+    },
+    "3xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Large container padding, section breathing room"
     },
     "section-gap": {
       "$value": "80px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Standard vertical gap between major page sections"
+    },
+    "section-gap-lg": {
+      "$value": "120px",
+      "$type": "dimension",
+      "$description": "Maximum vertical gap — hero sections, major page transitions"
+    },
+    "page-margin-desktop": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Desktop horizontal page margin"
+    },
+    "page-margin-mobile": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Mobile horizontal page margin"
     },
     "container-max": {
       "$value": "1200px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Maximum container width, centered"
+    },
+    "container-narrow": {
+      "$value": "840px",
+      "$type": "dimension",
+      "$description": "Narrow container for text-focused sections and blog content"
     }
   },
   "border": {
-    "radius-standard": {
+    "radius-none": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "Sharp edge — used only for full-bleed sections"
+    },
+    "radius-sm": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Small radius — badges, tags, compact UI elements"
+    },
+    "radius-md": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Standard radius — buttons, inputs, small cards"
+    },
+    "radius-lg": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Large radius — feature cards, content containers"
+    },
+    "radius-xl": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Extra large — hero cards, Zap Builder containers, featured sections"
+    },
+    "radius-2xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Soft container — modal dialogs, marketing hero containers"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill"
+      "$description": "Fully rounded pill — tags, status badges, toggle switches"
     }
   },
   "shadow": {
@@ -194,32 +476,123 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat — no shadow, inline elements, flush containers"
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
+          "offsetY": "1px",
+          "blur": "3px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(32,21,21,0.06)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgba(32,21,21,0.04)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle"
+      "$description": "Subtle — warm micro-lift for cards and resting interactive elements"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "12px",
+          "spread": "0px",
+          "color": "rgba(32,21,21,0.08)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgba(32,21,21,0.04)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Medium — warm elevation for hover states, dropdowns, and floating UI"
+    },
+    "level-3": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "24px",
+          "spread": "0px",
+          "color": "rgba(32,21,21,0.12)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgba(32,21,21,0.04)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Elevated — warm lift for modals, Zap Builder panels, and featured content"
+    },
+    "level-glow": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "24px",
+          "spread": "4px",
+          "color": "rgba(255,79,0,0.15)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Orange glow — Zap Orange halo for active automation states and featured CTAs"
+    },
+    "button-primary": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px",
+          "color": "rgba(32,21,21,0.12)"
+        },
+        {
+          "inset": true,
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "rgba(255,255,255,0.15)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Primary button — subtle depth with inner highlight for 3D feel on Zap Orange"
     }
   },
   "motion": {
     "duration-fast": {
-      "$value": "150ms",
+      "$value": "120ms",
       "$type": "duration",
-      "$description": "Fast"
+      "$description": "Instant feedback — hover states, micro-interactions"
     },
     "duration-normal": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Normal"
+      "$description": "Standard transitions — button presses, toggle switches, focus rings"
+    },
+    "duration-slow": {
+      "$value": "350ms",
+      "$type": "duration",
+      "$description": "Deliberate transitions — modal entrances, Zap step animations, panel slides"
+    },
+    "duration-zap": {
+      "$value": "600ms",
+      "$type": "duration",
+      "$description": "Zap execution animation — the signature lightning-bolt moment"
     },
     "easing-default": {
       "$value": [
@@ -229,24 +602,54 @@
         1
       ],
       "$type": "cubicBezier",
-      "$description": "Ease"
+      "$description": "Standard ease — smooth, professional, friendly"
+    },
+    "easing-bounce": {
+      "$value": [
+        0.34,
+        1.56,
+        0.64,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Playful bounce — Zap connection animations, success states, celebration moments"
+    },
+    "easing-snap": {
+      "$value": [
+        0.2,
+        0,
+        0,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Quick snap — step transitions, workflow builder connections"
     }
   },
   "breakpoint": {
+    "sm-mobile": {
+      "$value": "479px",
+      "$type": "dimension",
+      "$description": "Small mobile — single column, stacked Zap steps"
+    },
     "mobile": {
       "$value": "640px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile — compact layout, simplified automation visuals"
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet — 2-column grids, side-by-side Zap steps"
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop — full multi-column layout, expanded Zap Builder"
+    },
+    "wide": {
+      "$value": "1280px",
+      "$type": "dimension",
+      "$description": "Wide desktop — maximum container width, enhanced dashboard layouts"
     }
   }
 }

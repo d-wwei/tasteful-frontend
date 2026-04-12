@@ -3,132 +3,481 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Posthog Brand Tokens Preview</title>
+<title>PostHog Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#7a7a7a&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Code+Pro:wght@400;500&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --surface: #ffffff;
-    --surface-subtle: #f8f8f8;
+    --surface: #1d1f27;
+    --surface-elevated: #2c2e38;
+    --surface-input: #35374a;
+    --surface-hover: #3b3d4f;
+    --surface-light: #f9f9f9;
+    --surface-white: #ffffff;
+    --surface-deep: #111318;
     --accent: #f54e00;
-    --text-primary: #151515;
-    --text-secondary: #7a7a7a;
-    --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    --accent-hover: #e04600;
+    --accent-light-bg: #fff1eb;
+    --accent-muted: #3d2a1f;
+    --text-primary: #eeefe9;
+    --text-primary-light: #151515;
+    --text-secondary: #9ba0aa;
+    --text-secondary-light: #6b7280;
+    --text-tertiary: #6b7280;
+    --border: #3b3d4f;
+    --border-light: #e5e7eb;
+    --border-strong: #565869;
+    --chart-1: #1d8aed;
+    --chart-2: #6c3ff2;
+    --chart-3: #f54e00;
+    --chart-4: #42b983;
+    --chart-5: #f1a82c;
+    --chart-6: #ff6384;
+    --chart-7: #36a2eb;
+    --chart-8: #9966ff;
+    --error: #f44336;
+    --success: #77b96c;
+    --warning: #f1a82c;
+    --info: #1d8aed;
+    --font: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'Source Code Pro', 'JetBrains Mono', Menlo, monospace;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 48px 32px; }
+
+  /* Brand Header */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
+    text-align: center; margin-bottom: 64px; padding: 48px 32px;
+    background: var(--surface-elevated); border-radius: 8px;
     border: 1px solid var(--border);
+    position: relative; overflow: hidden;
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
-  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
-  .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .brand-header::before {
+    content: ''; position: absolute; top: -60%; left: 30%; width: 40%; height: 200%;
+    background: radial-gradient(ellipse, rgba(245,78,0,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 8px; position: relative; }
+  .brand-header h1 span { color: var(--accent); }
+  .brand-header .aesthetic { font-size: 17px; color: var(--text-secondary); margin-bottom: 16px; }
+  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; position: relative; }
+  .brand-header .tag { font-size: 11px; padding: 4px 10px; background: var(--surface-input); color: var(--text-secondary); border-radius: 9999px; font-weight: 500; letter-spacing: 0.04em; border: 1px solid var(--border); }
+  .brand-header .tag-accent { background: var(--accent-muted); color: var(--accent); border-color: transparent; }
+
+  /* Sections */
+  .section { margin-bottom: 64px; }
+  .section-title { font-size: 24px; font-weight: 600; line-height: 1.25; margin-bottom: 4px; }
+  .section-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+
+  /* Color Palette */
+  .color-group-label { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 12px; margin-top: 20px; }
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin-bottom: 8px; }
+  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-elevated); }
+  .color-swatch .swatch-fill { height: 56px; }
+  .color-swatch .swatch-info { padding: 8px 10px; }
+  .color-swatch .swatch-name { font-size: 11px; font-weight: 600; margin-bottom: 1px; color: var(--text-primary); }
+  .color-swatch .swatch-hex { font-size: 10px; font-family: var(--font-mono); color: var(--text-tertiary); }
+
+  /* Typography */
+  .type-row { display: flex; align-items: baseline; gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .type-label { flex: 0 0 80px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 600; letter-spacing: 0.04em; }
   .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .type-meta { flex: 0 0 120px; font-size: 11px; font-family: var(--font-mono); color: var(--text-tertiary); text-align: right; }
+
+  /* Spacing */
+  .spacing-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .spacing-label { flex: 0 0 48px; font-size: 12px; color: var(--text-tertiary); text-align: right; font-weight: 500; }
+  .spacing-bar { height: 20px; background: var(--chart-1); border-radius: 4px; opacity: 0.5; }
+  .spacing-value { font-size: 11px; font-family: var(--font-mono); color: var(--text-tertiary); min-width: 36px; }
+
+  /* Radius */
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; }
+  .radius-box { aspect-ratio: 1; background: var(--surface-elevated); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .radius-box span { font-size: 11px; font-family: var(--font-mono); color: var(--text-tertiary); }
+
+  /* Shadow */
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+  .shadow-card { padding: 20px; border-radius: 8px; background: var(--surface-elevated); min-height: 90px; display: flex; flex-direction: column; justify-content: flex-end; border: 1px solid var(--border); }
+  .shadow-card .shadow-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-tertiary); }
+
+  /* Components */
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
+  .comp-card { padding: 24px; background: var(--surface-elevated); border-radius: 8px; border: 1px solid var(--border); }
+  .comp-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary); }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; font-family: var(--font); transition: all 150ms ease; text-decoration: none; gap: 6px; }
   .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
+  .btn-accent:hover { background: var(--accent-hover); }
+  .btn-ghost { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
+  .btn-ghost:hover { background: var(--surface-hover); border-color: var(--border-strong); }
+  .btn-sm { padding: 6px 12px; font-size: 13px; }
+  .btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Sample Card */
+  .sample-card { background: var(--surface); border-radius: 8px; border: 1px solid var(--border); overflow: hidden; }
+  .sample-card-img { height: 100px; background: linear-gradient(135deg, var(--surface-input) 0%, var(--surface-elevated) 100%); position: relative; }
+  .sample-card-img::after { content: ''; position: absolute; top: 20px; right: 20px; width: 32px; height: 32px; border-radius: 8px; background: rgba(245,78,0,0.15); }
   .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .sample-card-body h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .sample-card-body p { font-size: 13px; color: var(--text-secondary); line-height: 1.50; }
+
+  /* Metric Card */
+  .metric-card { background: var(--surface); border-radius: 8px; border: 1px solid var(--border); padding: 20px; }
+  .metric-overline { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; }
+  .metric-value { font-size: 32px; font-weight: 600; line-height: 1.25; color: var(--text-primary); display: flex; align-items: baseline; gap: 8px; }
+  .metric-trend { font-size: 13px; font-weight: 500; }
+  .metric-trend.up { color: var(--success); }
+  .metric-trend.down { color: var(--error); }
+  .metric-desc { font-size: 13px; color: var(--text-tertiary); margin-top: 4px; }
+  .metric-sparkline { height: 40px; margin-top: 12px; display: flex; align-items: flex-end; gap: 2px; }
+  .metric-sparkline .bar { flex: 1; background: var(--chart-1); border-radius: 2px 2px 0 0; opacity: 0.4; min-height: 4px; }
+
+  /* Funnel */
+  .funnel-card { background: var(--surface-elevated); border-radius: 8px; border: 1px solid var(--border); padding: 24px; }
+  .funnel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .funnel-header h3 { font-size: 17px; font-weight: 600; }
+  .funnel-date-picker { background: var(--surface-input); border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; font-size: 13px; color: var(--text-secondary); font-family: var(--font); cursor: pointer; }
+  .funnel-step { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(59,61,79,0.5); }
+  .funnel-step:last-child { border-bottom: none; }
+  .funnel-num { font-size: 16px; font-weight: 600; color: var(--text-tertiary); width: 24px; text-align: center; flex-shrink: 0; }
+  .funnel-bar-wrap { flex: 1; height: 32px; background: rgba(59,61,79,0.3); border-radius: 4px; position: relative; overflow: hidden; }
+  .funnel-bar-fill { height: 100%; background: linear-gradient(90deg, var(--chart-1), var(--chart-7)); border-radius: 4px; display: flex; align-items: center; padding-left: 10px; min-width: 60px; }
+  .funnel-bar-label { font-size: 12px; font-weight: 500; color: #ffffff; white-space: nowrap; }
+  .funnel-rate { flex-shrink: 0; width: 56px; text-align: right; }
+  .funnel-rate-value { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+  .funnel-rate-drop { font-size: 11px; color: var(--error); font-weight: 500; }
+  .funnel-footer { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; }
+  .funnel-footer-label { font-size: 13px; color: var(--text-tertiary); }
+  .funnel-footer-value { font-size: 24px; font-weight: 600; color: var(--success); }
+
+  /* Chart Legend */
+  .chart-colors { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+  .chart-color-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+  .chart-color-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+  /* Nav Preview */
+  .nav-preview { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0 20px; height: 52px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .nav-logo { font-size: 16px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+  .nav-logo .logo-icon { width: 24px; height: 24px; background: var(--accent); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: white; font-weight: 700; }
+  .nav-links { display: flex; gap: 20px; align-items: center; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 150ms; }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a.active { color: var(--text-primary); }
+
+  /* Sidebar Preview */
+  .sidebar-preview { background: var(--surface-deep); border: 1px solid var(--border); border-radius: 8px; padding: 16px 0; width: 220px; }
+  .sidebar-section { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); padding: 8px 16px; }
+  .sidebar-item { display: flex; align-items: center; gap: 8px; padding: 8px 16px; margin: 0 4px; border-radius: 6px; font-size: 14px; color: var(--text-secondary); cursor: pointer; transition: all 150ms; }
+  .sidebar-item:hover { background: var(--surface-elevated); color: var(--text-primary); }
+  .sidebar-item.active { background: rgba(245,78,0,0.1); color: var(--accent); font-weight: 500; }
+  .sidebar-item .icon { width: 18px; text-align: center; opacity: 0.7; font-size: 13px; }
+  .sidebar-item.active .icon { opacity: 1; }
+  .sidebar-divider { height: 1px; background: var(--border); margin: 8px 16px; }
+
+  /* Light Section */
+  .light-section { background: var(--surface-light); border-radius: 8px; padding: 32px; margin-bottom: 64px; border: 1px solid var(--border-light); }
+  .light-section .section-title { color: var(--text-primary-light); }
+  .light-section .section-desc { color: var(--text-secondary-light); }
+  .light-card { background: var(--surface-white); border: 1px solid var(--border-light); border-radius: 8px; padding: 20px; }
+  .light-card h4 { font-size: 17px; font-weight: 600; color: var(--text-primary-light); margin-bottom: 6px; }
+  .light-card p { font-size: 14px; color: var(--text-secondary-light); line-height: 1.50; }
 </style>
 </head>
 <body>
 <div class="container">
+
+  <!-- Brand Header -->
   <header class="brand-header">
-    <h1>Posthog</h1>
-    <p class="aesthetic">quirky product analytics with hedgehog personality</p>
+    <h1>Post<span>Hog</span></h1>
+    <p class="aesthetic">Bold developer analytics -- playful, anti-corporate, data-obsessed</p>
     <div class="tags">
-      <span class="tag">quirky-brand</span><span class="tag">data-visualization</span><span class="tag">developer-friendly</span>
+      <span class="tag tag-accent">analytics-native</span>
+      <span class="tag">developer-playful</span>
+      <span class="tag">dark-mode-first</span>
+      <span class="tag">data-visualization</span>
+      <span class="tag">anti-corporate</span>
     </div>
   </header>
 
+  <!-- Color Palette: Dark -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Posthog visual identity.</p>
+    <p class="section-desc">Dark-mode native analytics palette with curated chart colors.</p>
+
+    <div class="color-group-label">Surfaces (Dark)</div>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1d1f27"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#1d1f27</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#2c2e38"></div><div class="swatch-info"><div class="swatch-name">elevated</div><div class="swatch-hex">#2c2e38</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#35374a"></div><div class="swatch-info"><div class="swatch-name">input</div><div class="swatch-hex">#35374a</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#3b3d4f"></div><div class="swatch-info"><div class="swatch-name">hover</div><div class="swatch-hex">#3b3d4f</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#111318"></div><div class="swatch-info"><div class="swatch-name">deep</div><div class="swatch-hex">#111318</div></div></div>
+    </div>
+
+    <div class="color-group-label">Surfaces (Light)</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f9f9f9"></div><div class="swatch-info"><div class="swatch-name">light bg</div><div class="swatch-hex">#f9f9f9</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff; border-bottom: 1px solid #e5e7eb"></div><div class="swatch-info"><div class="swatch-name">white</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#fff1eb"></div><div class="swatch-info"><div class="swatch-name">accent tint</div><div class="swatch-hex">#fff1eb</div></div></div>
+    </div>
+
+    <div class="color-group-label">Brand & Accent</div>
+    <div class="color-grid">
       <div class="color-swatch"><div class="swatch-fill" style="background:#f54e00"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#f54e00</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#151515"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#151515</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#7a7a7a"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#7a7a7a</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#e04600"></div><div class="swatch-info"><div class="swatch-name">accent hover</div><div class="swatch-hex">#e04600</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#3d2a1f"></div><div class="swatch-info"><div class="swatch-name">accent muted</div><div class="swatch-hex">#3d2a1f</div></div></div>
+    </div>
+
+    <div class="color-group-label">Text</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#eeefe9"></div><div class="swatch-info"><div class="swatch-name">primary</div><div class="swatch-hex">#eeefe9</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#9ba0aa"></div><div class="swatch-info"><div class="swatch-name">secondary</div><div class="swatch-hex">#9ba0aa</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#6b7280"></div><div class="swatch-info"><div class="swatch-name">tertiary</div><div class="swatch-hex">#6b7280</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#151515"></div><div class="swatch-info"><div class="swatch-name">light text</div><div class="swatch-hex">#151515</div></div></div>
+    </div>
+
+    <div class="color-group-label">Semantic</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f44336"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#f44336</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#77b96c"></div><div class="swatch-info"><div class="swatch-name">success</div><div class="swatch-hex">#77b96c</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f1a82c"></div><div class="swatch-info"><div class="swatch-name">warning</div><div class="swatch-hex">#f1a82c</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1d8aed"></div><div class="swatch-info"><div class="swatch-name">info</div><div class="swatch-hex">#1d8aed</div></div></div>
+    </div>
+
+    <div class="color-group-label">Chart Palette (sequence order)</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1d8aed"></div><div class="swatch-info"><div class="swatch-name">series 1</div><div class="swatch-hex">#1d8aed</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#6c3ff2"></div><div class="swatch-info"><div class="swatch-name">series 2</div><div class="swatch-hex">#6c3ff2</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f54e00"></div><div class="swatch-info"><div class="swatch-name">series 3</div><div class="swatch-hex">#f54e00</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#42b983"></div><div class="swatch-info"><div class="swatch-name">series 4</div><div class="swatch-hex">#42b983</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f1a82c"></div><div class="swatch-info"><div class="swatch-name">series 5</div><div class="swatch-hex">#f1a82c</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ff6384"></div><div class="swatch-info"><div class="swatch-name">series 6</div><div class="swatch-hex">#ff6384</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#36a2eb"></div><div class="swatch-info"><div class="swatch-name">series 7</div><div class="swatch-hex">#36a2eb</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#9966ff"></div><div class="swatch-info"><div class="swatch-name">series 8</div><div class="swatch-hex">#9966ff</div></div></div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Posthog branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Posthog Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">IBM Plex Sans carries the entire brand. Weight and size create hierarchy.</p>
+    <div class="type-row"><span class="type-label">Display</span><span class="type-sample" style="font-size:42px;font-weight:700;line-height:1.15;letter-spacing:-0.02em">PostHog Analytics</span><span class="type-meta">56px / 700</span></div>
+    <div class="type-row"><span class="type-label">Section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.25">Product analytics</span><span class="type-meta">32px / 600</span></div>
+    <div class="type-row"><span class="type-label">Title</span><span class="type-sample" style="font-size:21px;font-weight:600;line-height:1.25">Dashboard overview</span><span class="type-meta">24px / 600</span></div>
+    <div class="type-row"><span class="type-label">Card Head</span><span class="type-sample" style="font-size:18px;font-weight:600;line-height:1.25">Conversion funnel</span><span class="type-meta">20px / 600</span></div>
+    <div class="type-row"><span class="type-label">Body</span><span class="type-sample" style="font-size:15px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Track user behavior and build better products with open source analytics.</span><span class="type-meta">15px / 400</span></div>
+    <div class="type-row"><span class="type-label">Small</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Last 7 days &middot; 12,453 events</span><span class="type-meta">14px / 400</span></div>
+    <div class="type-row"><span class="type-label">Caption</span><span class="type-sample" style="font-size:13px;font-weight:400;line-height:1.5;color:var(--text-tertiary)">Updated 3 minutes ago</span><span class="type-meta">13px / 400</span></div>
+    <div class="type-row"><span class="type-label">Overline</span><span class="type-sample" style="font-size:11px;font-weight:600;line-height:1.25;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary)">Unique users</span><span class="type-meta">11px / 600</span></div>
+    <div class="type-row"><span class="type-label">Code</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.6;font-family:var(--font-mono);color:var(--chart-1)">SELECT count() FROM events WHERE event = '$pageview'</span><span class="type-meta">14px / mono</span></div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
+    <p class="section-desc">4px base grid for dense analytics layouts.</p>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
     <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
     <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
     <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
-    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
-    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:20px"></div><span class="spacing-value">20px</span></div>
+    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">4xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
   </section>
 
+  <!-- Border Radius -->
   <section class="section">
-    <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Posthog tokens.</p>
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Functional radius system -- tighter for app, looser for marketing.</p>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:4px"><span>4px</span><span>sm</span></div>
+      <div class="radius-box" style="border-radius:6px"><span>6px</span><span>md</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>8px</span><span>lg</span></div>
+      <div class="radius-box" style="border-radius:12px"><span>12px</span><span>xl</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span>pill</span><span>9999px</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Shadows</h2>
+    <p class="section-desc">Minimal on dark -- borders do the structural work. Shadows reserved for floating layers.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none; border-style:dashed"><div class="shadow-name">level-0</div><div class="shadow-desc">Flat, border-only containment</div></div>
+      <div class="shadow-card" style="box-shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08)"><div class="shadow-name">level-1</div><div class="shadow-desc">Dropdowns, tooltips</div></div>
+      <div class="shadow-card" style="box-shadow:0 4px 16px rgba(0,0,0,0.20), 0 2px 4px rgba(0,0,0,0.12)"><div class="shadow-name">level-2</div><div class="shadow-desc">Modals, command palette</div></div>
+      <div class="shadow-card" style="box-shadow:0 0 16px rgba(245,78,0,0.25)"><div class="shadow-name">glow-accent</div><div class="shadow-desc">CTA hover on dark (sparingly)</div></div>
+    </div>
+  </section>
+
+  <!-- Components: Dark Mode -->
+  <section class="section">
+    <h2 class="section-title">Components (Dark)</h2>
+    <p class="section-desc">Analytics-native components on PostHog's dark canvas.</p>
     <div class="comp-grid">
+
+      <!-- Buttons -->
       <div class="comp-card">
         <h3>Buttons</h3>
         <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+          <button class="btn btn-accent">Get started free</button>
+          <button class="btn btn-ghost">View docs</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-accent btn-sm">Save insight</button>
+          <button class="btn btn-ghost btn-sm">Cancel</button>
         </div>
       </div>
+
+      <!-- Nav -->
+      <div class="comp-card" style="padding:0;overflow:hidden">
+        <div style="padding:16px 20px 8px"><h3 style="margin-bottom:0">Navigation</h3></div>
+        <div class="nav-preview">
+          <div class="nav-logo"><div class="logo-icon">H</div> PostHog</div>
+          <div class="nav-links">
+            <a href="#" class="active">Product</a>
+            <a href="#">Pricing</a>
+            <a href="#">Docs</a>
+            <button class="btn btn-accent btn-sm">Get started</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metric -->
       <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Posthog Feature</h4>
-            <p>A component styled with the Posthog design system tokens.</p>
+        <h3>Metric Card</h3>
+        <div class="metric-card">
+          <div class="metric-overline">Unique users</div>
+          <div class="metric-value">12,847 <span class="metric-trend up">+14.2%</span></div>
+          <div class="metric-desc">vs. previous 7 days</div>
+          <div class="metric-sparkline">
+            <div class="bar" style="height:45%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:42%"></div><div class="bar" style="height:68%"></div><div class="bar" style="height:72%"></div><div class="bar" style="height:85%"></div><div class="bar" style="height:100%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="comp-card" style="padding:0;overflow:hidden">
+        <div style="padding:16px 20px 8px"><h3 style="margin-bottom:0">Sidebar</h3></div>
+        <div style="padding:8px 16px 16px">
+          <div class="sidebar-preview">
+            <div class="sidebar-section">Analytics</div>
+            <div class="sidebar-item active"><span class="icon">&#9632;</span> Dashboards</div>
+            <div class="sidebar-item"><span class="icon">&#8599;</span> Web analytics</div>
+            <div class="sidebar-item"><span class="icon">&#8942;</span> Product analytics</div>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-section">Data</div>
+            <div class="sidebar-item"><span class="icon">&#9775;</span> Events</div>
+            <div class="sidebar-item"><span class="icon">&#9881;</span> Persons</div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Analytics Funnel Component -->
+  <section class="section">
+    <h2 class="section-title">Analytics: Funnel Chart</h2>
+    <p class="section-desc">PostHog's signature component -- conversion funnel with drop-off tracking.</p>
+    <div class="funnel-card">
+      <div class="funnel-header">
+        <h3>Signup to Paid Conversion</h3>
+        <select class="funnel-date-picker">
+          <option>Last 7 days</option>
+        </select>
+      </div>
+      <div>
+        <div class="funnel-step">
+          <div class="funnel-num">1</div>
+          <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:100%"><span class="funnel-bar-label">Visited signup page</span></div></div>
+          <div class="funnel-rate"><div class="funnel-rate-value">8,241</div></div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-num">2</div>
+          <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:72%"><span class="funnel-bar-label">Completed signup</span></div></div>
+          <div class="funnel-rate"><div class="funnel-rate-value">5,934</div><div class="funnel-rate-drop">-28.0%</div></div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-num">3</div>
+          <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:45%"><span class="funnel-bar-label">Sent first event</span></div></div>
+          <div class="funnel-rate"><div class="funnel-rate-value">3,708</div><div class="funnel-rate-drop">-37.5%</div></div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-num">4</div>
+          <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:18%"><span class="funnel-bar-label">Upgraded to paid</span></div></div>
+          <div class="funnel-rate"><div class="funnel-rate-value">1,483</div><div class="funnel-rate-drop">-60.0%</div></div>
+        </div>
+      </div>
+      <div class="funnel-footer">
+        <span class="funnel-footer-label">Overall conversion rate</span>
+        <span class="funnel-footer-value">18.0%</span>
+      </div>
+    </div>
+
+    <div style="margin-top:20px">
+      <div class="color-group-label">Chart Legend</div>
+      <div class="chart-colors">
+        <div class="chart-color-item"><div class="chart-color-dot" style="background:var(--chart-1)"></div>Series 1</div>
+        <div class="chart-color-item"><div class="chart-color-dot" style="background:var(--chart-2)"></div>Series 2</div>
+        <div class="chart-color-item"><div class="chart-color-dot" style="background:var(--chart-3)"></div>Series 3</div>
+        <div class="chart-color-item"><div class="chart-color-dot" style="background:var(--chart-4)"></div>Series 4</div>
+        <div class="chart-color-item"><div class="chart-color-dot" style="background:var(--chart-5)"></div>Series 5</div>
+        <div class="chart-color-item"><div class="chart-color-dot" style="background:var(--chart-6)"></div>Series 6</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Light Mode Section -->
+  <div class="light-section">
+    <h2 class="section-title">Light Mode (Marketing)</h2>
+    <p class="section-desc">PostHog marketing pages and documentation use the light palette.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px">
+      <div class="light-card">
+        <h4>Product Analytics</h4>
+        <p>Understand user behavior with funnels, retention, and trends. No SQL required.</p>
+        <div style="margin-top:12px"><button class="btn btn-accent btn-sm">Try it free</button></div>
+      </div>
+      <div class="light-card">
+        <h4>Session Replay</h4>
+        <p>Watch real user sessions to debug issues and improve UX. Privacy-first recording.</p>
+        <div style="margin-top:12px"><button class="btn btn-sm" style="background:transparent;color:#151515;border:1px solid #e5e7eb">Learn more</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Card -->
+  <section class="section">
+    <h2 class="section-title">Content Card (Dark)</h2>
+    <p class="section-desc">Feature cards with icon, title, description on the dark canvas.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+      <div class="sample-card">
+        <div class="sample-card-img"></div>
+        <div class="sample-card-body">
+          <h4>Feature Flags</h4>
+          <p>Safely roll out features to specific users. Target by properties, cohorts, or percentage.</p>
+        </div>
+      </div>
+      <div class="sample-card">
+        <div class="sample-card-img" style="background:linear-gradient(135deg, #2c2e38, #35374a)"></div>
+        <div class="sample-card-body">
+          <h4>A/B Testing</h4>
+          <p>Run experiments with statistical rigor. Get results you can trust without a data team.</p>
+        </div>
+      </div>
+      <div class="sample-card">
+        <div class="sample-card-img" style="background:linear-gradient(135deg, #35374a, #3b3d4f)"></div>
+        <div class="sample-card-body">
+          <h4>Data Warehouse</h4>
+          <p>Query all your data in one place. Join PostHog events with external sources via HogQL.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
 </body>
 </html>

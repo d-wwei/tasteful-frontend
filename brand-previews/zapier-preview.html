@@ -5,130 +5,464 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zapier Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#6b6b6b&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --surface: #ffffff;
-    --surface-subtle: #f8f8f8;
-    --accent: #ff4a00;
-    --text-primary: #2d2e2e;
-    --text-secondary: #6b6b6b;
-    --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    --surface: #fffdf9;
+    --surface-subtle: #fff3e6;
+    --surface-white: #ffffff;
+    --surface-warm: #ffecd2;
+    --surface-dark: #201515;
+    --accent: #ff4f00;
+    --accent-hover: #e64500;
+    --accent-secondary: #fd7622;
+    --accent-gold: #ffc43e;
+    --accent-teal: #13d0ab;
+    --accent-blue: #499df3;
+    --text-primary: #201515;
+    --text-secondary: #594a42;
+    --text-tertiary: #8c7b72;
+    --text-on-dark: #c4b5ab;
+    --border: #f0e6d8;
+    --border-prominent: #e0d1c2;
+    --error: #d4351c;
+    --font-headline: 'Degular', system-ui, -apple-system, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --shadow-sm: 0px 1px 3px rgba(32,21,21,0.06), 0px 0px 0px 1px rgba(32,21,21,0.04);
+    --shadow-md: 0px 4px 12px rgba(32,21,21,0.08), 0px 0px 0px 1px rgba(32,21,21,0.04);
+    --shadow-lg: 0px 8px 24px rgba(32,21,21,0.12), 0px 0px 0px 1px rgba(32,21,21,0.04);
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
+  body {
+    font-family: var(--font-body);
+    background: var(--surface);
+    color: var(--text-primary);
+    line-height: 1.55;
+  }
   .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+
+  /* Brand Header */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
+    text-align: center; margin-bottom: 80px; padding: 80px 32px;
+    background: var(--surface-subtle); border-radius: 16px;
     border: 1px solid var(--border);
+    position: relative; overflow: hidden;
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
-  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .brand-header::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,79,0,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand-header::after {
+    content: ''; position: absolute; bottom: -40px; left: -40px;
+    width: 160px; height: 160px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(253,118,34,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand-header h1 {
+    font-family: var(--font-headline);
+    font-size: 56px; font-weight: 700; line-height: 1.10;
+    color: var(--text-primary); margin-bottom: 4px;
+    letter-spacing: -0.02em; position: relative;
+  }
+  .brand-header h1 span { color: var(--accent); }
+  .brand-header .aesthetic {
+    font-size: 18px; color: var(--text-secondary);
+    margin-bottom: 20px; font-style: italic; position: relative;
+  }
+  .brand-header .tags {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; position: relative;
+  }
+  .brand-header .tag {
+    font-size: 11px; padding: 5px 14px;
+    background: var(--accent); color: #ffffff;
+    border-radius: 9999px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .brand-header .tag.secondary {
+    background: var(--surface-warm); color: var(--text-secondary);
+  }
+
+  /* Sections */
   .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
+  .section-title {
+    font-family: var(--font-headline);
+    font-size: 32px; font-weight: 600; line-height: 1.20;
+    margin-bottom: 8px; letter-spacing: -0.01em;
+  }
   .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
+
+  /* Color Grid */
+  .color-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 24px;
+  }
+  .color-swatch { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-white); }
+  .color-swatch .swatch-fill { height: 80px; }
   .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; color: var(--text-primary); }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-tertiary); font-family: 'JetBrains Mono', monospace; }
+
+  /* Typography */
   .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
   .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
+  .type-meta { flex: 0 0 80px; font-size: 11px; color: var(--text-tertiary); text-align: right; }
+
+  /* Spacing */
   .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-tertiary); text-align: right; font-weight: 500; }
+  .spacing-bar { height: 24px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%); border-radius: 6px; opacity: 0.7; }
+  .spacing-value { font-size: 11px; color: var(--text-tertiary); min-width: 40px; }
+
+  /* Radius */
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 16px; }
+  .radius-box {
+    aspect-ratio: 1; background: var(--surface-subtle); border: 1.5px solid var(--border-prominent);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  }
+  .radius-box span { font-size: 11px; color: var(--text-tertiary); font-weight: 500; }
+
+  /* Shadow */
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+  .shadow-card {
+    padding: 24px; border-radius: 12px; background: var(--surface-white);
+    min-height: 110px; display: flex; flex-direction: column; justify-content: flex-end;
+  }
   .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-tertiary); }
+
+  /* Components */
   .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 36px; } }
+  .comp-card {
+    padding: 32px; background: var(--surface-white); border-radius: 12px;
+    border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  }
+  .comp-card h3 {
+    font-family: var(--font-headline);
+    font-size: 20px; font-weight: 600; margin-bottom: 20px; color: var(--text-primary);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; padding: 12px 24px;
+    border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer;
+    border: none; transition: all 0.2s ease; text-decoration: none;
+    font-family: var(--font-body);
+  }
+  .btn-accent {
+    background: var(--accent); color: #ffffff;
+    box-shadow: 0px 1px 2px rgba(32,21,21,0.12), inset 0px 1px 0px rgba(255,255,255,0.15);
+  }
+  .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .btn-warm { background: var(--surface-warm); color: var(--text-secondary); }
+  .btn-warm:hover { background: #ffe0b8; }
+  .btn-ghost { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+  .btn-ghost:hover { background: var(--surface-subtle); }
   .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
+
+  /* Sample Card */
+  .sample-card { background: var(--surface-white); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .sample-card-img { height: 100px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 50%, var(--accent-gold) 100%); }
   .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .sample-card-body h4 { font-family: var(--font-headline); font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.55; }
+
+  /* Zap Step */
+  .zap-step { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .step-card {
+    background: var(--surface-white); border-radius: 12px; border: 1px solid var(--border);
+    overflow: hidden; width: 100%; box-shadow: var(--shadow-sm);
+  }
+  .step-header {
+    background: var(--surface-subtle); padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-num {
+    width: 24px; height: 24px; background: var(--accent); color: #ffffff;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0;
+  }
+  .step-label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-tertiary); }
+  .step-app { font-size: 14px; font-weight: 600; color: var(--text-primary); font-family: var(--font-headline); }
+  .step-body { padding: 14px 16px; font-size: 13px; color: var(--text-secondary); }
+  .step-connector {
+    width: 2px; height: 28px;
+    border-left: 2px dashed var(--border-prominent);
+    position: relative;
+  }
+  .step-connector::after {
+    content: ''; position: absolute; top: 50%; left: -4px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); opacity: 0.5;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 0.8; } }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%; display: inline-block;
+  }
+  .status-active { background: var(--accent-teal); box-shadow: 0 0 0 3px rgba(19,208,171,0.2); }
+  .status-inactive { background: var(--border-prominent); }
+
+  /* Dark Section */
+  .dark-section {
+    background: var(--surface-dark); border-radius: 16px; padding: 48px 32px; margin-bottom: 80px;
+  }
+  .dark-section .section-title { color: #fffdf9; }
+  .dark-section .section-desc { color: var(--text-on-dark); }
+  .dark-section .dark-card {
+    background: #2d1f14; border: 1px solid #3d2e25; border-radius: 12px; padding: 24px;
+    display: inline-block; margin-right: 16px; margin-bottom: 12px;
+  }
+  .dark-section .dark-card .card-label { font-size: 11px; color: var(--text-on-dark); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 4px; }
+  .dark-section .dark-card .card-value { font-family: var(--font-headline); font-size: 28px; font-weight: 700; color: #fffdf9; }
+  .dark-section .dark-card .card-value.orange { color: var(--accent); }
 </style>
 </head>
 <body>
 <div class="container">
   <header class="brand-header">
-    <h1>Zapier</h1>
-    <p class="aesthetic">automation with orange brand energy</p>
+    <h1>Zapier<span>.</span></h1>
+    <p class="aesthetic">warm automation energy -- friendly orange on cream canvas</p>
     <div class="tags">
-      <span class="tag">orange-automation</span><span class="tag">workflow-visual</span><span class="tag">integration-hub</span>
+      <span class="tag">zap-orange</span>
+      <span class="tag">degular-type</span>
+      <span class="tag secondary">cream-canvas</span>
+      <span class="tag secondary">workflow-visual</span>
+      <span class="tag secondary">approachable-professional</span>
     </div>
   </header>
 
+  <!-- Color Palette -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Zapier visual identity.</p>
+    <p class="section-desc">Core brand colors from brand.zapier.com -- warm orange energy on a cream canvas.</p>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ff4a00"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#ff4a00</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#2d2e2e"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#2d2e2e</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#6b6b6b"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#6b6b6b</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#fffdf9"></div><div class="swatch-info"><div class="swatch-name">Surface</div><div class="swatch-hex">#fffdf9</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#fff3e6"></div><div class="swatch-info"><div class="swatch-name">Serenade</div><div class="swatch-hex">#fff3e6</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffecd2"></div><div class="swatch-info"><div class="swatch-name">Light Peach</div><div class="swatch-hex">#ffecd2</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ff4f00"></div><div class="swatch-info"><div class="swatch-name">Zap Orange</div><div class="swatch-hex">#ff4f00</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#fd7622"></div><div class="swatch-info"><div class="swatch-name">Pumpkin</div><div class="swatch-hex">#fd7622</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffc43e"></div><div class="swatch-info"><div class="swatch-name">Sunglow</div><div class="swatch-hex">#ffc43e</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#201515"></div><div class="swatch-info"><div class="swatch-name">Zapier Earth</div><div class="swatch-hex">#201515</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#594a42"></div><div class="swatch-info"><div class="swatch-name">Warm Brown</div><div class="swatch-hex">#594a42</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#8c7b72"></div><div class="swatch-info"><div class="swatch-name">Taupe</div><div class="swatch-hex">#8c7b72</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#13d0ab"></div><div class="swatch-info"><div class="swatch-name">Java Teal</div><div class="swatch-hex">#13d0ab</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#499df3"></div><div class="swatch-info"><div class="swatch-name">Picton Blue</div><div class="swatch-hex">#499df3</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#d4351c"></div><div class="swatch-info"><div class="swatch-name">Error Red</div><div class="swatch-hex">#d4351c</div></div></div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Zapier branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Zapier Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">Degular for headlines (bold, confident), Inter for everything else (clean, readable).</p>
+    <div class="type-row">
+      <span class="type-label">Display</span>
+      <span class="type-sample" style="font-family:var(--font-headline);font-size:48px;font-weight:700;line-height:1.10;letter-spacing:-0.02em">Automate everything</span>
+      <span class="type-meta">64px / 700</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Section</span>
+      <span class="type-sample" style="font-family:var(--font-headline);font-size:32px;font-weight:600;line-height:1.20">Connect your apps</span>
+      <span class="type-meta">40px / 600</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Card Title</span>
+      <span class="type-sample" style="font-family:var(--font-headline);font-size:24px;font-weight:600;line-height:1.30">Multi-step Zaps</span>
+      <span class="type-meta">24px / 600</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Body</span>
+      <span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.55;color:var(--text-secondary)">Build automated workflows that connect your favorite apps and services.</span>
+      <span class="type-meta">16px / 400</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Caption</span>
+      <span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-tertiary)">Last run: 2 minutes ago</span>
+      <span class="type-meta">14px / 400</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Overline</span>
+      <span class="type-sample" style="font-size:11px;font-weight:600;line-height:1.20;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary)">Trigger &middot; Step 1</span>
+      <span class="type-meta">11px / 600</span>
+    </div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
+    <p class="section-desc">8px base grid. Generous breathing room for an approachable feel.</p>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:6px"></div><span class="spacing-value">6px</span></div>
     <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
     <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
     <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
     <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
     <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
     <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
   </section>
 
+  <!-- Border Radius -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Consistently rounded and approachable. No sharp corners on interactive elements.</p>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:6px"><span>6px</span><span>sm</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>8px</span><span>md</span></div>
+      <div class="radius-box" style="border-radius:12px"><span>12px</span><span>lg</span></div>
+      <div class="radius-box" style="border-radius:16px"><span>16px</span><span>xl</span></div>
+      <div class="radius-box" style="border-radius:24px"><span>24px</span><span>2xl</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span>pill</span><span>9999px</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Shadows</h2>
+    <p class="section-desc">Warm-tinted shadows using Zapier Earth (rgba(32,21,21,...)), never cold black.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none;border:1px solid var(--border)">
+        <div class="shadow-name">level-0</div><div class="shadow-desc">Flat, no elevation</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-sm)">
+        <div class="shadow-name">level-1</div><div class="shadow-desc">Subtle warm lift</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-md)">
+        <div class="shadow-name">level-2</div><div class="shadow-desc">Medium warm elevation</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-lg)">
+        <div class="shadow-name">level-3</div><div class="shadow-desc">Elevated, modals & panels</div>
+      </div>
+      <div class="shadow-card" style="box-shadow:0px 0px 24px 4px rgba(255,79,0,0.15)">
+        <div class="shadow-name">glow</div><div class="shadow-desc">Orange halo for active states</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components -->
   <section class="section">
     <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Zapier tokens.</p>
+    <p class="section-desc">Sample components styled with Zapier brand tokens.</p>
     <div class="comp-grid">
+
+      <!-- Buttons -->
       <div class="comp-card">
         <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+        <div class="btn-group" style="margin-bottom:16px">
+          <button class="btn btn-accent">Start free</button>
+          <button class="btn btn-warm">Learn more</button>
+          <button class="btn btn-ghost">View docs</button>
         </div>
+        <p style="font-size:13px;color:var(--text-tertiary)">Primary (Zap Orange) / Warm surface / Ghost outline</p>
       </div>
+
+      <!-- Content Card -->
       <div class="comp-card">
         <h3>Content Card</h3>
         <div class="sample-card">
           <div class="sample-card-img"></div>
           <div class="sample-card-body">
-            <h4>Zapier Feature</h4>
-            <p>A component styled with the Zapier design system tokens.</p>
+            <h4>Multi-step Zaps</h4>
+            <p>Build workflows that connect multiple apps in a single automated sequence.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zap Builder Steps -->
+      <div class="comp-card" style="grid-column: 1 / -1;">
+        <h3>Zap Flow Steps</h3>
+        <p style="font-size:13px;color:var(--text-tertiary);margin-bottom:16px">Zapier's signature automation visual language: numbered steps connected by dashed lines.</p>
+        <div class="zap-step">
+          <div class="step-card">
+            <div class="step-header">
+              <div class="step-num">1</div>
+              <div>
+                <div class="step-label">Trigger</div>
+                <div class="step-app">Gmail</div>
+              </div>
+              <div style="margin-left:auto"><span class="status-dot status-active"></span></div>
+            </div>
+            <div class="step-body">When a new email arrives in inbox</div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-card">
+            <div class="step-header">
+              <div class="step-num">2</div>
+              <div>
+                <div class="step-label">Action</div>
+                <div class="step-app">Slack</div>
+              </div>
+              <div style="margin-left:auto"><span class="status-dot status-active"></span></div>
+            </div>
+            <div class="step-body">Send a message to #notifications channel</div>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-card">
+            <div class="step-header">
+              <div class="step-num">3</div>
+              <div>
+                <div class="step-label">Action</div>
+                <div class="step-app">Google Sheets</div>
+              </div>
+              <div style="margin-left:auto"><span class="status-dot status-inactive"></span></div>
+            </div>
+            <div class="step-body">Add a row to Email Log spreadsheet</div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Dark Section -->
+  <section class="dark-section">
+    <h2 class="section-title">Dark Variant</h2>
+    <p class="section-desc">Zapier Earth (#201515) background for dark sections and premium content.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:24px">
+      <div class="dark-card">
+        <div class="card-label">Zaps run</div>
+        <div class="card-value orange">2.4M</div>
+      </div>
+      <div class="dark-card">
+        <div class="card-label">Apps connected</div>
+        <div class="card-value">7,000+</div>
+      </div>
+      <div class="dark-card">
+        <div class="card-label">Time saved</div>
+        <div class="card-value orange">1.2B hrs</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Status Colors -->
+  <section class="section">
+    <h2 class="section-title">Status Colors</h2>
+    <p class="section-desc">Functional status indicators for the automation context. Not decorative.</p>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="status-dot status-active"></span>
+        <span style="font-size:14px;color:var(--text-secondary)">Active / Connected</span>
+        <span style="font-size:12px;color:var(--text-tertiary)">#13d0ab</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="width:8px;height:8px;border-radius:50%;display:inline-block;background:#499df3;box-shadow:0 0 0 3px rgba(73,157,243,0.2)"></span>
+        <span style="font-size:14px;color:var(--text-secondary)">Info / Pending</span>
+        <span style="font-size:12px;color:var(--text-tertiary)">#499df3</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="width:8px;height:8px;border-radius:50%;display:inline-block;background:#ffc43e;box-shadow:0 0 0 3px rgba(255,196,62,0.2)"></span>
+        <span style="font-size:14px;color:var(--text-secondary)">Warning / Attention</span>
+        <span style="font-size:12px;color:var(--text-tertiary)">#ffc43e</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="width:8px;height:8px;border-radius:50%;display:inline-block;background:#d4351c;box-shadow:0 0 0 3px rgba(212,53,28,0.2)"></span>
+        <span style="font-size:14px;color:var(--text-secondary)">Error / Disconnected</span>
+        <span style="font-size:12px;color:var(--text-tertiary)">#d4351c</span>
+      </div>
+    </div>
+  </section>
+
 </div>
 </body>
 </html>

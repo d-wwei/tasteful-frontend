@@ -1,64 +1,166 @@
 {
   "$extensions": {
     "brand": "notion",
-    "source": "awesome-design-md",
-    "aesthetic": "structured canvas with typographic hierarchy",
+    "source": "notion.so inspection + dembrandt.com/explorer/notion + matthiasfrank.de/en/notion-colors",
+    "aesthetic": "content-first canvas — warm-neutral minimalism built on block-based layout rhythm",
     "key-characteristics": [
-      "content-first",
+      "system-font-stack",
       "block-based-layout",
-      "warm-minimalism"
+      "warm-neutral-palette",
+      "border-driven-separation",
+      "adjacency-aware-spacing"
     ]
   },
   "color": {
     "surface": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "White canvas for content blocks"
+      "$description": "White canvas — clean content-first page background"
     },
     "surface-subtle": {
       "$value": "#f7f6f3",
       "$type": "color",
-      "$description": "Warm off-white \u2014 sidebar background"
+      "$description": "Warm off-white — sidebar, secondary surfaces, hover backgrounds"
     },
     "surface-hover": {
       "$value": "#efefef",
       "$type": "color",
-      "$description": "Hover states on blocks"
+      "$description": "Block hover state — light warm gray"
+    },
+    "surface-overlay": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Popover/modal/menu background — elevated white"
     },
     "accent": {
       "$value": "#2eaadc",
       "$type": "color",
-      "$description": "Notion Blue \u2014 links and interactive elements"
+      "$description": "Notion Blue — links, selected states, interactive highlights"
     },
     "accent-hover": {
       "$value": "#2691bd",
       "$type": "color",
-      "$description": "Darker blue for hover"
+      "$description": "Darker Notion Blue — hover state for accent elements"
     },
     "text-primary": {
       "$value": "#37352f",
       "$type": "color",
-      "$description": "Warm near-black \u2014 primary content text"
+      "$description": "Warm charcoal — primary content text, Notion's signature text tone"
     },
     "text-secondary": {
       "$value": "#787774",
       "$type": "color",
-      "$description": "Medium gray \u2014 secondary text"
+      "$description": "Medium warm gray — secondary text, descriptions, metadata"
     },
     "text-tertiary": {
       "$value": "#9b9a97",
       "$type": "color",
-      "$description": "Light gray \u2014 placeholders"
+      "$description": "Light warm gray — placeholders, empty-state text, timestamps"
     },
     "text-on-accent": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "White on accent"
+      "$description": "White text on Notion Blue backgrounds"
+    },
+    "icon-default": {
+      "$value": "#55534e",
+      "$type": "color",
+      "$description": "Default icon color — slightly lighter than text-primary"
+    },
+    "icon-gray": {
+      "$value": "#a6a299",
+      "$type": "color",
+      "$description": "Gray icon variant"
+    },
+    "notion-brown": {
+      "$value": "#9b6f50",
+      "$type": "color",
+      "$description": "Notion Brown — icon and text accent"
+    },
+    "notion-orange": {
+      "$value": "#d9730d",
+      "$type": "color",
+      "$description": "Notion Orange — icon accent, text highlight"
+    },
+    "notion-red": {
+      "$value": "#e03e3e",
+      "$type": "color",
+      "$description": "Notion Red — destructive actions, error states"
+    },
+    "notion-yellow": {
+      "$value": "#cb912f",
+      "$type": "color",
+      "$description": "Notion Yellow — warning, highlight text"
+    },
+    "notion-green": {
+      "$value": "#448361",
+      "$type": "color",
+      "$description": "Notion Green — success, positive states"
+    },
+    "notion-blue-icon": {
+      "$value": "#337ea9",
+      "$type": "color",
+      "$description": "Notion Blue icon variant — softer than accent blue"
+    },
+    "notion-purple": {
+      "$value": "#9065b0",
+      "$type": "color",
+      "$description": "Notion Purple — tag and text accent"
+    },
+    "notion-pink": {
+      "$value": "#c14c8a",
+      "$type": "color",
+      "$description": "Notion Pink — icon and text accent"
+    },
+    "bg-gray": {
+      "$value": "#f1f1ef",
+      "$type": "color",
+      "$description": "Gray background tint — callout, inline code, tag background"
+    },
+    "bg-brown": {
+      "$value": "#f3eeee",
+      "$type": "color",
+      "$description": "Brown background tint"
+    },
+    "bg-orange": {
+      "$value": "#f8ecdf",
+      "$type": "color",
+      "$description": "Orange background tint"
+    },
+    "bg-yellow": {
+      "$value": "#faf3dd",
+      "$type": "color",
+      "$description": "Yellow background tint"
+    },
+    "bg-green": {
+      "$value": "#eef3ed",
+      "$type": "color",
+      "$description": "Green background tint"
+    },
+    "bg-blue": {
+      "$value": "#e9f3f7",
+      "$type": "color",
+      "$description": "Blue background tint"
+    },
+    "bg-purple": {
+      "$value": "#f6f3f8",
+      "$type": "color",
+      "$description": "Purple background tint"
+    },
+    "bg-pink": {
+      "$value": "#f9f2f5",
+      "$type": "color",
+      "$description": "Pink background tint"
+    },
+    "bg-red": {
+      "$value": "#faecec",
+      "$type": "color",
+      "$description": "Red background tint"
     },
     "error": {
       "$value": "#eb5757",
       "$type": "color",
-      "$description": "Error red"
+      "$description": "Error red — validation, destructive confirmation"
     },
     "success": {
       "$value": "#4dab9a",
@@ -73,133 +175,223 @@
     "border": {
       "$value": "#e9e9e7",
       "$type": "color",
-      "$description": "Light warm border"
+      "$description": "Standard warm border — dividers, card edges, table lines"
+    },
+    "border-dark": {
+      "$value": "#d3d1cb",
+      "$type": "color",
+      "$description": "Heavier border — active states, emphasized separation"
+    },
+    "cta-black": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "Black CTA button — Notion marketing pages use solid black buttons"
+    },
+    "cta-black-hover": {
+      "$value": "#37352f",
+      "$type": "color",
+      "$description": "Black CTA hover — softens to warm charcoal"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+      "$value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol'",
       "$type": "fontFamily",
-      "$description": "Display/heading font"
+      "$description": "System font stack — same for headings and body (Notion uses no custom display font)"
     },
     "font-body": {
-      "$value": "-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+      "$value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol'",
       "$type": "fontFamily",
-      "$description": "Body/UI font"
+      "$description": "System font stack — identical to display (unified typeface system)"
     },
-    "scale-display": {
-      "$value": "48px",
-      "$type": "dimension",
-      "$description": "Display \u2014 hero headlines"
+    "font-mono": {
+      "$value": "iawriter-mono, Nitti, Menlo, Courier, monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace — code blocks, inline code"
     },
-    "scale-section": {
-      "$value": "32px",
+    "font-serif": {
+      "$value": "Lyon-Text, Georgia, ui-serif, serif",
+      "$type": "fontFamily",
+      "$description": "Serif option — user-selectable page font in Notion"
+    },
+    "scale-hero": {
+      "$value": "40px",
       "$type": "dimension",
-      "$description": "Section headings"
+      "$description": "Hero headline — marketing pages, landing sections"
+    },
+    "scale-h1": {
+      "$value": "30px",
+      "$type": "dimension",
+      "$description": "Heading 1 — page title and H1 blocks"
+    },
+    "scale-h2": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Heading 2 — section headings"
+    },
+    "scale-h3": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Heading 3 — subsection headings"
     },
     "scale-base": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Standard body"
+      "$description": "Body text — standard paragraph blocks"
     },
-    "scale-caption": {
+    "scale-ui": {
       "$value": "14px",
       "$type": "dimension",
-      "$description": "Captions"
+      "$description": "UI text — buttons, menus, sidebar items, captions"
     },
     "scale-small": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small text"
+      "$description": "Small text — timestamps, badges, metadata"
+    },
+    "scale-tiny": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Tiny text — breadcrumbs, auxiliary labels"
     },
     "line-height-tight": {
       "$value": "1.15",
       "$type": "number",
-      "$description": "Tight \u2014 headings"
+      "$description": "Tight — hero headlines, display text"
+    },
+    "line-height-heading": {
+      "$value": "1.30",
+      "$type": "number",
+      "$description": "Heading — H1, H2, H3 blocks"
     },
     "line-height-normal": {
       "$value": "1.50",
       "$type": "number",
-      "$description": "Normal \u2014 body"
+      "$description": "Normal — body text, paragraphs"
+    },
+    "line-height-relaxed": {
+      "$value": "1.60",
+      "$type": "number",
+      "$description": "Relaxed — long-form reading, description blocks"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular — body text, descriptions"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium — buttons, nav items, UI labels"
     },
     "weight-semibold": {
       "$value": "600",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Semibold — H2, H3 headings"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold — H1, hero headlines, page titles"
     }
   },
   "spacing": {
     "unit": {
-      "$value": "8px",
+      "$value": "4px",
       "$type": "dimension",
-      "$description": "Base grid unit"
+      "$description": "Base unit — Notion uses a 4px micro-grid within blocks"
+    },
+    "2xs": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Hairline — inline element gaps, icon-to-text micro-gap"
     },
     "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Tight — padding within inline tags, list bullet offset"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small — inner block padding, menu item gaps"
     },
     "md": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Medium — card padding, sidebar item spacing"
     },
     "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Large — gap between content blocks, section sub-spacing"
     },
     "xl": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Extra large — heading-to-body gap, card grid gaps"
     },
     "2xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Double extra large — section divider spacing"
+    },
+    "3xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Triple extra large — major section breaks"
+    },
+    "page-padding-x": {
+      "$value": "96px",
+      "$type": "dimension",
+      "$description": "Desktop page horizontal padding (full-width mode)"
+    },
+    "page-padding-x-narrow": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Mobile page horizontal padding"
     },
     "section-gap": {
-      "$value": "80px",
+      "$value": "64px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Between major page sections"
     },
-    "container-max": {
+    "container-content": {
+      "$value": "900px",
+      "$type": "dimension",
+      "$description": "Content column max-width — Notion page body"
+    },
+    "container-wide": {
       "$value": "1200px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Wide layout — marketing pages, full-width databases"
+    },
+    "sidebar-width": {
+      "$value": "240px",
+      "$type": "dimension",
+      "$description": "Navigation sidebar width (expanded)"
     }
   },
   "border": {
-    "radius-standard": {
+    "radius-tight": {
       "$value": "3px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Tight radius — inline tags, small badges, buttons"
+    },
+    "radius-standard": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Standard radius — input fields, dropdown menus"
     },
     "radius-comfortable": {
-      "$value": "6px",
+      "$value": "8px",
       "$type": "dimension",
-      "$description": "Comfortable radius"
+      "$description": "Comfortable radius — cards, modal corners, callout blocks"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill shape"
+      "$description": "Pill shape — filter chips, status badges"
     }
   },
   "shadow": {
@@ -207,66 +399,89 @@
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "0px",
+          "offsetY": "1px",
           "blur": "0px",
           "spread": "0px",
-          "color": "transparent"
+          "color": "rgba(55, 53, 47, 0.09)"
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Border shadow — 1px bottom line simulating a border, Notion's default card separator"
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
+          "offsetY": "4px",
+          "blur": "12px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0, 0, 0, 0.08)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle elevation"
+      "$description": "Light elevation — dropdown menus, tooltips, popover panels"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "32px",
+          "spread": "0px",
+          "color": "rgba(0, 0, 0, 0.12)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Heavy elevation — modals, command palette, overlay dialogs"
     }
   },
   "motion": {
+    "duration-instant": {
+      "$value": "100ms",
+      "$type": "duration",
+      "$description": "Instant — hover state changes, toggle switches, checkbox ticks"
+    },
     "duration-fast": {
       "$value": "150ms",
       "$type": "duration",
-      "$description": "Quick interactions"
+      "$description": "Fast — dropdown open, menu slide, tooltip appearance"
     },
     "duration-normal": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Standard transitions"
+      "$description": "Normal — page transitions, panel slide, sidebar toggle"
+    },
+    "duration-slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Slow — modal entrance, full-page transition"
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1],
       "$type": "cubicBezier",
-      "$description": "Standard ease"
+      "$description": "Standard ease — smooth deceleration, used for most transitions"
+    },
+    "easing-snappy": {
+      "$value": [0.2, 0, 0, 1],
+      "$type": "cubicBezier",
+      "$description": "Snappy ease-out — menu appearances, quick interactions"
     }
   },
   "breakpoint": {
     "mobile": {
       "$value": "640px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile — single column, sidebar hidden"
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet — sidebar overlay mode"
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop — sidebar pinned, full layout"
     }
   }
 }

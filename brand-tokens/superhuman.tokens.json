@@ -1,195 +1,322 @@
 {
   "$extensions": {
     "brand": "superhuman",
-    "source": "awesome-design-md",
-    "aesthetic": "dark speed-optimized interface with purple energy",
+    "source": "superhuman.com + blog.superhuman.com dark-theme research",
+    "aesthetic": "precision dark interface — keyboard-first, sub-100ms, purple accent glow",
     "key-characteristics": [
-      "dark-speed-ui",
-      "purple-gradient-accent",
-      "keyboard-first"
+      "dark-native-email",
+      "keyboard-first-navigation",
+      "purple-accent-glow",
+      "system-font-speed",
+      "five-shade-gray-elevation"
     ]
   },
   "color": {
     "surface": {
-      "$value": "#1a1a2e",
+      "$value": "#1B1B1B",
       "$type": "color",
-      "$description": "Deep navy-black background"
+      "$description": "Cod Gray — deepest background, inbox canvas, the void emails float above"
     },
-    "surface-subtle": {
-      "$value": "#252547",
+    "surface-raised": {
+      "$value": "#232323",
       "$type": "color",
-      "$description": "Elevated dark surface"
+      "$description": "Raised surface — email list pane, sidebar panels"
     },
     "surface-elevated": {
-      "$value": "#2d2d55",
+      "$value": "#2C2C2C",
       "$type": "color",
-      "$description": "Card surfaces"
+      "$description": "Elevated surface — selected email thread, compose window, modals"
+    },
+    "surface-overlay": {
+      "$value": "#353535",
+      "$type": "color",
+      "$description": "Overlay surface — command palette (Cmd+K), dropdown menus, popovers"
+    },
+    "surface-highest": {
+      "$value": "#3E3E3E",
+      "$type": "color",
+      "$description": "Highest elevation — tooltips, toast notifications, topmost layer"
     },
     "accent": {
-      "$value": "#7c5cfc",
+      "$value": "#6C56F0",
       "$type": "color",
-      "$description": "Superhuman Purple \u2014 primary accent"
+      "$description": "Superhuman Purple — primary interactive accent, focused states, CTA"
     },
     "accent-hover": {
-      "$value": "#9b7dff",
+      "$value": "#8270F4",
       "$type": "color",
-      "$description": "Lighter purple hover"
+      "$description": "Purple hover — lightened for hover/focus feedback"
+    },
+    "accent-subtle": {
+      "$value": "rgba(108, 86, 240, 0.12)",
+      "$type": "color",
+      "$description": "Purple wash — selected row background, active state tint"
+    },
+    "accent-glow": {
+      "$value": "rgba(108, 86, 240, 0.25)",
+      "$type": "color",
+      "$description": "Purple glow — focus ring outer glow, keyboard-focused element halo"
     },
     "text-primary": {
-      "$value": "#ffffff",
+      "$value": "#FFFFFF",
       "$type": "color",
-      "$description": "White primary text"
+      "$description": "Pure white — sender names, subjects, headings, high-signal text"
     },
     "text-secondary": {
-      "$value": "#a0a0b8",
+      "$value": "rgba(255, 255, 255, 0.65)",
       "$type": "color",
-      "$description": "Muted lavender-gray"
+      "$description": "White at 65% — email previews, body text, timestamps (per Superhuman's dark theme research)"
+    },
+    "text-tertiary": {
+      "$value": "rgba(255, 255, 255, 0.40)",
+      "$type": "color",
+      "$description": "White at 40% — placeholder text, disabled labels, metadata"
     },
     "text-on-accent": {
-      "$value": "#ffffff",
+      "$value": "#FFFFFF",
       "$type": "color",
-      "$description": "White on purple"
+      "$description": "White on purple — button labels, badge text on accent"
     },
     "error": {
-      "$value": "#ff5c5c",
+      "$value": "#F04438",
       "$type": "color",
-      "$description": "Error red"
+      "$description": "Error red — validation, failed sends, destructive actions"
+    },
+    "error-subtle": {
+      "$value": "rgba(240, 68, 56, 0.12)",
+      "$type": "color",
+      "$description": "Error background tint — error banner backgrounds"
     },
     "success": {
-      "$value": "#4dd675",
+      "$value": "#32D583",
       "$type": "color",
-      "$description": "Success green"
+      "$description": "Success green — sent confirmation, inbox zero celebration"
     },
-    "border": {
-      "$value": "rgba(255,255,255,0.08)",
+    "success-subtle": {
+      "$value": "rgba(50, 213, 131, 0.12)",
       "$type": "color",
-      "$description": "Subtle white border"
+      "$description": "Success background tint — success banner backgrounds"
+    },
+    "warning": {
+      "$value": "#F5A623",
+      "$type": "color",
+      "$description": "Warning amber — snooze indicators, remind-me badges"
+    },
+    "info": {
+      "$value": "#36A3F7",
+      "$type": "color",
+      "$description": "Info blue — read receipts, link highlights, informational badges"
+    },
+    "border-subtle": {
+      "$value": "rgba(255, 255, 255, 0.06)",
+      "$type": "color",
+      "$description": "Barely visible divider — email row separators, panel edges"
+    },
+    "border-default": {
+      "$value": "rgba(255, 255, 255, 0.10)",
+      "$type": "color",
+      "$description": "Standard border — card outlines, input fields, section dividers"
+    },
+    "border-strong": {
+      "$value": "rgba(255, 255, 255, 0.16)",
+      "$type": "color",
+      "$description": "Prominent border — focused input outlines, active panel edges"
+    },
+    "focus-ring": {
+      "$value": "0 0 0 2px #1B1B1B, 0 0 0 4px #6C56F0",
+      "$type": "other",
+      "$description": "Double-ring keyboard focus — dark gap + purple ring for WCAG visibility on dark"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "-apple-system, BlinkMacSystemFont, sans-serif",
+      "$value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display/heading font"
+      "$description": "System sans — zero FOUT, sub-100ms render, matches OS native feel"
     },
     "font-body": {
-      "$value": "-apple-system, BlinkMacSystemFont, sans-serif",
+      "$value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body/UI font"
+      "$description": "Same system stack — unified, no font network requests"
+    },
+    "font-mono": {
+      "$value": "'SF Mono', 'Cascadia Code', 'Fira Code', ui-monospace, monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace — keyboard shortcut hints, code snippets in emails"
     },
     "scale-display": {
-      "$value": "48px",
+      "$value": "36px",
       "$type": "dimension",
-      "$description": "Display \u2014 hero headlines"
+      "$description": "Display — onboarding headlines, marketing moments (rare in-app)"
     },
     "scale-section": {
-      "$value": "32px",
+      "$value": "24px",
       "$type": "dimension",
-      "$description": "Section headings"
+      "$description": "Section — settings page headers, split inbox category titles"
+    },
+    "scale-title": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Title — email subject in thread view, compose subject line"
     },
     "scale-base": {
-      "$value": "16px",
+      "$value": "15px",
       "$type": "dimension",
-      "$description": "Standard body"
-    },
-    "scale-caption": {
-      "$value": "14px",
-      "$type": "dimension",
-      "$description": "Captions"
+      "$description": "Base — email body, compose text, primary reading size (optimized for email)"
     },
     "scale-small": {
-      "$value": "12px",
+      "$value": "13px",
       "$type": "dimension",
-      "$description": "Small text"
+      "$description": "Small — inbox row preview text, sidebar labels, timestamps"
+    },
+    "scale-caption": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Caption — keyboard shortcut hints, status indicators, badge text"
     },
     "line-height-tight": {
-      "$value": "1.15",
+      "$value": "1.20",
       "$type": "number",
-      "$description": "Tight \u2014 headings"
+      "$description": "Tight — headings, subject lines, single-line labels"
     },
     "line-height-normal": {
       "$value": "1.50",
       "$type": "number",
-      "$description": "Normal \u2014 body"
+      "$description": "Normal — email body text, compose area"
+    },
+    "line-height-relaxed": {
+      "$value": "1.65",
+      "$type": "number",
+      "$description": "Relaxed — long-form email reading, marketing copy"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular — body text, email content, secondary labels"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium — unread sender names, active nav items, button labels"
     },
     "weight-semibold": {
       "$value": "600",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Semibold — section headings, keyboard shortcut keys, emphasis"
+    },
+    "letter-spacing-tight": {
+      "$value": "-0.02em",
+      "$type": "dimension",
+      "$description": "Tight tracking — display and section headings"
+    },
+    "letter-spacing-normal": {
+      "$value": "0em",
+      "$type": "dimension",
+      "$description": "Normal tracking — body text"
+    },
+    "letter-spacing-wide": {
+      "$value": "0.06em",
+      "$type": "dimension",
+      "$description": "Wide tracking — all-caps labels, keyboard hint text"
     }
   },
   "spacing": {
     "unit": {
-      "$value": "8px",
+      "$value": "4px",
       "$type": "dimension",
-      "$description": "Base grid unit"
+      "$description": "Base unit — Superhuman uses a tight 4px grid for density"
+    },
+    "2xs": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Hairline — icon-to-label gaps, inline badge padding"
     },
     "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Extra small — tight internal padding, chip gaps"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small — inbox row horizontal padding, list item gaps"
     },
     "md": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Medium — card padding, input padding, button padding"
     },
     "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Large — section internal padding, compose area margins"
     },
     "xl": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Extra large — panel padding, modal content padding"
     },
     "2xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Double XL — section gaps, major layout spacing"
     },
-    "section-gap": {
-      "$value": "80px",
+    "3xl": {
+      "$value": "48px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Triple XL — page-level section spacing"
+    },
+    "inbox-row-height": {
+      "$value": "44px",
+      "$type": "dimension",
+      "$description": "Inbox row height — optimized for scan speed, fits sender + subject + preview"
+    },
+    "sidebar-width": {
+      "$value": "240px",
+      "$type": "dimension",
+      "$description": "Sidebar collapsed width — navigation panel"
+    },
+    "thread-max-width": {
+      "$value": "680px",
+      "$type": "dimension",
+      "$description": "Thread reading width — optimal for email body readability"
     },
     "container-max": {
-      "$value": "1200px",
+      "$value": "1400px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Max container — full desktop layout width"
     }
   },
   "border": {
-    "radius-standard": {
+    "radius-none": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "None — inbox rows, list items (sharp edges for speed/density)"
+    },
+    "radius-sm": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small — inline badges, chips, keyboard shortcut keys"
+    },
+    "radius-md": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Medium — buttons, input fields, dropdowns"
+    },
+    "radius-lg": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Large — cards, modals, compose window"
     },
-    "radius-comfortable": {
+    "radius-xl": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Comfortable radius"
+      "$description": "Extra large — command palette, onboarding panels"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill shape"
+      "$description": "Pill — status badges, avatar containers, toggle switches"
     }
   },
   "shadow": {
@@ -204,59 +331,141 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat — inbox rows, list items (no shadow, elevation via bg color)"
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
+          "offsetY": "1px",
+          "blur": "3px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0, 0, 0, 0.24)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "-1px",
+          "color": "rgba(0, 0, 0, 0.12)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle elevation"
+      "$description": "Subtle — raised panels, sidebar edge shadow"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(0, 0, 0, 0.32)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "6px",
+          "spread": "-1px",
+          "color": "rgba(0, 0, 0, 0.16)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Elevated — compose window, modals, command palette"
+    },
+    "level-3": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "40px",
+          "spread": "-4px",
+          "color": "rgba(0, 0, 0, 0.40)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "12px",
+          "spread": "-2px",
+          "color": "rgba(0, 0, 0, 0.24)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Dramatic — command palette overlay, critical modals"
+    },
+    "glow-focus": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "2px",
+          "color": "#6C56F0"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "8px",
+          "spread": "0px",
+          "color": "rgba(108, 86, 240, 0.25)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Focus glow — purple ring + soft glow on keyboard-focused elements"
     }
   },
   "motion": {
-    "duration-fast": {
-      "$value": "150ms",
+    "duration-instant": {
+      "$value": "50ms",
       "$type": "duration",
-      "$description": "Quick interactions"
+      "$description": "Instant — keyboard shortcut feedback, row selection highlight"
+    },
+    "duration-fast": {
+      "$value": "100ms",
+      "$type": "duration",
+      "$description": "Fast — hover states, focus rings, micro-interactions"
     },
     "duration-normal": {
-      "$value": "200ms",
+      "$value": "150ms",
       "$type": "duration",
-      "$description": "Standard transitions"
+      "$description": "Normal — panel transitions, dropdown open/close"
     },
-    "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+    "duration-smooth": {
+      "$value": "250ms",
+      "$type": "duration",
+      "$description": "Smooth — compose window expand, modal enter/exit"
+    },
+    "easing-snap": {
+      "$value": [0.2, 0, 0, 1],
       "$type": "cubicBezier",
-      "$description": "Standard ease"
+      "$description": "Snap — fast-in, no bounce, instant feel for keyboard actions"
+    },
+    "easing-smooth": {
+      "$value": [0.16, 1, 0.3, 1],
+      "$type": "cubicBezier",
+      "$description": "Smooth — natural deceleration for panels and modals"
+    },
+    "easing-spring": {
+      "$value": [0.34, 1.56, 0.64, 1],
+      "$type": "cubicBezier",
+      "$description": "Spring — subtle overshoot for celebratory moments (inbox zero)"
     }
   },
   "breakpoint": {
-    "mobile": {
+    "compact": {
       "$value": "640px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Compact — single-pane inbox, stacked layout"
     },
-    "tablet": {
-      "$value": "768px",
-      "$type": "dimension",
-      "$description": "Tablet"
-    },
-    "desktop": {
+    "medium": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Medium — two-pane layout, list + thread"
+    },
+    "wide": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Wide — three-pane layout, sidebar + list + thread"
     }
   }
 }

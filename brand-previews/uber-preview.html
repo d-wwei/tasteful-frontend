@@ -5,65 +5,121 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Uber Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#afafaf&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --surface: #000000;
-    --surface-subtle: #1a1a1a;
+    --surface-subtle: #141414;
+    --surface-raised: #1a1a1a;
     --accent: #ffffff;
+    --accent-hover: rgba(255,255,255,0.85);
     --text-primary: #ffffff;
     --text-secondary: #afafaf;
-    --border: rgba(255,255,255,0.1);
-    --font: Inter, -apple-system, sans-serif;
+    --text-tertiary: #6b6b6b;
+    --text-on-accent: #000000;
+    --uber-green: #06c167;
+    --uber-blue: #276ef1;
+    --warning: #f5a623;
+    --error: #e11d48;
+    --border-dark: rgba(255,255,255,0.08);
+    --border-dark-prominent: rgba(255,255,255,0.15);
+    --font-display: "Uber Move", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-body: "Uber Move Text", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
+  body { font-family: var(--font-body); background: var(--surface); color: var(--text-primary); line-height: 1.5; -webkit-font-smoothing: antialiased; }
   .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+
+  /* Brand Header */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
+    text-align: center; margin-bottom: 96px; padding: 80px 32px;
     background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-dark);
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
+  .brand-header h1 { font-family: var(--font-display); font-size: 52px; font-weight: 700; line-height: 1.10; letter-spacing: -0.02em; color: var(--accent); margin-bottom: 16px; }
+  .brand-header .aesthetic { font-family: var(--font-body); font-size: 18px; color: var(--text-secondary); margin-bottom: 20px; font-style: italic; }
   .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #000000; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
+  .brand-header .tag { font-family: var(--font-body); font-size: 11px; padding: 4px 12px; background: var(--accent); color: var(--text-on-accent); border-radius: 999px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* Sections */
+  .section { margin-bottom: 96px; }
+  .section-title { font-family: var(--font-display); font-size: 36px; font-weight: 500; line-height: 1.10; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .section-desc { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.50; }
+
+  /* Color Swatches */
   .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
+  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border-dark); background: var(--surface-subtle); }
   .color-swatch .swatch-fill { height: 72px; }
   .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 500; margin-bottom: 2px; }
   .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+
+  /* Typography Scale */
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--border-dark); }
+  .type-label { flex: 0 0 100px; font-size: 12px; color: var(--text-tertiary); text-align: right; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
   .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
+  .type-meta { flex: 0 0 60px; font-size: 12px; color: var(--text-tertiary); text-align: right; }
+
+  /* Spacing */
   .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
+  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; font-weight: 500; }
+  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.15; }
+  .spacing-value { font-size: 12px; color: var(--text-tertiary); min-width: 40px; }
+
+  /* Radius Preview */
   .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border-dark-prominent); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
   .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
+
+  /* Shadow Preview */
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+  .shadow-card { padding: 24px; border-radius: 12px; background: var(--surface-subtle); min-height: 120px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .shadow-card .shadow-name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .shadow-card .shadow-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.43; }
+
+  /* Components */
   .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #000000; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #000 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 36px; } .brand-header { padding: 48px 20px; } }
+  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border-dark); }
+  .comp-card h3 { font-family: var(--font-display); font-size: 18px; font-weight: 500; margin-bottom: 20px; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border-radius: 8px; font-family: var(--font-body); font-size: 16px; font-weight: 500; cursor: pointer; border: none; transition: all 150ms ease-out; text-decoration: none; }
+  .btn-accent { background: var(--accent); color: var(--text-on-accent); }
+  .btn-accent:hover { background: var(--accent-hover); }
+  .btn-ghost { background: transparent; color: var(--accent); border: 1px solid var(--border-dark-prominent); }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.30); background: rgba(255,255,255,0.04); }
+  .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  /* Sample Card */
+  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border-dark); overflow: hidden; transition: border-color 150ms ease-out; }
+  .sample-card:hover { border-color: var(--border-dark-prominent); }
+  .sample-card-img { height: 140px; background: linear-gradient(160deg, #1a1a1a 0%, #000000 100%); position: relative; display: flex; align-items: center; justify-content: center; }
+  .sample-card-img::after { content: 'UBER'; font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: 0.12em; color: rgba(255,255,255,0.08); }
+  .sample-card-body { padding: 20px; }
+  .sample-card-body h4 { font-family: var(--font-display); font-size: 16px; font-weight: 500; margin-bottom: 8px; }
+  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.50; }
+
+  /* Ride Pricing Card */
+  .ride-card { display: flex; align-items: center; padding: 16px 20px; gap: 16px; background: var(--surface-subtle); border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 150ms ease-out; cursor: pointer; }
+  .ride-card:hover { background: var(--surface-raised); }
+  .ride-card.selected { background: var(--surface-raised); border-left: 2px solid var(--accent); }
+  .ride-card-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .ride-card-icon svg { width: 36px; height: 36px; fill: var(--text-primary); }
+  .ride-card-content { flex: 1; }
+  .ride-card-name { font-size: 16px; font-weight: 500; color: var(--text-primary); margin-bottom: 2px; }
+  .ride-card-detail { font-size: 14px; color: var(--text-secondary); }
+  .ride-card-price { text-align: right; }
+  .ride-card-amount { font-size: 16px; font-weight: 500; color: var(--text-primary); }
+  .ride-card-surge { font-size: 12px; color: var(--warning); display: flex; align-items: center; gap: 4px; justify-content: flex-end; margin-top: 2px; }
+  .ride-list { border-radius: 12px; overflow: hidden; border: 1px solid var(--border-dark); }
+
+  /* Metric Display */
+  .metric-card { background: var(--surface-subtle); border: 1px solid var(--border-dark); border-radius: 12px; padding: 32px; }
+  .metric-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); margin-bottom: 12px; }
+  .metric-value { font-family: var(--font-display); font-size: 52px; font-weight: 700; line-height: 1.10; letter-spacing: -0.02em; }
+  .metric-desc { font-size: 14px; color: var(--text-secondary); margin-top: 12px; line-height: 1.43; }
+  .metric-trend { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; padding: 4px 8px; border-radius: 999px; margin-top: 8px; }
+  .metric-trend.positive { background: rgba(6,193,103,0.12); color: var(--uber-green); }
+  .metric-trend.negative { background: rgba(225,29,72,0.12); color: var(--error); }
 </style>
 </head>
 <body>
@@ -72,60 +128,192 @@
     <h1>Uber</h1>
     <p class="aesthetic">dark ride-share with monochromatic precision</p>
     <div class="tags">
-      <span class="tag">dark-minimalism</span><span class="tag">monochromatic</span><span class="tag">move-forward</span>
+      <span class="tag">dark-native</span>
+      <span class="tag">monochromatic-restraint</span>
+      <span class="tag">bold-direct-typography</span>
+      <span class="tag">luminance-elevation</span>
+      <span class="tag">photography-driven</span>
     </div>
   </header>
 
+  <!-- Color Palette -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Uber visual identity.</p>
+    <p class="section-desc">Core brand colors. Black canvas, white signal, precise grays for hierarchy.</p>
     <div class="color-grid">
       <div class="color-swatch"><div class="swatch-fill" style="background:#000000"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#000000</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#141414"></div><div class="swatch-info"><div class="swatch-name">surface-subtle</div><div class="swatch-hex">#141414</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1a1a1a"></div><div class="swatch-info"><div class="swatch-name">surface-raised</div><div class="swatch-hex">#1a1a1a</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#ffffff</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#ffffff</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#afafaf"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#afafaf</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#6b6b6b"></div><div class="swatch-info"><div class="swatch-name">text-tertiary</div><div class="swatch-hex">#6b6b6b</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#06c167"></div><div class="swatch-info"><div class="swatch-name">uber-green</div><div class="swatch-hex">#06c167</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#276ef1"></div><div class="swatch-info"><div class="swatch-name">uber-blue</div><div class="swatch-hex">#276ef1</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f5a623"></div><div class="swatch-info"><div class="swatch-name">warning</div><div class="swatch-hex">#f5a623</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#e11d48"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#e11d48</div></div></div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Uber branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Uber Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">Uber Move for display, Uber Move Text for body. Medium-to-bold, tight tracking at large sizes.</p>
+    <div class="type-row"><span class="type-label">Display</span><span class="type-sample" style="font-family:var(--font-display);font-size:44px;font-weight:700;line-height:1.10;letter-spacing:-0.02em">Move the way you want</span><span class="type-meta">52px / 700</span></div>
+    <div class="type-row"><span class="type-label">Heading</span><span class="type-sample" style="font-family:var(--font-display);font-size:32px;font-weight:500;line-height:1.10;letter-spacing:-0.02em">Section heading</span><span class="type-meta">36px / 500</span></div>
+    <div class="type-row"><span class="type-label">Title</span><span class="type-sample" style="font-family:var(--font-display);font-size:22px;font-weight:500;line-height:1.25">Card title text</span><span class="type-meta">24px / 500</span></div>
+    <div class="type-row"><span class="type-label">Subtitle</span><span class="type-sample" style="font-family:var(--font-body);font-size:17px;font-weight:500;line-height:1.25">Subtitle or nav item</span><span class="type-meta">18px / 500</span></div>
+    <div class="type-row"><span class="type-label">Body</span><span class="type-sample" style="font-family:var(--font-body);font-size:16px;font-weight:400;line-height:1.50;color:var(--text-secondary)">Standard body text for content and descriptions</span><span class="type-meta">16px / 400</span></div>
+    <div class="type-row"><span class="type-label">Caption</span><span class="type-sample" style="font-family:var(--font-body);font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata text</span><span class="type-meta">14px / 400</span></div>
+    <div class="type-row"><span class="type-label">Small</span><span class="type-sample" style="font-family:var(--font-body);font-size:12px;font-weight:400;line-height:1.33;color:var(--text-tertiary)">Fine print and timestamps</span><span class="type-meta">12px / 400</span></div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
-    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
-    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
-    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
-    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
-    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <p class="section-desc">4px base grid. Generous section spacing on the dark canvas.</p>
+    <div class="spacing-row"><span class="spacing-label">2xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:96px"></div><span class="spacing-value">96px</span></div>
   </section>
 
+  <!-- Elevation / Shadows -->
+  <section class="section">
+    <h2 class="section-title">Elevation</h2>
+    <p class="section-desc">Luminance-based depth on dark. Brighter surfaces + white-alpha borders, not drop shadows.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="background:var(--surface);border:1px solid var(--border-dark);">
+        <div class="shadow-name">Ground</div>
+        <div class="shadow-desc">#000000 -- base canvas, no elevation</div>
+      </div>
+      <div class="shadow-card" style="background:var(--surface-subtle);border:1px solid var(--border-dark);box-shadow:0 0 0 1px rgba(255,255,255,0.05);">
+        <div class="shadow-name">Elevated</div>
+        <div class="shadow-desc">#141414 + luminance border -- cards, panels</div>
+      </div>
+      <div class="shadow-card" style="background:var(--surface-raised);border:1px solid var(--border-dark-prominent);box-shadow:0 0 0 1px rgba(255,255,255,0.08), 0 4px 16px rgba(255,255,255,0.04);">
+        <div class="shadow-name">Raised</div>
+        <div class="shadow-desc">#1a1a1a + prominent border -- modals, overlays</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Border Radius -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">8px standard radius for buttons and cards. 12px for featured containers.</p>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:0px"><span>0px</span><span style="font-size:10px;color:var(--text-tertiary)">none</span></div>
+      <div class="radius-box" style="border-radius:4px"><span>4px</span><span style="font-size:10px;color:var(--text-tertiary)">sm</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>8px</span><span style="font-size:10px;color:var(--text-tertiary)">standard</span></div>
+      <div class="radius-box" style="border-radius:12px"><span>12px</span><span style="font-size:10px;color:var(--text-tertiary)">lg</span></div>
+      <div class="radius-box" style="border-radius:16px"><span>16px</span><span style="font-size:10px;color:var(--text-tertiary)">xl</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span>pill</span><span style="font-size:10px;color:var(--text-tertiary)">999px</span></div>
+    </div>
+  </section>
+
+  <!-- Component Examples -->
   <section class="section">
     <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Uber tokens.</p>
+    <p class="section-desc">Sample components styled with Uber tokens on dark surfaces.</p>
     <div class="comp-grid">
+      <!-- Buttons -->
       <div class="comp-card">
         <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+        <div class="btn-group" style="margin-bottom:16px">
+          <button class="btn btn-accent">Request a ride</button>
+          <button class="btn btn-ghost">Learn more</button>
         </div>
+        <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px">White primary on black. Ghost secondary with luminance border.</p>
       </div>
+
+      <!-- Content Card -->
       <div class="comp-card">
         <h3>Content Card</h3>
         <div class="sample-card">
           <div class="sample-card-img"></div>
           <div class="sample-card-body">
-            <h4>Uber Feature</h4>
-            <p>A component styled with the Uber design system tokens.</p>
+            <h4>Go anywhere</h4>
+            <p>Request a ride, hop in, and go. Dark photography blends into the canvas.</p>
           </div>
         </div>
+      </div>
+
+      <!-- Metric Display -->
+      <div class="comp-card">
+        <h3>Metric Display</h3>
+        <div class="metric-card">
+          <div class="metric-label">Active drivers</div>
+          <div class="metric-value">5.4M</div>
+          <div class="metric-desc">Globally across 10,000+ cities</div>
+          <div class="metric-trend positive">+12% this quarter</div>
+        </div>
+      </div>
+
+      <!-- Ride Pricing Card -->
+      <div class="comp-card">
+        <h3>Ride Pricing</h3>
+        <div class="ride-list">
+          <div class="ride-card selected">
+            <div class="ride-card-icon"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg></div>
+            <div class="ride-card-content">
+              <div class="ride-card-name">UberX</div>
+              <div class="ride-card-detail">4 min away &middot; 3:42 PM dropoff</div>
+            </div>
+            <div class="ride-card-price">
+              <div class="ride-card-amount">$24.50</div>
+            </div>
+          </div>
+          <div class="ride-card">
+            <div class="ride-card-icon"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg></div>
+            <div class="ride-card-content">
+              <div class="ride-card-name">Comfort</div>
+              <div class="ride-card-detail">6 min away &middot; 3:45 PM dropoff</div>
+            </div>
+            <div class="ride-card-price">
+              <div class="ride-card-amount">$31.80</div>
+              <div class="ride-card-surge">&#9889; 1.2x</div>
+            </div>
+          </div>
+          <div class="ride-card">
+            <div class="ride-card-icon"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg></div>
+            <div class="ride-card-content">
+              <div class="ride-card-name">Black</div>
+              <div class="ride-card-detail">8 min away &middot; 3:48 PM dropoff</div>
+            </div>
+            <div class="ride-card-price">
+              <div class="ride-card-amount">$52.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Motion -->
+  <section class="section">
+    <h2 class="section-title">Motion</h2>
+    <p class="section-desc">Bold and direct. Fast micro-interactions, confident transitions.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
+      <div style="background:var(--surface-subtle);border:1px solid var(--border-dark);border-radius:8px;padding:20px;">
+        <div style="font-size:14px;font-weight:500;margin-bottom:4px;">Micro</div>
+        <div style="font-size:12px;color:var(--text-secondary);">100ms -- hover, opacity</div>
+      </div>
+      <div style="background:var(--surface-subtle);border:1px solid var(--border-dark);border-radius:8px;padding:20px;">
+        <div style="font-size:14px;font-weight:500;margin-bottom:4px;">Fast</div>
+        <div style="font-size:12px;color:var(--text-secondary);">150ms -- buttons, toggles</div>
+      </div>
+      <div style="background:var(--surface-subtle);border:1px solid var(--border-dark);border-radius:8px;padding:20px;">
+        <div style="font-size:14px;font-weight:500;margin-bottom:4px;">Normal</div>
+        <div style="font-size:12px;color:var(--text-secondary);">250ms -- panels, reveals</div>
+      </div>
+      <div style="background:var(--surface-subtle);border:1px solid var(--border-dark);border-radius:8px;padding:20px;">
+        <div style="font-size:14px;font-weight:500;margin-bottom:4px;">Slow</div>
+        <div style="font-size:12px;color:var(--text-secondary);">400ms -- full-screen, map</div>
       </div>
     </div>
   </section>

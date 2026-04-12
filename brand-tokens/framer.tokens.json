@@ -1,185 +1,368 @@
 {
   "$extensions": {
     "brand": "framer",
-    "source": "awesome-design-md",
-    "aesthetic": "creative dark with vibrant purple energy",
+    "source": "framer.com/brand + framer.com marketing site + editor UI inspection",
+    "aesthetic": "motion-native creative tool -- electric blue on dark canvas, animation-first interface",
     "key-characteristics": [
-      "dark-creative",
-      "vibrant-purple",
-      "motion-design"
+      "dark-canvas-native",
+      "electric-blue-accent",
+      "motion-design-tool",
+      "inter-variable-typography",
+      "glassmorphic-panels",
+      "spring-physics-easing"
     ]
   },
   "color": {
     "surface": {
-      "$value": "#0d0d0d",
+      "$value": "#0a0a0a",
       "$type": "color",
-      "$description": "Primary background"
+      "$description": "Canvas Black -- primary background, the infinite canvas behind everything"
+    },
+    "surface-panel": {
+      "$value": "#141414",
+      "$type": "color",
+      "$description": "Panel Dark -- sidebar, inspector, toolbar panels one step above canvas"
+    },
+    "surface-elevated": {
+      "$value": "#1c1c1c",
+      "$type": "color",
+      "$description": "Elevated Surface -- cards, dropdowns, popovers floating above panels"
     },
     "surface-subtle": {
       "$value": "#1a1a1a",
       "$type": "color",
-      "$description": "Secondary surface"
+      "$description": "Subtle Surface -- card backgrounds, section fills on dark canvas"
+    },
+    "surface-hover": {
+      "$value": "#252525",
+      "$type": "color",
+      "$description": "Hover State -- interactive element hover on dark surfaces"
+    },
+    "surface-translucent": {
+      "$value": "rgba(255,255,255,0.04)",
+      "$type": "color",
+      "$description": "Translucent Surface -- glassmorphic panels, overlay surfaces"
+    },
+    "surface-translucent-hover": {
+      "$value": "rgba(255,255,255,0.08)",
+      "$type": "color",
+      "$description": "Translucent Hover -- glassmorphic hover state"
     },
     "accent": {
       "$value": "#0099ff",
       "$type": "color",
-      "$description": "Primary accent color"
+      "$description": "Framer Blue -- the primary brand color, used for CTAs and high-signal interactive elements"
     },
     "accent-hover": {
-      "$value": "#0099ff",
+      "$value": "#33adff",
       "$type": "color",
-      "$description": "Accent hover state"
+      "$description": "Blue Hover -- lighter blue for hover states on accent elements"
+    },
+    "accent-deep": {
+      "$value": "#0055ff",
+      "$type": "color",
+      "$description": "Deep Blue -- secondary brand blue for gradients and emphasis"
+    },
+    "accent-glow": {
+      "$value": "rgba(0,153,255,0.15)",
+      "$type": "color",
+      "$description": "Blue Glow -- ambient glow behind accent elements, the motion-tool energy signature"
+    },
+    "accent-surface": {
+      "$value": "rgba(0,153,255,0.08)",
+      "$type": "color",
+      "$description": "Blue Tint Surface -- very faint accent fill for selected/active containers"
     },
     "text-primary": {
       "$value": "#ffffff",
       "$type": "color",
-      "$description": "Primary text"
+      "$description": "Pure White -- primary text on dark canvas"
     },
     "text-secondary": {
       "$value": "#999999",
       "$type": "color",
-      "$description": "Secondary text"
+      "$description": "Medium Gray -- secondary text, descriptions, body copy"
+    },
+    "text-tertiary": {
+      "$value": "#666666",
+      "$type": "color",
+      "$description": "Muted Gray -- metadata, timestamps, placeholders"
     },
     "text-on-accent": {
       "$value": "#000000",
       "$type": "color",
-      "$description": "Text on accent"
+      "$description": "Black on Blue -- text on Framer Blue buttons (high contrast)"
     },
     "error": {
-      "$value": "#ff4444",
+      "$value": "#ff3b30",
       "$type": "color",
-      "$description": "Error state"
+      "$description": "Error Red -- destructive actions, validation errors"
     },
     "success": {
-      "$value": "#44cc44",
+      "$value": "#30d158",
       "$type": "color",
-      "$description": "Success state"
+      "$description": "Success Green -- publish success, positive status"
+    },
+    "warning": {
+      "$value": "#ff9f0a",
+      "$type": "color",
+      "$description": "Warning Amber -- caution states, draft indicators"
     },
     "border": {
-      "$value": "rgba(255,255,255,0.1)",
+      "$value": "rgba(255,255,255,0.08)",
       "$type": "color",
-      "$description": "Default border"
+      "$description": "Standard Border -- semi-transparent white for panel and card edges"
+    },
+    "border-subtle": {
+      "$value": "rgba(255,255,255,0.05)",
+      "$type": "color",
+      "$description": "Subtle Border -- whisper-thin containment lines"
+    },
+    "border-prominent": {
+      "$value": "rgba(255,255,255,0.12)",
+      "$type": "color",
+      "$description": "Prominent Border -- emphasized borders on interactive elements"
+    },
+    "border-focus": {
+      "$value": "rgba(0,153,255,0.5)",
+      "$type": "color",
+      "$description": "Focus Ring -- keyboard focus indicator in brand blue"
+    },
+    "overlay": {
+      "$value": "rgba(0,0,0,0.75)",
+      "$type": "color",
+      "$description": "Modal Overlay -- backdrop behind modals and command palettes"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display and heading font -- Inter Variable preferred"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body and UI font -- same family, different weights"
+    },
+    "font-mono": {
+      "$value": "'SF Mono', 'Fira Code', ui-monospace, monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace for code blocks and technical values"
+    },
+    "scale-display-xl": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Display XL -- hero headlines on marketing pages"
     },
     "scale-display": {
       "$value": "48px",
       "$type": "dimension",
-      "$description": "Display"
+      "$description": "Display -- primary section headlines"
     },
     "scale-section": {
-      "$value": "32px",
+      "$value": "36px",
       "$type": "dimension",
-      "$description": "Section"
+      "$description": "Section -- secondary section titles"
+    },
+    "scale-heading": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Heading -- card titles, feature headers"
+    },
+    "scale-subheading": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Subheading -- subsection titles, large labels"
+    },
+    "scale-body-large": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Body Large -- intro paragraphs, feature descriptions"
     },
     "scale-base": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Body"
-    },
-    "scale-caption": {
-      "$value": "14px",
-      "$type": "dimension",
-      "$description": "Caption"
+      "$description": "Body -- standard reading text"
     },
     "scale-small": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Small -- captions, navigation links, toolbar text"
+    },
+    "scale-caption": {
+      "$value": "13px",
+      "$type": "dimension",
+      "$description": "Caption -- metadata, timestamps"
+    },
+    "scale-label": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Label -- button text, badge text, panel labels"
+    },
+    "scale-micro": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Micro -- toolbar tooltips, inspector field labels"
     },
     "line-height-tight": {
-      "$value": "1.15",
+      "$value": "1.10",
       "$type": "number",
-      "$description": "Tight"
+      "$description": "Tight -- display headlines"
+    },
+    "line-height-heading": {
+      "$value": "1.20",
+      "$type": "number",
+      "$description": "Heading -- section titles"
     },
     "line-height-normal": {
       "$value": "1.50",
       "$type": "number",
-      "$description": "Normal"
+      "$description": "Normal -- body text"
+    },
+    "line-height-relaxed": {
+      "$value": "1.60",
+      "$type": "number",
+      "$description": "Relaxed -- long-form content, descriptions"
+    },
+    "letter-spacing-display": {
+      "$value": "-0.96px",
+      "$type": "dimension",
+      "$description": "Display tracking -- tight at large sizes"
+    },
+    "letter-spacing-heading": {
+      "$value": "-0.48px",
+      "$type": "dimension",
+      "$description": "Heading tracking -- moderately tight"
+    },
+    "letter-spacing-normal": {
+      "$value": "normal",
+      "$type": "dimension",
+      "$description": "Body tracking -- default"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular -- body text, descriptions"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium -- UI labels, navigation, emphasis"
     },
     "weight-semibold": {
       "$value": "600",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Semibold -- headings, strong emphasis"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold -- display headlines, hero text"
     }
   },
   "spacing": {
     "unit": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Base unit"
+      "$description": "Base grid unit"
+    },
+    "2xs": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Micro gap -- icon-to-label in tight toolbar items"
     },
     "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Extra small -- inner padding for dense UI"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small -- standard inner gap"
     },
     "md": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Medium -- button padding, card inner spacing"
     },
     "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Large -- card padding, section inner spacing"
     },
     "xl": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Extra large -- between related content blocks"
     },
     "2xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Double extra large -- between sections within a card"
+    },
+    "3xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Triple extra large -- major content breaks"
     },
     "section-gap": {
       "$value": "80px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Section spacing -- between major page sections"
+    },
+    "hero-padding": {
+      "$value": "120px",
+      "$type": "dimension",
+      "$description": "Hero vertical padding -- generous breathing room"
     },
     "container-max": {
       "$value": "1200px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Max container width for marketing content"
+    },
+    "container-narrow": {
+      "$value": "680px",
+      "$type": "dimension",
+      "$description": "Narrow container for text-focused content"
     }
   },
   "border": {
-    "radius-standard": {
+    "radius-xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small -- tags, badges, toolbar items"
+    },
+    "radius-sm": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Small -- buttons, inputs, small cards"
+    },
+    "radius-md": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Medium -- standard cards, dropdowns"
+    },
+    "radius-lg": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Large -- panels, modals, featured cards"
+    },
+    "radius-xl": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Extra large -- hero containers, feature showcases"
+    },
+    "radius-2xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Double extra large -- large showcase elements"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill"
+      "$description": "Pill -- status badges, tag chips"
     }
   },
   "shadow": {
@@ -194,59 +377,148 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat -- canvas level, no elevation"
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
+          "offsetY": "1px",
+          "blur": "2px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0,0,0,0.3)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle"
+      "$description": "Subtle -- toolbar buttons, minor elevation"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "12px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.4)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Card -- floating panels, dropdown menus"
+    },
+    "level-3": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "24px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.5)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.3)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Modal -- dialogs, command palettes, multi-layer stack"
+    },
+    "glow-accent": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "20px",
+          "spread": "0px",
+          "color": "rgba(0,153,255,0.15)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Accent Glow -- blue ambient light behind featured elements, the Framer energy signature"
+    },
+    "focus-ring": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "2px",
+          "color": "rgba(0,153,255,0.5)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Focus Ring -- keyboard focus indicator"
     }
   },
   "motion": {
+    "duration-instant": {
+      "$value": "100ms",
+      "$type": "duration",
+      "$description": "Instant -- micro-interactions, opacity toggles"
+    },
     "duration-fast": {
       "$value": "150ms",
       "$type": "duration",
-      "$description": "Fast"
+      "$description": "Fast -- button hover, tooltip appear"
     },
     "duration-normal": {
-      "$value": "200ms",
+      "$value": "250ms",
       "$type": "duration",
-      "$description": "Normal"
+      "$description": "Normal -- panel transitions, card hover"
     },
-    "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+    "duration-slow": {
+      "$value": "400ms",
+      "$type": "duration",
+      "$description": "Slow -- page transitions, modal enter"
+    },
+    "duration-deliberate": {
+      "$value": "600ms",
+      "$type": "duration",
+      "$description": "Deliberate -- hero animations, showcase reveals"
+    },
+    "easing-spring": {
+      "$value": [0.2, 0.9, 0.3, 1.0],
       "$type": "cubicBezier",
-      "$description": "Ease"
+      "$description": "Spring -- Framer's signature spring-physics feel, overshoots slightly"
+    },
+    "easing-ease-out": {
+      "$value": [0.16, 1, 0.3, 1],
+      "$type": "cubicBezier",
+      "$description": "Ease Out -- decelerating motion for enter animations"
+    },
+    "easing-ease-in-out": {
+      "$value": [0.4, 0, 0.2, 1],
+      "$type": "cubicBezier",
+      "$description": "Ease In Out -- symmetric motion for looping or reversible transitions"
+    },
+    "easing-bounce": {
+      "$value": [0.34, 1.56, 0.64, 1],
+      "$type": "cubicBezier",
+      "$description": "Bounce -- playful overshoot for delightful micro-interactions"
     }
   },
   "breakpoint": {
     "mobile": {
       "$value": "640px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile breakpoint"
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet breakpoint"
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop breakpoint"
+    },
+    "wide": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Wide desktop breakpoint"
     }
   }
 }

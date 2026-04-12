@@ -5,128 +5,342 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sentry Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#827d8f&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --surface: #1c1023;
-    --surface-subtle: #1a1a1a;
-    --accent: #6c5fc7;
-    --text-primary: #eae1f5;
-    --text-secondary: #827d8f;
-    --border: rgba(255,255,255,0.1);
-    --font: Inter, -apple-system, sans-serif;
+    --surface: #f9f8ff;
+    --surface-card: #ffffff;
+    --surface-dark: #1F1633;
+    --surface-recessed: #ececf1;
+    --accent: #6a5fc1;
+    --accent-hover: #8277cf;
+    --accent-wash: rgba(106,95,193,0.08);
+    --text-primary: #2B1D38;
+    --text-secondary: #776589;
+    --text-tertiary: #9386A0;
+    --text-on-dark: #E7E1EC;
+    --error: #e1567c;
+    --error-wash: rgba(225,86,124,0.12);
+    --warning: #f4834f;
+    --warning-wash: rgba(244,131,79,0.12);
+    --info: #f2b712;
+    --info-wash: rgba(242,183,18,0.12);
+    --success: #19ab27;
+    --success-wash: rgba(25,171,39,0.12);
+    --debug: #0099e0;
+    --border: #cfcfdb;
+    --border-light: #ececf1;
+    --font: Rubik, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', Consolas, 'Liberation Mono', Menlo, monospace;
   }
   body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 48px 20px; }
+
+  /* Brand Header */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
+    text-align: center; margin-bottom: 64px; padding: 64px 32px;
+    background: var(--surface-dark); border-radius: 12px;
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
+  .brand-header h1 { font-size: 40px; font-weight: 700; line-height: 1.2; color: #ffffff; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .brand-header .aesthetic { font-size: 16px; color: var(--text-on-dark); margin-bottom: 20px; opacity: 0.8; }
   .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
-  .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .brand-header .tag { font-size: 11px; padding: 4px 14px; background: var(--accent); color: #ffffff; border-radius: 2em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Sections */
+  .section { margin-bottom: 64px; }
+  .section-title { font-size: 24px; font-weight: 700; line-height: 1.20; margin-bottom: 6px; color: var(--text-primary); }
+  .section-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+
+  /* Color Grid */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border-light); background: var(--surface-card); }
+  .color-swatch .swatch-fill { height: 64px; }
+  .color-swatch .swatch-info { padding: 8px 10px; }
+  .color-swatch .swatch-name { font-size: 11px; font-weight: 500; margin-bottom: 2px; }
+  .color-swatch .swatch-hex { font-size: 10px; color: var(--text-tertiary); font-family: var(--font-mono); }
+  .color-group-label { font-size: 12px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; margin-top: 20px; }
+
+  /* Typography */
+  .type-row { display: flex; align-items: baseline; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--border-light); }
+  .type-label { flex: 0 0 80px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
   .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
+  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-family: var(--font-mono); }
+
+  /* Spacing */
+  .spacing-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .spacing-label { flex: 0 0 50px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 500; }
+  .spacing-bar { height: 20px; background: var(--accent); border-radius: 3px; opacity: 0.5; }
+  .spacing-value { font-size: 10px; color: var(--text-tertiary); min-width: 36px; font-family: var(--font-mono); }
+
+  /* Radius */
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; }
+  .radius-box { aspect-ratio: 1; background: var(--surface-card); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .radius-box span { font-size: 10px; color: var(--text-tertiary); font-family: var(--font-mono); }
+  .radius-box .radius-label { font-family: var(--font); font-weight: 500; font-size: 11px; color: var(--text-secondary); }
+
+  /* Shadow */
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+  .shadow-card { padding: 20px; border-radius: 8px; background: var(--surface-card); border: 1px solid var(--border-light); min-height: 90px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .shadow-card .shadow-name { font-size: 12px; font-weight: 500; margin-bottom: 4px; }
+  .shadow-card .shadow-desc { font-size: 10px; color: var(--text-tertiary); }
+
+  /* Components */
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 28px; } }
+  .comp-card { padding: 24px; background: var(--surface-card); border-radius: 8px; border: 1px solid var(--border-light); }
+  .comp-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; padding: 10px 24px; border-radius: 2em; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; font-family: var(--font); }
   .btn-accent { background: var(--accent); color: #ffffff; }
+  .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); }
   .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #000 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .btn-outline:hover { background: var(--accent-wash); }
+  .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* Severity Badges */
+  .severity-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .severity-badge { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 3px; display: inline-flex; align-items: center; gap: 5px; }
+  .severity-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+
+  /* Sample Issue Row */
+  .issue-list { border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden; }
+  .issue-header { background: var(--surface); padding: 10px 16px; font-size: 11px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-light); display: flex; gap: 16px; }
+  .issue-row { padding: 10px 16px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 12px; transition: background 0.1s; cursor: pointer; }
+  .issue-row:hover { background: rgba(106,95,193,0.04); }
+  .issue-row:last-child { border-bottom: none; }
+  .issue-title { font-size: 13px; font-weight: 500; color: var(--text-primary); flex: 1; }
+  .issue-title:hover { color: var(--accent); }
+  .issue-meta { font-size: 11px; color: var(--text-tertiary); white-space: nowrap; }
+  .issue-count { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 3px; }
+
+  /* Stack Trace */
+  .stack-panel { border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden; }
+  .stack-header { background: var(--surface); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-light); }
+  .stack-error-msg { font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary); padding: 12px 16px; background: var(--surface-recessed); border-bottom: 1px solid var(--border); line-height: 1.5; }
+  .stack-frame { padding: 8px 16px; border-bottom: 1px solid var(--border-light); display: flex; align-items: baseline; gap: 8px; cursor: pointer; font-family: var(--font-mono); font-size: 13px; transition: background 0.1s; }
+  .stack-frame:hover { background: rgba(106,95,193,0.04); }
+  .stack-fn { font-weight: 500; color: var(--text-primary); }
+  .stack-file { color: var(--text-tertiary); flex: 1; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .stack-line { color: var(--accent); white-space: nowrap; font-size: 12px; }
+  .stack-app-badge { font-family: var(--font); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; padding: 1px 6px; border-radius: 2px; }
+  .stack-app-badge.in-app { color: var(--success); background: var(--success-wash); }
+  .stack-app-badge.lib { color: var(--text-tertiary); background: var(--surface-recessed); }
+  .stack-code { background: var(--surface-dark); }
+  .stack-code-line { display: flex; font-family: var(--font-mono); font-size: 13px; line-height: 1.65; }
+  .stack-code-line .line-num { width: 48px; text-align: right; padding-right: 12px; color: #9386A0; background: rgba(0,0,0,0.2); user-select: none; flex-shrink: 0; }
+  .stack-code-line .line-content { padding-left: 12px; color: var(--text-on-dark); flex: 1; }
+  .stack-code-line.error-line { background: rgba(225,86,124,0.20); border-left: 3px solid var(--error); }
+  .stack-code-line.error-line .line-num { background: rgba(225,86,124,0.15); }
 </style>
 </head>
 <body>
 <div class="container">
   <header class="brand-header">
     <h1>Sentry</h1>
-    <p class="aesthetic">dark error tracking with purple accent</p>
+    <p class="aesthetic">Data-dense monitoring dashboard with restrained purple accent</p>
     <div class="tags">
-      <span class="tag">dark-dev-tool</span><span class="tag">purple-accent</span><span class="tag">error-focused</span>
+      <span class="tag">S.C.R.A.P.S.</span>
+      <span class="tag">Error Monitoring</span>
+      <span class="tag">Severity System</span>
+      <span class="tag">Tactile Depth</span>
     </div>
   </header>
 
+  <!-- COLOR PALETTE -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Sentry visual identity.</p>
+    <p class="section-desc">Sentry's purple-tinted neutral scale with functional severity colors.</p>
+
+    <div class="color-group-label">Surfaces</div>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#1c1023"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#1c1023</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#6c5fc7"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#6c5fc7</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#eae1f5"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#eae1f5</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#827d8f"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#827d8f</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f9f8ff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#f9f8ff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">card</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ececf1"></div><div class="swatch-info"><div class="swatch-name">recessed</div><div class="swatch-hex">#ececf1</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1F1633"></div><div class="swatch-info"><div class="swatch-name">dark</div><div class="swatch-hex">#1F1633</div></div></div>
+    </div>
+
+    <div class="color-group-label">Brand Accent</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#6a5fc1"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#6a5fc1</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#8277cf"></div><div class="swatch-info"><div class="swatch-name">accent-hover</div><div class="swatch-hex">#8277cf</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:rgba(106,95,193,0.08);border:1px dashed #6a5fc1"></div><div class="swatch-info"><div class="swatch-name">accent-wash</div><div class="swatch-hex">8% opacity</div></div></div>
+    </div>
+
+    <div class="color-group-label">Text (Purple-tinted Neutrals)</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#2B1D38"></div><div class="swatch-info"><div class="swatch-name">primary</div><div class="swatch-hex">#2B1D38</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#776589"></div><div class="swatch-info"><div class="swatch-name">secondary</div><div class="swatch-hex">#776589</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#9386A0"></div><div class="swatch-info"><div class="swatch-name">tertiary</div><div class="swatch-hex">#9386A0</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#C6BECF"></div><div class="swatch-info"><div class="swatch-name">gray200</div><div class="swatch-hex">#C6BECF</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#E7E1EC"></div><div class="swatch-info"><div class="swatch-name">gray100</div><div class="swatch-hex">#E7E1EC</div></div></div>
+    </div>
+
+    <div class="color-group-label">Severity System</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#e1567c"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#e1567c</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f4834f"></div><div class="swatch-info"><div class="swatch-name">warning</div><div class="swatch-hex">#f4834f</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f2b712"></div><div class="swatch-info"><div class="swatch-name">info</div><div class="swatch-hex">#f2b712</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#19ab27"></div><div class="swatch-info"><div class="swatch-name">success</div><div class="swatch-hex">#19ab27</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#0099e0"></div><div class="swatch-info"><div class="swatch-name">debug</div><div class="swatch-hex">#0099e0</div></div></div>
+    </div>
+
+    <div class="color-group-label">Borders</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#cfcfdb"></div><div class="swatch-info"><div class="swatch-name">border</div><div class="swatch-hex">#cfcfdb</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ececf1"></div><div class="swatch-info"><div class="swatch-name">border-light</div><div class="swatch-hex">#ececf1</div></div></div>
     </div>
   </section>
 
+  <!-- TYPOGRAPHY -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Sentry branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Sentry Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">Rubik for UI, IBM Plex Mono for code. Sentry's strict two-font system.</p>
+    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:36px;font-weight:700;line-height:1.2">Error Monitoring</span><span class="type-meta">40px</span></div>
+    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:700;line-height:1.2">Issue Details</span><span class="type-meta">32px</span></div>
+    <div class="type-row"><span class="type-label">title</span><span class="type-sample" style="font-size:22px;font-weight:700;line-height:1.2">Stack Trace</span><span class="type-meta">24px</span></div>
+    <div class="type-row"><span class="type-label">subtitle</span><span class="type-sample" style="font-size:18px;font-weight:500;line-height:1.3;color:var(--text-secondary)">Event breakdown</span><span class="type-meta">20px</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Monitor application health in real time.</span><span class="type-meta">16px</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-tertiary)">First seen 3h ago &middot; Last seen 2m ago</span><span class="type-meta">14px</span></div>
+    <div class="type-row"><span class="type-label">code</span><span class="type-sample" style="font-family:var(--font-mono);font-size:13px;font-weight:400;line-height:1.65;color:var(--text-primary);background:var(--surface-recessed);padding:4px 8px;border-radius:3px">TypeError: Cannot read property 'map' of undefined</span><span class="type-meta">13px</span></div>
   </section>
 
+  <!-- SPACING -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
     <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
     <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
     <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
     <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
     <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
   </section>
 
+  <!-- BORDER RADIUS -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:3px"><span class="radius-label">small</span><span>3px</span></div>
+      <div class="radius-box" style="border-radius:6px"><span class="radius-label">standard</span><span>6px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span class="radius-label">medium</span><span>8px</span></div>
+      <div class="radius-box" style="border-radius:2em"><span class="radius-label">pill</span><span>2em</span></div>
+    </div>
+  </section>
+
+  <!-- SHADOWS -->
+  <section class="section">
+    <h2 class="section-title">Shadows</h2>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none"><div class="shadow-name">level-0</div><div class="shadow-desc">Flat, no elevation</div></div>
+      <div class="shadow-card" style="box-shadow:0 1px 4px rgba(43,29,56,0.08)"><div class="shadow-name">level-1</div><div class="shadow-desc">Subtle card rest state</div></div>
+      <div class="shadow-card" style="box-shadow:0 4px 16px rgba(43,29,56,0.12)"><div class="shadow-name">level-2</div><div class="shadow-desc">Hover / elevated</div></div>
+      <div class="shadow-card" style="box-shadow:0 0 15px rgba(106,95,193,0.20)"><div class="shadow-name">focus-ring</div><div class="shadow-desc">Purple glow focus</div></div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS -->
   <section class="section">
     <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Sentry tokens.</p>
+    <p class="section-desc">Sample components styled with Sentry brand tokens.</p>
     <div class="comp-grid">
+
+      <!-- Buttons -->
       <div class="comp-card">
-        <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+        <h3>Buttons (Pill CTA)</h3>
+        <div class="btn-group" style="margin-bottom:16px">
+          <button class="btn btn-accent">Start Monitoring</button>
+          <button class="btn btn-outline">View Demo</button>
         </div>
+        <p style="font-size:11px;color:var(--text-tertiary)">border-radius: 2em &middot; translateY(-1px) on hover</p>
       </div>
+
+      <!-- Severity Badges -->
       <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Sentry Feature</h4>
-            <p>A component styled with the Sentry design system tokens.</p>
+        <h3>Severity Badges</h3>
+        <div class="severity-row" style="margin-bottom:12px">
+          <span class="severity-badge" style="color:#e1567c;background:rgba(225,86,124,0.12)"><span class="severity-dot" style="background:#e1567c"></span>Error</span>
+          <span class="severity-badge" style="color:#f4834f;background:rgba(244,131,79,0.12)"><span class="severity-dot" style="background:#f4834f"></span>Warning</span>
+          <span class="severity-badge" style="color:#f2b712;background:rgba(242,183,18,0.12)"><span class="severity-dot" style="background:#f2b712"></span>Info</span>
+          <span class="severity-badge" style="color:#19ab27;background:rgba(25,171,39,0.12)"><span class="severity-dot" style="background:#19ab27"></span>Resolved</span>
+          <span class="severity-badge" style="color:#0099e0;background:rgba(0,153,224,0.12)"><span class="severity-dot" style="background:#0099e0"></span>Debug</span>
+        </div>
+        <p style="font-size:11px;color:var(--text-tertiary)">Functional severity colors -- never decorative</p>
+      </div>
+
+      <!-- Issue List -->
+      <div class="comp-card" style="grid-column: 1 / -1; padding: 0;">
+        <div style="padding:20px 24px 0"><h3>Issue List</h3></div>
+        <div class="issue-list" style="margin:16px 0 0;border-radius:0;border-left:none;border-right:none;border-bottom:none">
+          <div class="issue-header">
+            <span style="flex:0 0 10px"></span>
+            <span style="flex:1">Issue</span>
+            <span style="width:60px;text-align:right">Events</span>
+            <span style="width:60px;text-align:right">Users</span>
+            <span style="width:80px;text-align:right">Last Seen</span>
+          </div>
+          <div class="issue-row">
+            <span class="severity-dot" style="background:#e1567c;flex:0 0 7px"></span>
+            <span class="issue-title" style="flex:1">TypeError: Cannot read property 'map' of undefined</span>
+            <span class="issue-count" style="color:#e1567c;background:rgba(225,86,124,0.12);width:60px;text-align:center">2.4k</span>
+            <span class="issue-meta" style="width:60px;text-align:right">847</span>
+            <span class="issue-meta" style="width:80px;text-align:right">2m ago</span>
+          </div>
+          <div class="issue-row">
+            <span class="severity-dot" style="background:#f4834f;flex:0 0 7px"></span>
+            <span class="issue-title" style="flex:1">Warning: Each child in a list should have a unique "key" prop</span>
+            <span class="issue-count" style="color:#f4834f;background:rgba(244,131,79,0.12);width:60px;text-align:center">518</span>
+            <span class="issue-meta" style="width:60px;text-align:right">203</span>
+            <span class="issue-meta" style="width:80px;text-align:right">15m ago</span>
+          </div>
+          <div class="issue-row">
+            <span class="severity-dot" style="background:#19ab27;flex:0 0 7px"></span>
+            <span class="issue-title" style="flex:1">ReferenceError: process is not defined</span>
+            <span class="issue-count" style="color:#19ab27;background:rgba(25,171,39,0.12);width:60px;text-align:center">12</span>
+            <span class="issue-meta" style="width:60px;text-align:right">5</span>
+            <span class="issue-meta" style="width:80px;text-align:right">3d ago</span>
           </div>
         </div>
       </div>
+
+      <!-- Stack Trace -->
+      <div class="comp-card" style="grid-column: 1 / -1; padding: 0;">
+        <div style="padding:20px 24px 0"><h3>Error Stack Trace Panel</h3></div>
+        <div class="stack-panel" style="margin:16px 0 0;border-radius:0;border-left:none;border-right:none;border-bottom:none">
+          <div class="stack-header">
+            <span style="font-size:14px;font-weight:700">TypeError</span>
+            <span class="severity-badge" style="color:#e1567c;background:rgba(225,86,124,0.12);font-size:11px">error</span>
+          </div>
+          <div class="stack-error-msg">Cannot read property 'map' of undefined</div>
+          <div class="stack-frame">
+            <span class="stack-app-badge in-app">app</span>
+            <span class="stack-fn">renderItems</span>
+            <span class="stack-file">src/components/Dashboard.tsx</span>
+            <span class="stack-line">:42</span>
+          </div>
+          <div class="stack-code">
+            <div class="stack-code-line"><span class="line-num">40</span><span class="line-content">  const items = data?.results;</span></div>
+            <div class="stack-code-line"><span class="line-num">41</span><span class="line-content">  </span></div>
+            <div class="stack-code-line error-line"><span class="line-num">42</span><span class="line-content">  return items.map((item) => (</span></div>
+            <div class="stack-code-line"><span class="line-num">43</span><span class="line-content">    &lt;IssueRow key={item.id} issue={item} /&gt;</span></div>
+            <div class="stack-code-line"><span class="line-num">44</span><span class="line-content">  ));</span></div>
+          </div>
+          <div class="stack-frame">
+            <span class="stack-app-badge lib">lib</span>
+            <span class="stack-fn">processChild</span>
+            <span class="stack-file">node_modules/react-dom/cjs/react-dom.development.js</span>
+            <span class="stack-line">:7189</span>
+          </div>
+          <div class="stack-frame">
+            <span class="stack-app-badge lib">lib</span>
+            <span class="stack-fn">reconcileChildren</span>
+            <span class="stack-file">node_modules/react-dom/cjs/react-dom.development.js</span>
+            <span class="stack-line">:6840</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </div>

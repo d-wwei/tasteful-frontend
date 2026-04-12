@@ -5,128 +5,361 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Supabase Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#8f8f8f&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --surface: #1c1c1c;
-    --surface-subtle: #1a1a1a;
+    --surface: #171717;
+    --surface-elevated: #1c1c1c;
+    --surface-overlay: #232323;
+    --surface-code: #11181C;
     --accent: #3ecf8e;
+    --accent-hover: #2da672;
+    --accent-subtle: rgba(62,207,142,0.12);
+    --brand-green: #34B27B;
     --text-primary: #ededed;
     --text-secondary: #8f8f8f;
-    --border: rgba(255,255,255,0.1);
-    --font: Inter, -apple-system, sans-serif;
+    --text-tertiary: #5c5c5c;
+    --text-on-accent: #030303;
+    --text-code: #e0e0e0;
+    --error: #f56565;
+    --warning: #f5a623;
+    --border: rgba(255,255,255,0.06);
+    --border-strong: rgba(255,255,255,0.12);
+    --font-display: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Source Code Pro', Menlo, monospace;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    --shadow-float: 0 4px 12px -2px rgba(0,0,0,0.40);
+    --shadow-glow: 0 0 16px rgba(62,207,142,0.15);
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  body { font-family: var(--font-display); background: var(--surface); color: var(--text-primary); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 48px 20px; }
+
+  /* Brand Header */
   .brand-header {
     text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
+    background: var(--surface-elevated); border-radius: var(--radius-xl);
     border: 1px solid var(--border);
+    position: relative; overflow: hidden;
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
-  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .brand-header::before {
+    content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+    width: 400px; height: 200px; background: radial-gradient(ellipse, rgba(62,207,142,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 12px; position: relative; }
+  .brand-header .aesthetic { font-size: 15px; color: var(--text-secondary); margin-bottom: 20px; position: relative; }
+  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; position: relative; }
+  .brand-header .tag { font-size: 11px; padding: 4px 10px; background: rgba(62,207,142,0.12); color: var(--accent); border: 1px solid rgba(62,207,142,0.20); border-radius: 9999px; font-weight: 500; letter-spacing: 0.02em; }
+
+  /* Sections */
   .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
+  .section-title { font-size: 24px; font-weight: 600; line-height: 1.35; margin-bottom: 6px; color: var(--text-primary); }
+  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 28px; }
+
+  /* Color Grid */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+  .color-swatch { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); background: var(--surface-elevated); }
+  .color-swatch .swatch-fill { height: 64px; }
   .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
-  .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 500; margin-bottom: 2px; color: var(--text-primary); }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+  /* Typography */
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .type-label { flex: 0 0 80px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+  .type-sample { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-family: var(--font-mono); }
+
+  /* Spacing */
+  .spacing-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .spacing-label { flex: 0 0 50px; font-size: 12px; color: var(--text-tertiary); text-align: right; font-family: var(--font-mono); }
+  .spacing-bar { height: 20px; background: var(--accent); border-radius: 3px; opacity: 0.5; }
+  .spacing-value { font-size: 11px; color: var(--text-tertiary); min-width: 40px; font-family: var(--font-mono); }
+
+  /* Radius */
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+  .radius-box { aspect-ratio: 1; background: var(--surface-elevated); border: 1px solid var(--border-strong); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .radius-box span { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+  /* Shadows */
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .shadow-card { padding: 20px; border-radius: var(--radius-lg); background: var(--surface-elevated); min-height: 90px; display: flex; flex-direction: column; justify-content: flex-end; border: 1px solid var(--border); }
+  .shadow-card .shadow-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-tertiary); }
+
+  /* Component Grid */
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #000 100%); }
+  .comp-card { padding: 24px; background: var(--surface-elevated); border-radius: var(--radius-lg); border: 1px solid var(--border); }
+  .comp-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; padding: 8px 16px; border-radius: var(--radius-md); font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s ease-out; text-decoration: none; font-family: var(--font-display); }
+  .btn-primary { background: var(--accent); color: var(--text-on-accent); }
+  .btn-primary:hover { background: var(--accent-hover); box-shadow: var(--shadow-glow); }
+  .btn-ghost { background: transparent; color: var(--text-primary); border: 1px solid var(--border-strong); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.24); }
+  .btn-danger { background: rgba(245,101,101,0.12); color: var(--error); border: 1px solid rgba(245,101,101,0.20); }
+  .btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Sample Card */
+  .sample-card { background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; }
+  .sample-card-img { height: 100px; background: linear-gradient(135deg, #11181C 0%, #1c1c1c 50%, rgba(62,207,142,0.08) 100%); border-bottom: 1px solid var(--border); }
   .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .sample-card-body h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--text-primary); }
+  .sample-card-body p { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+
+  /* Code Block */
+  .code-block {
+    background: var(--surface-code); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 16px; font-family: var(--font-mono); font-size: 13px; line-height: 1.70; color: var(--text-code);
+    overflow-x: auto;
+  }
+  .code-block .kw { color: #c792ea; }
+  .code-block .str { color: #c3e88d; }
+  .code-block .num { color: #f78c6c; }
+  .code-block .cm { color: #5c5c5c; font-style: italic; }
+  .code-block .fn { color: #82aaff; }
+
+  /* Table Preview */
+  .table-preview { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .table-toolbar { height: 40px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; background: var(--surface-elevated); border-bottom: 1px solid var(--border); }
+  .table-toolbar .table-name { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+  .table-toolbar .row-count { font-size: 12px; color: var(--text-tertiary); margin-left: 8px; }
+  .table-header { display: grid; grid-template-columns: 60px 1fr 1fr 80px; background: var(--surface-elevated); border-bottom: 1px solid var(--border); }
+  .table-header .th { padding: 8px 12px; font-size: 12px; font-weight: 500; color: var(--text-tertiary); display: flex; align-items: center; gap: 4px; }
+  .table-header .th .col-type { font-family: var(--font-mono); font-size: 10px; color: var(--text-tertiary); opacity: 0.6; }
+  .table-row { display: grid; grid-template-columns: 60px 1fr 1fr 80px; border-bottom: 1px solid rgba(255,255,255,0.03); font-family: var(--font-mono); font-size: 13px; color: var(--text-code); }
+  .table-row:hover { background: rgba(255,255,255,0.02); }
+  .table-row.selected { background: rgba(62,207,142,0.08); border-left: 2px solid var(--accent); }
+  .table-row .td { padding: 6px 12px; display: flex; align-items: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .table-row .td.null-val { color: var(--text-tertiary); font-style: italic; }
+  .table-row .td.bool-true { color: var(--accent); }
+  .table-row .td.bool-false { color: var(--text-secondary); }
+  .table-row .td.uuid { font-size: 11px; color: var(--text-secondary); }
+
+  /* Nav Preview */
+  .nav-preview { display: flex; align-items: center; justify-content: space-between; height: 48px; padding: 0 16px; background: rgba(23,23,23,0.85); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 16px; }
+  .nav-preview .nav-logo { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+  .nav-preview .nav-links { display: flex; gap: 16px; }
+  .nav-preview .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; }
+  .nav-preview .nav-links a:hover { color: var(--text-primary); }
+  .nav-preview .nav-cta { font-size: 12px; font-weight: 500; padding: 5px 10px; background: var(--accent); color: var(--text-on-accent); border-radius: var(--radius-md); border: none; cursor: pointer; }
+
+  /* Full-width section */
+  .full-width { grid-column: 1 / -1; }
 </style>
 </head>
 <body>
 <div class="container">
   <header class="brand-header">
     <h1>Supabase</h1>
-    <p class="aesthetic">dark developer platform with green accents</p>
+    <p class="aesthetic">Dark-mode-native developer platform -- emerald green accents on near-black surfaces</p>
     <div class="tags">
-      <span class="tag">dark-dev-platform</span><span class="tag">green-accent</span><span class="tag">postgres-inspired</span>
+      <span class="tag">dark-mode-native</span>
+      <span class="tag">emerald-green-accent</span>
+      <span class="tag">border-defined-depth</span>
+      <span class="tag">code-first</span>
+      <span class="tag">postgres-inspired</span>
     </div>
   </header>
 
+  <!-- Colors -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Supabase visual identity.</p>
+    <p class="section-desc">Dark surfaces, emerald accent, border-defined depth.</p>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#1c1c1c"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#1c1c1c</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#171717"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#171717</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1c1c1c"></div><div class="swatch-info"><div class="swatch-name">surface-elevated</div><div class="swatch-hex">#1c1c1c</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#232323"></div><div class="swatch-info"><div class="swatch-name">surface-overlay</div><div class="swatch-hex">#232323</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#11181C"></div><div class="swatch-info"><div class="swatch-name">surface-code</div><div class="swatch-hex">#11181C</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#3ecf8e"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#3ecf8e</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#2da672"></div><div class="swatch-info"><div class="swatch-name">accent-hover</div><div class="swatch-hex">#2da672</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#34B27B"></div><div class="swatch-info"><div class="swatch-name">brand-green</div><div class="swatch-hex">#34B27B</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#ededed"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#ededed</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#8f8f8f"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#8f8f8f</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#5c5c5c"></div><div class="swatch-info"><div class="swatch-name">text-tertiary</div><div class="swatch-hex">#5c5c5c</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f56565"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#f56565</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f5a623"></div><div class="swatch-info"><div class="swatch-name">warning</div><div class="swatch-hex">#f5a623</div></div></div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Supabase branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Supabase Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">Circular for all text, Source Code Pro for technical content.</p>
+    <div class="type-row"><span class="type-label">Display</span><span class="type-sample" style="font-size:40px;font-weight:700;line-height:1.15;letter-spacing:-0.02em">Build in a weekend</span><span class="type-meta">48px</span></div>
+    <div class="type-row"><span class="type-label">H1</span><span class="type-sample" style="font-size:30px;font-weight:600;line-height:1.15;letter-spacing:-0.02em">Database management</span><span class="type-meta">36px</span></div>
+    <div class="type-row"><span class="type-label">H2</span><span class="type-sample" style="font-size:25px;font-weight:600;line-height:1.35">Authentication</span><span class="type-meta">30px</span></div>
+    <div class="type-row"><span class="type-label">H3</span><span class="type-sample" style="font-size:20px;font-weight:600;line-height:1.35">Edge Functions</span><span class="type-meta">24px</span></div>
+    <div class="type-row"><span class="type-label">Body Lg</span><span class="type-sample" style="font-size:18px;font-weight:400;line-height:1.55;color:var(--text-secondary)">Every Supabase project comes with a full Postgres database.</span><span class="type-meta">18px</span></div>
+    <div class="type-row"><span class="type-label">Body</span><span class="type-sample" style="font-size:15px;font-weight:400;line-height:1.55;color:var(--text-secondary)">Manage your data with a powerful table editor.</span><span class="type-meta">15px</span></div>
+    <div class="type-row"><span class="type-label">Small</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata text</span><span class="type-meta">14px</span></div>
+    <div class="type-row"><span class="type-label">Code</span><span class="type-sample" style="font-size:13px;font-weight:400;line-height:1.70;color:var(--text-code);font-family:var(--font-mono)">SELECT * FROM users WHERE active = true;</span><span class="type-meta">13px</span></div>
+    <div class="type-row"><span class="type-label">Overline</span><span class="type-sample" style="font-size:11px;font-weight:600;line-height:1.25;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent)">New Feature</span><span class="type-meta">11px</span></div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
+    <p class="section-desc">4px base grid, compact tool density.</p>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
     <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
     <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
     <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
     <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
     <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
     <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
   </section>
 
+  <!-- Border Radius -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:4px"><span>sm</span><span>4px</span></div>
+      <div class="radius-box" style="border-radius:6px"><span>md</span><span>6px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>lg</span><span>8px</span></div>
+      <div class="radius-box" style="border-radius:12px"><span>xl</span><span>12px</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span>pill</span><span>9999px</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Shadows</h2>
+    <p class="section-desc">Border-defined depth is primary. Shadows reserved for floating elements.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none"><div class="shadow-name">Flat (border-only)</div><div class="shadow-desc">Cards, panels, sidebars</div></div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-float)"><div class="shadow-name">Float</div><div class="shadow-desc">Dropdowns, tooltips</div></div>
+      <div class="shadow-card" style="box-shadow:0 8px 24px -4px rgba(0,0,0,0.50)"><div class="shadow-name">Modal</div><div class="shadow-desc">Dialogs, command palette</div></div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-glow)"><div class="shadow-name">Accent Glow</div><div class="shadow-desc">Hover emphasis on CTA</div></div>
+    </div>
+  </section>
+
+  <!-- Components -->
   <section class="section">
     <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Supabase tokens.</p>
+    <p class="section-desc">Supabase-branded UI patterns.</p>
     <div class="comp-grid">
+
+      <!-- Buttons -->
       <div class="comp-card">
         <h3>Buttons</h3>
         <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+          <button class="btn btn-primary">Start your project</button>
+          <button class="btn btn-ghost">Documentation</button>
+          <button class="btn btn-danger">Delete</button>
         </div>
       </div>
+
+      <!-- Navigation -->
       <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Supabase Feature</h4>
-            <p>A component styled with the Supabase design system tokens.</p>
+        <h3>Navigation</h3>
+        <div class="nav-preview">
+          <span class="nav-logo">supabase</span>
+          <div class="nav-links">
+            <a href="#">Product</a>
+            <a href="#">Developers</a>
+            <a href="#">Pricing</a>
+          </div>
+          <button class="nav-cta">Start project</button>
+        </div>
+      </div>
+
+      <!-- Code Block -->
+      <div class="comp-card full-width">
+        <h3>SQL Editor</h3>
+        <div class="code-block">
+<span class="cm">-- Query active users with their profiles</span>
+<span class="kw">SELECT</span>
+  users.id,
+  users.email,
+  profiles.display_name,
+  profiles.avatar_url
+<span class="kw">FROM</span> auth.users
+<span class="kw">JOIN</span> public.profiles <span class="kw">ON</span> profiles.user_id = users.id
+<span class="kw">WHERE</span> users.is_active = <span class="num">true</span>
+<span class="kw">ORDER BY</span> users.created_at <span class="kw">DESC</span>
+<span class="kw">LIMIT</span> <span class="num">25</span>;
+        </div>
+      </div>
+
+      <!-- Table View -->
+      <div class="comp-card full-width">
+        <h3>Database Table View</h3>
+        <div class="table-preview">
+          <div class="table-toolbar">
+            <div style="display:flex;align-items:center">
+              <span class="table-name">profiles</span>
+              <span class="row-count">1,247 rows</span>
+            </div>
+            <button class="btn btn-primary" style="font-size:12px;padding:4px 12px">+ Insert row</button>
+          </div>
+          <div class="table-header">
+            <div class="th">id <span class="col-type">int8</span></div>
+            <div class="th">display_name <span class="col-type">text</span></div>
+            <div class="th">email <span class="col-type">text</span></div>
+            <div class="th">active <span class="col-type">bool</span></div>
+          </div>
+          <div class="table-row selected">
+            <div class="td">1</div>
+            <div class="td">Ada Lovelace</div>
+            <div class="td uuid">ada@example.com</div>
+            <div class="td bool-true">true</div>
+          </div>
+          <div class="table-row">
+            <div class="td">2</div>
+            <div class="td">Grace Hopper</div>
+            <div class="td uuid">grace@example.com</div>
+            <div class="td bool-true">true</div>
+          </div>
+          <div class="table-row">
+            <div class="td">3</div>
+            <div class="td null-val">NULL</div>
+            <div class="td uuid">anon@example.com</div>
+            <div class="td bool-false">false</div>
           </div>
         </div>
       </div>
+
+      <!-- Content Card -->
+      <div class="comp-card">
+        <h3>Feature Card</h3>
+        <div class="sample-card">
+          <div class="sample-card-img"></div>
+          <div class="sample-card-body">
+            <h4>Realtime subscriptions</h4>
+            <p>Listen to database changes in realtime via websockets.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Badges -->
+      <div class="comp-card">
+        <h3>Status Indicators</h3>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></span>
+            <span style="font-size:13px;color:var(--text-primary)">Connected</span>
+            <span style="font-size:11px;color:var(--text-tertiary);margin-left:auto">us-east-1</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--warning)"></span>
+            <span style="font-size:13px;color:var(--text-primary)">Degraded performance</span>
+            <span style="font-size:11px;color:var(--text-tertiary);margin-left:auto">eu-west-2</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--error)"></span>
+            <span style="font-size:13px;color:var(--text-primary)">Disconnected</span>
+            <span style="font-size:11px;color:var(--text-tertiary);margin-left:auto">ap-south-1</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </div>

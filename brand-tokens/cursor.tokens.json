@@ -1,195 +1,292 @@
 {
   "$extensions": {
     "brand": "cursor",
-    "source": "awesome-design-md",
-    "aesthetic": "dark AI-native code editor with electric accents",
+    "source": "cursor.com/brand, cursor.com/blog/cursor-3, forum.cursor.com accent analysis",
+    "aesthetic": "Warm-dark IDE workspace — developer tool forged in obsidian with blue-steel accents",
     "key-characteristics": [
-      "dark-code-editor",
-      "electric-accent",
-      "ai-native"
+      "warm-dark-ide",
+      "blue-accent-intelligence",
+      "monospace-gothic-type-pairing",
+      "code-first-density",
+      "agentic-workspace"
     ]
   },
   "color": {
     "surface": {
-      "$value": "#0d0d0d",
+      "$value": "#14120b",
       "$type": "color",
-      "$description": "Near-black editor background"
+      "$description": "Obsidian — warm near-black with brown undertone, the actual Cursor dark background from cursor.com"
     },
     "surface-subtle": {
-      "$value": "#1a1a1a",
+      "$value": "#1b1913",
       "$type": "color",
-      "$description": "Panel background"
+      "$description": "Sidebar — warm dark panel surface, sidebars and secondary panels"
     },
     "surface-elevated": {
-      "$value": "#262626",
+      "$value": "#26241e",
       "$type": "color",
-      "$description": "Elevated panels"
+      "$description": "Card — warm charcoal for elevated containers, dropdowns, popovers"
+    },
+    "surface-overlay": {
+      "$value": "#201e18",
+      "$type": "color",
+      "$description": "Overlay — command palette and modal backgrounds"
     },
     "accent": {
-      "$value": "#00bcd4",
+      "$value": "#4c9df3",
       "$type": "color",
-      "$description": "Electric Cyan \u2014 AI interaction accent"
+      "$description": "Cursor Blue — the signature accent, active tabs, focused elements, AI interactions"
     },
     "accent-hover": {
-      "$value": "#00d4ef",
+      "$value": "#6bb0f7",
       "$type": "color",
-      "$description": "Brighter cyan hover"
+      "$description": "Cursor Blue Light — hover state, brightened for interactive feedback"
+    },
+    "accent-muted": {
+      "$value": "rgba(76, 157, 243, 0.12)",
+      "$type": "color",
+      "$description": "Accent wash — ghost backgrounds for selected items, active list rows"
     },
     "text-primary": {
-      "$value": "#e0e0e0",
+      "$value": "#d7d6d5",
       "$type": "color",
-      "$description": "Light gray primary text"
+      "$description": "Warm light gray — primary text on dark surfaces, warm-tinted not blue-white"
     },
     "text-secondary": {
-      "$value": "#808080",
+      "$value": "#8a8884",
       "$type": "color",
-      "$description": "Medium gray secondary"
+      "$description": "Warm mid-gray — secondary descriptions, inactive tabs, metadata"
+    },
+    "text-tertiary": {
+      "$value": "#5c5a56",
+      "$type": "color",
+      "$description": "Warm dim gray — line numbers, timestamps, decorative text"
     },
     "text-on-accent": {
-      "$value": "#000000",
+      "$value": "#ffffff",
       "$type": "color",
-      "$description": "Black on cyan"
+      "$description": "White on blue — buttons and badges with accent background"
     },
     "error": {
-      "$value": "#f44336",
+      "$value": "#f14c4c",
       "$type": "color",
-      "$description": "Error red"
+      "$description": "Error red — diagnostics, git deletions, destructive actions"
     },
     "success": {
-      "$value": "#4caf50",
+      "$value": "#73c991",
       "$type": "color",
-      "$description": "Success green"
+      "$description": "Success green — git additions, test pass, completion states"
+    },
+    "warning": {
+      "$value": "#e5c07b",
+      "$type": "color",
+      "$description": "Warning amber — linter warnings, caution states"
+    },
+    "info": {
+      "$value": "#4c9df3",
+      "$type": "color",
+      "$description": "Info blue — same as accent, informational indicators"
     },
     "border": {
-      "$value": "rgba(255,255,255,0.08)",
+      "$value": "rgba(255, 255, 255, 0.07)",
       "$type": "color",
-      "$description": "Subtle border"
+      "$description": "Hairline border — near-invisible panel separation"
+    },
+    "border-prominent": {
+      "$value": "rgba(255, 255, 255, 0.12)",
+      "$type": "color",
+      "$description": "Visible border — card edges, input fields, emphasized dividers"
+    },
+    "diff-added": {
+      "$value": "rgba(115, 201, 145, 0.15)",
+      "$type": "color",
+      "$description": "Git added line background"
+    },
+    "diff-removed": {
+      "$value": "rgba(241, 76, 76, 0.15)",
+      "$type": "color",
+      "$description": "Git removed line background"
+    },
+    "ai-glow": {
+      "$value": "rgba(76, 157, 243, 0.08)",
+      "$type": "color",
+      "$description": "AI suggestion background wash — ghost highlight for inline completions"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "'Cursor Gothic', -apple-system, BlinkMacSystemFont, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display/heading font"
+      "$description": "Cursor Gothic — custom display face for headlines and marketing"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "'Cursor Gothic', -apple-system, BlinkMacSystemFont, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body/UI font"
+      "$description": "Cursor Gothic — also used for UI text, nav, labels"
+    },
+    "font-mono": {
+      "$value": "'Berkeley Mono', 'JetBrains Mono', 'Fira Code', monospace",
+      "$type": "fontFamily",
+      "$description": "Berkeley Mono — monospace for code, terminal, inline code, AI chat code blocks"
     },
     "scale-display": {
-      "$value": "48px",
+      "$value": "56px",
       "$type": "dimension",
-      "$description": "Display \u2014 hero headlines"
+      "$description": "Display — hero headlines, marketing page titles"
     },
     "scale-section": {
-      "$value": "32px",
+      "$value": "36px",
       "$type": "dimension",
-      "$description": "Section headings"
+      "$description": "Section — page section headings"
+    },
+    "scale-subsection": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Subsection — card titles, feature headings"
+    },
+    "scale-body-large": {
+      "$value": "17px",
+      "$type": "dimension",
+      "$description": "Body large — lead paragraphs, feature descriptions"
     },
     "scale-base": {
-      "$value": "16px",
-      "$type": "dimension",
-      "$description": "Standard body"
-    },
-    "scale-caption": {
       "$value": "14px",
       "$type": "dimension",
-      "$description": "Captions"
+      "$description": "Base — standard body text, IDE default size (developer-dense)"
     },
-    "scale-small": {
+    "scale-caption": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Small text"
+      "$description": "Caption — metadata, status bar, breadcrumbs"
+    },
+    "scale-micro": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Micro — badges, keyboard shortcuts, line numbers"
     },
     "line-height-tight": {
       "$value": "1.15",
       "$type": "number",
-      "$description": "Tight \u2014 headings"
+      "$description": "Tight — display and section headings"
     },
     "line-height-normal": {
       "$value": "1.50",
       "$type": "number",
-      "$description": "Normal \u2014 body"
+      "$description": "Normal — body text and descriptions"
+    },
+    "line-height-code": {
+      "$value": "1.60",
+      "$type": "number",
+      "$description": "Code — monospace blocks, generous for readability"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular — body text, code"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium — buttons, labels, nav links"
     },
-    "weight-semibold": {
-      "$value": "600",
+    "weight-bold": {
+      "$value": "700",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Bold — headlines, emphasis"
+    },
+    "letter-spacing-tight": {
+      "$value": "-0.02em",
+      "$type": "dimension",
+      "$description": "Tight tracking — display headings"
+    },
+    "letter-spacing-code": {
+      "$value": "0em",
+      "$type": "dimension",
+      "$description": "Neutral tracking — monospace content"
     }
   },
   "spacing": {
     "unit": {
-      "$value": "8px",
+      "$value": "4px",
       "$type": "dimension",
-      "$description": "Base grid unit"
+      "$description": "Base grid — 4px unit for IDE-density layouts"
     },
     "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Micro gap — inline icon-to-text, badge padding"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small — list item padding, compact gaps"
     },
     "md": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Medium — card internal padding, input padding"
     },
     "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Large — section content gaps, panel padding"
     },
     "xl": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Extra large — card-to-card gaps, group spacing"
     },
     "2xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Card padding — generous container internal spacing"
+    },
+    "3xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Section gap — between major content sections"
     },
     "section-gap": {
       "$value": "80px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Section vertical rhythm — marketing page sections"
     },
     "container-max": {
       "$value": "1200px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Max container width — marketing content"
+    },
+    "sidebar-width": {
+      "$value": "260px",
+      "$type": "dimension",
+      "$description": "Sidebar width — file tree, chat panel default"
     }
   },
   "border": {
+    "radius-sm": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small radius — badges, inline code, chips"
+    },
     "radius-standard": {
       "$value": "6px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Standard radius — buttons, inputs, list items"
     },
     "radius-comfortable": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Comfortable radius"
+      "$description": "Comfortable radius — cards, panels, dropdowns"
+    },
+    "radius-large": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Large radius — featured containers, modals"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill shape"
+      "$description": "Pill — status badges, toggle tracks"
     }
   },
   "shadow": {
@@ -204,7 +301,7 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat — no elevation, most surfaces"
     },
     "level-1": {
       "$value": [
@@ -213,50 +310,91 @@
           "offsetY": "2px",
           "blur": "8px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0, 0, 0, 0.25)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle elevation"
+      "$description": "Subtle lift — cards, dropdowns on dark surface"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "24px",
+          "spread": "-4px",
+          "color": "rgba(0, 0, 0, 0.40)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Modal elevation — command palette, dialogs"
+    },
+    "glow-accent": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "12px",
+          "spread": "0px",
+          "color": "rgba(76, 157, 243, 0.20)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Accent glow — focused inputs, AI-active indicators"
     }
   },
   "motion": {
+    "duration-instant": {
+      "$value": "80ms",
+      "$type": "duration",
+      "$description": "Instant — hover color shifts, opacity toggles"
+    },
     "duration-fast": {
       "$value": "150ms",
       "$type": "duration",
-      "$description": "Quick interactions"
+      "$description": "Fast — button states, list item highlights"
     },
     "duration-normal": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Standard transitions"
+      "$description": "Normal — panel slides, dropdown reveals"
+    },
+    "duration-slow": {
+      "$value": "350ms",
+      "$type": "duration",
+      "$description": "Slow — page transitions, AI response fade-in"
     },
     "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+      "$value": [0.25, 0.1, 0.25, 1],
       "$type": "cubicBezier",
-      "$description": "Standard ease"
+      "$description": "Standard ease-out — most transitions"
+    },
+    "easing-spring": {
+      "$value": [0.34, 1.56, 0.64, 1],
+      "$type": "cubicBezier",
+      "$description": "Spring — playful micro-interactions, toggle bounce"
     }
   },
   "breakpoint": {
     "mobile": {
       "$value": "640px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Mobile breakpoint"
     },
     "tablet": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Tablet breakpoint"
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop breakpoint"
+    },
+    "wide": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Wide display — expanded sidebar layouts"
     }
   }
 }

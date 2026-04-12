@@ -2,9 +2,9 @@
 
 Cross-brand analysis of design guardrails for 66 brands.
 
-## Universal Patterns (All Four Brands Agree)
+## Universal Patterns (Cross-Brand Consensus)
 
-These rules hold across all four design systems. Any brand-conformant output should satisfy them.
+These rules hold across all reference design systems. Any brand-conformant output should satisfy them.
 
 ### Typography
 

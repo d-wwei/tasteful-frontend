@@ -5,130 +5,375 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Webflow Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=#6b6b6b&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --surface: #ffffff;
-    --surface-subtle: #f8f8f8;
-    --accent: #4353ff;
-    --text-primary: #1a1a1a;
-    --text-secondary: #6b6b6b;
-    --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    --surface: #080808;
+    --surface-light: #ffffff;
+    --surface-elevated: #171717;
+    --surface-card: #222222;
+    --accent: #146ef5;
+    --accent-hover: #1060d4;
+    --accent-light: rgba(20,110,245,0.12);
+    --text-on-dark: #ffffff;
+    --text-on-dark-secondary: #ababab;
+    --text-primary: #080808;
+    --text-secondary: #5a5a5a;
+    --text-tertiary: #757575;
+    --border-dark: #363636;
+    --border-light: #e5e5e5;
+    --gray-100: #f0f0f0;
+    --gray-200: #d8d8d8;
+    --gray-300: #ababab;
+    --gray-400: #898989;
+    --gray-500: #757575;
+    --gray-600: #5a5a5a;
+    --gray-700: #363636;
+    --gray-800: #222222;
+    --gray-900: #171717;
+    --error: #ee1d36;
+    --success: #00d722;
+    --warning: #ffae13;
+    --font-display: Poppins, -apple-system, sans-serif;
+    --font-body: Inter, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  ::selection { background: rgba(20,110,245,0.95); color: #fff; }
+  body { font-family: var(--font-body); background: var(--surface); color: var(--text-on-dark); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 64px 32px; }
+
+  /* Brand Header -- Dark Hero */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
+    text-align: center; margin-bottom: 120px; padding: 120px 48px;
+    background: var(--surface);
+    position: relative; overflow: hidden;
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
-  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
+  .brand-header::before {
+    content: ''; position: absolute; top: -40%; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(20,110,245,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand-header h1 {
+    font-family: var(--font-display); font-size: 85px; font-weight: 600;
+    line-height: 1.04; letter-spacing: 0.01em; color: var(--text-on-dark);
+    margin-bottom: 16px; position: relative;
+  }
+  .brand-header .aesthetic {
+    font-family: var(--font-body); font-size: 20px; color: var(--text-on-dark-secondary);
+    margin-bottom: 24px; font-weight: 400; position: relative;
+  }
+  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; position: relative; }
+  .brand-header .tag {
+    font-family: var(--font-body); font-size: 11px; padding: 4px 12px;
+    background: var(--accent); color: #ffffff; border-radius: 4px;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  .section { margin-bottom: 120px; }
+  .section-title {
+    font-family: var(--font-display); font-size: 37px; font-weight: 600;
+    line-height: 1.04; letter-spacing: 0.01em; margin-bottom: 8px; color: var(--text-on-dark);
+  }
+  .section-desc { font-size: 15px; color: var(--text-on-dark-secondary); margin-bottom: 32px; line-height: 1.65; }
+
+  /* Color Palette -- Official 9-step Gray + Accent */
   .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
+  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border-dark); background: var(--surface-elevated); }
   .color-swatch .swatch-fill { height: 72px; }
   .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
-  .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; color: var(--text-on-dark); }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-on-dark-secondary); font-family: var(--font-mono); }
+
+  /* Typography showcase */
+  .type-row {
+    display: flex; align-items: baseline; gap: 24px;
+    padding: 16px 0; border-bottom: 1px solid var(--border-dark);
+  }
+  .type-label { flex: 0 0 80px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; }
+  .type-sample { flex: 1; color: var(--text-on-dark); }
+  .type-meta { flex: 0 0 60px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-family: var(--font-mono); }
+
+  /* Spacing */
   .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
+  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-on-dark-secondary); text-align: right; font-family: var(--font-mono); }
+  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.5; }
+  .spacing-value { font-size: 11px; color: var(--text-tertiary); min-width: 40px; font-family: var(--font-mono); }
+
+  /* Gray Scale */
+  .gray-strip { display: flex; border-radius: 8px; overflow: hidden; margin-bottom: 12px; border: 1px solid var(--border-dark); }
+  .gray-step { flex: 1; height: 48px; position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 4px; }
+  .gray-step span { font-size: 9px; font-family: var(--font-mono); opacity: 0.7; }
+
+  /* Components */
   .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
+  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 37px; } .brand-header { padding: 80px 20px; } }
+  .comp-card {
+    padding: 32px; background: var(--surface-elevated);
+    border-radius: 12px; border: 1px solid var(--border-dark);
+  }
+  .comp-card h3 {
+    font-family: var(--font-display); font-size: 16px; font-weight: 600;
+    margin-bottom: 20px; color: var(--text-on-dark);
+    letter-spacing: 0.02em; line-height: 1.30;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 28px; border-radius: 8px; font-family: var(--font-body);
+    font-size: 14px; font-weight: 500; cursor: pointer; border: none;
+    transition: all 200ms ease-out; text-decoration: none;
+  }
   .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .btn-accent:hover { background: var(--accent-hover); box-shadow: 0 0 0 3px rgba(20,110,245,0.25); }
+  .btn-ghost { background: transparent; color: #ffffff; border: 1px solid var(--border-dark); }
+  .btn-ghost:hover { border-color: var(--gray-600); background: var(--surface-elevated); }
   .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Sample Card */
+  .sample-card { background: var(--surface-card); border-radius: 12px; border: 1px solid var(--border-dark); overflow: hidden; }
+  .sample-card-img { height: 120px; background: var(--surface); position: relative; }
+  .sample-card-img::after {
+    content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 60px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(20,110,245,0.2) 0%, transparent 70%);
+  }
+  .sample-card-body { padding: 20px; }
+  .sample-card-body h4 { font-family: var(--font-display); font-size: 16px; font-weight: 600; margin-bottom: 6px; line-height: 1.30; letter-spacing: 0.02em; }
+  .sample-card-body p { font-size: 14px; color: var(--text-on-dark-secondary); line-height: 1.6; }
+
+  /* Editor Panel */
+  .editor-panel {
+    background: var(--surface-card); border: 1px solid var(--border-dark);
+    border-radius: 8px; overflow: hidden; max-height: 340px;
+  }
+  .editor-header {
+    padding: 12px 16px; display: flex; justify-content: space-between;
+    align-items: center; border-bottom: 1px solid var(--border-dark);
+  }
+  .editor-header span { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-on-dark); }
+  .editor-header .close-btn { width: 16px; height: 16px; border-radius: 3px; background: none; border: none; color: var(--gray-500); font-size: 14px; cursor: pointer; line-height: 1; }
+  .editor-section { padding: 16px; border-bottom: 1px solid var(--border-dark); }
+  .editor-label { font-size: 11px; font-weight: 500; color: var(--gray-500); margin-bottom: 8px; display: block; }
+  .editor-input-row { display: flex; gap: 8px; margin-bottom: 8px; }
+  .editor-input {
+    background: var(--surface-elevated); border: 1px solid var(--border-dark);
+    border-radius: 4px; padding: 6px 8px; color: var(--text-on-dark);
+    font-family: var(--font-mono); font-size: 12px; flex: 1; outline: none;
+  }
+  .editor-input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(20,110,245,0.25); }
+  .editor-input-label { font-size: 10px; color: var(--gray-500); margin-top: 2px; text-align: center; display: block; }
+  .editor-swatch {
+    width: 24px; height: 24px; border-radius: 4px;
+    border: 1px solid var(--border-dark); display: inline-block;
+    background: var(--accent); flex-shrink: 0;
+  }
+  .editor-toggle { width: 36px; height: 20px; border-radius: 12px; background: var(--accent); position: relative; border: none; cursor: pointer; }
+  .editor-toggle::after { content: ''; position: absolute; width: 14px; height: 14px; border-radius: 50%; background: #fff; top: 3px; right: 3px; }
+  .editor-toggle.off { background: var(--border-dark); }
+  .editor-toggle.off::after { right: auto; left: 3px; }
+
+  /* Light Section */
+  .light-section {
+    background: var(--surface-light); border-radius: 16px;
+    padding: 64px 48px; margin-bottom: 120px; color: var(--text-primary);
+  }
+  .light-section .section-title { color: var(--text-primary); }
+  .light-section .section-desc { color: var(--text-secondary); }
+  .light-card {
+    background: var(--surface-light); border: 1px solid var(--border-light);
+    border-radius: 12px; padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .light-card h4 { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text-primary); line-height: 1.30; letter-spacing: 0.02em; margin-bottom: 8px; }
+  .light-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* Status badges */
+  .status-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .status-success { background: rgba(0,215,34,0.12); color: var(--success); }
+  .status-error { background: rgba(238,29,54,0.12); color: var(--error); }
+  .status-warning { background: rgba(255,174,19,0.12); color: var(--warning); }
 </style>
 </head>
 <body>
 <div class="container">
+
+  <!-- Brand Header: Dark Hero with Blue Glow -->
   <header class="brand-header">
     <h1>Webflow</h1>
-    <p class="aesthetic">designer-first with blue CTA precision</p>
+    <p class="aesthetic">Visual-builder precision -- dark canvas, electric blue accents, geometric type</p>
     <div class="tags">
-      <span class="tag">designer-first</span><span class="tag">blue-precision</span><span class="tag">visual-builder</span>
+      <span class="tag">dark-canvas-native</span>
+      <span class="tag">electric-blue-accent</span>
+      <span class="tag">geometric-sans</span>
+      <span class="tag">tool-ui-precision</span>
+      <span class="tag">monochromatic-discipline</span>
     </div>
   </header>
 
+  <!-- Color Palette -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Webflow visual identity.</p>
+    <p class="section-desc">Monochromatic discipline: black + white + one color. Webflow Blue is the sole chromatic accent.</p>
+
+    <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text-on-dark);margin-bottom:16px;letter-spacing:0.02em">Brand Accent + Surfaces</h3>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#4353ff"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#4353ff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#1a1a1a"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#1a1a1a</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#6b6b6b"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#6b6b6b</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#146ef5"></div><div class="swatch-info"><div class="swatch-name">Webflow Blue</div><div class="swatch-hex">#146ef5</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#080808"></div><div class="swatch-info"><div class="swatch-name">Surface Dark</div><div class="swatch-hex">#080808</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff;border-bottom:1px solid #363636"></div><div class="swatch-info"><div class="swatch-name">Surface Light</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ee1d36"></div><div class="swatch-info"><div class="swatch-name">Error</div><div class="swatch-hex">#ee1d36</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#00d722"></div><div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-hex">#00d722</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffae13"></div><div class="swatch-info"><div class="swatch-name">Warning</div><div class="swatch-hex">#ffae13</div></div></div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text-on-dark);margin:32px 0 16px;letter-spacing:0.02em">Official Gray Scale (9 steps)</h3>
+    <div class="gray-strip">
+      <div class="gray-step" style="background:#171717"><span style="color:#ababab">#171717</span></div>
+      <div class="gray-step" style="background:#222222"><span style="color:#ababab">#222222</span></div>
+      <div class="gray-step" style="background:#363636"><span style="color:#ababab">#363636</span></div>
+      <div class="gray-step" style="background:#5a5a5a"><span style="color:#ffffff">#5a5a5a</span></div>
+      <div class="gray-step" style="background:#757575"><span style="color:#ffffff">#757575</span></div>
+      <div class="gray-step" style="background:#898989"><span style="color:#ffffff">#898989</span></div>
+      <div class="gray-step" style="background:#ababab"><span style="color:#222222">#ababab</span></div>
+      <div class="gray-step" style="background:#d8d8d8"><span style="color:#222222">#d8d8d8</span></div>
+      <div class="gray-step" style="background:#f0f0f0"><span style="color:#222222">#f0f0f0</span></div>
     </div>
   </section>
 
+  <!-- Typography -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Webflow branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Webflow Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">Poppins Semibold for headings (line-height 1.04), Inter Regular for body (line-height 1.60). Tight headings + airy body = Webflow rhythm.</p>
+    <div class="type-row"><span class="type-label">H1</span><span class="type-sample" style="font-family:var(--font-display);font-size:56px;font-weight:600;line-height:1.04;letter-spacing:0.01em">Visual builder</span><span class="type-meta">85px</span></div>
+    <div class="type-row"><span class="type-label">H2</span><span class="type-sample" style="font-family:var(--font-display);font-size:40px;font-weight:600;line-height:1.04;letter-spacing:0.01em">Section heading</span><span class="type-meta">56px</span></div>
+    <div class="type-row"><span class="type-label">H3</span><span class="type-sample" style="font-family:var(--font-display);font-size:28px;font-weight:600;line-height:1.04;letter-spacing:0.01em">Subsection</span><span class="type-meta">37px</span></div>
+    <div class="type-row"><span class="type-label">H4</span><span class="type-sample" style="font-family:var(--font-display);font-size:20px;font-weight:600;line-height:1.30;letter-spacing:0.02em">Card title</span><span class="type-meta">24px</span></div>
+    <div class="type-row"><span class="type-label">Eyebrow</span><span class="type-sample" style="font-family:var(--font-body);font-size:13px;font-weight:500;line-height:1.30;letter-spacing:0.01em;text-transform:uppercase;color:var(--gray-500)">EYEBROW LABEL</span><span class="type-meta">15px</span></div>
+    <div class="type-row"><span class="type-label">Body</span><span class="type-sample" style="font-family:var(--font-body);font-size:16px;font-weight:400;line-height:1.6;color:var(--text-on-dark-secondary)">Standard body text for content and descriptions with generous line-height.</span><span class="type-meta">16px</span></div>
+    <div class="type-row"><span class="type-label">Code</span><span class="type-sample" style="font-family:var(--font-mono);font-size:14px;font-weight:400;line-height:1.5;color:var(--accent)">font-family: 'WF Visual Sans';</span><span class="type-meta">14px</span></div>
   </section>
 
+  <!-- Spacing -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
+    <p class="section-desc">8px base grid. Marketing sections breathe (120px+); tool-UI is dense (16px).</p>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
     <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
-    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
-    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
-    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
-    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:120px"></div><span class="spacing-value">120px</span></div>
   </section>
 
+  <!-- Components: Dark -->
   <section class="section">
-    <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Webflow tokens.</p>
+    <h2 class="section-title">Components (Dark Canvas)</h2>
+    <p class="section-desc">Primary components on the dark Webflow surface with border-based depth.</p>
     <div class="comp-grid">
+
+      <!-- Buttons -->
       <div class="comp-card">
         <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+        <div class="btn-group" style="margin-bottom:16px">
+          <button class="btn btn-accent">Get Started</button>
+          <button class="btn btn-ghost">Learn More</button>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;margin-top:8px">
+          <span class="status-badge status-success">Published</span>
+          <span class="status-badge status-error">Error</span>
+          <span class="status-badge status-warning">Draft</span>
         </div>
       </div>
+
+      <!-- Content Card -->
       <div class="comp-card">
         <h3>Content Card</h3>
         <div class="sample-card">
           <div class="sample-card-img"></div>
           <div class="sample-card-body">
-            <h4>Webflow Feature</h4>
-            <p>A component styled with the Webflow design system tokens.</p>
+            <h4>Visual Development</h4>
+            <p>Build production-ready experiences without writing code.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metric Card -->
+      <div class="comp-card">
+        <h3>Metric Display</h3>
+        <div style="margin-bottom:4px">
+          <span style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.01em;color:var(--gray-500)">SITES LAUNCHED</span>
+        </div>
+        <div style="font-family:var(--font-display);font-size:48px;font-weight:600;line-height:1.04;color:var(--accent)">3.5M+</div>
+        <div style="font-size:14px;color:var(--text-on-dark-secondary);margin-top:8px">Websites built and published on Webflow</div>
+      </div>
+
+      <!-- Editor Panel -->
+      <div class="comp-card" style="padding:0;overflow:hidden">
+        <div style="padding:16px 16px 8px"><h3 style="margin-bottom:0">Styles Inspector</h3></div>
+        <div class="editor-panel" style="border:none;border-radius:0">
+          <div class="editor-header">
+            <span>Layout</span>
+            <button class="close-btn" aria-label="Close">x</button>
+          </div>
+          <div class="editor-section">
+            <span class="editor-label">Display</span>
+            <div class="editor-input-row">
+              <input class="editor-input" value="Flex" readonly>
+              <input class="editor-input" value="Row" readonly style="flex:0.6">
+            </div>
+          </div>
+          <div class="editor-section">
+            <span class="editor-label">Spacing</span>
+            <div class="editor-input-row">
+              <div style="text-align:center;flex:1"><input class="editor-input" value="16" readonly style="width:100%;text-align:center"><span class="editor-input-label">Gap</span></div>
+              <div style="text-align:center;flex:1"><input class="editor-input" value="32" readonly style="width:100%;text-align:center"><span class="editor-input-label">Padding</span></div>
+            </div>
+          </div>
+          <div class="editor-section">
+            <span class="editor-label">Color</span>
+            <div style="display:flex;gap:8px;align-items:center">
+              <span class="editor-swatch"></span>
+              <input class="editor-input" value="#146ef5" readonly style="flex:1;font-family:var(--font-mono)">
+              <button class="editor-toggle" aria-label="Toggle"></button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Light Section Variant -->
+  <div class="light-section">
+    <section class="section" style="margin-bottom:0">
+      <h2 class="section-title">Light Variant</h2>
+      <p class="section-desc">Alternate mode for marketing pages. Same tokens, inverted surface.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div class="light-card">
+          <h4>Website Experience Platform</h4>
+          <p>Build, manage, and optimize web experiences at scale with visual development tools.</p>
+          <div style="margin-top:16px">
+            <button class="btn btn-accent" style="font-size:13px;padding:10px 20px">Try Webflow</button>
+          </div>
+        </div>
+        <div class="light-card">
+          <h4>No-Code Precision</h4>
+          <p>Full CSS control in a visual canvas. Flexbox, grid, interactions -- all without writing a line of code.</p>
+          <div style="margin-top:16px;display:flex;gap:8px">
+            <span class="status-badge status-success">Live</span>
+            <span style="font-size:12px;color:var(--text-secondary)">Last published 2 min ago</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
 </div>
 </body>
 </html>

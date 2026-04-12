@@ -1,195 +1,348 @@
 {
   "$extensions": {
     "brand": "raycast",
-    "source": "awesome-design-md",
-    "aesthetic": "dark command palette with vibrant gradient accents",
+    "source": "raycast.com + ray.so themes + Raycast API docs + cmdk/raycast example + Behance branding case study",
+    "aesthetic": "macOS-native dark launcher — glass panels, vibrant gradient accents, keyboard-first command palette",
     "key-characteristics": [
-      "dark-launcher-ui",
-      "vibrant-gradients",
-      "command-palette"
+      "macos-native-dark-launcher",
+      "vibrant-red-orange-pink-gradient",
+      "glass-morphism-blur-panels",
+      "keyboard-first-command-palette",
+      "sf-pro-inter-system-typography",
+      "compact-mode-density"
     ]
   },
   "color": {
     "surface": {
-      "$value": "#0a0a0a",
+      "$value": "#191A1F",
       "$type": "color",
-      "$description": "Near-black background"
+      "$description": "Launcher Background — warm dark gray with slight blue undertone, matches macOS dark mode chrome"
     },
-    "surface-subtle": {
-      "$value": "#1a1a1a",
+    "surface-raised": {
+      "$value": "#23252B",
       "$type": "color",
-      "$description": "Elevated dark surface"
+      "$description": "Raised panel — sidebar, search input area, one step above launcher bg"
     },
     "surface-elevated": {
-      "$value": "#262626",
+      "$value": "#2C2E36",
       "$type": "color",
-      "$description": "Card and panel surface"
+      "$description": "Elevated surface — command list items on hover, dropdown menus, extension cards"
+    },
+    "surface-overlay": {
+      "$value": "#363840",
+      "$type": "color",
+      "$description": "Overlay surface — tooltips, context menus, action bar background"
+    },
+    "surface-glass": {
+      "$value": "rgba(25, 26, 31, 0.72)",
+      "$type": "color",
+      "$description": "Glass panel — translucent bg for frosted glass panels, requires backdrop-filter: blur(40px)"
     },
     "accent": {
-      "$value": "#ff6363",
+      "$value": "#FF6363",
       "$type": "color",
-      "$description": "Raycast Red-Orange \u2014 primary brand"
+      "$description": "Raycast Red — primary brand accent, default theme loader and icon tint color"
     },
     "accent-hover": {
-      "$value": "#ff7a7a",
+      "$value": "#FF7A7A",
       "$type": "color",
-      "$description": "Lighter red hover"
+      "$description": "Accent hover — lighter red for interactive feedback"
+    },
+    "accent-gradient-start": {
+      "$value": "#FF6363",
+      "$type": "color",
+      "$description": "Gradient start — the red anchor of Raycast's signature red-to-pink gradient"
+    },
+    "accent-gradient-end": {
+      "$value": "#E84393",
+      "$type": "color",
+      "$description": "Gradient end — vibrant pink, the warm endpoint of the brand gradient"
+    },
+    "accent-subtle": {
+      "$value": "rgba(255, 99, 99, 0.10)",
+      "$type": "color",
+      "$description": "Accent wash — selected list item background, active command tint"
     },
     "text-primary": {
-      "$value": "#ffffff",
+      "$value": "#ECECEC",
       "$type": "color",
-      "$description": "White primary text"
+      "$description": "Primary text — near-white with warmth, never pure #ffffff to reduce glare on dark"
     },
     "text-secondary": {
-      "$value": "#999999",
+      "$value": "rgba(255, 255, 255, 0.55)",
       "$type": "color",
-      "$description": "Medium gray secondary"
+      "$description": "Secondary text — command descriptions, metadata, subtitle in list items"
+    },
+    "text-tertiary": {
+      "$value": "rgba(255, 255, 255, 0.35)",
+      "$type": "color",
+      "$description": "Tertiary text — keyboard shortcut hints, disabled labels, placeholder text"
     },
     "text-on-accent": {
-      "$value": "#ffffff",
+      "$value": "#FFFFFF",
       "$type": "color",
-      "$description": "White on accent"
+      "$description": "White on accent — button labels on gradient or solid accent backgrounds"
     },
     "error": {
-      "$value": "#ff5555",
+      "$value": "#F84141",
       "$type": "color",
-      "$description": "Error red"
+      "$description": "Error red — matches Raycast theme red semantic color, validation and destructive actions"
+    },
+    "error-subtle": {
+      "$value": "rgba(248, 65, 65, 0.12)",
+      "$type": "color",
+      "$description": "Error background tint — error toast background, validation highlights"
     },
     "success": {
-      "$value": "#50fa7b",
+      "$value": "#63BA89",
       "$type": "color",
-      "$description": "Success green"
+      "$description": "Success green — matches Raycast theme green, confirmation toasts and status indicators"
     },
-    "border": {
-      "$value": "rgba(255,255,255,0.1)",
+    "success-subtle": {
+      "$value": "rgba(99, 186, 137, 0.12)",
       "$type": "color",
-      "$description": "Subtle white border"
+      "$description": "Success background tint — success toast backgrounds"
+    },
+    "warning": {
+      "$value": "#FF6B17",
+      "$type": "color",
+      "$description": "Warning orange — matches Raycast theme orange, snooze and caution indicators"
+    },
+    "info": {
+      "$value": "#6AB7FB",
+      "$type": "color",
+      "$description": "Info blue — matches Raycast theme blue, informational badges and links"
+    },
+    "purple": {
+      "$value": "#C58AFA",
+      "$type": "color",
+      "$description": "Purple accent — Raycast Pro/AI features indicator, extension category color"
+    },
+    "border-subtle": {
+      "$value": "rgba(255, 255, 255, 0.06)",
+      "$type": "color",
+      "$description": "Barely visible divider — list item separators, panel edges inside glass"
+    },
+    "border-default": {
+      "$value": "rgba(255, 255, 255, 0.10)",
+      "$type": "color",
+      "$description": "Standard border — command palette outline, card edges, input fields"
+    },
+    "border-strong": {
+      "$value": "rgba(255, 255, 255, 0.16)",
+      "$type": "color",
+      "$description": "Prominent border — focused input outlines, active panel edges"
+    },
+    "selection": {
+      "$value": "rgba(255, 99, 99, 0.16)",
+      "$type": "color",
+      "$description": "Selection highlight — selected item in command list, text selection background"
+    },
+    "focus-ring": {
+      "$value": "0 0 0 2px #191A1F, 0 0 0 4px #FF6363",
+      "$type": "other",
+      "$description": "Double-ring keyboard focus — dark gap + accent ring for WCAG visibility on dark"
     }
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display/heading font"
+      "$description": "Display/heading — Inter for marketing, SF Pro in native app. Both share geometric DNA."
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body/UI font"
+      "$description": "Body/UI — same stack, SF Pro Text optimized for smaller sizes in native app"
+    },
+    "font-mono": {
+      "$value": "'SF Mono', 'JetBrains Mono', 'Fira Code', ui-monospace, monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace — keyboard shortcut labels, code snippets, extension script output"
     },
     "scale-display": {
       "$value": "48px",
       "$type": "dimension",
-      "$description": "Display \u2014 hero headlines"
+      "$description": "Display — marketing hero headlines, onboarding splash (rare inside launcher)"
     },
     "scale-section": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Section headings"
+      "$description": "Section — landing page section headings, store category titles"
+    },
+    "scale-title": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Title — extension detail heading, settings page headers"
     },
     "scale-base": {
-      "$value": "16px",
+      "$value": "15px",
       "$type": "dimension",
-      "$description": "Standard body"
-    },
-    "scale-caption": {
-      "$value": "14px",
-      "$type": "dimension",
-      "$description": "Captions"
+      "$description": "Base — search input text, command list primary label (macOS-native 15px)"
     },
     "scale-small": {
-      "$value": "12px",
+      "$value": "13px",
       "$type": "dimension",
-      "$description": "Small text"
+      "$description": "Small — command descriptions, action bar labels, list metadata"
+    },
+    "scale-caption": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Caption — keyboard shortcut hints, status bar text, badge labels"
     },
     "line-height-tight": {
       "$value": "1.15",
       "$type": "number",
-      "$description": "Tight \u2014 headings"
+      "$description": "Tight — display headings, single-line command labels"
     },
     "line-height-normal": {
-      "$value": "1.50",
+      "$value": "1.45",
       "$type": "number",
-      "$description": "Normal \u2014 body"
+      "$description": "Normal — body text, command descriptions, readable content"
+    },
+    "line-height-relaxed": {
+      "$value": "1.60",
+      "$type": "number",
+      "$description": "Relaxed — marketing copy, extension readme content"
     },
     "weight-regular": {
       "$value": "400",
       "$type": "number",
-      "$description": "Regular"
+      "$description": "Regular — body text, command descriptions, metadata"
     },
     "weight-medium": {
       "$value": "500",
       "$type": "number",
-      "$description": "Medium"
+      "$description": "Medium — command names, nav items, button labels, action bar text"
     },
     "weight-semibold": {
       "$value": "600",
       "$type": "number",
-      "$description": "Semibold"
+      "$description": "Semibold — section headings, selected command emphasis, keyboard shortcut keys"
+    },
+    "letter-spacing-tight": {
+      "$value": "-0.025em",
+      "$type": "dimension",
+      "$description": "Tight tracking — display and section headings"
+    },
+    "letter-spacing-normal": {
+      "$value": "-0.01em",
+      "$type": "dimension",
+      "$description": "Normal tracking — body text, slightly negative like macOS system UI"
+    },
+    "letter-spacing-wide": {
+      "$value": "0.04em",
+      "$type": "dimension",
+      "$description": "Wide tracking — all-caps section labels, keyboard shortcut hint text"
     }
   },
   "spacing": {
     "unit": {
-      "$value": "8px",
+      "$value": "4px",
       "$type": "dimension",
-      "$description": "Base grid unit"
+      "$description": "Base unit — Raycast uses 4px grid for compact launcher density"
+    },
+    "2xs": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Hairline — icon-to-shortcut-label gap, inline badge internal padding"
     },
     "xs": {
       "$value": "4px",
       "$type": "dimension",
-      "$description": "Extra small"
+      "$description": "Extra small — tight icon-text gaps, keyboard shortcut key spacing"
     },
     "sm": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Small"
+      "$description": "Small — list item horizontal padding, action bar gaps, result item spacing"
     },
     "md": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Medium"
+      "$description": "Medium — search input padding, button padding, card internal padding"
     },
     "lg": {
       "$value": "16px",
       "$type": "dimension",
-      "$description": "Large"
+      "$description": "Large — command palette horizontal padding, section internal padding"
     },
     "xl": {
       "$value": "24px",
       "$type": "dimension",
-      "$description": "Extra large"
+      "$description": "Extra large — modal content padding, extension detail margins"
     },
     "2xl": {
       "$value": "32px",
       "$type": "dimension",
-      "$description": "Double extra large"
+      "$description": "Double XL — marketing section padding, hero internal spacing"
+    },
+    "3xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Triple XL — page-level section gaps"
     },
     "section-gap": {
       "$value": "80px",
       "$type": "dimension",
-      "$description": "Section spacing"
+      "$description": "Section spacing — marketing page section separation"
+    },
+    "command-item-height": {
+      "$value": "44px",
+      "$type": "dimension",
+      "$description": "Command list row height — optimized for keyboard navigation scan speed"
+    },
+    "search-bar-height": {
+      "$value": "52px",
+      "$type": "dimension",
+      "$description": "Search input height — prominent, oversized for launcher's primary input"
+    },
+    "action-bar-height": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Action bar height — bottom bar with actions and keyboard shortcuts"
+    },
+    "launcher-width": {
+      "$value": "750px",
+      "$type": "dimension",
+      "$description": "Default launcher width — the canonical Raycast command palette width"
     },
     "container-max": {
       "$value": "1200px",
       "$type": "dimension",
-      "$description": "Max container width"
+      "$description": "Max container — marketing site content width"
     }
   },
   "border": {
-    "radius-standard": {
+    "radius-sm": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small — keyboard shortcut keys, inline badges, tags"
+    },
+    "radius-md": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Medium — list item hover, action bar buttons, small cards"
+    },
+    "radius-lg": {
       "$value": "8px",
       "$type": "dimension",
-      "$description": "Standard radius"
+      "$description": "Large — buttons, input fields, extension cards"
     },
-    "radius-comfortable": {
+    "radius-xl": {
       "$value": "12px",
       "$type": "dimension",
-      "$description": "Comfortable radius"
+      "$description": "Extra large — command palette container, modals, featured cards"
+    },
+    "radius-2xl": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Double XL — marketing hero containers, overlay panels"
     },
     "radius-pill": {
       "$value": "9999px",
       "$type": "dimension",
-      "$description": "Pill shape"
+      "$description": "Pill — tag badges, toggle switches, avatar containers"
     }
   },
   "shadow": {
@@ -204,59 +357,173 @@
         }
       ],
       "$type": "shadow",
-      "$description": "Flat"
+      "$description": "Flat — list items at rest, action bar elements"
     },
     "level-1": {
       "$value": [
         {
           "offsetX": "0px",
-          "offsetY": "2px",
-          "blur": "8px",
+          "offsetY": "1px",
+          "blur": "4px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(0, 0, 0, 0.20)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "-1px",
+          "color": "rgba(0, 0, 0, 0.12)"
         }
       ],
       "$type": "shadow",
-      "$description": "Subtle elevation"
+      "$description": "Subtle — raised panels, sidebar edge shadow"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "24px",
+          "spread": "-4px",
+          "color": "rgba(0, 0, 0, 0.35)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "8px",
+          "spread": "-2px",
+          "color": "rgba(0, 0, 0, 0.20)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Elevated — command palette window, modals, extension detail overlay"
+    },
+    "level-3": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "16px",
+          "blur": "48px",
+          "spread": "-8px",
+          "color": "rgba(0, 0, 0, 0.50)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "16px",
+          "spread": "-4px",
+          "color": "rgba(0, 0, 0, 0.30)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Dramatic — launcher window itself floating on desktop, critical overlays"
+    },
+    "glow-accent": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "12px",
+          "spread": "0px",
+          "color": "rgba(255, 99, 99, 0.20)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "4px",
+          "spread": "0px",
+          "color": "rgba(255, 99, 99, 0.10)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Accent glow — subtle red glow on accent buttons, loading indicator halo"
+    }
+  },
+  "effect": {
+    "glass-blur": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Glass backdrop blur — standard frosted glass effect matching macOS vibrancy"
+    },
+    "glass-saturation": {
+      "$value": "180%",
+      "$type": "other",
+      "$description": "Glass saturation boost — backdrop-filter: saturate(180%) for vibrancy effect"
+    },
+    "gradient-brand": {
+      "$value": "linear-gradient(135deg, #FF6363 0%, #E84393 100%)",
+      "$type": "other",
+      "$description": "Brand gradient — the signature red-to-pink used on CTAs, loading bars, hero elements"
+    },
+    "gradient-brand-extended": {
+      "$value": "linear-gradient(135deg, #FF6B17 0%, #FF6363 40%, #E84393 100%)",
+      "$type": "other",
+      "$description": "Extended gradient — orange-red-pink for hero backgrounds, marketing splash"
+    },
+    "gradient-surface": {
+      "$value": "linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.00) 100%)",
+      "$type": "other",
+      "$description": "Surface gradient — subtle top-lit effect on glass panels, command palette header"
     }
   },
   "motion": {
-    "duration-fast": {
-      "$value": "150ms",
+    "duration-instant": {
+      "$value": "60ms",
       "$type": "duration",
-      "$description": "Quick interactions"
+      "$description": "Instant — keyboard selection highlight, shortcut feedback, list item focus"
+    },
+    "duration-fast": {
+      "$value": "120ms",
+      "$type": "duration",
+      "$description": "Fast — hover states, focus rings, action bar transitions"
     },
     "duration-normal": {
       "$value": "200ms",
       "$type": "duration",
-      "$description": "Standard transitions"
+      "$description": "Normal — command palette open, panel slides, dropdown appear"
     },
-    "easing-default": {
-      "$value": [
-        0.25,
-        0.1,
-        0.25,
-        1
-      ],
+    "duration-smooth": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Smooth — extension detail expand, modal enter/exit, page transitions"
+    },
+    "easing-snap": {
+      "$value": [0.2, 0, 0, 1],
       "$type": "cubicBezier",
-      "$description": "Standard ease"
+      "$description": "Snap — fast-in no-bounce for keyboard-driven interactions, macOS-native feel"
+    },
+    "easing-smooth": {
+      "$value": [0.16, 1, 0.3, 1],
+      "$type": "cubicBezier",
+      "$description": "Smooth — natural deceleration for panels and overlays"
+    },
+    "easing-spring": {
+      "$value": [0.34, 1.56, 0.64, 1],
+      "$type": "cubicBezier",
+      "$description": "Spring — subtle overshoot for launcher appear, confetti moments"
     }
   },
   "breakpoint": {
-    "mobile": {
+    "compact": {
       "$value": "640px",
       "$type": "dimension",
-      "$description": "Mobile"
+      "$description": "Compact — compact mode launcher, marketing mobile breakpoint"
     },
-    "tablet": {
+    "medium": {
       "$value": "768px",
       "$type": "dimension",
-      "$description": "Tablet"
+      "$description": "Medium — tablet, split marketing layout"
     },
     "desktop": {
       "$value": "1024px",
       "$type": "dimension",
-      "$description": "Desktop"
+      "$description": "Desktop — full marketing site layout"
+    },
+    "wide": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Wide — large desktop, expanded marketing hero"
     }
   }
 }

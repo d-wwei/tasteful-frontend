@@ -4,131 +4,455 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ferrari Brand Tokens Preview</title>
+<!-- NO Google Fonts — Ferrari Sans is proprietary. System fallbacks: Helvetica Neue, Arial. -->
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --surface: #000000;
-    --surface-subtle: #303030;
-    --accent: #da291c;
+    --surface: #0c0c0c;
+    --surface-elevated: #161616;
+    --surface-subtle: #1e1e1e;
+    --surface-overlay: rgba(0,0,0,0.85);
+    --accent: #dc0000;
+    --accent-hover: #ff1a1a;
+    --accent-pressed: #8b0000;
+    --accent-muted: rgba(220,0,0,0.30);
+    --gold: #c5a258;
+    --gold-hover: #d4b36a;
     --text-primary: #ffffff;
-    --text-secondary: #666666;
-    --border: rgba(255,255,255,0.1);
-    --font: Inter, -apple-system, sans-serif;
+    --text-secondary: #999999;
+    --text-tertiary: #666666;
+    --error: #ff3333;
+    --success: #00b050;
+    --warning: #f5a623;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.15);
+    --border-accent: rgba(220,0,0,0.30);
+    --font: 'Ferrari Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-mono: 'SF Mono', 'Roboto Mono', 'Courier New', monospace;
+    --shadow-subtle: 0 4px 16px rgba(0,0,0,0.40);
+    --shadow-elevated: 0 8px 32px rgba(0,0,0,0.60);
+    --shadow-red-glow: 0 0 20px -4px rgba(220,0,0,0.25);
+    --ease-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-dramatic: cubic-bezier(0.16, 1, 0.3, 1);
   }
-  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 64px 32px; }
+
+  /* ═══ Brand Header ═══ */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
+    text-align: center; margin-bottom: 120px; padding: 80px 48px;
+    background: var(--surface-elevated); border: 1px solid var(--border);
+    position: relative; overflow: hidden;
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
+  .brand-header::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent);
+  }
+  .brand-header h1 {
+    font-size: 56px; font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
+    color: var(--text-primary); margin-bottom: 16px; text-transform: uppercase;
+  }
+  .brand-header .aesthetic {
+    font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;
+    letter-spacing: 0.06em;
+  }
   .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
-  .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .brand-header .tag {
+    font-size: 10px; padding: 5px 14px; border: 1px solid var(--border-hover);
+    color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.10em; font-weight: 500;
+  }
+  .brand-header .tag-accent {
+    border-color: var(--accent-muted); color: var(--accent);
+  }
+
+  /* ═══ Sections ═══ */
+  .section { margin-bottom: 120px; }
+  .section-overline {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 32px; font-weight: 700; line-height: 1.15; margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+  .section-desc { font-size: 16px; color: var(--text-secondary); margin-bottom: 40px; line-height: 1.55; }
+
+  /* ═══ Color Grid ═══ */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .color-swatch { overflow: hidden; border: 1px solid var(--border); background: var(--surface-elevated); }
+  .color-swatch .swatch-fill { height: 80px; }
+  .color-swatch .swatch-info { padding: 12px; }
+  .color-swatch .swatch-name { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 3px; }
+  .color-swatch .swatch-hex { font-size: 12px; font-family: var(--font-mono); color: var(--text-tertiary); }
+  .color-group-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 12px; margin-top: 32px;
+  }
+
+  /* ═══ Typography ═══ */
+  .type-row {
+    display: flex; align-items: baseline; gap: 24px; padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-label {
+    flex: 0 0 100px; font-size: 11px; color: var(--text-tertiary); text-align: right;
+    font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  }
   .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
-  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
-  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
+  .type-meta { flex: 0 0 80px; font-size: 11px; font-family: var(--font-mono); color: var(--text-tertiary); text-align: right; }
+
+  /* ═══ Spacing ═══ */
+  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+  .spacing-label {
+    flex: 0 0 70px; font-size: 11px; color: var(--text-tertiary); text-align: right;
+    font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .spacing-bar { height: 28px; background: var(--accent); opacity: 0.15; position: relative; }
+  .spacing-bar::after {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+    background: var(--accent);
+  }
+  .spacing-value { font-size: 12px; font-family: var(--font-mono); color: var(--text-tertiary); min-width: 50px; }
+
+  /* ═══ Border Radius ═══ */
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 16px; margin-top: 32px; }
+  .radius-box {
+    aspect-ratio: 1; background: var(--surface-elevated); border: 1px solid var(--border);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  }
+  .radius-box .radius-val { font-size: 14px; font-family: var(--font-mono); color: var(--text-primary); }
+  .radius-box .radius-name { font-size: 10px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ═══ Shadow Samples ═══ */
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+  .shadow-card {
+    padding: 28px; background: var(--surface-elevated); border: 1px solid var(--border);
+    min-height: 120px; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .shadow-card .shadow-name { font-size: 12px; font-weight: 500; margin-bottom: 4px; letter-spacing: 0.04em; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-tertiary); }
+
+  /* ═══ Components ═══ */
   .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #000 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  @media (max-width: 768px) {
+    .comp-grid { grid-template-columns: 1fr; }
+    .brand-header h1 { font-size: 36px; }
+    .brand-header { padding: 48px 24px; }
+    .container { padding: 48px 20px; }
+    .section { margin-bottom: 80px; }
+    .type-row { flex-wrap: wrap; gap: 8px; }
+    .type-label { flex: 0 0 auto; text-align: left; }
+    .type-meta { flex: 0 0 auto; text-align: left; }
+  }
+  .comp-card {
+    padding: 32px; background: var(--surface-elevated); border: 1px solid var(--border);
+  }
+  .comp-card h3 {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 20px;
+  }
+
+  /* ═══ Buttons ═══ */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 32px; font-size: 12px; font-weight: 500; font-family: var(--font);
+    letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+    border: none; transition: all 350ms var(--ease-default); text-decoration: none;
+  }
+  .btn-accent {
+    background: var(--accent); color: var(--text-primary); border-radius: 0;
+  }
+  .btn-accent:hover {
+    background: var(--accent-hover); box-shadow: var(--shadow-red-glow);
+  }
+  .btn-ghost {
+    background: transparent; color: var(--text-primary); border: 1px solid var(--border-hover);
+    border-radius: 0;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.30); background: rgba(255,255,255,0.03);
+  }
+  .btn-gold {
+    background: var(--gold); color: var(--surface); border-radius: 0;
+  }
+  .btn-gold:hover { background: var(--gold-hover); }
+  .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  /* ═══ Vehicle Showcase Card ═══ */
+  .showcase-card {
+    background: var(--surface-elevated); border: 1px solid var(--border); overflow: hidden;
+    border-radius: 4px;
+  }
+  .showcase-img {
+    height: 200px; position: relative;
+    background: linear-gradient(145deg, #1a1a1a 0%, #0c0c0c 40%, var(--accent-pressed) 100%);
+  }
+  .showcase-img::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+    background: linear-gradient(to top, var(--surface-elevated) 0%, transparent 100%);
+  }
+  .showcase-body { padding: 24px 28px 28px; }
+  .showcase-overline {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  .showcase-name { font-size: 24px; font-weight: 300; line-height: 1.10; margin-bottom: 12px; }
+  .showcase-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 20px; }
+  .showcase-specs {
+    display: flex; gap: 32px; padding-top: 16px; border-top: 1px solid var(--border);
+  }
+  .showcase-spec-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 4px;
+  }
+  .showcase-spec-value { font-size: 18px; font-family: var(--font-mono); color: var(--text-primary); }
+
+  /* ═══ Spec Display ═══ */
+  .spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 640px) { .spec-grid { grid-template-columns: 1fr 1fr; } }
+  .spec-item { text-align: center; padding: 20px 0; }
+  .spec-item:not(:last-child) { border-right: 1px solid var(--border); }
+  @media (max-width: 640px) { .spec-item:not(:last-child) { border-right: none; } }
+  .spec-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 8px;
+  }
+  .spec-value { font-size: 32px; font-family: var(--font-mono); color: var(--text-primary); font-weight: 400; }
+  .spec-unit { font-size: 14px; font-family: var(--font); color: var(--text-tertiary); margin-left: 4px; }
+
+  /* ═══ Nav Sample ═══ */
+  .nav-sample {
+    display: flex; align-items: center; justify-content: space-between; height: 72px;
+    padding: 0 32px; background: rgba(12,12,12,0.92); border: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo { font-size: 18px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-link {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--text-secondary); text-decoration: none; transition: color 200ms;
+  }
+  .nav-link:hover { color: var(--text-primary); }
+  .nav-link.active { color: var(--accent); }
+  .nav-cta {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 10px 24px; background: var(--accent); color: var(--text-primary);
+    border: none; cursor: pointer; font-family: var(--font);
+  }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  /* ═══ Motion Samples ═══ */
+  .motion-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+  .motion-card {
+    padding: 20px; background: var(--surface-elevated); border: 1px solid var(--border);
+    text-align: center;
+  }
+  .motion-bar-track { height: 4px; background: var(--surface-subtle); margin: 16px 0 12px; position: relative; overflow: hidden; }
+  .motion-bar-fill { height: 100%; background: var(--accent); width: 0; }
+  .motion-card:hover .motion-bar-fill { width: 100%; }
+  .motion-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); }
+  .motion-value { font-size: 12px; font-family: var(--font-mono); color: var(--text-tertiary); margin-top: 4px; }
+
+  /* Semantic Colors */
+  .semantic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .semantic-swatch { padding: 16px; border: 1px solid var(--border); }
+  .semantic-dot { width: 12px; height: 12px; border-radius: 50%; margin-bottom: 10px; }
+  .semantic-name { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2px; }
+  .semantic-hex { font-size: 11px; font-family: var(--font-mono); color: var(--text-tertiary); }
 </style>
 </head>
 <body>
 <div class="container">
+
+  <!-- ═══ BRAND HEADER ═══ -->
   <header class="brand-header">
     <h1>Ferrari</h1>
-    <p class="aesthetic">digital editorial with chiaroscuro drama</p>
+    <p class="aesthetic">Cinematic chiaroscuro -- deep black surfaces, surgical Rosso Corsa accents, Italian luxury restraint</p>
     <div class="tags">
-      <span class="tag">chiaroscuro-layout</span><span class="tag">ferrari-red-sparse</span><span class="tag">precision-engineering</span>
+      <span class="tag tag-accent">rosso-corsa-restraint</span>
+      <span class="tag">cinematic-darkness</span>
+      <span class="tag">racing-heritage</span>
+      <span class="tag">photography-driven</span>
+      <span class="tag">italian-luxury</span>
     </div>
   </header>
 
+  <!-- ═══ COLOR PALETTE ═══ -->
   <section class="section">
-    <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Ferrari visual identity.</p>
+    <div class="section-overline">Palette</div>
+    <h2 class="section-title">Color System</h2>
+    <p class="section-desc">Cinematic darkness as canvas. Rosso Corsa with extreme restraint. Gold for heritage lineage.</p>
+
+    <div class="color-group-label" style="margin-top:0">Surfaces</div>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#000000"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#000000</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#da291c"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#da291c</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#666666"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#666666</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#0c0c0c"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#0c0c0c</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#161616"></div><div class="swatch-info"><div class="swatch-name">elevated</div><div class="swatch-hex">#161616</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1e1e1e"></div><div class="swatch-info"><div class="swatch-name">subtle</div><div class="swatch-hex">#1e1e1e</div></div></div>
+    </div>
+
+    <div class="color-group-label">Accents</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#dc0000"></div><div class="swatch-info"><div class="swatch-name">rosso corsa</div><div class="swatch-hex">#dc0000</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ff1a1a"></div><div class="swatch-info"><div class="swatch-name">rosso vivace</div><div class="swatch-hex">#ff1a1a</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#8b0000"></div><div class="swatch-info"><div class="swatch-name">rosso scuro</div><div class="swatch-hex">#8b0000</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#c5a258"></div><div class="swatch-info"><div class="swatch-name">oro ferrari</div><div class="swatch-hex">#c5a258</div></div></div>
+    </div>
+
+    <div class="color-group-label">Text</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">primary</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#999999"></div><div class="swatch-info"><div class="swatch-name">secondary</div><div class="swatch-hex">#999999</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#666666"></div><div class="swatch-info"><div class="swatch-name">tertiary</div><div class="swatch-hex">#666666</div></div></div>
+    </div>
+
+    <div class="color-group-label">Semantic</div>
+    <div class="semantic-grid">
+      <div class="semantic-swatch"><div class="semantic-dot" style="background:#ff3333"></div><div class="semantic-name">Error</div><div class="semantic-hex">#ff3333</div></div>
+      <div class="semantic-swatch"><div class="semantic-dot" style="background:#00b050"></div><div class="semantic-name">Success</div><div class="semantic-hex">#00b050</div></div>
+      <div class="semantic-swatch"><div class="semantic-dot" style="background:#f5a623"></div><div class="semantic-name">Warning</div><div class="semantic-hex">#f5a623</div></div>
+      <div class="semantic-swatch"><div class="semantic-dot" style="background:#4a9eff"></div><div class="semantic-name">Info</div><div class="semantic-hex">#4a9eff</div></div>
     </div>
   </section>
 
+  <!-- ═══ TYPOGRAPHY ═══ -->
   <section class="section">
-    <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Ferrari branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Ferrari Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <div class="section-overline">Typeface</div>
+    <h2 class="section-title">Typography Scale</h2>
+    <p class="section-desc">Ferrari Sans (proprietary) with Helvetica Neue fallback. No Google Fonts. Light weight for hero elegance, bold for authority.</p>
+    <div class="type-row"><span class="type-label">Hero</span><span class="type-sample" style="font-size:52px;font-weight:300;line-height:1.05;letter-spacing:-0.02em;text-transform:uppercase">Ferrari</span><span class="type-meta">72px / 300</span></div>
+    <div class="type-row"><span class="type-label">Display</span><span class="type-sample" style="font-size:40px;font-weight:700;line-height:1.15;letter-spacing:-0.02em">12Cilindri</span><span class="type-meta">48px / 700</span></div>
+    <div class="type-row"><span class="type-label">Section</span><span class="type-sample" style="font-size:28px;font-weight:700;line-height:1.15">Performance Specs</span><span class="type-meta">32px / 700</span></div>
+    <div class="type-row"><span class="type-label">Subheading</span><span class="type-sample" style="font-size:22px;font-weight:500;line-height:1.15">Engine Configuration</span><span class="type-meta">24px / 500</span></div>
+    <div class="type-row"><span class="type-label">Body Large</span><span class="type-sample" style="font-size:18px;font-weight:400;line-height:1.55;color:var(--text-secondary)">The naturally aspirated V12 engine delivers unprecedented power.</span><span class="type-meta">18px / 400</span></div>
+    <div class="type-row"><span class="type-label">Body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.55;color:var(--text-secondary)">Standard body text for vehicle descriptions and editorial content.</span><span class="type-meta">16px / 400</span></div>
+    <div class="type-row"><span class="type-label">Caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-tertiary)">Image caption and secondary information</span><span class="type-meta">14px / 400</span></div>
+    <div class="type-row"><span class="type-label">Overline</span><span class="type-sample" style="font-size:11px;font-weight:500;line-height:1.25;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent)">V12 Berlinetta</span><span class="type-meta">11px / 500</span></div>
+    <div class="type-row"><span class="type-label">Mono</span><span class="type-sample" style="font-size:15px;font-weight:400;line-height:1.50;font-family:var(--font-mono);color:var(--text-primary)">830 cv / 9,500 rpm / 2.9 s</span><span class="type-meta">15px / mono</span></div>
   </section>
 
+  <!-- ═══ SPACING ═══ -->
   <section class="section">
-    <h2 class="section-title">Spacing</h2>
+    <div class="section-overline">Grid</div>
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-desc">8px base unit. Cinematic breathing room between sections (120px).</p>
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px;transition:width 350ms var(--ease-default)"></div><span class="spacing-value">4px</span></div>
     <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
-    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
-    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
-    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
-    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">3xl</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:120px"></div><span class="spacing-value">120px</span></div>
   </section>
 
+  <!-- ═══ BORDER RADIUS ═══ -->
   <section class="section">
-    <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Ferrari tokens.</p>
+    <div class="section-overline">Geometry</div>
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Sharp edges for engineering precision. Minimal radius. Buttons always 0px.</p>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:0"><span class="radius-val">0px</span><span class="radius-name">none / btn</span></div>
+      <div class="radius-box" style="border-radius:2px"><span class="radius-val">2px</span><span class="radius-name">subtle</span></div>
+      <div class="radius-box" style="border-radius:4px"><span class="radius-val">4px</span><span class="radius-name">standard</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span class="radius-val">pill</span><span class="radius-name">tags only</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ SHADOWS ═══ -->
+  <section class="section">
+    <div class="section-overline">Depth</div>
+    <h2 class="section-title">Shadow System</h2>
+    <p class="section-desc">Heavy shadows for dark surfaces. Red glow for Rosso Corsa interactions.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none"><div class="shadow-name">Level 0</div><div class="shadow-desc">Flat -- no elevation</div></div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-subtle)"><div class="shadow-name">Level 1</div><div class="shadow-desc">Subtle lift -- cards</div></div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-elevated)"><div class="shadow-name">Level 2</div><div class="shadow-desc">Elevated -- modals</div></div>
+      <div class="shadow-card" style="box-shadow:var(--shadow-red-glow);border-color:var(--border-accent)"><div class="shadow-name" style="color:var(--accent)">Red Glow</div><div class="shadow-desc">CTA hover state</div></div>
+    </div>
+  </section>
+
+  <!-- ═══ MOTION ═══ -->
+  <section class="section">
+    <div class="section-overline">Motion</div>
+    <h2 class="section-title">Animation Timing</h2>
+    <p class="section-desc">Cinematic motion. Camera-dolly easing. Hover to preview each duration.</p>
+    <div class="motion-grid">
+      <div class="motion-card"><div class="motion-label">Instant</div><div class="motion-bar-track"><div class="motion-bar-fill" style="transition:width 100ms ease"></div></div><div class="motion-value">100ms</div></div>
+      <div class="motion-card"><div class="motion-label">Fast</div><div class="motion-bar-track"><div class="motion-bar-fill" style="transition:width 200ms ease"></div></div><div class="motion-value">200ms</div></div>
+      <div class="motion-card"><div class="motion-label">Normal</div><div class="motion-bar-track"><div class="motion-bar-fill" style="transition:width 350ms var(--ease-default)"></div></div><div class="motion-value">350ms</div></div>
+      <div class="motion-card"><div class="motion-label">Slow</div><div class="motion-bar-track"><div class="motion-bar-fill" style="transition:width 600ms var(--ease-dramatic)"></div></div><div class="motion-value">600ms</div></div>
+      <div class="motion-card"><div class="motion-label">Cinematic</div><div class="motion-bar-track"><div class="motion-bar-fill" style="transition:width 1000ms var(--ease-dramatic)"></div></div><div class="motion-value">1000ms</div></div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPONENTS ═══ -->
+  <section class="section">
+    <div class="section-overline">Components</div>
+    <h2 class="section-title">Sample Components</h2>
+    <p class="section-desc">Interactive elements styled with Ferrari design tokens.</p>
+
     <div class="comp-grid">
+      <!-- Buttons -->
       <div class="comp-card">
-        <h3>Buttons</h3>
-        <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+        <h3>Button System</h3>
+        <div class="btn-group" style="margin-bottom:16px">
+          <button class="btn btn-accent">Discover</button>
+          <button class="btn btn-ghost">Configure</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-gold">Heritage</button>
         </div>
       </div>
+
+      <!-- Navigation -->
       <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Ferrari Feature</h4>
-            <p>A component styled with the Ferrari design system tokens.</p>
+        <h3>Navigation</h3>
+        <div class="nav-sample">
+          <div class="nav-logo">Ferrari</div>
+          <div class="nav-links">
+            <a href="#" class="nav-link active">Models</a>
+            <a href="#" class="nav-link">Racing</a>
+            <a href="#" class="nav-link">Lifestyle</a>
+          </div>
+          <button class="nav-cta">Configure</button>
+        </div>
+      </div>
+
+      <!-- Vehicle Showcase -->
+      <div class="comp-card" style="grid-column: 1 / -1">
+        <h3>Vehicle Showcase Card</h3>
+        <div class="showcase-card">
+          <div class="showcase-img"></div>
+          <div class="showcase-body">
+            <div class="showcase-overline">V12 Berlinetta</div>
+            <div class="showcase-name">Ferrari 12Cilindri</div>
+            <div class="showcase-desc">A naturally aspirated V12 engine delivering 830 cv at 9,500 rpm. The purest expression of Ferrari's racing DNA for the road.</div>
+            <div class="showcase-specs">
+              <div><div class="showcase-spec-label">Power</div><div class="showcase-spec-value">830<span class="spec-unit">cv</span></div></div>
+              <div><div class="showcase-spec-label">0-100</div><div class="showcase-spec-value">2.9<span class="spec-unit">s</span></div></div>
+              <div><div class="showcase-spec-label">Max Speed</div><div class="showcase-spec-value">340<span class="spec-unit">km/h</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance Specs -->
+      <div class="comp-card" style="grid-column: 1 / -1">
+        <h3>Performance Specs Display</h3>
+        <div style="background:var(--surface-elevated);border:1px solid var(--border);border-left:2px solid var(--accent);padding:32px">
+          <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label">Power</div><div class="spec-value">830<span class="spec-unit">cv</span></div></div>
+            <div class="spec-item"><div class="spec-label">Max RPM</div><div class="spec-value">9,500<span class="spec-unit">rpm</span></div></div>
+            <div class="spec-item"><div class="spec-label">0-100 km/h</div><div class="spec-value">2.9<span class="spec-unit">s</span></div></div>
+            <div class="spec-item"><div class="spec-label">Max Speed</div><div class="spec-value">340<span class="spec-unit">km/h</span></div></div>
+            <div class="spec-item"><div class="spec-label">Torque</div><div class="spec-value">725<span class="spec-unit">Nm</span></div></div>
+            <div class="spec-item"><div class="spec-label">Weight</div><div class="spec-value">1,385<span class="spec-unit">kg</span></div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
 </div>
 </body>
 </html>

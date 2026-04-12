@@ -5,128 +5,397 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Notion Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --surface: #ffffff;
     --surface-subtle: #f7f6f3;
+    --surface-hover: #efefef;
     --accent: #2eaadc;
+    --accent-hover: #2691bd;
     --text-primary: #37352f;
     --text-secondary: #787774;
-    --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    --text-tertiary: #9b9a97;
+    --icon-default: #55534e;
+    --border: #e9e9e7;
+    --border-dark: #d3d1cb;
+    --bg-gray: #f1f1ef;
+    --bg-orange: #f8ecdf;
+    --bg-yellow: #faf3dd;
+    --bg-green: #eef3ed;
+    --bg-blue: #e9f3f7;
+    --bg-purple: #f6f3f8;
+    --bg-pink: #f9f2f5;
+    --bg-red: #faecec;
+    --notion-brown: #9b6f50;
+    --notion-orange: #d9730d;
+    --notion-red: #e03e3e;
+    --notion-green: #448361;
+    --notion-blue-icon: #337ea9;
+    --notion-purple: #9065b0;
+    --notion-pink: #c14c8a;
+    --cta-black: #000000;
+    --shadow-1: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-2: 0 12px 32px rgba(0,0,0,0.12);
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
+    --font-mono: iawriter-mono, Nitti, Menlo, Courier, monospace;
   }
   body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 64px 24px; }
+
+  /* Brand Header */
   .brand-header {
-    text-align: center; margin-bottom: 80px; padding: 64px 32px;
-    background: var(--surface-subtle); border-radius: 12px;
-    border: 1px solid var(--border);
+    text-align: center; margin-bottom: 64px; padding: 48px 32px;
+    border-bottom: 1px solid var(--border);
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
-  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
+  .brand-header h1 { font-size: 40px; font-weight: 700; line-height: 1.15; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.5px; }
+  .brand-header .aesthetic { font-size: 16px; color: var(--text-secondary); margin-bottom: 20px; }
   .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
-  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
-  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
-  .color-swatch .swatch-fill { height: 72px; }
-  .color-swatch .swatch-info { padding: 10px 12px; }
-  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
-  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
-  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
-  .type-sample { flex: 1; }
-  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
-  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
-  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
-  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
-  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
+  .brand-header .tag { font-size: 12px; padding: 2px 8px; background: var(--bg-gray); color: var(--text-secondary); border-radius: 3px; font-weight: 400; }
+
+  .section { margin-bottom: 64px; }
+  .section-title { font-size: 24px; font-weight: 600; line-height: 1.30; margin-bottom: 8px; }
+  .section-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+
+  /* Color Swatches */
+  .color-group-label { font-size: 12px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; margin-top: 24px; }
+  .color-group-label:first-of-type { margin-top: 0; }
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin-bottom: 8px; }
+  .color-swatch { border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .color-swatch .swatch-fill { height: 56px; }
+  .color-swatch .swatch-info { padding: 8px 10px; background: var(--surface); }
+  .color-swatch .swatch-name { font-size: 11px; font-weight: 500; margin-bottom: 1px; color: var(--text-primary); }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+  /* Typography */
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .type-label { flex: 0 0 80px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-weight: 500; }
+  .type-sample { flex: 1; color: var(--text-primary); }
+  .type-meta { flex: 0 0 100px; font-size: 11px; color: var(--text-tertiary); text-align: right; font-family: var(--font-mono); }
+
+  /* Spacing */
+  .spacing-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .spacing-label { flex: 0 0 80px; font-size: 12px; color: var(--text-tertiary); text-align: right; font-family: var(--font-mono); }
+  .spacing-bar { height: 20px; background: var(--bg-blue); border: 1px solid var(--accent); border-radius: 2px; opacity: 0.7; }
+  .spacing-value { font-size: 11px; color: var(--text-tertiary); min-width: 40px; font-family: var(--font-mono); }
+
+  /* Border Radius */
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; }
   .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-  .radius-box span { font-size: 11px; color: var(--text-secondary); }
+  .radius-box span { font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+  /* Shadow */
   .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
-  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
-  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
-  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
-  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
-  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-  .btn-accent { background: var(--accent); color: #ffffff; }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
-  .sample-card-body { padding: 16px; }
-  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .shadow-card { padding: 20px; border-radius: 8px; background: var(--surface); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; border: 1px solid var(--border); }
+  .shadow-card .shadow-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-tertiary); }
+
+  /* Components */
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 30px; } }
+  .comp-card { padding: 24px; background: var(--surface); border-radius: 8px; border: 1px solid var(--border); }
+  .comp-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary); }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 3px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: background 100ms ease; text-decoration: none; font-family: var(--font); }
+  .btn-black { background: var(--cta-black); color: #ffffff; }
+  .btn-black:hover { background: var(--text-primary); }
+  .btn-blue { background: var(--accent); color: #ffffff; }
+  .btn-blue:hover { background: var(--accent-hover); }
+  .btn-outline { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
+  .btn-outline:hover { background: var(--surface-subtle); }
+  .btn-link { background: transparent; color: var(--accent); border: none; padding: 6px 0; }
+  .btn-link:hover { text-decoration: underline; }
+  .btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Notion-style content blocks */
+  .block { padding: 4px 0; }
+  .block-heading { font-size: 20px; font-weight: 600; line-height: 1.30; color: var(--text-primary); padding: 16px 0 4px 0; }
+  .block-text { font-size: 16px; line-height: 1.50; color: var(--text-primary); }
+  .block-callout { display: flex; gap: 8px; padding: 16px 16px 16px 12px; background: var(--bg-gray); border-radius: 3px; margin: 4px 0; }
+  .block-callout-icon { font-size: 20px; flex-shrink: 0; }
+  .block-callout-text { font-size: 16px; line-height: 1.50; color: var(--text-primary); }
+  .inline-code { background: var(--bg-gray); color: #eb5757; padding: 2px 4px; border-radius: 3px; font-family: var(--font-mono); font-size: 14px; }
+
+  /* Notion tags */
+  .tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .notion-tag { display: inline-flex; align-items: center; font-size: 12px; font-weight: 400; padding: 2px 6px; border-radius: 3px; }
+  .tag-gray { background: var(--bg-gray); color: var(--text-secondary); }
+  .tag-blue { background: var(--bg-blue); color: var(--notion-blue-icon); }
+  .tag-green { background: var(--bg-green); color: var(--notion-green); }
+  .tag-orange { background: var(--bg-orange); color: var(--notion-orange); }
+  .tag-purple { background: var(--bg-purple); color: var(--notion-purple); }
+  .tag-red { background: var(--bg-red); color: var(--notion-red); }
+  .tag-pink { background: var(--bg-pink); color: var(--notion-pink); }
+  .tag-yellow { background: var(--bg-yellow); color: #c29343; }
+
+  /* Kanban card */
+  .kanban-col { background: var(--surface); flex: 1; min-width: 200px; }
+  .kanban-col-header { font-size: 14px; font-weight: 600; color: var(--text-primary); padding: 8px 0; display: flex; align-items: center; gap: 8px; }
+  .kanban-col-count { font-size: 12px; font-weight: 400; color: var(--text-tertiary); }
+  .kanban-card { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 8px 10px; margin-bottom: 6px; cursor: default; transition: background 100ms ease; }
+  .kanban-card:hover { background: var(--surface-subtle); }
+  .kanban-card-title { font-size: 14px; font-weight: 400; color: var(--text-primary); line-height: 1.43; margin-bottom: 6px; }
+  .kanban-card-props { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  /* Sidebar preview */
+  .sidebar-preview { width: 220px; background: var(--surface-subtle); border-right: 1px solid var(--border); padding: 12px 8px; border-radius: 8px 0 0 8px; }
+  .sidebar-item { font-size: 14px; font-weight: 500; color: var(--text-secondary); padding: 4px 8px; border-radius: 3px; display: flex; align-items: center; gap: 8px; cursor: default; transition: background 100ms ease; margin-bottom: 1px; }
+  .sidebar-item:hover { background: var(--surface-hover); }
+  .sidebar-item.active { background: var(--surface-hover); color: var(--text-primary); }
+  .sidebar-item-icon { font-size: 16px; width: 20px; text-align: center; }
+  .sidebar-section-label { font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.5px; padding: 16px 8px 4px 8px; }
 </style>
 </head>
 <body>
 <div class="container">
   <header class="brand-header">
     <h1>Notion</h1>
-    <p class="aesthetic">structured canvas with typographic hierarchy</p>
+    <p class="aesthetic">Content-first canvas -- warm-neutral minimalism with block-based rhythm</p>
     <div class="tags">
-      <span class="tag">content-first</span><span class="tag">block-based-layout</span><span class="tag">warm-minimalism</span>
+      <span class="tag">system-font-stack</span>
+      <span class="tag">block-based-layout</span>
+      <span class="tag">warm-neutral-palette</span>
+      <span class="tag">border-driven-separation</span>
+      <span class="tag">adjacency-aware-spacing</span>
     </div>
   </header>
 
+  <!-- COLOR PALETTE -->
   <section class="section">
     <h2 class="section-title">Color Palette</h2>
-    <p class="section-desc">Core brand colors defining the Notion visual identity.</p>
+    <p class="section-desc">Core surfaces, text, and brand accent colors from the Notion design system.</p>
+
+    <div class="color-group-label">Surfaces</div>
     <div class="color-grid">
-      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
-      <div class="color-swatch"><div class="swatch-fill" style="background:#2eaadc"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#2eaadc</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff; border-bottom: 1px solid #e9e9e7"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f7f6f3"></div><div class="swatch-info"><div class="swatch-name">surface-subtle</div><div class="swatch-hex">#f7f6f3</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#efefef"></div><div class="swatch-info"><div class="swatch-name">surface-hover</div><div class="swatch-hex">#efefef</div></div></div>
+    </div>
+
+    <div class="color-group-label">Text &amp; Icons</div>
+    <div class="color-grid">
       <div class="color-swatch"><div class="swatch-fill" style="background:#37352f"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#37352f</div></div></div>
       <div class="color-swatch"><div class="swatch-fill" style="background:#787774"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#787774</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#9b9a97"></div><div class="swatch-info"><div class="swatch-name">text-tertiary</div><div class="swatch-hex">#9b9a97</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#55534e"></div><div class="swatch-info"><div class="swatch-name">icon-default</div><div class="swatch-hex">#55534e</div></div></div>
+    </div>
+
+    <div class="color-group-label">Accent &amp; CTA</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#2eaadc"></div><div class="swatch-info"><div class="swatch-name">Notion Blue</div><div class="swatch-hex">#2eaadc</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#2691bd"></div><div class="swatch-info"><div class="swatch-name">accent-hover</div><div class="swatch-hex">#2691bd</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#000000"></div><div class="swatch-info"><div class="swatch-name">CTA black</div><div class="swatch-hex">#000000</div></div></div>
+    </div>
+
+    <div class="color-group-label">Notion Content Colors</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#9b6f50"></div><div class="swatch-info"><div class="swatch-name">brown</div><div class="swatch-hex">#9b6f50</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#d9730d"></div><div class="swatch-info"><div class="swatch-name">orange</div><div class="swatch-hex">#d9730d</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#cb912f"></div><div class="swatch-info"><div class="swatch-name">yellow</div><div class="swatch-hex">#cb912f</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#448361"></div><div class="swatch-info"><div class="swatch-name">green</div><div class="swatch-hex">#448361</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#337ea9"></div><div class="swatch-info"><div class="swatch-name">blue</div><div class="swatch-hex">#337ea9</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#9065b0"></div><div class="swatch-info"><div class="swatch-name">purple</div><div class="swatch-hex">#9065b0</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#c14c8a"></div><div class="swatch-info"><div class="swatch-name">pink</div><div class="swatch-hex">#c14c8a</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#e03e3e"></div><div class="swatch-info"><div class="swatch-name">red</div><div class="swatch-hex">#e03e3e</div></div></div>
+    </div>
+
+    <div class="color-group-label">Background Tints</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f1f1ef"></div><div class="swatch-info"><div class="swatch-name">bg-gray</div><div class="swatch-hex">#f1f1ef</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f8ecdf"></div><div class="swatch-info"><div class="swatch-name">bg-orange</div><div class="swatch-hex">#f8ecdf</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#faf3dd"></div><div class="swatch-info"><div class="swatch-name">bg-yellow</div><div class="swatch-hex">#faf3dd</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#eef3ed"></div><div class="swatch-info"><div class="swatch-name">bg-green</div><div class="swatch-hex">#eef3ed</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#e9f3f7"></div><div class="swatch-info"><div class="swatch-name">bg-blue</div><div class="swatch-hex">#e9f3f7</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f6f3f8"></div><div class="swatch-info"><div class="swatch-name">bg-purple</div><div class="swatch-hex">#f6f3f8</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f9f2f5"></div><div class="swatch-info"><div class="swatch-name">bg-pink</div><div class="swatch-hex">#f9f2f5</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#faecec"></div><div class="swatch-info"><div class="swatch-name">bg-red</div><div class="swatch-hex">#faecec</div></div></div>
+    </div>
+
+    <div class="color-group-label">Borders &amp; State</div>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#e9e9e7"></div><div class="swatch-info"><div class="swatch-name">border</div><div class="swatch-hex">#e9e9e7</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#d3d1cb"></div><div class="swatch-info"><div class="swatch-name">border-dark</div><div class="swatch-hex">#d3d1cb</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#eb5757"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#eb5757</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#4dab9a"></div><div class="swatch-info"><div class="swatch-name">success</div><div class="swatch-hex">#4dab9a</div></div></div>
     </div>
   </section>
 
+  <!-- TYPOGRAPHY -->
   <section class="section">
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Type scale for Notion branded components.</p>
-    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Notion Design</span><span class="type-meta">48px</span></div>
-    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
-    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
-    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+    <p class="section-desc">System font stack with weight-based hierarchy. No custom display typeface.</p>
+    <div class="type-row"><span class="type-label">Hero</span><span class="type-sample" style="font-size:40px;font-weight:700;line-height:1.15;letter-spacing:-0.5px">Notion Design</span><span class="type-meta">40 / 700</span></div>
+    <div class="type-row"><span class="type-label">H1</span><span class="type-sample" style="font-size:30px;font-weight:700;line-height:1.30">Page Title</span><span class="type-meta">30 / 700</span></div>
+    <div class="type-row"><span class="type-label">H2</span><span class="type-sample" style="font-size:24px;font-weight:600;line-height:1.30">Section Heading</span><span class="type-meta">24 / 600</span></div>
+    <div class="type-row"><span class="type-label">H3</span><span class="type-sample" style="font-size:20px;font-weight:600;line-height:1.30">Subsection</span><span class="type-meta">20 / 600</span></div>
+    <div class="type-row"><span class="type-label">Body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.50;color:var(--text-primary)">Standard body text for content blocks and paragraphs.</span><span class="type-meta">16 / 400</span></div>
+    <div class="type-row"><span class="type-label">UI/Caption</span><span class="type-sample" style="font-size:14px;font-weight:500;line-height:1.43;color:var(--text-secondary)">Button labels, sidebar items, metadata</span><span class="type-meta">14 / 500</span></div>
+    <div class="type-row"><span class="type-label">Small</span><span class="type-sample" style="font-size:12px;font-weight:400;line-height:1.33;color:var(--text-tertiary)">Timestamps, badges, auxiliary info</span><span class="type-meta">12 / 400</span></div>
+    <div class="type-row"><span class="type-label">Code</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.50;font-family:var(--font-mono);color:var(--text-primary)">const workspace = notion.get();</span><span class="type-meta">14 / mono</span></div>
   </section>
 
+  <!-- SPACING -->
   <section class="section">
     <h2 class="section-title">Spacing</h2>
-    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
-    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
-    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
-    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
-    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
-    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <p class="section-desc">4px micro-grid within blocks, adjacency-aware spacing between blocks.</p>
+    <div class="spacing-row"><span class="spacing-label">2px</span><div class="spacing-bar" style="width:2px"></div><span class="spacing-value">2xs</span></div>
+    <div class="spacing-row"><span class="spacing-label">4px</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">xs</span></div>
+    <div class="spacing-row"><span class="spacing-label">8px</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">sm</span></div>
+    <div class="spacing-row"><span class="spacing-label">12px</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">md</span></div>
+    <div class="spacing-row"><span class="spacing-label">16px</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">lg</span></div>
+    <div class="spacing-row"><span class="spacing-label">24px</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">xl</span></div>
+    <div class="spacing-row"><span class="spacing-label">32px</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">2xl</span></div>
+    <div class="spacing-row"><span class="spacing-label">48px</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">3xl</span></div>
+    <div class="spacing-row"><span class="spacing-label">64px</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">section</span></div>
+    <div class="spacing-row"><span class="spacing-label">96px</span><div class="spacing-bar" style="width:96px"></div><span class="spacing-value">page-pad</span></div>
   </section>
 
+  <!-- BORDER RADIUS -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Tight, functional radii. 3px for small elements, 8px for containers.</p>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:3px"><span>3px</span><span>tight</span></div>
+      <div class="radius-box" style="border-radius:4px"><span>4px</span><span>standard</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>8px</span><span>comfortable</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span>pill</span><span>9999px</span></div>
+    </div>
+  </section>
+
+  <!-- SHADOWS -->
+  <section class="section">
+    <h2 class="section-title">Shadows</h2>
+    <p class="section-desc">Three levels: border-shadow for flat separation, light for dropdowns, heavy for modals.</p>
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow: 0 1px 0 rgba(55,53,47,0.09)"><div class="shadow-name">Level 0</div><div class="shadow-desc">Border shadow -- flat card separator</div></div>
+      <div class="shadow-card" style="box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: none;"><div class="shadow-name">Level 1</div><div class="shadow-desc">Light -- dropdowns, tooltips</div></div>
+      <div class="shadow-card" style="box-shadow: 0 12px 32px rgba(0,0,0,0.12); border: none;"><div class="shadow-name">Level 2</div><div class="shadow-desc">Heavy -- modals, command palette</div></div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS -->
   <section class="section">
     <h2 class="section-title">Components</h2>
-    <p class="section-desc">Sample components styled with Notion tokens.</p>
+    <p class="section-desc">Notion-styled buttons, content blocks, tags, sidebar, and kanban cards.</p>
     <div class="comp-grid">
+
+      <!-- Buttons -->
       <div class="comp-card">
         <h3>Buttons</h3>
         <div class="btn-group" style="margin-bottom:12px">
-          <button class="btn btn-accent">Primary Action</button>
-          <button class="btn btn-outline">Secondary</button>
+          <button class="btn btn-black">Get Notion free</button>
+          <button class="btn btn-blue">Request a demo</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-outline">Cancel</button>
+          <button class="btn btn-link">Learn more</button>
         </div>
       </div>
+
+      <!-- Tags -->
       <div class="comp-card">
-        <h3>Content Card</h3>
-        <div class="sample-card">
-          <div class="sample-card-img"></div>
-          <div class="sample-card-body">
-            <h4>Notion Feature</h4>
-            <p>A component styled with the Notion design system tokens.</p>
+        <h3>Property Tags</h3>
+        <div class="tag-row" style="margin-bottom:8px">
+          <span class="notion-tag tag-gray">Default</span>
+          <span class="notion-tag tag-blue">In progress</span>
+          <span class="notion-tag tag-green">Done</span>
+          <span class="notion-tag tag-orange">Urgent</span>
+        </div>
+        <div class="tag-row">
+          <span class="notion-tag tag-purple">Design</span>
+          <span class="notion-tag tag-pink">Marketing</span>
+          <span class="notion-tag tag-red">Bug</span>
+          <span class="notion-tag tag-yellow">Feedback</span>
+        </div>
+      </div>
+
+      <!-- Content Blocks -->
+      <div class="comp-card">
+        <h3>Content Blocks</h3>
+        <div class="block block-heading">Getting Started</div>
+        <div class="block block-text">Notion is a connected workspace where your team can create docs, take notes, manage tasks, and organize knowledge -- all in one place.</div>
+        <div class="block-callout">
+          <span class="block-callout-icon">💡</span>
+          <span class="block-callout-text">Use <span class="inline-code">/slash</span> commands to create any type of block.</span>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="comp-card" style="padding: 0; overflow: hidden;">
+        <div class="sidebar-preview" style="width:100%; border-right: none; border-radius: 8px;">
+          <div class="sidebar-section-label">Workspace</div>
+          <div class="sidebar-item active"><span class="sidebar-item-icon">📄</span>Getting Started</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">📋</span>Task Board</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">📊</span>Sprint Planning</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">📝</span>Meeting Notes</div>
+          <div class="sidebar-section-label">Private</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">📓</span>Journal</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">🔖</span>Reading List</div>
+        </div>
+      </div>
+
+      <!-- Kanban Cards -->
+      <div class="comp-card" style="grid-column: 1 / -1;">
+        <h3>Kanban Database View</h3>
+        <div style="display: flex; gap: 12px; overflow-x: auto;">
+          <div class="kanban-col">
+            <div class="kanban-col-header">To Do <span class="kanban-col-count">3</span></div>
+            <div class="kanban-card">
+              <div class="kanban-card-title">Design system audit</div>
+              <div class="kanban-card-props">
+                <span class="notion-tag tag-purple">Design</span>
+                <span class="notion-tag tag-orange">High</span>
+              </div>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-card-title">Update API documentation</div>
+              <div class="kanban-card-props">
+                <span class="notion-tag tag-gray">Docs</span>
+              </div>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-card-title">Fix mobile navigation</div>
+              <div class="kanban-card-props">
+                <span class="notion-tag tag-red">Bug</span>
+                <span class="notion-tag tag-orange">High</span>
+              </div>
+            </div>
+          </div>
+          <div class="kanban-col">
+            <div class="kanban-col-header">In Progress <span class="kanban-col-count">2</span></div>
+            <div class="kanban-card">
+              <div class="kanban-card-title">User onboarding flow</div>
+              <div class="kanban-card-props">
+                <span class="notion-tag tag-blue">In progress</span>
+                <span class="notion-tag tag-green">Feature</span>
+              </div>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-card-title">Performance optimization</div>
+              <div class="kanban-card-props">
+                <span class="notion-tag tag-blue">In progress</span>
+              </div>
+            </div>
+          </div>
+          <div class="kanban-col">
+            <div class="kanban-col-header">Done <span class="kanban-col-count">2</span></div>
+            <div class="kanban-card">
+              <div class="kanban-card-title">Launch blog redesign</div>
+              <div class="kanban-card-props">
+                <span class="notion-tag tag-green">Done</span>
+                <span class="notion-tag tag-pink">Marketing</span>
+              </div>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-card-title">Set up CI/CD pipeline</div>
+              <div class="kanban-card-props">
+                <span class="notion-tag tag-green">Done</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 </div>
