@@ -125,8 +125,9 @@ For code implementation, hand off `.design/handoff/` to **design-to-code-runner*
 2. Add interaction section (transitions, loading strategy, empty states).
 3. Run accessibility validation — every text/background pair meets 4.5:1, touch targets meet platform minimums.
 4. Dispatch to the appropriate adapter. Ask user preference or default to html-preview.
+5. **If demo mode**: Generate `.design/demo.html` using the html-preview adapter in demo mode. This file must be a complete, production-quality page — not a token showcase. It must render real components (hero sections, feature cards, navigation, CTAs) with exact token values, full responsive behavior, and interaction states. Use `agent-prompts/{brand}.md` for component-level specs.
 
-**Output**: Complete `.design/layout-spec.yaml` + design tool output (Penpot file / Figma sync / preview.html).
+**Output**: Complete `.design/layout-spec.yaml` + design tool output (Penpot file / Figma sync / preview.html / demo.html).
 
 **Constraint stance**: STRICT. All Tier 1 constraints enforced. Accessibility violations are blockers. Token references must resolve. 8px grid mandatory.
 
@@ -272,6 +273,17 @@ After generating the spec, check available tools and suggest the appropriate ada
 
 Ask user preference or default to html-preview.
 
+### Demo Mode Dispatch
+
+When in demo mode, Phase 4 uses the html-preview adapter in **demo mode** — outputting a complete page, not a style guide. The adapter reads:
+
+1. `tokens.json` → CSS custom properties + Google Fonts `<link>`
+2. `layout-spec.yaml` → Full page structure with real component sections
+3. `agent-prompts/{brand}.md` → Component-level specs for pixel-accurate rendering
+4. `brand-guardrails/{brand}.md` → Do/Don't validation before output
+
+Output: `.design/demo.html` — a single file that IS the deliverable, not a preview of one.
+
 ## Sync Readback Flow
 
 When the user says "sync changes", "import modifications", "read back from Penpot/Figma", or provides a modified tokens JSON:
@@ -327,4 +339,26 @@ Run at Phase 5. Every item must pass before handoff.
 
 ---
 
-*For every design task: start at Phase 0, progress through each phase, never skip the human checkpoint at Phase 2. Output tokens + layout-spec + adapter output. Never output code.*
+*For every design task: start at Phase 0, progress through each phase, never skip the human checkpoint at Phase 2. Output tokens + layout-spec + adapter output.*
+
+---
+
+## Output Modes
+
+### Spec Mode (default)
+
+Output tokens + layout-spec + adapter output. Hand off `.design/handoff/` to **design-to-code-runner** with `constraints/code-rules.md` for code implementation.
+
+### Demo Mode (`/tasteful-frontend demo`)
+
+Run all six phases identically. At Phase 4 (Compose), instead of only outputting tokens + layout-spec, ALSO generate a complete single-file HTML page:
+
+- Full page structure from layout-spec (not just a style guide)
+- Real component rendering (hero, cards, nav, forms, etc.) using token values
+- Responsive breakpoints with media queries
+- Hover/focus/active states (CSS only, no JS required)
+- Dark mode variant via `prefers-color-scheme: dark` (if tokens define it)
+- Google Fonts loading for brand typography
+- Self-contained — opens in any browser, zero dependencies
+
+The six phases are NOT simplified. Phase 0 still anchors requirements. Phase 2 still generates style tiles for human selection. Phase 5 still runs the full checklist. The only difference is the deliverable format: a complete `.design/demo.html` that IS the deliverable, not a preview of one.
