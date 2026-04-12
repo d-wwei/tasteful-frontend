@@ -1,0 +1,88 @@
+{
+  "color": {
+    "surface": {
+      "$value": "{color.slate-900}",
+      "$type": "color",
+      "$description": "Primary background — dark slate"
+    },
+    "surface-subtle": {
+      "$value": "{color.slate-800}",
+      "$type": "color",
+      "$description": "Secondary background for cards and sections"
+    },
+    "surface-overlay": {
+      "$value": "{color.slate-950}",
+      "$type": "color",
+      "$description": "Overlay/modal background"
+    },
+    "accent": {
+      "$value": "{color.coral-500}",
+      "$type": "color",
+      "$description": "Primary action color — warm terracotta"
+    },
+    "accent-hover": {
+      "$value": "{color.coral-600}",
+      "$type": "color",
+      "$description": "Accent hover/pressed state"
+    },
+    "text-primary": {
+      "$value": "{color.slate-50}",
+      "$type": "color",
+      "$description": "Primary text on dark surface"
+    },
+    "text-secondary": {
+      "$value": "{color.slate-400}",
+      "$type": "color",
+      "$description": "Secondary/muted text"
+    },
+    "border": {
+      "$value": "{color.slate-700}",
+      "$type": "color",
+      "$description": "Default border color"
+    },
+    "border-subtle": {
+      "$value": "{color.slate-800}",
+      "$type": "color",
+      "$description": "Low-contrast border for subtle separation"
+    },
+    "error": {
+      "$value": "{color.red-500}",
+      "$type": "color",
+      "$description": "Error/danger state"
+    },
+    "success": {
+      "$value": "{color.green-500}",
+      "$type": "color",
+      "$description": "Success/confirmation state"
+    },
+    "warning": {
+      "$value": "{color.amber-500}",
+      "$type": "color",
+      "$description": "Warning state"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "{typography.font-display}",
+      "$type": "fontFamily",
+      "$description": "Display/heading font"
+    },
+    "font-body": {
+      "$value": "{typography.font-body}",
+      "$type": "fontFamily",
+      "$description": "Body text font"
+    }
+  },
+  "spacing": {
+    "xs": { "$value": "{spacing.space-1}", "$type": "dimension", "$description": "4px — tight spacing" },
+    "sm": { "$value": "{spacing.space-2}", "$type": "dimension", "$description": "8px — small gaps" },
+    "md": { "$value": "{spacing.space-4}", "$type": "dimension", "$description": "16px — standard spacing" },
+    "lg": { "$value": "{spacing.space-6}", "$type": "dimension", "$description": "24px — generous spacing" },
+    "xl": { "$value": "{spacing.space-8}", "$type": "dimension", "$description": "32px — section padding" },
+    "2xl": { "$value": "{spacing.space-12}", "$type": "dimension", "$description": "48px — large gaps" },
+    "3xl": { "$value": "{spacing.space-16}", "$type": "dimension", "$description": "64px — major separation" },
+    "section-gap": { "$value": "{spacing.space-20}", "$type": "dimension", "$description": "80px — between major sections" },
+    "page-margin-desktop": { "$value": "{spacing.space-16}", "$type": "dimension", "$description": "64px desktop margin" },
+    "page-margin-mobile": { "$value": "{spacing.space-4}", "$type": "dimension", "$description": "16px mobile margin" }
+  }
+}

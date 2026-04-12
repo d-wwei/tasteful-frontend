@@ -1,0 +1,272 @@
+{
+  "$extensions": {
+    "brand": "notion",
+    "source": "awesome-design-md",
+    "aesthetic": "structured canvas with typographic hierarchy",
+    "key-characteristics": [
+      "content-first",
+      "block-based-layout",
+      "warm-minimalism"
+    ]
+  },
+  "color": {
+    "surface": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "White canvas for content blocks"
+    },
+    "surface-subtle": {
+      "$value": "#f7f6f3",
+      "$type": "color",
+      "$description": "Warm off-white \u2014 sidebar background"
+    },
+    "surface-hover": {
+      "$value": "#efefef",
+      "$type": "color",
+      "$description": "Hover states on blocks"
+    },
+    "accent": {
+      "$value": "#2eaadc",
+      "$type": "color",
+      "$description": "Notion Blue \u2014 links and interactive elements"
+    },
+    "accent-hover": {
+      "$value": "#2691bd",
+      "$type": "color",
+      "$description": "Darker blue for hover"
+    },
+    "text-primary": {
+      "$value": "#37352f",
+      "$type": "color",
+      "$description": "Warm near-black \u2014 primary content text"
+    },
+    "text-secondary": {
+      "$value": "#787774",
+      "$type": "color",
+      "$description": "Medium gray \u2014 secondary text"
+    },
+    "text-tertiary": {
+      "$value": "#9b9a97",
+      "$type": "color",
+      "$description": "Light gray \u2014 placeholders"
+    },
+    "text-on-accent": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "White on accent"
+    },
+    "error": {
+      "$value": "#eb5757",
+      "$type": "color",
+      "$description": "Error red"
+    },
+    "success": {
+      "$value": "#4dab9a",
+      "$type": "color",
+      "$description": "Success teal-green"
+    },
+    "warning": {
+      "$value": "#f7c948",
+      "$type": "color",
+      "$description": "Warning yellow"
+    },
+    "border": {
+      "$value": "#e9e9e7",
+      "$type": "color",
+      "$description": "Light warm border"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Display/heading font"
+    },
+    "font-body": {
+      "$value": "-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body/UI font"
+    },
+    "scale-display": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Display \u2014 hero headlines"
+    },
+    "scale-section": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Section headings"
+    },
+    "scale-base": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Standard body"
+    },
+    "scale-caption": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Captions"
+    },
+    "scale-small": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Small text"
+    },
+    "line-height-tight": {
+      "$value": "1.15",
+      "$type": "number",
+      "$description": "Tight \u2014 headings"
+    },
+    "line-height-normal": {
+      "$value": "1.50",
+      "$type": "number",
+      "$description": "Normal \u2014 body"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Regular"
+    },
+    "weight-medium": {
+      "$value": "500",
+      "$type": "number",
+      "$description": "Medium"
+    },
+    "weight-semibold": {
+      "$value": "600",
+      "$type": "number",
+      "$description": "Semibold"
+    }
+  },
+  "spacing": {
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Small"
+    },
+    "md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Medium"
+    },
+    "lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large"
+    },
+    "xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Extra large"
+    },
+    "2xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Double extra large"
+    },
+    "section-gap": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "Section spacing"
+    },
+    "container-max": {
+      "$value": "1200px",
+      "$type": "dimension",
+      "$description": "Max container width"
+    }
+  },
+  "border": {
+    "radius-standard": {
+      "$value": "3px",
+      "$type": "dimension",
+      "$description": "Standard radius"
+    },
+    "radius-comfortable": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Comfortable radius"
+    },
+    "radius-pill": {
+      "$value": "9999px",
+      "$type": "dimension",
+      "$description": "Pill shape"
+    }
+  },
+  "shadow": {
+    "level-0": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Flat"
+    },
+    "level-1": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "8px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.08)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Subtle elevation"
+    }
+  },
+  "motion": {
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Quick interactions"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Standard transitions"
+    },
+    "easing-default": {
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Standard ease"
+    }
+  },
+  "breakpoint": {
+    "mobile": {
+      "$value": "640px",
+      "$type": "dimension",
+      "$description": "Mobile"
+    },
+    "tablet": {
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Tablet"
+    },
+    "desktop": {
+      "$value": "1024px",
+      "$type": "dimension",
+      "$description": "Desktop"
+    }
+  }
+}

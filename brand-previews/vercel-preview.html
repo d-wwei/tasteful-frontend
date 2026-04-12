@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vercel Brand Tokens Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --surface: #ffffff;
+    --surface-subtle: #fafafa;
+    --text-primary: #171717;
+    --text-secondary: #4d4d4d;
+    --text-tertiary: #666666;
+    --text-placeholder: #808080;
+    --true-black: #000000;
+    --neutral-900: #171717;
+    --neutral-100: #ebebeb;
+    --neutral-50: #fafafa;
+    --workflow-ship: #ff5b4f;
+    --workflow-preview: #de1d8d;
+    --workflow-develop: #0a72ef;
+    --console-blue: #0070f3;
+    --console-purple: #7928ca;
+    --console-pink: #eb367f;
+    --link: #0072f5;
+    --focus: hsla(212, 100%, 48%, 1);
+    --badge-bg: #ebf5ff;
+    --badge-text: #0068d6;
+    --border-shadow: rgba(0, 0, 0, 0.08);
+    --border-light: #ebebeb;
+    --font-primary: Inter, 'Geist', Arial, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Geist Mono', ui-monospace, monospace;
+  }
+
+  body {
+    font-family: var(--font-primary);
+    font-feature-settings: "liga";
+    background: var(--surface);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+  }
+
+  /* Header */
+  .brand-header {
+    text-align: center;
+    margin-bottom: 80px;
+    padding: 80px 32px;
+    background: var(--true-black);
+    border-radius: 8px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .brand-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--workflow-develop), var(--workflow-preview), var(--workflow-ship), transparent);
+  }
+  .brand-header h1 {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.0;
+    letter-spacing: -2.4px;
+    margin-bottom: 16px;
+  }
+  .brand-header .aesthetic {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+  .brand-header .tags {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .brand-header .tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.7);
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  /* Vercel triangle */
+  .brand-header .logo {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-bottom: 32px solid white;
+    margin-bottom: 24px;
+  }
+
+  /* Section */
+  .section { margin-bottom: 80px; }
+  .section-title {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -2.4px;
+    margin-bottom: 8px;
+  }
+  .section-desc {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.56;
+  }
+
+  /* Color Swatches */
+  .color-group { margin-bottom: 32px; }
+  .color-group-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+    letter-spacing: -0.32px;
+  }
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px;
+  }
+  .color-swatch {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  .color-swatch .swatch-fill { height: 64px; }
+  .color-swatch .swatch-info { padding: 8px 10px; background: white; }
+  .color-swatch .swatch-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  .color-swatch .swatch-hex {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+  }
+
+  /* Typography Scale */
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--neutral-100);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-label {
+    flex: 0 0 120px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-align: right;
+  }
+  .type-sample { flex: 1; }
+  .type-meta {
+    flex: 0 0 100px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-align: right;
+  }
+
+  /* Spacing */
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .spacing-label {
+    flex: 0 0 80px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-align: right;
+  }
+  .spacing-bar {
+    height: 20px;
+    background: var(--true-black);
+    border-radius: 4px;
+    opacity: 0.7;
+  }
+  .spacing-bar:hover { opacity: 1; }
+  .spacing-value {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-tertiary);
+    min-width: 40px;
+  }
+
+  /* Border Radius */
+  .radius-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 12px;
+  }
+  .radius-box {
+    aspect-ratio: 1;
+    background: var(--surface-subtle);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .radius-box .radius-name {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  .radius-box .radius-val {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-tertiary);
+  }
+
+  /* Shadow Cards */
+  .shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .shadow-card {
+    padding: 24px;
+    border-radius: 8px;
+    background: white;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .shadow-card .shadow-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .shadow-card .shadow-desc {
+    font-size: 10px;
+    color: var(--text-tertiary);
+  }
+
+  /* Components */
+  .component-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 768px) {
+    .component-section { grid-template-columns: 1fr; }
+    .brand-header h1 { font-size: 36px; letter-spacing: -1.5px; }
+    .section-title { font-size: 32px; letter-spacing: -1.28px; }
+    .type-label { flex: 0 0 80px; }
+    .type-meta { flex: 0 0 60px; }
+  }
+
+  .comp-card {
+    padding: 32px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.04);
+  }
+  .comp-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-family: var(--font-primary);
+    font-feature-settings: "liga";
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+    line-height: 1.43;
+  }
+  .btn-primary {
+    background: var(--true-black);
+    color: white;
+  }
+  .btn-primary:hover { background: #333; }
+  .btn-secondary {
+    background: white;
+    color: var(--text-primary);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.04);
+  }
+  .btn-secondary:hover { background: var(--surface-subtle); }
+  .btn-danger {
+    background: var(--workflow-ship);
+    color: white;
+  }
+  .btn-link {
+    background: transparent;
+    color: var(--link);
+    padding: 8px 0;
+    text-decoration: underline;
+  }
+  .btn-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Input */
+  .input-field {
+    width: 100%;
+    padding: 8px 12px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 400;
+    background: white;
+    color: var(--text-primary);
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+    transition: all 0.15s;
+  }
+  .input-field:focus {
+    box-shadow: 0 0 0 2px hsla(212, 100%, 48%, 1);
+  }
+  .input-field::placeholder { color: var(--text-placeholder); }
+  .input-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .input-group { margin-bottom: 16px; }
+
+  /* Sample Card */
+  .sample-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.08),
+      0 2px 2px rgba(0,0,0,0.04),
+      0 8px 8px -8px rgba(0,0,0,0.04),
+      inset 0 0 0 1px #fafafa;
+  }
+  .sample-card-header {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--neutral-100);
+  }
+  .sample-card-header h4 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.96px;
+    line-height: 1.33;
+  }
+  .sample-card-header .badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    border-radius: 9999px;
+  }
+  .sample-card-body { padding: 20px 24px; }
+  .sample-card-body p {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.56;
+    margin-bottom: 16px;
+  }
+  .sample-card-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--neutral-100);
+    display: flex;
+    gap: 16px;
+  }
+  .workflow-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+  }
+  .workflow-dot::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .workflow-dot.ship::before { background: var(--workflow-ship); }
+  .workflow-dot.preview::before { background: var(--workflow-preview); }
+  .workflow-dot.develop::before { background: var(--workflow-develop); }
+
+  /* Workflow Colors Section */
+  .workflow-bar {
+    display: flex;
+    height: 48px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  .workflow-bar > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header class="brand-header">
+    <div class="logo"></div>
+    <h1>Vercel</h1>
+    <p class="aesthetic">Shadow-as-border philosophy, Geist font system, compression as identity</p>
+    <div class="tags">
+      <span class="tag">geist-typography</span>
+      <span class="tag">shadow-as-border</span>
+      <span class="tag">extreme-negative-tracking</span>
+      <span class="tag">workflow-color-system</span>
+    </div>
+  </header>
+
+  <!-- Color Palette -->
+  <section class="section">
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">A deliberately restrained neutral scale anchored by true black. The workflow color system (Ship, Preview, Develop) provides the only chromatic accents in an otherwise monochromatic palette.</p>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Surface</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#fafafa"></div><div class="swatch-info"><div class="swatch-name">surface-subtle</div><div class="swatch-hex">#fafafa</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Text</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#171717"></div><div class="swatch-info"><div class="swatch-name">primary</div><div class="swatch-hex">#171717</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#4d4d4d"></div><div class="swatch-info"><div class="swatch-name">secondary</div><div class="swatch-hex">#4d4d4d</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#666666"></div><div class="swatch-info"><div class="swatch-name">tertiary</div><div class="swatch-hex">#666666</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#808080"></div><div class="swatch-info"><div class="swatch-name">placeholder</div><div class="swatch-hex">#808080</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#000000"></div><div class="swatch-info"><div class="swatch-name">true-black</div><div class="swatch-hex">#000000</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Neutral Scale</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#fafafa"></div><div class="swatch-info"><div class="swatch-name">neutral-50</div><div class="swatch-hex">#fafafa</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ebebeb"></div><div class="swatch-info"><div class="swatch-name">neutral-100</div><div class="swatch-hex">#ebebeb</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#808080"></div><div class="swatch-info"><div class="swatch-name">neutral-400</div><div class="swatch-hex">#808080</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#666666"></div><div class="swatch-info"><div class="swatch-name">neutral-500</div><div class="swatch-hex">#666666</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#4d4d4d"></div><div class="swatch-info"><div class="swatch-name">neutral-600</div><div class="swatch-hex">#4d4d4d</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#171717"></div><div class="swatch-info"><div class="swatch-name">neutral-900</div><div class="swatch-hex">#171717</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Workflow Colors</h3>
+      <div class="workflow-bar">
+        <div style="background:#0a72ef">Develop</div>
+        <div style="background:#de1d8d">Preview</div>
+        <div style="background:#ff5b4f">Ship</div>
+      </div>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#0a72ef"></div><div class="swatch-info"><div class="swatch-name">develop</div><div class="swatch-hex">#0a72ef</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#de1d8d"></div><div class="swatch-info"><div class="swatch-name">preview</div><div class="swatch-hex">#de1d8d</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ff5b4f"></div><div class="swatch-info"><div class="swatch-name">ship</div><div class="swatch-hex">#ff5b4f</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Console / Syntax</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#0070f3"></div><div class="swatch-info"><div class="swatch-name">console-blue</div><div class="swatch-hex">#0070f3</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#7928ca"></div><div class="swatch-info"><div class="swatch-name">console-purple</div><div class="swatch-hex">#7928ca</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#eb367f"></div><div class="swatch-info"><div class="swatch-name">console-pink</div><div class="swatch-hex">#eb367f</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#0072f5"></div><div class="swatch-info"><div class="swatch-name">link</div><div class="swatch-hex">#0072f5</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Border / Shadow</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(0,0,0,0.08)"></div><div class="swatch-info"><div class="swatch-name">border-shadow</div><div class="swatch-hex">rgba(0,0,0,.08)</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ebebeb"></div><div class="swatch-info"><div class="swatch-name">border-light</div><div class="swatch-hex">#ebebeb</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#171717"></div><div class="swatch-info"><div class="swatch-name">section-divider</div><div class="swatch-hex">#171717</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:hsla(212,100%,48%,1)"></div><div class="swatch-info"><div class="swatch-name">focus</div><div class="swatch-hex">hsl(212,100%,48%)</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="section">
+    <h2 class="section-title">Typography Scale</h2>
+    <p class="section-desc">Geist font system (Inter as fallback) with the most aggressive negative tracking of any major design system. Tracking at -2.88px for 48px display creates the signature compressed identity.</p>
+
+    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:48px;font-weight:600;line-height:1.0;letter-spacing:-2.4px">Ship to production</span><span class="type-meta">48px / -2.4px</span></div>
+    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.2;letter-spacing:-2.4px">Build with confidence</span><span class="type-meta">40px / -2.4px</span></div>
+    <div class="type-row"><span class="type-label">subheading</span><span class="type-sample" style="font-size:32px;font-weight:600;line-height:1.25;letter-spacing:-1.28px">Deploy instantly</span><span class="type-meta">32px / -1.28px</span></div>
+    <div class="type-row"><span class="type-label">card-title</span><span class="type-sample" style="font-size:24px;font-weight:600;line-height:1.33;letter-spacing:-0.96px">Edge functions</span><span class="type-meta">24px / -0.96px</span></div>
+    <div class="type-row"><span class="type-label">body-lg</span><span class="type-sample" style="font-size:20px;font-weight:400;line-height:1.8;color:var(--text-secondary)">Introductions and feature descriptions at generous reading pace</span><span class="type-meta">20px / normal</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:18px;font-weight:400;line-height:1.56;color:var(--text-secondary)">Standard body text for documentation and content</span><span class="type-meta">18px / normal</span></div>
+    <div class="type-row"><span class="type-label">body-sm</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Body small and standard UI text</span><span class="type-meta">16px / normal</span></div>
+    <div class="type-row"><span class="type-label">button</span><span class="type-sample" style="font-size:14px;font-weight:500;line-height:1.43">Button, link, and caption text</span><span class="type-meta">14px / w500</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:12px;font-weight:400;line-height:1.33;color:var(--text-tertiary)">Caption, metadata and tags</span><span class="type-meta">12px / w400</span></div>
+    <div class="type-row"><span class="type-label">mono-body</span><span class="type-sample" style="font-family:var(--font-mono);font-size:16px;font-weight:400;line-height:1.5">npx create-next-app@latest</span><span class="type-meta">16px / mono</span></div>
+    <div class="type-row"><span class="type-label">mono-caption</span><span class="type-sample" style="font-family:var(--font-mono);font-size:13px;font-weight:400;line-height:1.54;color:var(--text-tertiary)">GET /api/hello 200 in 12ms</span><span class="type-meta">13px / mono</span></div>
+    <div class="type-row"><span class="type-label">micro</span><span class="type-sample" style="font-size:7px;font-weight:700;line-height:1.0;text-transform:uppercase;letter-spacing:0">MICRO BADGE</span><span class="type-meta">7px / w700</span></div>
+  </section>
+
+  <!-- Spacing -->
+  <section class="section">
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-desc">8px base grid with a notable gap from 16 to 32 (no 20 or 24). Gallery emptiness philosophy -- the white space IS the design.</p>
+
+    <div class="spacing-row"><span class="spacing-label">1</span><div class="spacing-bar" style="width:1px"></div><span class="spacing-value">1px</span></div>
+    <div class="spacing-row"><span class="spacing-label">2</span><div class="spacing-bar" style="width:2px"></div><span class="spacing-value">2px</span></div>
+    <div class="spacing-row"><span class="spacing-label">4</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+    <div class="spacing-row"><span class="spacing-label">6</span><div class="spacing-bar" style="width:6px"></div><span class="spacing-value">6px</span></div>
+    <div class="spacing-row"><span class="spacing-label">8</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">12</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">16</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">32</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">40</span><div class="spacing-bar" style="width:40px"></div><span class="spacing-value">40px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section-max</span><div class="spacing-bar" style="width:120px"></div><span class="spacing-value">120px</span></div>
+  </section>
+
+  <!-- Border Radius -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">From micro inline code to full pill badges. 6px standard for buttons, 8px for cards, 12px for images. 64px and 100px for large navigation pills.</p>
+
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:2px"><span class="radius-name">micro</span><span class="radius-val">2px</span></div>
+      <div class="radius-box" style="border-radius:4px"><span class="radius-name">subtle</span><span class="radius-val">4px</span></div>
+      <div class="radius-box" style="border-radius:6px"><span class="radius-name">standard</span><span class="radius-val">6px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span class="radius-name">comfortable</span><span class="radius-val">8px</span></div>
+      <div class="radius-box" style="border-radius:12px"><span class="radius-name">image</span><span class="radius-val">12px</span></div>
+      <div class="radius-box" style="border-radius:32px"><span class="radius-name">large</span><span class="radius-val">64px</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span class="radius-name">pill</span><span class="radius-val">9999px</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Shadow Levels</h2>
+    <p class="section-desc">The signature shadow-as-border technique replaces traditional CSS borders with box-shadow rings. Each level adds purpose-built layers for dimensional depth.</p>
+
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none;border:1px solid var(--neutral-100)"><span class="shadow-name">Level 0 - Flat</span><span class="shadow-desc">No shadow. Page background.</span></div>
+      <div class="shadow-card" style="box-shadow:0 0 0 1px rgba(0,0,0,0.08)"><span class="shadow-name">Level 1 - Ring</span><span class="shadow-desc">Shadow-as-border. The signature.</span></div>
+      <div class="shadow-card" style="box-shadow:0 0 0 1px rgb(235,235,235)"><span class="shadow-name">Level 1b - Light Ring</span><span class="shadow-desc">Lighter ring for tabs and images.</span></div>
+      <div class="shadow-card" style="box-shadow:0 0 0 1px rgba(0,0,0,0.08),0 2px 2px rgba(0,0,0,0.04)"><span class="shadow-name">Level 2 - Subtle Card</span><span class="shadow-desc">Ring + minimal lift for cards.</span></div>
+      <div class="shadow-card" style="box-shadow:0 0 0 1px rgba(0,0,0,0.08),0 2px 2px rgba(0,0,0,0.04),0 8px 8px -8px rgba(0,0,0,0.04),inset 0 0 0 1px #fafafa"><span class="shadow-name">Level 3 - Full Card</span><span class="shadow-desc">Ring + elevation + ambient + inner glow.</span></div>
+      <div class="shadow-card" style="box-shadow:0 0 0 2px hsla(212,100%,48%,1)"><span class="shadow-name">Focus Ring</span><span class="shadow-desc">Accessibility focus on all interactive elements.</span></div>
+    </div>
+  </section>
+
+  <!-- Component Previews -->
+  <section class="section">
+    <h2 class="section-title">Component Preview</h2>
+    <p class="section-desc">Vercel-styled components demonstrating the shadow-as-border philosophy and compressed typography.</p>
+
+    <div class="component-section">
+      <div class="comp-card">
+        <h3>Buttons</h3>
+        <div class="btn-group" style="margin-bottom:14px">
+          <button class="btn btn-primary">Deploy</button>
+          <button class="btn btn-secondary">Documentation</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-danger">Delete Project</button>
+          <button class="btn btn-link">Learn more</button>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <h3>Form Input</h3>
+        <div class="input-group">
+          <label class="input-label">Project Name</label>
+          <input type="text" class="input-field" placeholder="my-awesome-project">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Framework Preset</label>
+          <input type="text" class="input-field" placeholder="Next.js">
+        </div>
+        <button class="btn btn-primary" style="width:100%">Import</button>
+      </div>
+
+      <div class="comp-card" style="grid-column: 1 / -1;">
+        <h3>Deployment Card</h3>
+        <div class="sample-card">
+          <div class="sample-card-header">
+            <h4>my-portfolio</h4>
+            <span class="badge">Production</span>
+          </div>
+          <div class="sample-card-body">
+            <p>Your project is deployed to the edge. Every push to main triggers an automatic production deployment with instant rollback capability.</p>
+          </div>
+          <div class="sample-card-footer">
+            <span class="workflow-dot develop">Develop</span>
+            <span class="workflow-dot preview">Preview</span>
+            <span class="workflow-dot ship">Ship</span>
+            <span style="margin-left:auto;font-size:12px;font-weight:500;color:var(--text-tertiary);font-family:var(--font-mono)">3s ago</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

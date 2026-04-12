@@ -1,0 +1,187 @@
+{
+  "button": {
+    "primary-bg": {
+      "$value": "{color.accent}",
+      "$type": "color",
+      "$description": "Primary button background"
+    },
+    "primary-text": {
+      "$value": "{color.surface}",
+      "$type": "color",
+      "$description": "Primary button text — dark on accent"
+    },
+    "primary-hover-bg": {
+      "$value": "{color.accent-hover}",
+      "$type": "color",
+      "$description": "Primary button hover state"
+    },
+    "secondary-bg": {
+      "$value": "{color.surface-subtle}",
+      "$type": "color",
+      "$description": "Secondary button background"
+    },
+    "secondary-text": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Secondary button text"
+    },
+    "radius": {
+      "$value": "{border.radius-md}",
+      "$type": "dimension",
+      "$description": "Button corner radius"
+    },
+    "padding-x": {
+      "$value": "{spacing.md}",
+      "$type": "dimension",
+      "$description": "Button horizontal padding"
+    },
+    "padding-y": {
+      "$value": "{spacing.sm}",
+      "$type": "dimension",
+      "$description": "Button vertical padding"
+    }
+  },
+  "card": {
+    "bg": {
+      "$value": "{color.surface-subtle}",
+      "$type": "color",
+      "$description": "Card background"
+    },
+    "border": {
+      "$value": "{color.border}",
+      "$type": "color",
+      "$description": "Card border color"
+    },
+    "radius": {
+      "$value": "{border.radius-lg}",
+      "$type": "dimension",
+      "$description": "Card corner radius"
+    },
+    "padding": {
+      "$value": "{spacing.lg}",
+      "$type": "dimension",
+      "$description": "Card internal padding"
+    },
+    "shadow": {
+      "$value": "{shadow.shadow-md}",
+      "$type": "shadow",
+      "$description": "Card elevation shadow"
+    },
+    "title-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Card title text color"
+    },
+    "meta-color": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Card metadata text color"
+    }
+  },
+  "input": {
+    "bg": {
+      "$value": "{color.surface}",
+      "$type": "color",
+      "$description": "Input background"
+    },
+    "border": {
+      "$value": "{color.border}",
+      "$type": "color",
+      "$description": "Input border color"
+    },
+    "border-focus": {
+      "$value": "{color.accent}",
+      "$type": "color",
+      "$description": "Input border when focused"
+    },
+    "text": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Input text color"
+    },
+    "placeholder": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Input placeholder text color"
+    },
+    "radius": {
+      "$value": "{border.radius-md}",
+      "$type": "dimension",
+      "$description": "Input corner radius"
+    },
+    "padding-x": {
+      "$value": "{spacing.sm}",
+      "$type": "dimension",
+      "$description": "Input horizontal padding"
+    },
+    "padding-y": {
+      "$value": "{spacing.xs}",
+      "$type": "dimension",
+      "$description": "Input vertical padding"
+    }
+  },
+  "nav": {
+    "bg": {
+      "$value": "{color.surface-subtle}",
+      "$type": "color",
+      "$description": "Navigation sidebar background"
+    },
+    "item-text": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Nav item default text color"
+    },
+    "item-text-active": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Nav item active text color"
+    },
+    "item-bg-active": {
+      "$value": "{color.surface}",
+      "$type": "color",
+      "$description": "Nav item active background"
+    },
+    "item-radius": {
+      "$value": "{border.radius-md}",
+      "$type": "dimension",
+      "$description": "Nav item corner radius"
+    },
+    "item-padding-x": {
+      "$value": "{spacing.md}",
+      "$type": "dimension",
+      "$description": "Nav item horizontal padding"
+    },
+    "item-padding-y": {
+      "$value": "{spacing.sm}",
+      "$type": "dimension",
+      "$description": "Nav item vertical padding"
+    }
+  },
+  "table": {
+    "header-bg": {
+      "$value": "{color.surface}",
+      "$type": "color",
+      "$description": "Table header background"
+    },
+    "header-text": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Table header text color"
+    },
+    "row-border": {
+      "$value": "{color.border-subtle}",
+      "$type": "color",
+      "$description": "Table row divider"
+    },
+    "cell-padding-x": {
+      "$value": "{spacing.md}",
+      "$type": "dimension",
+      "$description": "Table cell horizontal padding"
+    },
+    "cell-padding-y": {
+      "$value": "{spacing.sm}",
+      "$type": "dimension",
+      "$description": "Table cell vertical padding"
+    }
+  }
+}

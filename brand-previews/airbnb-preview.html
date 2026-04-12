@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airbnb Brand Tokens Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --surface: #ffffff;
+    --surface-secondary: #f2f2f2;
+    --accent: #ff385c;
+    --accent-hover: #e00b41;
+    --text-primary: #222222;
+    --text-secondary: #6a6a6a;
+    --border: #dddddd;
+    --error: #c13515;
+    --success: #008a05;
+    --info: #428bff;
+    --font-body: 'Nunito Sans', -apple-system, system-ui, Roboto, sans-serif;
+  }
+
+  body { font-family: var(--font-body); background: var(--surface); color: var(--text-primary); line-height: 1.43; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+
+  .brand-header {
+    text-align: center; margin-bottom: 80px; padding: 64px 32px;
+    background: var(--surface); border-radius: 32px;
+    box-shadow: rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px, rgba(0,0,0,0.1) 0px 4px 8px;
+  }
+  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.2; color: var(--accent); letter-spacing: -0.44px; margin-bottom: 16px; }
+  .brand-header .aesthetic { font-size: 20px; font-weight: 500; color: var(--text-secondary); margin-bottom: 12px; }
+  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .brand-header .tag { font-size: 12px; padding: 6px 14px; background: var(--surface-secondary); color: var(--text-primary); border-radius: 14px; font-weight: 600; }
+
+  .section { margin-bottom: 80px; }
+  .section-title { font-size: 28px; font-weight: 700; line-height: 1.43; margin-bottom: 8px; }
+  .section-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 30px; }
+
+  .color-group { margin-bottom: 32px; }
+  .color-group-title { font-size: 14px; text-transform: uppercase; letter-spacing: 0.32px; color: var(--text-secondary); margin-bottom: 12px; font-weight: 700; }
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .color-swatch { border-radius: 20px; overflow: hidden; box-shadow: rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px, rgba(0,0,0,0.1) 0px 4px 8px; }
+  .color-swatch .swatch-fill { height: 72px; }
+  .color-swatch .swatch-info { padding: 10px 12px; }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
+
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid #eeeeee; }
+  .type-row:last-child { border-bottom: none; }
+  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .type-sample { flex: 1; }
+  .type-meta { flex: 0 0 60px; font-size: 11px; color: var(--text-secondary); text-align: right; }
+
+  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .spacing-label { flex: 0 0 80px; font-size: 12px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .spacing-bar { height: 24px; background: var(--accent); border-radius: 8px; opacity: 0.6; transition: opacity 0.2s; }
+  .spacing-bar:hover { opacity: 1; }
+  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
+
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 16px; }
+  .radius-box { aspect-ratio: 1; background: var(--surface-secondary); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .radius-box .radius-name { font-size: 11px; color: var(--text-secondary); font-weight: 600; }
+  .radius-box .radius-val { font-size: 10px; color: var(--text-secondary); }
+
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+  .shadow-card { padding: 24px; border-radius: 20px; background: var(--surface); min-height: 120px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
+
+  .component-section { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  @media (max-width: 768px) {
+    .component-section { grid-template-columns: 1fr; }
+    .brand-header h1 { font-size: 32px; }
+    .type-label { flex: 0 0 70px; font-size: 9px; }
+  }
+
+  .comp-card { padding: 32px; background: var(--surface); border-radius: 20px; box-shadow: rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px, rgba(0,0,0,0.1) 0px 4px 8px; }
+  .comp-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 20px; letter-spacing: -0.18px; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 24px; border-radius: 8px; font-family: var(--font-body); font-size: 16px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
+  .btn-dark { background: #222222; color: #ffffff; }
+  .btn-dark:hover { background: #333333; }
+  .btn-brand { background: var(--accent); color: #ffffff; }
+  .btn-brand:hover { background: var(--accent-hover); }
+  .btn-outline { background: transparent; color: #222222; border: 1px solid #222222; }
+  .btn-circle { background: var(--surface-secondary); color: #222222; border-radius: 50%; padding: 8px; width: 40px; height: 40px; }
+  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+  .listing-card { background: var(--surface); border-radius: 20px; overflow: hidden; }
+  .listing-card .listing-img { height: 180px; background: linear-gradient(135deg, #ff385c 0%, #e00b41 50%, #ff6b6b 100%); position: relative; }
+  .listing-card .heart { position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .listing-card .listing-body { padding: 12px 0; }
+  .listing-card .listing-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; letter-spacing: -0.18px; }
+  .listing-card .listing-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.43; }
+  .listing-card .listing-body .price { font-size: 14px; font-weight: 600; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="brand-header">
+    <h1>Airbnb</h1>
+    <p class="aesthetic">Warm travel magazine with photography-first cards</p>
+    <div class="tags">
+      <span class="tag">rausch-red-accent</span>
+      <span class="tag">photography-forward</span>
+      <span class="tag">three-layer-shadows</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">Pure white canvas with Rausch Red accent. Near-black text with warm personality.</p>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Brand</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ff385c"></div><div class="swatch-info"><div class="swatch-name">Rausch Red</div><div class="swatch-hex">#ff385c</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#e00b41"></div><div class="swatch-info"><div class="swatch-name">Deep Rausch</div><div class="swatch-hex">#e00b41</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#460479"></div><div class="swatch-info"><div class="swatch-name">Luxe Purple</div><div class="swatch-hex">#460479</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#92174d"></div><div class="swatch-info"><div class="swatch-name">Plus Magenta</div><div class="swatch-hex">#92174d</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Text & Surface</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#222222"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#222222</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#6a6a6a"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#6a6a6a</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#f2f2f2"></div><div class="swatch-info"><div class="swatch-name">surface-secondary</div><div class="swatch-hex">#f2f2f2</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#dddddd"></div><div class="swatch-info"><div class="swatch-name">border</div><div class="swatch-hex">#dddddd</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Semantic</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#c13515"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#c13515</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#008a05"></div><div class="swatch-info"><div class="swatch-name">success</div><div class="swatch-hex">#008a05</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#428bff"></div><div class="swatch-info"><div class="swatch-name">info</div><div class="swatch-hex">#428bff</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Typography Scale</h2>
+    <p class="section-desc">Airbnb Cereal VF with warm weight range (500-700). Nunito Sans as web fallback.</p>
+
+    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:700;line-height:1.43">Find your next adventure</span><span class="type-meta">28px</span></div>
+    <div class="type-row"><span class="type-label">card heading</span><span class="type-sample" style="font-size:22px;font-weight:600;line-height:1.18;letter-spacing:-0.44px">Beautiful places to stay</span><span class="type-meta">22px</span></div>
+    <div class="type-row"><span class="type-label">feature</span><span class="type-sample" style="font-size:20px;font-weight:600;line-height:1.2;letter-spacing:-0.18px">Explore unique homes</span><span class="type-meta">20px</span></div>
+    <div class="type-row"><span class="type-label">ui medium</span><span class="type-sample" style="font-size:16px;font-weight:500;line-height:1.25">Navigation and buttons</span><span class="type-meta">16px</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43">Standard body text for descriptions and details</span><span class="type-meta">14px</span></div>
+    <div class="type-row"><span class="type-label">small</span><span class="type-sample" style="font-size:13px;font-weight:400;line-height:1.23">Compact descriptions</span><span class="type-meta">13px</span></div>
+    <div class="type-row"><span class="type-label">badge</span><span class="type-sample" style="font-size:11px;font-weight:600;line-height:1.18">Guest favorite</span><span class="type-meta">11px</span></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-desc">8px base unit with travel-magazine pacing.</p>
+
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Generous rounding for tactile, magazine-like browsing feel.</p>
+
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:4px"><span class="radius-name">subtle</span><span class="radius-val">4px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span class="radius-name">standard</span><span class="radius-val">8px</span></div>
+      <div class="radius-box" style="border-radius:14px"><span class="radius-name">badge</span><span class="radius-val">14px</span></div>
+      <div class="radius-box" style="border-radius:20px"><span class="radius-name">card</span><span class="radius-val">20px</span></div>
+      <div class="radius-box" style="border-radius:32px"><span class="radius-name">large</span><span class="radius-val">32px</span></div>
+      <div class="radius-box" style="border-radius:50%"><span class="radius-name">circle</span><span class="radius-val">50%</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Shadow Levels</h2>
+    <p class="section-desc">Three-layer warm lift system: border ring + ambient + primary lift.</p>
+
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none;border:1px solid #eeeeee"><span class="shadow-name">Level 0 - Flat</span><span class="shadow-desc">No shadow, text blocks.</span></div>
+      <div class="shadow-card" style="box-shadow:rgba(0,0,0,0.02) 0px 0px 0px 1px,rgba(0,0,0,0.04) 0px 2px 6px,rgba(0,0,0,0.1) 0px 4px 8px"><span class="shadow-name">Level 1 - Card</span><span class="shadow-desc">Three-layer warm lift.</span></div>
+      <div class="shadow-card" style="box-shadow:rgba(0,0,0,0.08) 0px 4px 12px"><span class="shadow-name">Level 2 - Hover</span><span class="shadow-desc">Button hover elevation.</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Component Preview</h2>
+    <p class="section-desc">Photography-first cards with warm personality and generous rounding.</p>
+
+    <div class="component-section">
+      <div class="comp-card">
+        <h3>Buttons</h3>
+        <div class="btn-group" style="margin-bottom:16px">
+          <button class="btn btn-dark">Search</button>
+          <button class="btn btn-brand">Book now</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-outline">Filter</button>
+          <button class="btn btn-circle">&larr;</button>
+          <button class="btn btn-circle">&rarr;</button>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <h3>Listing Card</h3>
+        <div class="listing-card">
+          <div class="listing-img"><span class="heart">&hearts;</span></div>
+          <div class="listing-body">
+            <h4>Coastal Villa in Malibu</h4>
+            <p>Entire home &middot; 4 beds &middot; Ocean view</p>
+            <p class="price"><strong>$285</strong> night</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card" style="grid-column: 1 / -1;">
+        <h3>Category Pills</h3>
+        <div style="display:flex;gap:24px;overflow-x:auto;padding:8px 0">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;min-width:56px;cursor:pointer;border-bottom:2px solid #222222;padding-bottom:8px">
+            <span style="font-size:20px">&#127968;</span>
+            <span style="font-size:12px;font-weight:600;color:#222222">Homes</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;min-width:56px;cursor:pointer;padding-bottom:8px;opacity:0.7">
+            <span style="font-size:20px">&#127958;</span>
+            <span style="font-size:12px;font-weight:600;color:#6a6a6a">Beachfront</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;min-width:56px;cursor:pointer;padding-bottom:8px;opacity:0.7">
+            <span style="font-size:20px">&#9968;</span>
+            <span style="font-size:12px;font-weight:600;color:#6a6a6a">Cabins</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;min-width:56px;cursor:pointer;padding-bottom:8px;opacity:0.7">
+            <span style="font-size:20px">&#127956;</span>
+            <span style="font-size:12px;font-weight:600;color:#6a6a6a">Mountains</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

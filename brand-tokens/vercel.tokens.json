@@ -1,0 +1,883 @@
+{
+  "$extensions": {
+    "brand": "vercel",
+    "source": "awesome-design-md",
+    "aesthetic": "shadow-as-border philosophy, Geist font system, compression as identity",
+    "key-characteristics": [
+      "geist-typography",
+      "shadow-as-border",
+      "extreme-negative-tracking",
+      "workflow-color-system"
+    ]
+  },
+  "color": {
+    "surface": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Primary page background — pure white canvas"
+    },
+    "surface-subtle": {
+      "$value": "#fafafa",
+      "$type": "color",
+      "$description": "Subtle surface tint, inner shadow highlight ring"
+    },
+    "text-primary": {
+      "$value": "#171717",
+      "$type": "color",
+      "$description": "Primary text and headings — Vercel Black, not pure black for micro-warmth"
+    },
+    "text-secondary": {
+      "$value": "#4d4d4d",
+      "$type": "color",
+      "$description": "Secondary text, description copy — Gray 600"
+    },
+    "accent": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "Primary brand accent — Vercel Black, used for CTAs and primary actions"
+    },
+    "accent-hover": {
+      "$value": "#171717",
+      "$type": "color",
+      "$description": "Accent hover state — slightly lighter than pure black"
+    },
+    "error": {
+      "$value": "#ff5b4f",
+      "$type": "color",
+      "$description": "Error and destructive state — workflow Ship red"
+    },
+    "success": {
+      "$value": "#27a644",
+      "$type": "color",
+      "$description": "Success and confirmation state — green"
+    },
+    "text-tertiary": {
+      "$value": "#666666",
+      "$type": "color",
+      "$description": "Tertiary text, muted links — Gray 500"
+    },
+    "text-placeholder": {
+      "$value": "#808080",
+      "$type": "color",
+      "$description": "Placeholder text, disabled states — Gray 400"
+    },
+    "true-black": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "Console/code contexts — --geist-console-text-color-default"
+    },
+    "neutral-900": {
+      "$value": "#171717",
+      "$type": "color",
+      "$description": "Neutral scale top — primary text, headings, nav text"
+    },
+    "neutral-600": {
+      "$value": "#4d4d4d",
+      "$type": "color",
+      "$description": "Neutral scale — secondary text, description copy"
+    },
+    "neutral-500": {
+      "$value": "#666666",
+      "$type": "color",
+      "$description": "Neutral scale — tertiary text, muted links"
+    },
+    "neutral-400": {
+      "$value": "#808080",
+      "$type": "color",
+      "$description": "Neutral scale — placeholder text, disabled states"
+    },
+    "neutral-100": {
+      "$value": "#ebebeb",
+      "$type": "color",
+      "$description": "Neutral scale — borders, card outlines, dividers"
+    },
+    "neutral-50": {
+      "$value": "#fafafa",
+      "$type": "color",
+      "$description": "Neutral scale — subtle surface tint, inner shadow highlight"
+    },
+    "workflow-ship": {
+      "$value": "#ff5b4f",
+      "$type": "color",
+      "$description": "Ship Red — 'ship to production' workflow step, warm urgent coral-red"
+    },
+    "workflow-preview": {
+      "$value": "#de1d8d",
+      "$type": "color",
+      "$description": "Preview Pink — preview deployment workflow, vivid magenta-pink"
+    },
+    "workflow-develop": {
+      "$value": "#0a72ef",
+      "$type": "color",
+      "$description": "Develop Blue — development workflow, bright focused blue"
+    },
+    "console-blue": {
+      "$value": "#0070f3",
+      "$type": "color",
+      "$description": "Console syntax highlighting blue — --geist-console-text-color-blue"
+    },
+    "console-purple": {
+      "$value": "#7928ca",
+      "$type": "color",
+      "$description": "Console syntax highlighting purple — --geist-console-text-color-purple"
+    },
+    "console-pink": {
+      "$value": "#eb367f",
+      "$type": "color",
+      "$description": "Console syntax highlighting pink — --geist-console-text-color-pink"
+    },
+    "link": {
+      "$value": "#0072f5",
+      "$type": "color",
+      "$description": "Primary link color with underline decoration"
+    },
+    "focus": {
+      "$value": "hsla(212, 100%, 48%, 1)",
+      "$type": "color",
+      "$description": "Focus ring on interactive elements — --ds-focus-color, saturated blue for accessibility"
+    },
+    "ring": {
+      "$value": "rgba(147, 197, 253, 0.5)",
+      "$type": "color",
+      "$description": "Tailwind ring utility color — --tw-ring-color"
+    },
+    "overlay-backdrop": {
+      "$value": "hsla(0, 0%, 98%, 1)",
+      "$type": "color",
+      "$description": "Modal/dialog backdrop — --ds-overlay-backdrop-color"
+    },
+    "selection": {
+      "$value": "hsla(0, 0%, 95%, 1)",
+      "$type": "color",
+      "$description": "Text selection highlight — --geist-selection-text-color"
+    },
+    "badge-bg": {
+      "$value": "#ebf5ff",
+      "$type": "color",
+      "$description": "Pill badge background — tinted blue surface"
+    },
+    "badge-text": {
+      "$value": "#0068d6",
+      "$type": "color",
+      "$description": "Pill badge text — darker blue for readability"
+    },
+    "border-shadow": {
+      "$value": "rgba(0, 0, 0, 0.08)",
+      "$type": "color",
+      "$description": "The signature shadow-as-border color — replaces traditional borders"
+    },
+    "border-light": {
+      "$value": "#ebebeb",
+      "$type": "color",
+      "$description": "Light border color for image outlines, dividers, tab rings"
+    },
+    "section-divider": {
+      "$value": "#171717",
+      "$type": "color",
+      "$description": "Full dark divider line between major sections"
+    }
+  },
+  "typography": {
+    "font-primary": {
+      "$value": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+      "$type": "fontFamily",
+      "$description": "Primary font — Geist Sans with system fallbacks"
+    },
+    "font-mono": {
+      "$value": "Geist Mono, ui-monospace, SFMono-Regular, Roboto Mono, Menlo, Monaco, Liberation Mono, DejaVu Sans Mono, Courier New",
+      "$type": "fontFamily",
+      "$description": "Monospace font — Geist Mono for code, terminal output, technical labels"
+    },
+    "opentype-liga": {
+      "$value": "\"liga\"",
+      "$type": "string",
+      "$description": "OpenType ligatures enabled globally on all Geist text — structural, not decorative"
+    },
+    "opentype-tnum": {
+      "$value": "\"tnum\"",
+      "$type": "string",
+      "$description": "Tabular numbers for specific captions and mono labels"
+    },
+    "scale-display": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Display hero — 3.00rem"
+    },
+    "scale-section": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Section heading — 2.50rem"
+    },
+    "scale-subheading": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Sub-heading — 2.00rem"
+    },
+    "scale-card-title": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Card title — 1.50rem"
+    },
+    "scale-body-lg": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Body large — 1.25rem, introductions and feature descriptions"
+    },
+    "scale-body": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Standard body — 1.13rem"
+    },
+    "scale-body-sm": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Body small / standard UI text — 1.00rem"
+    },
+    "scale-button": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Button, link, caption — 0.88rem"
+    },
+    "scale-mono-body": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Mono body — 1.00rem, code blocks"
+    },
+    "scale-mono-caption": {
+      "$value": "13px",
+      "$type": "dimension",
+      "$description": "Mono caption — 0.81rem, code labels"
+    },
+    "scale-caption": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Caption — 0.75rem, metadata and tags"
+    },
+    "scale-mono-small": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Mono small — 0.75rem, uppercase technical labels"
+    },
+    "scale-micro": {
+      "$value": "7px",
+      "$type": "dimension",
+      "$description": "Micro badge — 0.44rem, uppercase tiny badges"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Body/reading weight — the lightest in the system"
+    },
+    "weight-medium": {
+      "$value": "500",
+      "$type": "number",
+      "$description": "UI/interactive weight — buttons, links, navigation"
+    },
+    "weight-semibold": {
+      "$value": "600",
+      "$type": "number",
+      "$description": "Headings/emphasis weight — the maximum for body text"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Micro badges only — never used on body text"
+    },
+    "line-height-tight": {
+      "$value": "1.00",
+      "$type": "number",
+      "$description": "Tight — display hero, compact buttons, micro badges"
+    },
+    "line-height-display": {
+      "$value": "1.17",
+      "$type": "number",
+      "$description": "Display range upper — hero headlines"
+    },
+    "line-height-heading": {
+      "$value": "1.20",
+      "$type": "number",
+      "$description": "Heading — section headings"
+    },
+    "line-height-subheading": {
+      "$value": "1.25",
+      "$type": "number",
+      "$description": "Sub-heading — tighter subheadings"
+    },
+    "line-height-card-title": {
+      "$value": "1.33",
+      "$type": "number",
+      "$description": "Card title and caption"
+    },
+    "line-height-button": {
+      "$value": "1.43",
+      "$type": "number",
+      "$description": "Button and link"
+    },
+    "line-height-normal": {
+      "$value": "1.50",
+      "$type": "number",
+      "$description": "Normal — standard body text, sub-headings, code"
+    },
+    "line-height-mono-caption": {
+      "$value": "1.54",
+      "$type": "number",
+      "$description": "Mono caption line height"
+    },
+    "line-height-body": {
+      "$value": "1.56",
+      "$type": "number",
+      "$description": "Body text — standard reading"
+    },
+    "line-height-relaxed": {
+      "$value": "1.80",
+      "$type": "number",
+      "$description": "Relaxed — body large, introductions"
+    },
+    "tracking-display-max": {
+      "$value": "-2.88px",
+      "$type": "dimension",
+      "$description": "Maximum compression at 48px display — most aggressive in any major design system"
+    },
+    "tracking-display": {
+      "$value": "-2.4px",
+      "$type": "dimension",
+      "$description": "Display/section heading at 40-48px — extreme negative tracking"
+    },
+    "tracking-subheading": {
+      "$value": "-1.28px",
+      "$type": "dimension",
+      "$description": "Sub-heading at 32px"
+    },
+    "tracking-card-title": {
+      "$value": "-0.96px",
+      "$type": "dimension",
+      "$description": "Card title at 24px"
+    },
+    "tracking-body-semibold": {
+      "$value": "-0.32px",
+      "$type": "dimension",
+      "$description": "Body semibold at 16px — minimal tightening"
+    },
+    "tracking-normal": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "Normal tracking — 14px and below, body text"
+    }
+  },
+  "spacing": {
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "1": {
+      "$value": "1px",
+      "$type": "dimension",
+      "$description": "Hairline"
+    },
+    "2": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Micro spacing"
+    },
+    "3": {
+      "$value": "3px",
+      "$type": "dimension",
+      "$description": "Small micro"
+    },
+    "4": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Quarter unit"
+    },
+    "5": {
+      "$value": "5px",
+      "$type": "dimension",
+      "$description": "Small spacing"
+    },
+    "6": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Button horizontal padding (minimal)"
+    },
+    "8": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base unit — standard small spacing"
+    },
+    "10": {
+      "$value": "10px",
+      "$type": "dimension",
+      "$description": "Badge horizontal padding"
+    },
+    "12": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Compact spacing"
+    },
+    "14": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Medium-small"
+    },
+    "16": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Standard medium spacing — button padding"
+    },
+    "32": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Large spacing — note: scale jumps from 16 to 32, no 20/24"
+    },
+    "36": {
+      "$value": "36px",
+      "$type": "dimension",
+      "$description": "Large-plus"
+    },
+    "40": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "XL spacing"
+    },
+    "section-gap-mobile": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Section gap on mobile breakpoints"
+    },
+    "section-gap": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "Minimum vertical section padding — gallery emptiness philosophy"
+    },
+    "section-gap-max": {
+      "$value": "120px",
+      "$type": "dimension",
+      "$description": "Maximum vertical section padding — the white space IS the design"
+    },
+    "container-max": {
+      "$value": "1200px",
+      "$type": "dimension",
+      "$description": "Maximum content width"
+    }
+  },
+  "border": {
+    "radius-micro": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Inline code snippets, small spans"
+    },
+    "radius-subtle": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small containers"
+    },
+    "radius-standard": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Buttons, links, functional elements"
+    },
+    "radius-comfortable": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Cards, list items — standard card radius"
+    },
+    "radius-image": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Featured cards, image containers (top-rounded)"
+    },
+    "radius-large": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Tab navigation pills"
+    },
+    "radius-xl": {
+      "$value": "100px",
+      "$type": "dimension",
+      "$description": "Large navigation links"
+    },
+    "radius-pill": {
+      "$value": "9999px",
+      "$type": "dimension",
+      "$description": "Badges, status pills, tags — full pill shape"
+    },
+    "radius-circle": {
+      "$value": "50%",
+      "$type": "dimension",
+      "$description": "Menu toggle, avatar containers"
+    }
+  },
+  "shadow": {
+    "level-0": {
+      "$value": "none",
+      "$type": "string",
+      "$description": "Flat — no shadow. Page background, text blocks"
+    },
+    "level-1-ring": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgba(0, 0, 0, 0.08)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Shadow-as-border — the signature technique replacing traditional CSS borders"
+    },
+    "level-1b-light-ring": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgb(235, 235, 235)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Lighter ring for tabs, images — less contrast than level-1"
+    },
+    "level-2-subtle-card": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgba(0, 0, 0, 0.08)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "2px",
+          "spread": "0px",
+          "color": "rgba(0, 0, 0, 0.04)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Standard cards with minimal lift — ring + subtle elevation"
+    },
+    "level-3-full-card": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgba(0, 0, 0, 0.08)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "2px",
+          "spread": "0px",
+          "color": "rgba(0, 0, 0, 0.04)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "8px",
+          "spread": "-8px",
+          "color": "rgba(0, 0, 0, 0.04)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "#fafafa"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Featured cards — ring + elevation + ambient depth + inner #fafafa glow ring. Each layer serves a distinct architectural purpose"
+    },
+    "focus": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "2px",
+          "color": "hsla(212, 100%, 48%, 1)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Accessibility focus ring — keyboard focus on all interactive elements"
+    },
+    "input-focus": {
+      "$value": [
+        {
+          "offsetX": "1px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "var(--ds-gray-alpha-600)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Input field focus shadow"
+    }
+  },
+  "motion": {
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Quick interactions — hover, focus transitions"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Standard transitions — button state changes"
+    },
+    "duration-slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Deliberate transitions — card hover, shadow intensification"
+    },
+    "easing-default": {
+      "$value": [0.16, 1, 0.3, 1],
+      "$type": "cubicBezier",
+      "$description": "Spring-like entrance curve — smooth, decelerating"
+    },
+    "easing-exit": {
+      "$value": [0.4, 0, 1, 1],
+      "$type": "cubicBezier",
+      "$description": "Quick exit curve — accelerating out"
+    }
+  },
+  "breakpoint": {
+    "mobile-sm": {
+      "$value": "400px",
+      "$type": "dimension",
+      "$description": "Mobile small — tight single column, minimal padding"
+    },
+    "mobile": {
+      "$value": "600px",
+      "$type": "dimension",
+      "$description": "Mobile — standard mobile, stacked layout"
+    },
+    "tablet-sm": {
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Tablet small — 2-column grids begin"
+    },
+    "tablet": {
+      "$value": "1024px",
+      "$type": "dimension",
+      "$description": "Tablet — full card grids, expanded padding"
+    },
+    "desktop-sm": {
+      "$value": "1200px",
+      "$type": "dimension",
+      "$description": "Desktop small — standard desktop layout"
+    },
+    "desktop": {
+      "$value": "1400px",
+      "$type": "dimension",
+      "$description": "Desktop — full layout, maximum content width"
+    }
+  },
+  "composite": {
+    "display-hero": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "48px",
+        "fontWeight": "600",
+        "lineHeight": "1.00",
+        "letterSpacing": "-2.4px"
+      },
+      "$type": "typography",
+      "$description": "Display hero — maximum compression, billboard impact. Tracking ranges -2.4px to -2.88px"
+    },
+    "section-heading": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "40px",
+        "fontWeight": "600",
+        "lineHeight": "1.20",
+        "letterSpacing": "-2.4px"
+      },
+      "$type": "typography",
+      "$description": "Section heading — feature section titles"
+    },
+    "subheading-large": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "32px",
+        "fontWeight": "600",
+        "lineHeight": "1.25",
+        "letterSpacing": "-1.28px"
+      },
+      "$type": "typography",
+      "$description": "Sub-heading large — card headings, sub-sections"
+    },
+    "subheading": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "32px",
+        "fontWeight": "400",
+        "lineHeight": "1.50",
+        "letterSpacing": "-1.28px"
+      },
+      "$type": "typography",
+      "$description": "Sub-heading — lighter weight sub-headings"
+    },
+    "card-title": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "lineHeight": "1.33",
+        "letterSpacing": "-0.96px"
+      },
+      "$type": "typography",
+      "$description": "Card title — feature cards"
+    },
+    "card-title-light": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "24px",
+        "fontWeight": "500",
+        "lineHeight": "1.33",
+        "letterSpacing": "-0.96px"
+      },
+      "$type": "typography",
+      "$description": "Card title light — secondary card headings"
+    },
+    "body-large": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "20px",
+        "fontWeight": "400",
+        "lineHeight": "1.80",
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Body large — introductions, feature descriptions, relaxed reading"
+    },
+    "body": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "1.56",
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Body — standard reading text"
+    },
+    "body-small": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "1.50",
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Body small — standard UI text"
+    },
+    "body-medium": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "lineHeight": "1.50",
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Body medium — navigation, emphasized text"
+    },
+    "body-semibold": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "lineHeight": "1.50",
+        "letterSpacing": "-0.32px"
+      },
+      "$type": "typography",
+      "$description": "Body semibold — strong labels, active states"
+    },
+    "button": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "lineHeight": "1.43",
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Button / Link — buttons, links, captions"
+    },
+    "button-small": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "1.00",
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Button small — compact buttons"
+    },
+    "caption": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "1.33",
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Caption — metadata, tags. Weight ranges 400-500"
+    },
+    "mono-body": {
+      "$value": {
+        "fontFamily": "Geist Mono, ui-monospace, SFMono-Regular, Roboto Mono, Menlo, Monaco, Liberation Mono, DejaVu Sans Mono, Courier New",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "1.50",
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Mono body — code blocks"
+    },
+    "mono-caption": {
+      "$value": {
+        "fontFamily": "Geist Mono, ui-monospace, SFMono-Regular, Roboto Mono, Menlo, Monaco, Liberation Mono, DejaVu Sans Mono, Courier New",
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "lineHeight": "1.54",
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Mono caption — code labels"
+    },
+    "mono-small": {
+      "$value": {
+        "fontFamily": "Geist Mono, ui-monospace, SFMono-Regular, Roboto Mono, Menlo, Monaco, Liberation Mono, DejaVu Sans Mono, Courier New",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "lineHeight": "1.00",
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Mono small — uppercase technical labels, text-transform: uppercase"
+    },
+    "micro-badge": {
+      "$value": {
+        "fontFamily": "Geist, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+        "fontSize": "7px",
+        "fontWeight": "700",
+        "lineHeight": "1.00",
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Micro badge — uppercase tiny badges, text-transform: uppercase"
+    }
+  }
+}

@@ -1,0 +1,694 @@
+{
+  "$extensions": {
+    "brand": "claude",
+    "source": "awesome-design-md",
+    "aesthetic": "literary salon on parchment",
+    "key-characteristics": ["warm-editorial", "serif-driven", "parchment-canvas"]
+  },
+  "color": {
+    "surface": {
+      "$value": "#f5f4ed",
+      "$type": "color",
+      "$description": "Primary background — warm parchment evoking premium paper"
+    },
+    "surface-subtle": {
+      "$value": "#faf9f5",
+      "$type": "color",
+      "$description": "Secondary background for cards and elevated containers — ivory"
+    },
+    "surface-white": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Reserved for specific button surfaces and maximum-contrast elements"
+    },
+    "surface-warm": {
+      "$value": "#e8e6dc",
+      "$type": "color",
+      "$description": "Button backgrounds and prominent interactive surfaces — warm sand"
+    },
+    "surface-dark": {
+      "$value": "#30302e",
+      "$type": "color",
+      "$description": "Dark-theme containers, nav borders, and elevated dark elements — warm charcoal"
+    },
+    "surface-deep": {
+      "$value": "#141413",
+      "$type": "color",
+      "$description": "Dark-theme page background — warm near-black with olive tint"
+    },
+    "surface-overlay": {
+      "$value": "rgba(0,0,0,0.05)",
+      "$type": "color",
+      "$description": "Transparent overlay for whisper-soft elevation and subtle depth"
+    },
+    "accent": {
+      "$value": "#c96442",
+      "$type": "color",
+      "$description": "Primary action color — terracotta brand, earthy and deliberately un-tech"
+    },
+    "accent-hover": {
+      "$value": "#d97757",
+      "$type": "color",
+      "$description": "Accent hover/secondary emphasis — coral, lighter warmer variant of brand"
+    },
+    "accent-secondary": {
+      "$value": "#d97757",
+      "$type": "color",
+      "$description": "Coral accent for text on dark surfaces, links, and secondary emphasis"
+    },
+    "accent-tertiary": {
+      "$value": "#30302e",
+      "$type": "color",
+      "$description": "Dark charcoal accent for inverted emphasis buttons on light surfaces"
+    },
+    "text-primary": {
+      "$value": "#141413",
+      "$type": "color",
+      "$description": "Primary text — warm near-black with olive undertone, gentler than pure black"
+    },
+    "text-secondary": {
+      "$value": "#5e5d59",
+      "$type": "color",
+      "$description": "Secondary body text — olive gray with warm yellow-brown undertone"
+    },
+    "text-tertiary": {
+      "$value": "#87867f",
+      "$type": "color",
+      "$description": "Tertiary text, footnotes, and de-emphasized metadata — stone gray"
+    },
+    "text-button": {
+      "$value": "#4d4c48",
+      "$type": "color",
+      "$description": "Button text on light warm surfaces — charcoal warm"
+    },
+    "text-link": {
+      "$value": "#3d3d3a",
+      "$type": "color",
+      "$description": "Dark text links and emphasized secondary text — dark warm"
+    },
+    "text-on-dark": {
+      "$value": "#b0aea5",
+      "$type": "color",
+      "$description": "Text on dark surfaces — warm parchment-tinted silver"
+    },
+    "text-on-accent": {
+      "$value": "#faf9f5",
+      "$type": "color",
+      "$description": "Text on accent/brand buttons — ivory"
+    },
+    "error": {
+      "$value": "#b53333",
+      "$type": "color",
+      "$description": "Error/danger state — deep warm red, serious without being alarming"
+    },
+    "success": {
+      "$value": "#4d7c4d",
+      "$type": "color",
+      "$description": "Success/confirmation state — muted warm green consistent with palette (inferred)"
+    },
+    "warning": {
+      "$value": "#c96442",
+      "$type": "color",
+      "$description": "Warning state — reuses brand terracotta for warm-toned alerts (inferred)"
+    },
+    "focus": {
+      "$value": "#3898ec",
+      "$type": "color",
+      "$description": "Focus ring for inputs — the only cool color in the entire system, for accessibility"
+    },
+    "border": {
+      "$value": "#f0eee6",
+      "$type": "color",
+      "$description": "Default light-theme border — barely visible warm cream"
+    },
+    "border-subtle": {
+      "$value": "#f0eee6",
+      "$type": "color",
+      "$description": "Standard light-theme border — gentlest possible containment"
+    },
+    "border-prominent": {
+      "$value": "#e8e6dc",
+      "$type": "color",
+      "$description": "Prominent borders, section dividers, and emphasized containment"
+    },
+    "border-dark": {
+      "$value": "#30302e",
+      "$type": "color",
+      "$description": "Standard border on dark surfaces — maintains warm tone"
+    },
+    "ring-warm": {
+      "$value": "#d1cfc5",
+      "$type": "color",
+      "$description": "Shadow ring color for button hover/focus states"
+    },
+    "ring-subtle": {
+      "$value": "#dedc01",
+      "$type": "color",
+      "$description": "Secondary ring variant for lighter interactive surfaces"
+    },
+    "ring-deep": {
+      "$value": "#c2c0b6",
+      "$type": "color",
+      "$description": "Deeper ring for active/pressed states"
+    },
+    "neutral-100": {
+      "$value": "#faf9f5",
+      "$type": "color",
+      "$description": "Lightest neutral — ivory"
+    },
+    "neutral-200": {
+      "$value": "#f5f4ed",
+      "$type": "color",
+      "$description": "Light neutral — parchment"
+    },
+    "neutral-300": {
+      "$value": "#f0eee6",
+      "$type": "color",
+      "$description": "Light neutral — border cream"
+    },
+    "neutral-400": {
+      "$value": "#e8e6dc",
+      "$type": "color",
+      "$description": "Mid-light neutral — warm sand"
+    },
+    "neutral-500": {
+      "$value": "#d1cfc5",
+      "$type": "color",
+      "$description": "Mid neutral — ring warm"
+    },
+    "neutral-600": {
+      "$value": "#b0aea5",
+      "$type": "color",
+      "$description": "Mid-dark neutral — warm silver"
+    },
+    "neutral-700": {
+      "$value": "#87867f",
+      "$type": "color",
+      "$description": "Dark neutral — stone gray"
+    },
+    "neutral-800": {
+      "$value": "#5e5d59",
+      "$type": "color",
+      "$description": "Darker neutral — olive gray"
+    },
+    "neutral-850": {
+      "$value": "#4d4c48",
+      "$type": "color",
+      "$description": "Deep neutral — charcoal warm"
+    },
+    "neutral-875": {
+      "$value": "#3d3d3a",
+      "$type": "color",
+      "$description": "Deeper neutral — dark warm"
+    },
+    "neutral-900": {
+      "$value": "#30302e",
+      "$type": "color",
+      "$description": "Deepest neutral before black — dark surface"
+    },
+    "neutral-950": {
+      "$value": "#141413",
+      "$type": "color",
+      "$description": "Near-black neutral — anthropic near black"
+    }
+  },
+  "typography": {
+    "font-headline": {
+      "$value": "Anthropic Serif, Georgia, serif",
+      "$type": "fontFamily",
+      "$description": "Headline/display font — custom serif with book-title gravitas, weight 500 only"
+    },
+    "font-body": {
+      "$value": "Anthropic Sans, system-ui, Inter, Arial, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body/UI font — clean sans for navigation, buttons, labels, and body text"
+    },
+    "font-mono": {
+      "$value": "Anthropic Mono, monospace",
+      "$type": "fontFamily",
+      "$description": "Code font — strictly for inline code and terminal content"
+    },
+    "scale-micro": {
+      "$value": "9.6px",
+      "$type": "dimension",
+      "$description": "Smallest text — 0.6rem"
+    },
+    "scale-overline": {
+      "$value": "10px",
+      "$type": "dimension",
+      "$description": "Uppercase overline labels — 0.63rem"
+    },
+    "scale-label": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Badges, small labels — 0.75rem"
+    },
+    "scale-caption": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Metadata, descriptions — 0.88rem"
+    },
+    "scale-sm": {
+      "$value": "15px",
+      "$type": "dimension",
+      "$description": "Compact body text and code — 0.94rem"
+    },
+    "scale-base": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Standard body and button text — 1rem"
+    },
+    "scale-body": {
+      "$value": "17px",
+      "$type": "dimension",
+      "$description": "Body/nav text and serif body — 1.06rem"
+    },
+    "scale-lg": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Intro paragraphs — 1.25rem"
+    },
+    "scale-feature": {
+      "$value": "20.8px",
+      "$type": "dimension",
+      "$description": "Small feature headings — 1.3rem"
+    },
+    "scale-xl": {
+      "$value": "25.6px",
+      "$type": "dimension",
+      "$description": "Smaller section titles — ~1.6rem"
+    },
+    "scale-2xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Card titles, feature names — 2rem"
+    },
+    "scale-3xl": {
+      "$value": "36.8px",
+      "$type": "dimension",
+      "$description": "Secondary section markers — ~2.3rem"
+    },
+    "scale-4xl": {
+      "$value": "52px",
+      "$type": "dimension",
+      "$description": "Section heading anchors — 3.25rem"
+    },
+    "scale-display": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Display/hero — maximum impact, book-title presence — 4rem"
+    },
+    "line-height-tight": {
+      "$value": "1.10",
+      "$type": "number",
+      "$description": "Tightest heading line-height — display and sub-headings"
+    },
+    "line-height-snug": {
+      "$value": "1.20",
+      "$type": "number",
+      "$description": "Section headings and feature titles"
+    },
+    "line-height-heading": {
+      "$value": "1.30",
+      "$type": "number",
+      "$description": "Sub-heading large — comfortable serif breathing room"
+    },
+    "line-height-normal": {
+      "$value": "1.43",
+      "$type": "number",
+      "$description": "Caption text line-height"
+    },
+    "line-height-relaxed": {
+      "$value": "1.60",
+      "$type": "number",
+      "$description": "Body text — literary reading experience, more generous than typical tech"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Standard weight for body, UI text, and serif body passages"
+    },
+    "weight-medium": {
+      "$value": "500",
+      "$type": "number",
+      "$description": "Headline weight — the single weight for all Anthropic Serif headings; ceiling for serifs"
+    },
+    "letter-spacing-label": {
+      "$value": "0.12px",
+      "$type": "dimension",
+      "$description": "Micro letter-spacing for small labels (12px)"
+    },
+    "letter-spacing-overline": {
+      "$value": "0.5px",
+      "$type": "dimension",
+      "$description": "Wider letter-spacing for overline text (10px)"
+    },
+    "letter-spacing-micro": {
+      "$value": "0.096px",
+      "$type": "dimension",
+      "$description": "Letter-spacing for micro text (9.6px)"
+    },
+    "letter-spacing-code": {
+      "$value": "-0.32px",
+      "$type": "dimension",
+      "$description": "Negative letter-spacing for monospace code"
+    }
+  },
+  "spacing": {
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "3xs": {
+      "$value": "3px",
+      "$type": "dimension",
+      "$description": "Smallest spacing increment"
+    },
+    "2xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Micro spacing"
+    },
+    "xs": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Extra small spacing"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Small spacing — matches base unit"
+    },
+    "sm-plus": {
+      "$value": "10px",
+      "$type": "dimension",
+      "$description": "Between small and medium"
+    },
+    "md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Medium spacing — common button padding"
+    },
+    "lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large spacing — balanced button padding"
+    },
+    "xl": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Extra large spacing"
+    },
+    "2xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Card internal padding lower bound"
+    },
+    "3xl": {
+      "$value": "30px",
+      "$type": "dimension",
+      "$description": "Largest scale increment"
+    },
+    "4xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Card internal padding upper bound"
+    },
+    "section-gap-sm": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "Minimum vertical spacing between major sections"
+    },
+    "section-gap-lg": {
+      "$value": "120px",
+      "$type": "dimension",
+      "$description": "Maximum vertical spacing between major sections"
+    },
+    "page-margin-desktop": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Page margin on desktop (inferred from editorial pacing)"
+    },
+    "page-margin-mobile": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Page margin on mobile"
+    },
+    "container-max": {
+      "$value": "1200px",
+      "$type": "dimension",
+      "$description": "Maximum container width, centered"
+    }
+  },
+  "border": {
+    "radius-sharp": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Minimal inline elements"
+    },
+    "radius-subtle": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Small buttons, secondary interactive elements"
+    },
+    "radius-comfortable": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Standard buttons, cards, containers — the workhorse radius"
+    },
+    "radius-generous": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Primary buttons, input fields, nav elements"
+    },
+    "radius-lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Featured containers, video players, tab lists"
+    },
+    "radius-xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Tag-like elements, highlighted containers"
+    },
+    "radius-2xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Hero containers, embedded media, large cards"
+    },
+    "radius-full": {
+      "$value": "9999px",
+      "$type": "dimension",
+      "$description": "Fully rounded pill shape"
+    }
+  },
+  "shadow": {
+    "level-0": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Flat — no shadow, no border. Parchment background, inline text."
+    },
+    "level-1": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "#f0eee6"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Contained — 1px ring in border cream for standard cards and sections (light theme)"
+    },
+    "level-1-dark": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "#30302e"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Contained — 1px ring in dark surface for cards and sections (dark theme)"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "#d1cfc5"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Ring — warm gray ring shadow for interactive cards, buttons, hover states"
+    },
+    "level-2-deep": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "#c2c0b6"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Ring deep — deeper warm ring for active/pressed states"
+    },
+    "level-3": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "24px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.05)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Whisper — barely visible lift for elevated feature cards and product screenshots"
+    },
+    "level-4": {
+      "$value": [
+        {
+          "inset": true,
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgba(0,0,0,0.15)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Inset — inset ring at 15% opacity for active/pressed button states"
+    },
+    "button-sand": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "#e8e6dc"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "#d1cfc5"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Composite ring shadow for warm sand secondary button"
+    },
+    "button-brand": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "#c96442"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "#c96442"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Composite ring shadow for terracotta brand CTA button"
+    },
+    "button-dark": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "#30302e"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "#30302e"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Composite ring shadow for dark charcoal button"
+    }
+  },
+  "motion": {
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Quick micro-interactions — hover state transitions"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Standard transitions — button presses, focus rings"
+    },
+    "duration-slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Deliberate transitions — section reveals, card expansions"
+    },
+    "easing-default": {
+      "$value": [0.16, 1, 0.3, 1],
+      "$type": "cubicBezier",
+      "$description": "Spring-like entrance — unhurried, literary pacing"
+    },
+    "easing-exit": {
+      "$value": [0.4, 0, 1, 1],
+      "$type": "cubicBezier",
+      "$description": "Quick exit — clean departure without lingering"
+    }
+  },
+  "breakpoint": {
+    "sm-mobile": {
+      "$value": "479px",
+      "$type": "dimension",
+      "$description": "Small mobile — stacked layout, compact typography"
+    },
+    "mobile": {
+      "$value": "640px",
+      "$type": "dimension",
+      "$description": "Mobile — single column, hamburger nav, reduced headings"
+    },
+    "lg-mobile": {
+      "$value": "767px",
+      "$type": "dimension",
+      "$description": "Large mobile — slightly wider content area"
+    },
+    "tablet": {
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Tablet — 2-column grids begin, condensed nav"
+    },
+    "desktop": {
+      "$value": "992px",
+      "$type": "dimension",
+      "$description": "Desktop — full multi-column layout, expanded nav, max hero typography"
+    }
+  }
+}

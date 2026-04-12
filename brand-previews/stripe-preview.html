@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stripe Brand Tokens Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Source+Code+Pro:wght@400;500;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --surface: #ffffff;
+    --surface-dark: #1c1e54;
+    --surface-darkest: #0d253d;
+    --accent: #533afd;
+    --accent-hover: #4434d4;
+    --accent-deep: #2e2b8c;
+    --accent-light: #b9b9f9;
+    --text-heading: #061b31;
+    --text-label: #273951;
+    --text-body: #64748d;
+    --text-on-dark: #ffffff;
+    --text-disabled: rgba(16,16,16,0.3);
+    --success: #15be53;
+    --success-text: #108c3d;
+    --warning: #9b6829;
+    --error: #ea2261;
+    --border: #e5edf5;
+    --border-dark: #061b31;
+    --shadow-blue: rgba(50,50,93,0.25);
+    --shadow-black: rgba(0,0,0,0.1);
+    --font-primary: Inter, 'SF Pro Display', system-ui, sans-serif;
+    --font-mono: 'Source Code Pro', 'SFMono-Regular', monospace;
+  }
+
+  body {
+    font-family: var(--font-primary);
+    background: var(--surface);
+    color: var(--text-heading);
+    line-height: 1.4;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 64px 20px;
+  }
+
+  /* Header */
+  .brand-header {
+    text-align: center;
+    margin-bottom: 64px;
+    padding: 80px 32px;
+    background: linear-gradient(135deg, var(--surface-dark) 0%, #2e2b8c 50%, var(--accent) 100%);
+    border-radius: 8px;
+    color: white;
+  }
+  .brand-header h1 {
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1.03;
+    letter-spacing: -1.4px;
+    margin-bottom: 16px;
+    color: white;
+  }
+  .brand-header .aesthetic {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+  }
+  .brand-header .tags {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .brand-header .tag {
+    font-size: 12px;
+    font-weight: 400;
+    padding: 4px 12px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 64px;
+  }
+  .section-title {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.64px;
+    margin-bottom: 8px;
+    color: var(--text-heading);
+  }
+  .section-desc {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text-body);
+    margin-bottom: 32px;
+    line-height: 1.4;
+  }
+
+  /* Color Swatches */
+  .color-group { margin-bottom: 32px; }
+  .color-group-title {
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+    color: var(--text-body);
+    margin-bottom: 12px;
+  }
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+  }
+  .color-swatch {
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .color-swatch .swatch-fill {
+    height: 64px;
+  }
+  .color-swatch .swatch-info {
+    padding: 8px 10px;
+    background: white;
+  }
+  .color-swatch .swatch-name {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-heading);
+    margin-bottom: 2px;
+  }
+  .color-swatch .swatch-hex {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-body);
+  }
+
+  /* Typography Scale */
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-label {
+    flex: 0 0 120px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-body);
+    text-align: right;
+  }
+  .type-sample { flex: 1; color: var(--text-heading); }
+  .type-meta {
+    flex: 0 0 60px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-body);
+    text-align: right;
+  }
+
+  /* Spacing */
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .spacing-label {
+    flex: 0 0 80px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-body);
+    text-align: right;
+  }
+  .spacing-bar {
+    height: 20px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+    border-radius: 4px;
+    opacity: 0.8;
+  }
+  .spacing-bar:hover { opacity: 1; }
+  .spacing-value {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-body);
+    min-width: 40px;
+  }
+
+  /* Border Radius */
+  .radius-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 16px;
+  }
+  .radius-box {
+    aspect-ratio: 1;
+    background: #f6f9fc;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .radius-box .radius-name {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-label);
+  }
+  .radius-box .radius-val {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-body);
+  }
+
+  /* Shadow Cards */
+  .shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .shadow-card {
+    padding: 24px;
+    border-radius: 6px;
+    background: white;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 1px solid var(--border);
+  }
+  .shadow-card .shadow-name {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-heading);
+    margin-bottom: 4px;
+  }
+  .shadow-card .shadow-desc {
+    font-size: 10px;
+    color: var(--text-body);
+    font-weight: 300;
+  }
+
+  /* Components */
+  .component-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 768px) {
+    .component-section { grid-template-columns: 1fr; }
+    .brand-header h1 { font-size: 36px; }
+    .type-label { flex: 0 0 80px; }
+  }
+
+  .comp-card {
+    padding: 32px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .comp-card h3 {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: var(--text-heading);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-dark {
+    background: var(--text-heading);
+    color: white;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { background: rgba(83,58,253,0.05); }
+  .btn-danger {
+    background: transparent;
+    color: var(--error);
+    border: 1px solid var(--border);
+  }
+  .btn-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Input */
+  .input-field {
+    width: 100%;
+    padding: 8px 12px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 400;
+    background: white;
+    color: var(--text-heading);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.15s;
+  }
+  .input-field:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(83,58,253,0.15);
+  }
+  .input-field::placeholder { color: var(--text-disabled); }
+  .input-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-label);
+    margin-bottom: 4px;
+  }
+  .input-group { margin-bottom: 14px; }
+
+  /* Sample Card */
+  .sample-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 30px 45px -30px rgba(50,50,93,0.25), 0 18px 36px -18px rgba(0,0,0,0.1);
+  }
+  .sample-card-img {
+    height: 120px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--error) 50%, #f96bee 100%);
+  }
+  .sample-card-body {
+    padding: 20px;
+  }
+  .sample-card-body h4 {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 8px;
+    color: var(--text-heading);
+    letter-spacing: -0.22px;
+  }
+  .sample-card-body p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-body);
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+  .sample-card-body .badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 400;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: rgba(21,190,83,0.2);
+    color: var(--success-text);
+    border: 1px solid rgba(21,190,83,0.4);
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header class="brand-header">
+    <h1>Stripe</h1>
+    <p class="aesthetic">Weight-300 elegance, blue-tinted shadows</p>
+    <div class="tags">
+      <span class="tag">minimal-luxury</span>
+      <span class="tag">light-weight-typography</span>
+      <span class="tag">blue-shadow-depth</span>
+    </div>
+  </header>
+
+  <!-- Color Palette -->
+  <section class="section">
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">Pure white canvas with deep navy text. The signature blue-tinted shadows create dimensional depth that distinguishes Stripe from flat design peers.</p>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Surface</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#1c1e54"></div><div class="swatch-info"><div class="swatch-name">surface-dark</div><div class="swatch-hex">#1c1e54</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#0d253d"></div><div class="swatch-info"><div class="swatch-name">surface-darkest</div><div class="swatch-hex">#0d253d</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Accent</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#533afd"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#533afd</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#4434d4"></div><div class="swatch-info"><div class="swatch-name">accent-hover</div><div class="swatch-hex">#4434d4</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#2e2b8c"></div><div class="swatch-info"><div class="swatch-name">accent-deep</div><div class="swatch-hex">#2e2b8c</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#b9b9f9"></div><div class="swatch-info"><div class="swatch-name">accent-light</div><div class="swatch-hex">#b9b9f9</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#665efd"></div><div class="swatch-info"><div class="swatch-name">accent-mid</div><div class="swatch-hex">#665efd</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Text</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#061b31"></div><div class="swatch-info"><div class="swatch-name">text-heading</div><div class="swatch-hex">#061b31</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#273951"></div><div class="swatch-info"><div class="swatch-name">text-label</div><div class="swatch-hex">#273951</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#64748d"></div><div class="swatch-info"><div class="swatch-name">text-body</div><div class="swatch-hex">#64748d</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Semantic</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#15be53"></div><div class="swatch-info"><div class="swatch-name">success</div><div class="swatch-hex">#15be53</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#9b6829"></div><div class="swatch-info"><div class="swatch-name">warning</div><div class="swatch-hex">#9b6829</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ea2261"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#ea2261</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#2874ad"></div><div class="swatch-info"><div class="swatch-name">info-text</div><div class="swatch-hex">#2874ad</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Decorative</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ea2261"></div><div class="swatch-info"><div class="swatch-name">ruby</div><div class="swatch-hex">#ea2261</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#f96bee"></div><div class="swatch-info"><div class="swatch-name">magenta</div><div class="swatch-hex">#f96bee</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ffd7ef"></div><div class="swatch-info"><div class="swatch-name">magenta-light</div><div class="swatch-hex">#ffd7ef</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Border</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#e5edf5"></div><div class="swatch-info"><div class="swatch-name">border</div><div class="swatch-hex">#e5edf5</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#061b31"></div><div class="swatch-info"><div class="swatch-name">border-dark</div><div class="swatch-hex">#061b31</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#b9b9f9"></div><div class="swatch-info"><div class="swatch-name">border-purple</div><div class="swatch-hex">#b9b9f9</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#d6d9fc"></div><div class="swatch-info"><div class="swatch-name">border-purple-soft</div><div class="swatch-hex">#d6d9fc</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ffd7ef"></div><div class="swatch-info"><div class="swatch-name">border-magenta</div><div class="swatch-hex">#ffd7ef</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Shadow Colors</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(50,50,93,0.25)"></div><div class="swatch-info"><div class="swatch-name">shadow-blue</div><div class="swatch-hex">rgba(50,50,93,.25)</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(3,3,39,0.25)"></div><div class="swatch-info"><div class="swatch-name">shadow-dark-blue</div><div class="swatch-hex">rgba(3,3,39,.25)</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(0,0,0,0.1)"></div><div class="swatch-info"><div class="swatch-name">shadow-black</div><div class="swatch-hex">rgba(0,0,0,.1)</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="section">
+    <h2 class="section-title">Typography Scale</h2>
+    <p class="section-desc">sohne-var with ss01 OpenType feature (Inter as fallback). Weight 300 is the signature -- lightness as luxury. Progressively tighter tracking at larger sizes.</p>
+
+    <div class="type-row"><span class="type-label">5xl / hero</span><span class="type-sample" style="font-size:56px;font-weight:300;line-height:1.03;letter-spacing:-1.4px">Payments infrastructure</span><span class="type-meta">56px</span></div>
+    <div class="type-row"><span class="type-label">4xl / display</span><span class="type-sample" style="font-size:48px;font-weight:300;line-height:1.15;letter-spacing:-0.96px">Financial platform</span><span class="type-meta">48px</span></div>
+    <div class="type-row"><span class="type-label">3xl / section</span><span class="type-sample" style="font-size:32px;font-weight:300;line-height:1.1;letter-spacing:-0.64px">Accept payments</span><span class="type-meta">32px</span></div>
+    <div class="type-row"><span class="type-label">2xl / sub-section</span><span class="type-sample" style="font-size:26px;font-weight:300;line-height:1.12;letter-spacing:-0.26px">Card headings</span><span class="type-meta">26px</span></div>
+    <div class="type-row"><span class="type-label">xl / sub-heading</span><span class="type-sample" style="font-size:22px;font-weight:300;line-height:1.1;letter-spacing:-0.22px">Feature descriptions</span><span class="type-meta">22px</span></div>
+    <div class="type-row"><span class="type-label">lg / feature</span><span class="type-sample" style="font-size:18px;font-weight:300;line-height:1.4">Feature body text at weight 300</span><span class="type-meta">18px</span></div>
+    <div class="type-row"><span class="type-label">base / body</span><span class="type-sample" style="font-size:16px;font-weight:300;line-height:1.4">Standard body text, the workhorse size</span><span class="type-meta">16px</span></div>
+    <div class="type-row"><span class="type-label">sm / links</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.4">Small buttons and navigation links</span><span class="type-meta">14px</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:13px;font-weight:400;line-height:1.33">Small labels and metadata</span><span class="type-meta">13px</span></div>
+    <div class="type-row"><span class="type-label">caption-sm</span><span class="type-sample" style="font-size:12px;font-weight:400;line-height:1.45">Fine print, timestamps</span><span class="type-meta">12px</span></div>
+    <div class="type-row"><span class="type-label">micro</span><span class="type-sample" style="font-size:10px;font-weight:400;line-height:1.15;letter-spacing:0.1px">Tiny labels, axis markers</span><span class="type-meta">10px</span></div>
+    <div class="type-row"><span class="type-label">mono</span><span class="type-sample" style="font-family:var(--font-mono);font-size:12px;font-weight:500;line-height:2.0">const amount = stripe.charges.create();</span><span class="type-meta">12px</span></div>
+  </section>
+
+  <!-- Spacing -->
+  <section class="section">
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-desc">Dense 8px grid with fine-grained steps. Precision spacing for financial interfaces.</p>
+
+    <div class="spacing-row"><span class="spacing-label">1</span><div class="spacing-bar" style="width:1px"></div><span class="spacing-value">1px</span></div>
+    <div class="spacing-row"><span class="spacing-label">2</span><div class="spacing-bar" style="width:2px"></div><span class="spacing-value">2px</span></div>
+    <div class="spacing-row"><span class="spacing-label">4</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+    <div class="spacing-row"><span class="spacing-label">6</span><div class="spacing-bar" style="width:6px"></div><span class="spacing-value">6px</span></div>
+    <div class="spacing-row"><span class="spacing-label">8</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">10</span><div class="spacing-bar" style="width:10px"></div><span class="spacing-value">10px</span></div>
+    <div class="spacing-row"><span class="spacing-label">12</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">14</span><div class="spacing-bar" style="width:14px"></div><span class="spacing-value">14px</span></div>
+    <div class="spacing-row"><span class="spacing-label">16</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">18</span><div class="spacing-bar" style="width:18px"></div><span class="spacing-value">18px</span></div>
+    <div class="spacing-row"><span class="spacing-label">20</span><div class="spacing-bar" style="width:20px"></div><span class="spacing-value">20px</span></div>
+    <div class="spacing-row"><span class="spacing-label">40</span><div class="spacing-bar" style="width:40px"></div><span class="spacing-value">40px</span></div>
+    <div class="spacing-row"><span class="spacing-label">64</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
+  </section>
+
+  <!-- Border Radius -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Restrained rounding. 4px is the workhorse -- just enough to soften without being playful.</p>
+
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:1px"><span class="radius-name">micro</span><span class="radius-val">1px</span></div>
+      <div class="radius-box" style="border-radius:4px"><span class="radius-name">sm</span><span class="radius-val">4px</span></div>
+      <div class="radius-box" style="border-radius:5px"><span class="radius-name">md</span><span class="radius-val">5px</span></div>
+      <div class="radius-box" style="border-radius:6px"><span class="radius-name">comfortable</span><span class="radius-val">6px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span class="radius-name">lg</span><span class="radius-val">8px</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Shadow Levels</h2>
+    <p class="section-desc">The signature blue-tinted dual-layer shadow system. Far shadow creates atmospheric depth, near shadow anchors the element.</p>
+
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none; border:1px solid var(--border)"><span class="shadow-name">Level 0 - Flat</span><span class="shadow-desc">No shadow. Page background.</span></div>
+      <div class="shadow-card" style="box-shadow:0 3px 6px rgba(23,23,23,0.06)"><span class="shadow-name">Level 1 - Ambient</span><span class="shadow-desc">Subtle card lift, hover hints.</span></div>
+      <div class="shadow-card" style="box-shadow:0 15px 35px rgba(23,23,23,0.08)"><span class="shadow-name">Level 2 - Standard</span><span class="shadow-desc">Cards, content panels.</span></div>
+      <div class="shadow-card" style="box-shadow:0 30px 45px -30px rgba(50,50,93,0.25), 0 18px 36px -18px rgba(0,0,0,0.1)"><span class="shadow-name">Level 3 - Elevated</span><span class="shadow-desc">Blue-tinted far + near parallax.</span></div>
+      <div class="shadow-card" style="box-shadow:0 14px 21px -14px rgba(3,3,39,0.25), 0 8px 17px -8px rgba(0,0,0,0.1)"><span class="shadow-name">Level 4 - Deep</span><span class="shadow-desc">Dark blue dual-layer for modals.</span></div>
+    </div>
+  </section>
+
+  <!-- Component Previews -->
+  <section class="section">
+    <h2 class="section-title">Component Preview</h2>
+    <p class="section-desc">Stripe-styled components demonstrating the minimal luxury aesthetic.</p>
+
+    <div class="component-section">
+      <div class="comp-card">
+        <h3>Buttons</h3>
+        <div class="btn-group" style="margin-bottom:14px">
+          <button class="btn btn-primary">Get started</button>
+          <button class="btn btn-dark">Contact sales</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-ghost">Documentation</button>
+          <button class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <h3>Form Input</h3>
+        <div class="input-group">
+          <label class="input-label">Card number</label>
+          <input type="text" class="input-field" placeholder="4242 4242 4242 4242">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="input-group">
+            <label class="input-label">Expiry</label>
+            <input type="text" class="input-field" placeholder="MM / YY">
+          </div>
+          <div class="input-group">
+            <label class="input-label">CVC</label>
+            <input type="text" class="input-field" placeholder="123">
+          </div>
+        </div>
+        <button class="btn btn-primary" style="width:100%">Pay $49.00</button>
+      </div>
+
+      <div class="comp-card" style="grid-column: 1 / -1;">
+        <h3>Payment Card</h3>
+        <div class="sample-card">
+          <div class="sample-card-img"></div>
+          <div class="sample-card-body">
+            <h4>Revenue optimization suite</h4>
+            <p>Increase authorization rates and reduce fraud with intelligent machine learning models trained on billions of transactions across the Stripe network.</p>
+            <span class="badge">Active</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

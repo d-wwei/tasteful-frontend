@@ -1,0 +1,392 @@
+{
+  "$extensions": {
+    "brand": "spotify",
+    "source": "awesome-design-md",
+    "aesthetic": "dark immersive music cocoon with pill geometry",
+    "key-characteristics": ["dark-immersive", "green-functional-accent", "pill-circle-geometry"]
+  },
+  "color": {
+    "surface": {
+      "$value": "#121212",
+      "$type": "color",
+      "$description": "Primary background — near-black cocoon, UI disappears behind content"
+    },
+    "surface-subtle": {
+      "$value": "#181818",
+      "$type": "color",
+      "$description": "Card surface — dark charcoal for containers and sidebar"
+    },
+    "surface-elevated": {
+      "$value": "#1f1f1f",
+      "$type": "color",
+      "$description": "Elevated surface — button backgrounds and interactive surfaces"
+    },
+    "surface-card": {
+      "$value": "#252525",
+      "$type": "color",
+      "$description": "Elevated card surface"
+    },
+    "accent": {
+      "$value": "#1ed760",
+      "$type": "color",
+      "$description": "Spotify Green — play buttons, active states, primary CTAs only"
+    },
+    "accent-hover": {
+      "$value": "#1fdf64",
+      "$type": "color",
+      "$description": "Green hover — slightly brighter variant"
+    },
+    "accent-border": {
+      "$value": "#1db954",
+      "$type": "color",
+      "$description": "Green border variant for accent outlines"
+    },
+    "text-primary": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Primary text — pure white on dark surfaces"
+    },
+    "text-secondary": {
+      "$value": "#b3b3b3",
+      "$type": "color",
+      "$description": "Secondary text — silver for muted labels and inactive nav"
+    },
+    "text-tertiary": {
+      "$value": "#a7a7a7",
+      "$type": "color",
+      "$description": "Tertiary text — slightly darker silver for metadata"
+    },
+    "text-on-accent": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "Text on Spotify Green — black for maximum contrast"
+    },
+    "error": {
+      "$value": "#f3727f",
+      "$type": "color",
+      "$description": "Negative Red — error states on dark backgrounds"
+    },
+    "success": {
+      "$value": "#1ed760",
+      "$type": "color",
+      "$description": "Success — reuses Spotify Green"
+    },
+    "warning": {
+      "$value": "#ffa42b",
+      "$type": "color",
+      "$description": "Warning Orange — caution states"
+    },
+    "info": {
+      "$value": "#539df5",
+      "$type": "color",
+      "$description": "Announcement Blue — informational states"
+    },
+    "border": {
+      "$value": "#4d4d4d",
+      "$type": "color",
+      "$description": "Button borders on dark — subtle gray"
+    },
+    "border-prominent": {
+      "$value": "#7c7c7c",
+      "$type": "color",
+      "$description": "Outlined button borders — lighter gray"
+    },
+    "separator": {
+      "$value": "#b3b3b3",
+      "$type": "color",
+      "$description": "Divider lines"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "SpotifyMixUITitle, CircularSp-Arab, Helvetica Neue, Helvetica, Arial, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Title font — SpotifyMixUITitle for section headings with global script support"
+    },
+    "font-body": {
+      "$value": "SpotifyMixUI, CircularSp-Arab, Helvetica Neue, Helvetica, Arial, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body/UI font — SpotifyMixUI (CircularSp custom) for all body and interface text"
+    },
+    "scale-section": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Section title — 1.5rem at weight 700"
+    },
+    "scale-feature": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Feature heading — 1.13rem at weight 600"
+    },
+    "scale-body-bold": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Body bold — 1rem at weight 700"
+    },
+    "scale-base": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Body standard — 1rem at weight 400"
+    },
+    "scale-button": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Button text — 0.88rem, uppercase with wide letter-spacing"
+    },
+    "scale-caption": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Caption/nav text — 0.88rem"
+    },
+    "scale-small": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Tags and counts — 0.75rem"
+    },
+    "scale-badge": {
+      "$value": "10.5px",
+      "$type": "dimension",
+      "$description": "Badge text — 0.66rem with capitalize"
+    },
+    "scale-micro": {
+      "$value": "10px",
+      "$type": "dimension",
+      "$description": "Smallest text — 0.63rem"
+    },
+    "line-height-tight": {
+      "$value": "1.00",
+      "$type": "number",
+      "$description": "Tight — buttons and compact elements"
+    },
+    "line-height-snug": {
+      "$value": "1.30",
+      "$type": "number",
+      "$description": "Snug — feature headings"
+    },
+    "line-height-normal": {
+      "$value": "1.50",
+      "$type": "number",
+      "$description": "Normal — captions and body"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Regular — body text and inactive nav"
+    },
+    "weight-semibold": {
+      "$value": "600",
+      "$type": "number",
+      "$description": "Semibold — feature headings and badges"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold — section titles, nav active, button labels"
+    },
+    "letter-spacing-button": {
+      "$value": "1.4px",
+      "$type": "dimension",
+      "$description": "Wide tracking for uppercase button labels"
+    },
+    "letter-spacing-button-wide": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Maximum tracking for prominent uppercase buttons"
+    }
+  },
+  "spacing": {
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "2xs": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Micro spacing"
+    },
+    "xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Small"
+    },
+    "md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Medium"
+    },
+    "lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large — button horizontal padding"
+    },
+    "xl": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Extra large"
+    },
+    "section-gap": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Dense app-like spacing between sections"
+    },
+    "container-max": {
+      "$value": "1280px",
+      "$type": "dimension",
+      "$description": "Maximum container width"
+    }
+  },
+  "border": {
+    "radius-minimal": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Badges and explicit tags"
+    },
+    "radius-subtle": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Inputs and small elements"
+    },
+    "radius-standard": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Album art containers and cards"
+    },
+    "radius-comfortable": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Sections and dialogs"
+    },
+    "radius-pill": {
+      "$value": "9999px",
+      "$type": "dimension",
+      "$description": "Navigation pills and search — full pill shape"
+    },
+    "radius-pill-large": {
+      "$value": "500px",
+      "$type": "dimension",
+      "$description": "Primary buttons and search input"
+    },
+    "radius-circle": {
+      "$value": "50%",
+      "$type": "dimension",
+      "$description": "Play buttons, avatars, icons"
+    }
+  },
+  "shadow": {
+    "level-0": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Flat — deepest layer, page background"
+    },
+    "level-1": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "8px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.3)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Medium — cards and dropdowns on dark surfaces"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "24px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.5)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Heavy — dialogs, menus, overlays. Dramatic floating-in-darkness effect"
+    },
+    "inset-border": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "rgb(18,18,18)"
+        },
+        {
+          "inset": true,
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgb(124,124,124)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Inset border — unique input border-shadow combo for tactile recessed feel"
+    }
+  },
+  "motion": {
+    "duration-fast": {
+      "$value": "100ms",
+      "$type": "duration",
+      "$description": "Quick micro-interactions"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Standard transitions"
+    },
+    "duration-slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Card hover transitions"
+    },
+    "easing-default": {
+      "$value": [0.25, 0.1, 0.25, 1],
+      "$type": "cubicBezier",
+      "$description": "Standard ease"
+    }
+  },
+  "breakpoint": {
+    "mobile": {
+      "$value": "576px",
+      "$type": "dimension",
+      "$description": "Mobile — standard mobile layout"
+    },
+    "tablet": {
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Tablet — 2-column grid"
+    },
+    "desktop-sm": {
+      "$value": "896px",
+      "$type": "dimension",
+      "$description": "Small desktop — sidebar visible"
+    },
+    "desktop": {
+      "$value": "1024px",
+      "$type": "dimension",
+      "$description": "Desktop — full layout"
+    },
+    "desktop-lg": {
+      "$value": "1280px",
+      "$type": "dimension",
+      "$description": "Large desktop — expanded grid"
+    }
+  }
+}

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linear Brand Tokens Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=JetBrains+Mono:wght@400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #08090a;
+    --surface-panel: #0f1011;
+    --surface-elevated: #191a1b;
+    --surface-secondary: #28282c;
+    --surface-translucent: rgba(255,255,255,0.05);
+    --text-primary: #f7f8f8;
+    --text-secondary: #d0d6e0;
+    --text-tertiary: #8a8f98;
+    --text-quaternary: #62666d;
+    --accent: #5e6ad2;
+    --accent-violet: #7170ff;
+    --accent-hover: #828fff;
+    --status-green: #27a644;
+    --status-emerald: #10b981;
+    --border-primary: #23252a;
+    --border-secondary: #34343a;
+    --border-subtle: rgba(255,255,255,0.05);
+    --border-standard: rgba(255,255,255,0.08);
+    --overlay: rgba(0,0,0,0.85);
+    --font-primary: Inter, 'SF Pro Display', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Berkeley Mono', ui-monospace, monospace;
+    --mode: dark;
+  }
+
+  .light {
+    --bg: #f7f8f8;
+    --surface-panel: #f3f4f5;
+    --surface-elevated: #ffffff;
+    --surface-secondary: #f5f6f7;
+    --surface-translucent: rgba(0,0,0,0.03);
+    --text-primary: #08090a;
+    --text-secondary: #28282c;
+    --text-tertiary: #62666d;
+    --text-quaternary: #8a8f98;
+    --border-primary: #d0d6e0;
+    --border-secondary: #e6e6e6;
+    --border-subtle: rgba(0,0,0,0.06);
+    --border-standard: rgba(0,0,0,0.08);
+    --mode: light;
+  }
+
+  body {
+    font-family: var(--font-primary);
+    font-feature-settings: "cv01", "ss03";
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 20px;
+  }
+
+  /* Theme Toggle */
+  .theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    padding: 8px 16px;
+    background: var(--surface-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border-standard);
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-feature-settings: "cv01", "ss03";
+    font-size: 12px;
+    font-weight: 510;
+    transition: all 0.2s;
+  }
+  .theme-toggle:hover { border-color: var(--accent-violet); }
+
+  /* Header */
+  .brand-header {
+    text-align: center;
+    margin-bottom: 80px;
+    padding: 80px 32px;
+    background: var(--surface-panel);
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+  }
+  .brand-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 50% 80%, rgba(94,106,210,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .brand-header h1 {
+    font-size: 72px;
+    font-weight: 510;
+    line-height: 1.0;
+    letter-spacing: -1.584px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .brand-header .aesthetic {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    letter-spacing: -0.165px;
+    position: relative;
+  }
+  .brand-header .tags {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .brand-header .tag {
+    font-size: 11px;
+    font-weight: 510;
+    padding: 4px 10px;
+    background: var(--surface-translucent);
+    color: var(--text-tertiary);
+    border-radius: 4px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  /* Section */
+  .section { margin-bottom: 80px; }
+  .section-title {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.13;
+    letter-spacing: -0.704px;
+    margin-bottom: 8px;
+  }
+  .section-desc {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  /* Color Swatches */
+  .color-group { margin-bottom: 32px; }
+  .color-group-title {
+    font-size: 12px;
+    font-weight: 510;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+  }
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px;
+  }
+  .color-swatch {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    background: var(--surface-panel);
+  }
+  .color-swatch .swatch-fill { height: 60px; }
+  .color-swatch .swatch-info { padding: 8px 10px; }
+  .color-swatch .swatch-name {
+    font-size: 11px;
+    font-weight: 510;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  .color-swatch .swatch-hex {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-quaternary);
+  }
+
+  /* Typography Scale */
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-label {
+    flex: 0 0 120px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-quaternary);
+    text-align: right;
+  }
+  .type-sample { flex: 1; }
+  .type-meta {
+    flex: 0 0 80px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-quaternary);
+    text-align: right;
+  }
+
+  /* Spacing */
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .spacing-label {
+    flex: 0 0 80px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-quaternary);
+    text-align: right;
+  }
+  .spacing-bar {
+    height: 20px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-violet) 100%);
+    border-radius: 4px;
+    opacity: 0.6;
+  }
+  .spacing-bar:hover { opacity: 1; }
+  .spacing-value {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-quaternary);
+    min-width: 40px;
+  }
+
+  /* Border Radius */
+  .radius-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+  }
+  .radius-box {
+    aspect-ratio: 1;
+    background: var(--surface-elevated);
+    border: 1px solid var(--border-standard);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .radius-box .radius-name {
+    font-size: 10px;
+    font-weight: 510;
+    color: var(--text-secondary);
+  }
+  .radius-box .radius-val {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-quaternary);
+  }
+
+  /* Shadow Cards */
+  .shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .shadow-card {
+    padding: 20px;
+    border-radius: 8px;
+    background: var(--surface-elevated);
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .shadow-card .shadow-name {
+    font-size: 12px;
+    font-weight: 510;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .shadow-card .shadow-desc {
+    font-size: 10px;
+    color: var(--text-quaternary);
+  }
+
+  /* Components */
+  .component-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 768px) {
+    .component-section { grid-template-columns: 1fr; }
+    .brand-header h1 { font-size: 48px; letter-spacing: -1.056px; }
+    .type-label { flex: 0 0 80px; }
+    .type-meta { flex: 0 0 50px; }
+  }
+
+  .comp-card {
+    padding: 24px;
+    background: var(--surface-panel);
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+  }
+  .comp-card h3 {
+    font-size: 14px;
+    font-weight: 510;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    letter-spacing: -0.182px;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-family: var(--font-primary);
+    font-feature-settings: "cv01", "ss03";
+    font-size: 12px;
+    font-weight: 510;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+  }
+  .btn-brand {
+    background: var(--accent);
+    color: #ffffff;
+  }
+  .btn-brand:hover { background: var(--accent-violet); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid rgb(36,40,44);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.04); }
+  .btn-subtle {
+    background: rgba(255,255,255,0.04);
+    color: var(--text-secondary);
+    border: none;
+  }
+  .btn-subtle:hover { background: rgba(255,255,255,0.08); }
+  .btn-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Input */
+  .input-field {
+    width: 100%;
+    padding: 7px 12px;
+    font-family: var(--font-primary);
+    font-feature-settings: "cv01", "ss03";
+    font-size: 13px;
+    font-weight: 400;
+    background: var(--surface-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border-standard);
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.15s;
+  }
+  .input-field:focus {
+    border-color: var(--accent-violet);
+    box-shadow: 0 0 0 2px rgba(113,112,255,0.15);
+  }
+  .input-field::placeholder { color: var(--text-quaternary); }
+  .input-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 510;
+    color: var(--text-tertiary);
+    margin-bottom: 4px;
+  }
+  .input-group { margin-bottom: 12px; }
+
+  /* Sample Card */
+  .sample-card {
+    background: var(--surface-elevated);
+    border-radius: 8px;
+    border: 1px solid var(--border-standard);
+    overflow: hidden;
+  }
+  .sample-card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sample-card-header h4 {
+    font-size: 14px;
+    font-weight: 510;
+    letter-spacing: -0.182px;
+  }
+  .sample-card-header .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 510;
+    color: var(--status-emerald);
+  }
+  .sample-card-header .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--status-green);
+  }
+  .sample-card-body {
+    padding: 16px 20px;
+  }
+  .sample-card-body p {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    letter-spacing: -0.182px;
+  }
+  .sample-card-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--text-quaternary);
+    font-weight: 510;
+  }
+  .sample-card-meta .pill {
+    padding: 2px 8px;
+    background: var(--surface-translucent);
+    border-radius: 4px;
+    border: 1px solid rgb(35,37,42);
+    font-size: 11px;
+  }
+</style>
+</head>
+<body>
+<button class="theme-toggle" onclick="document.body.classList.toggle('light'); this.textContent = document.body.classList.contains('light') ? 'Dark Mode' : 'Light Mode'">Light Mode</button>
+
+<div class="container">
+
+  <!-- Header -->
+  <header class="brand-header">
+    <h1>Linear</h1>
+    <p class="aesthetic">Darkness as native medium, precision engineering</p>
+    <div class="tags">
+      <span class="tag">dark-mode-first</span>
+      <span class="tag">signature-weight-510</span>
+      <span class="tag">violet-accent-system</span>
+      <span class="tag">inter-variable-cv01-ss03</span>
+      <span class="tag">luminance-stacking</span>
+      <span class="tag">semi-transparent-borders</span>
+    </div>
+  </header>
+
+  <!-- Color Palette -->
+  <section class="section">
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">Luminance stacking from near-black upward. Surfaces gain brightness as they elevate, creating depth through controlled light emission rather than shadow.</p>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Surface (Dark)</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#010102"></div><div class="swatch-info"><div class="swatch-name">marketing-black</div><div class="swatch-hex">#010102</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#08090a"></div><div class="swatch-info"><div class="swatch-name">marketing</div><div class="swatch-hex">#08090a</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#0f1011"></div><div class="swatch-info"><div class="swatch-name">panel</div><div class="swatch-hex">#0f1011</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#191a1b"></div><div class="swatch-info"><div class="swatch-name">elevated</div><div class="swatch-hex">#191a1b</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#28282c"></div><div class="swatch-info"><div class="swatch-name">secondary</div><div class="swatch-hex">#28282c</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Surface (Translucent)</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05)"></div><div class="swatch-info"><div class="swatch-name">translucent-lowest</div><div class="swatch-hex">rgba(w,0.02)</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05)"></div><div class="swatch-info"><div class="swatch-name">translucent-subtle</div><div class="swatch-hex">rgba(w,0.03)</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.05)"></div><div class="swatch-info"><div class="swatch-name">translucent-low</div><div class="swatch-hex">rgba(w,0.04)</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.05)"></div><div class="swatch-info"><div class="swatch-name">translucent-mid</div><div class="swatch-hex">rgba(w,0.05)</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Text</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#f7f8f8"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#f7f8f8</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#d0d6e0"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#d0d6e0</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#8a8f98"></div><div class="swatch-info"><div class="swatch-name">text-tertiary</div><div class="swatch-hex">#8a8f98</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#62666d"></div><div class="swatch-info"><div class="swatch-name">text-quaternary</div><div class="swatch-hex">#62666d</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Accent</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#5e6ad2"></div><div class="swatch-info"><div class="swatch-name">brand-indigo</div><div class="swatch-hex">#5e6ad2</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#7170ff"></div><div class="swatch-info"><div class="swatch-name">violet</div><div class="swatch-hex">#7170ff</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#828fff"></div><div class="swatch-info"><div class="swatch-name">hover</div><div class="swatch-hex">#828fff</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#7a7fad"></div><div class="swatch-info"><div class="swatch-name">security-lavender</div><div class="swatch-hex">#7a7fad</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Status</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#27a644"></div><div class="swatch-info"><div class="swatch-name">green</div><div class="swatch-hex">#27a644</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#10b981"></div><div class="swatch-info"><div class="swatch-name">emerald</div><div class="swatch-hex">#10b981</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Border</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#23252a"></div><div class="swatch-info"><div class="swatch-name">primary</div><div class="swatch-hex">#23252a</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#34343a"></div><div class="swatch-info"><div class="swatch-name">secondary</div><div class="swatch-hex">#34343a</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#3e3e44"></div><div class="swatch-info"><div class="swatch-name">tertiary</div><div class="swatch-hex">#3e3e44</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#141516"></div><div class="swatch-info"><div class="swatch-name">line-tint</div><div class="swatch-hex">#141516</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Surface (Light mode)</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#f7f8f8"></div><div class="swatch-info"><div class="swatch-name">light-background</div><div class="swatch-hex">#f7f8f8</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#f3f4f5"></div><div class="swatch-info"><div class="swatch-name">light-surface</div><div class="swatch-hex">#f3f4f5</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">light-card-surface</div><div class="swatch-hex">#ffffff</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="section">
+    <h2 class="section-title">Typography Scale</h2>
+    <p class="section-desc">Inter Variable with cv01/ss03 OpenType features. Signature weight 510 (between regular and medium). No bold -- maximum weight is 590 semibold.</p>
+
+    <div class="type-row"><span class="type-label">display-xl</span><span class="type-sample" style="font-size:72px;font-weight:510;line-height:1.0;letter-spacing:-1.584px">Build</span><span class="type-meta">72px / w510</span></div>
+    <div class="type-row"><span class="type-label">display-lg</span><span class="type-sample" style="font-size:64px;font-weight:510;line-height:1.0;letter-spacing:-1.408px">Issues</span><span class="type-meta">64px / w510</span></div>
+    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:48px;font-weight:510;line-height:1.0;letter-spacing:-1.056px">Project tracking</span><span class="type-meta">48px / w510</span></div>
+    <div class="type-row"><span class="type-label">h1</span><span class="type-sample" style="font-size:32px;font-weight:400;line-height:1.13;letter-spacing:-0.704px">Major section titles</span><span class="type-meta">32px / w400</span></div>
+    <div class="type-row"><span class="type-label">h2</span><span class="type-sample" style="font-size:24px;font-weight:400;line-height:1.33;letter-spacing:-0.288px">Sub-section headings</span><span class="type-meta">24px / w400</span></div>
+    <div class="type-row"><span class="type-label">h3</span><span class="type-sample" style="font-size:20px;font-weight:590;line-height:1.33;letter-spacing:-0.24px">Feature titles</span><span class="type-meta">20px / w590</span></div>
+    <div class="type-row"><span class="type-label">body-lg</span><span class="type-sample" style="font-size:18px;font-weight:400;line-height:1.6;letter-spacing:-0.165px;color:var(--text-secondary)">Introduction text and feature descriptions at comfortable reading pace</span><span class="type-meta">18px / w400</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard reading text for documentation and content</span><span class="type-meta">16px / w400</span></div>
+    <div class="type-row"><span class="type-label">body (510)</span><span class="type-sample" style="font-size:16px;font-weight:510;line-height:1.5">Navigation and labels at signature weight</span><span class="type-meta">16px / w510</span></div>
+    <div class="type-row"><span class="type-label">small</span><span class="type-sample" style="font-size:15px;font-weight:400;line-height:1.6;letter-spacing:-0.165px;color:var(--text-secondary)">Secondary body text</span><span class="type-meta">15px / w400</span></div>
+    <div class="type-row"><span class="type-label">caption-lg</span><span class="type-sample" style="font-size:14px;font-weight:510;line-height:1.5;letter-spacing:-0.182px;color:var(--text-tertiary)">Sub-labels and category headers</span><span class="type-meta">14px / w510</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:13px;font-weight:400;line-height:1.5;letter-spacing:-0.13px;color:var(--text-tertiary)">Metadata, timestamps</span><span class="type-meta">13px / w400</span></div>
+    <div class="type-row"><span class="type-label">label</span><span class="type-sample" style="font-size:12px;font-weight:510;line-height:1.4;color:var(--text-tertiary)">Button text, toolbar labels</span><span class="type-meta">12px / w510</span></div>
+    <div class="type-row"><span class="type-label">mono</span><span class="type-sample" style="font-family:var(--font-mono);font-size:14px;font-weight:400;line-height:1.5;color:var(--text-secondary)">const issue = linear.create();</span><span class="type-meta">14px / mono</span></div>
+  </section>
+
+  <!-- Spacing -->
+  <section class="section">
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-desc">8px base unit with micro-optical adjustments at 7px, 11px, 19px. Precision spacing for dense engineering interfaces.</p>
+
+    <div class="spacing-row"><span class="spacing-label">1</span><div class="spacing-bar" style="width:1px"></div><span class="spacing-value">1px</span></div>
+    <div class="spacing-row"><span class="spacing-label">4</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+    <div class="spacing-row"><span class="spacing-label">7</span><div class="spacing-bar" style="width:7px"></div><span class="spacing-value">7px</span></div>
+    <div class="spacing-row"><span class="spacing-label">8</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">11</span><div class="spacing-bar" style="width:11px"></div><span class="spacing-value">11px</span></div>
+    <div class="spacing-row"><span class="spacing-label">12</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">16</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">19</span><div class="spacing-bar" style="width:19px"></div><span class="spacing-value">19px</span></div>
+    <div class="spacing-row"><span class="spacing-label">20</span><div class="spacing-bar" style="width:20px"></div><span class="spacing-value">20px</span></div>
+    <div class="spacing-row"><span class="spacing-label">24</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">32</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">48</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+    <div class="spacing-row"><span class="spacing-label">64</span><div class="spacing-bar" style="width:64px"></div><span class="spacing-value">64px</span></div>
+    <div class="spacing-row"><span class="spacing-label">80</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+  </section>
+
+  <!-- Border Radius -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Tight, functional rounding. 6px for buttons, 8px for cards, 12px for panels. Full pills for status tags.</p>
+
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:2px"><span class="radius-name">micro</span><span class="radius-val">2px</span></div>
+      <div class="radius-box" style="border-radius:4px"><span class="radius-name">sm</span><span class="radius-val">4px</span></div>
+      <div class="radius-box" style="border-radius:5px"><span class="radius-name">comfortable</span><span class="radius-val">5px</span></div>
+      <div class="radius-box" style="border-radius:6px"><span class="radius-name">md</span><span class="radius-val">6px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span class="radius-name">card</span><span class="radius-val">8px</span></div>
+      <div class="radius-box" style="border-radius:12px"><span class="radius-name">panel</span><span class="radius-val">12px</span></div>
+      <div class="radius-box" style="border-radius:22px"><span class="radius-name">lg</span><span class="radius-val">22px</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span class="radius-name">pill</span><span class="radius-val">9999px</span></div>
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  <section class="section">
+    <h2 class="section-title">Shadow Levels</h2>
+    <p class="section-desc">In dark mode, shadows are subtle -- elevation is communicated through luminance stacking rather than cast shadows. Multi-layer stacks for popovers and dialogs.</p>
+
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none; border:1px solid var(--border-subtle)"><span class="shadow-name">Level 0 - Flat</span><span class="shadow-desc">No shadow. Deepest canvas.</span></div>
+      <div class="shadow-card" style="box-shadow:0 1.2px 0 rgba(0,0,0,0.03)"><span class="shadow-name">Level 1 - Subtle</span><span class="shadow-desc">Toolbar buttons, micro-elevation.</span></div>
+      <div class="shadow-card" style="box-shadow:inset 0 0 12px rgba(0,0,0,0.2)"><span class="shadow-name">Level 2b - Inset</span><span class="shadow-desc">Recessed panels, inner shadow.</span></div>
+      <div class="shadow-card" style="box-shadow:0 0 0 1px rgba(0,0,0,0.2)"><span class="shadow-name">Level 3 - Ring</span><span class="shadow-desc">Border-as-shadow for cards.</span></div>
+      <div class="shadow-card" style="box-shadow:0 2px 4px rgba(0,0,0,0.4)"><span class="shadow-name">Level 4 - Elevated</span><span class="shadow-desc">Floating elements, dropdowns.</span></div>
+      <div class="shadow-card" style="box-shadow:0 8px 2px rgba(0,0,0,0),0 5px 2px rgba(0,0,0,0.01),0 3px 2px rgba(0,0,0,0.04),0 1px 1px rgba(0,0,0,0.07),0 0 1px rgba(0,0,0,0.08)"><span class="shadow-name">Level 5 - Dialog</span><span class="shadow-desc">Multi-layer stack for modals.</span></div>
+      <div class="shadow-card" style="box-shadow:0 4px 12px rgba(0,0,0,0.1)"><span class="shadow-name">Level 6 - Focus</span><span class="shadow-desc">Keyboard focus ring shadow.</span></div>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section class="section">
+    <h2 class="section-title">Component Preview</h2>
+    <p class="section-desc">Linear-styled components demonstrating dark-mode-first precision engineering.</p>
+
+    <div class="component-section">
+      <div class="comp-card">
+        <h3>Buttons</h3>
+        <div class="btn-group" style="margin-bottom:12px">
+          <button class="btn btn-brand">Create issue</button>
+          <button class="btn btn-ghost">Cancel</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-subtle">Settings</button>
+          <button class="btn btn-subtle" style="color:var(--accent-violet)">View all</button>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <h3>Form Input</h3>
+        <div class="input-group">
+          <label class="input-label">Issue title</label>
+          <input type="text" class="input-field" placeholder="What needs to be done?">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Description</label>
+          <input type="text" class="input-field" placeholder="Add more detail...">
+        </div>
+        <button class="btn btn-brand" style="width:100%">Create</button>
+      </div>
+
+      <div class="comp-card" style="grid-column: 1 / -1;">
+        <h3>Issue Card</h3>
+        <div class="sample-card">
+          <div class="sample-card-header">
+            <h4>Implement keyboard shortcuts</h4>
+            <span class="status"><span class="status-dot"></span>In Progress</span>
+          </div>
+          <div class="sample-card-body">
+            <p>Add global keyboard shortcuts for common actions: create issue (C), navigate views (G+V), search (Cmd+K), and quick-assign (A). Follow the existing shortcut architecture.</p>
+            <div class="sample-card-meta">
+              <span class="pill">ENG-1234</span>
+              <span class="pill">Frontend</span>
+              <span style="color:var(--text-quaternary)">Updated 2h ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinterest Brand Tokens Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=#767676&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --surface: #ffffff;
+    --surface-subtle: #f8f8f8;
+    --accent: #e60023;
+    --text-primary: #333333;
+    --text-secondary: #767676;
+    --border: #e5e5e5;
+    --font: Inter, -apple-system, sans-serif;
+  }
+  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  .brand-header {
+    text-align: center; margin-bottom: 80px; padding: 64px 32px;
+    background: var(--surface-subtle); border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
+  .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
+  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .section { margin-bottom: 80px; }
+  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
+  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }
+  .color-swatch .swatch-fill { height: 72px; }
+  .color-swatch .swatch-info { padding: 10px 12px; }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 600; }
+  .type-sample { flex: 1; }
+  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
+  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
+  .spacing-bar { height: 24px; background: var(--accent); border-radius: 4px; opacity: 0.6; }
+  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
+  .radius-box { aspect-ratio: 1; background: var(--surface-subtle); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .radius-box span { font-size: 11px; color: var(--text-secondary); }
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
+  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-subtle); min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .shadow-card .shadow-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 32px; } }
+  .comp-card { padding: 32px; background: var(--surface-subtle); border-radius: 12px; border: 1px solid var(--border); }
+  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .btn { display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
+  .btn-accent { background: var(--accent); color: #ffffff; }
+  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+  .sample-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+  .sample-card-img { height: 120px; background: linear-gradient(135deg, var(--accent) 0%, #fff 100%); }
+  .sample-card-body { padding: 16px; }
+  .sample-card-body h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .sample-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="brand-header">
+    <h1>Pinterest</h1>
+    <p class="aesthetic">visual discovery with red brand accent</p>
+    <div class="tags">
+      <span class="tag">red-brand</span><span class="tag">visual-discovery</span><span class="tag">pin-grid-layout</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">Core brand colors defining the Pinterest visual identity.</p>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#e60023"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#e60023</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#333333"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#333333</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#767676"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#767676</div></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Typography</h2>
+    <p class="section-desc">Type scale for Pinterest branded components.</p>
+    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:40px;font-weight:600;line-height:1.15">Pinterest Design</span><span class="type-meta">48px</span></div>
+    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:28px;font-weight:600;line-height:1.2">Section heading</span><span class="type-meta">32px</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--text-secondary)">Standard body text for content</span><span class="type-meta">16px</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;color:var(--text-secondary)">Caption and metadata</span><span class="type-meta">14px</span></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Spacing</h2>
+    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Components</h2>
+    <p class="section-desc">Sample components styled with Pinterest tokens.</p>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <h3>Buttons</h3>
+        <div class="btn-group" style="margin-bottom:12px">
+          <button class="btn btn-accent">Primary Action</button>
+          <button class="btn btn-outline">Secondary</button>
+        </div>
+      </div>
+      <div class="comp-card">
+        <h3>Content Card</h3>
+        <div class="sample-card">
+          <div class="sample-card-img"></div>
+          <div class="sample-card-body">
+            <h4>Pinterest Feature</h4>
+            <p>A component styled with the Pinterest design system tokens.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

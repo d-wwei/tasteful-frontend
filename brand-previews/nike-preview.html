@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nike Brand Tokens Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --surface: #ffffff;
+    --surface-secondary: #f5f5f5;
+    --surface-dark: #111111;
+    --accent: #111111;
+    --text-primary: #111111;
+    --text-secondary: #707072;
+    --text-disabled: #9e9ea0;
+    --error: #d30005;
+    --success: #007d48;
+    --border: #cacacb;
+    --font: Inter, Helvetica, Arial, sans-serif;
+  }
+  body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.4; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+
+  .brand-header {
+    text-align: center; margin-bottom: 80px; padding: 80px 32px;
+    background: var(--surface-dark); border-radius: 0;
+    background-image: linear-gradient(135deg, #111 0%, #333 100%);
+  }
+  .brand-header h1 { font-size: 96px; font-weight: 700; line-height: 0.9; color: #ffffff; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 16px; }
+  .brand-header .aesthetic { font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .brand-header .tag { font-size: 11px; padding: 6px 16px; background: rgba(255,255,255,0.1); color: #ffffff; border-radius: 30px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .section { margin-bottom: 80px; }
+  .section-title { font-size: 32px; font-weight: 600; line-height: 1.1; margin-bottom: 8px; }
+  .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
+
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e5; }
+  .color-swatch .swatch-fill { height: 72px; }
+  .color-swatch .swatch-info { padding: 10px 12px; }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
+
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid #e5e5e5; }
+  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 500; }
+  .type-sample { flex: 1; }
+  .type-meta { flex: 0 0 50px; font-size: 11px; color: var(--text-secondary); text-align: right; }
+
+  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .spacing-label { flex: 0 0 60px; font-size: 12px; color: var(--text-secondary); text-align: right; }
+  .spacing-bar { height: 24px; background: var(--accent); border-radius: 30px; opacity: 0.15; }
+  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
+
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 16px; }
+  .radius-box { aspect-ratio: 1; background: #f5f5f5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .radius-box span { font-size: 11px; color: var(--text-secondary); }
+
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } .brand-header h1 { font-size: 48px; } }
+
+  .comp-card { padding: 32px; background: #ffffff; border-radius: 8px; border: 1px solid #e5e5e5; }
+  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+
+  .btn { display: inline-flex; align-items: center; padding: 12px 24px; font-size: 16px; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; font-family: var(--font); }
+  .btn-dark { background: #111111; color: #ffffff; border-radius: 30px; }
+  .btn-light { background: #ffffff; color: #111111; border-radius: 30px; border: 1px solid #cacacb; }
+  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .product-card { background: #ffffff; overflow: hidden; }
+  .product-card .product-img { height: 200px; background: #f5f5f5; border-radius: 0; display: flex; align-items: center; justify-content: center; font-size: 48px; color: #e5e5e5; }
+  .product-card .product-body { padding: 12px 0; }
+  .product-card .product-body .category { font-size: 12px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 4px; }
+  .product-card .product-body h4 { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+  .product-card .product-body .price { font-size: 16px; font-weight: 400; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="brand-header">
+    <h1>Nike</h1>
+    <p class="aesthetic">Kinetic retail cathedral with monochromatic precision</p>
+    <div class="tags">
+      <span class="tag">monochromatic-ui</span>
+      <span class="tag">massive-uppercase-display</span>
+      <span class="tag">full-bleed-photography</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">Monochromatic UI where product photography provides all color.</p>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff;border-bottom:1px solid #e5e5e5"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#ffffff</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#111111"></div><div class="swatch-info"><div class="swatch-name">Nike Black</div><div class="swatch-hex">#111111</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#f5f5f5"></div><div class="swatch-info"><div class="swatch-name">secondary</div><div class="swatch-hex">#f5f5f5</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#707072"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#707072</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#d30005"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#d30005</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#007d48"></div><div class="swatch-info"><div class="swatch-name">success</div><div class="swatch-hex">#007d48</div></div></div>
+      <div class="color-swatch"><div class="swatch-fill" style="background:#1151ff"></div><div class="swatch-info"><div class="swatch-name">link</div><div class="swatch-hex">#1151ff</div></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Typography</h2>
+    <p class="section-desc">Nike Futura ND for massive uppercase display. Helvetica Now for everything else.</p>
+    <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:64px;font-weight:700;line-height:0.9;text-transform:uppercase">Just Do It</span><span class="type-meta">96px</span></div>
+    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:32px;font-weight:600;line-height:1.1">Trending Now</span><span class="type-meta">32px</span></div>
+    <div class="type-row"><span class="type-label">card title</span><span class="type-sample" style="font-size:24px;font-weight:500;line-height:1.15">Air Max 90</span><span class="type-meta">24px</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;line-height:1.4;color:#707072">Standard body text for product descriptions</span><span class="type-meta">16px</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:500;line-height:1.4;color:#707072">Product metadata</span><span class="type-meta">14px</span></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Spacing</h2>
+    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:24px"></div><span class="spacing-value">24px</span></div>
+    <div class="spacing-row"><span class="spacing-label">2xl</span><div class="spacing-bar" style="width:32px"></div><span class="spacing-value">32px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:80px"></div><span class="spacing-value">80px</span></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:0"><span>none</span><span>0px</span></div>
+      <div class="radius-box" style="border-radius:4px"><span>subtle</span><span>4px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>standard</span><span>8px</span></div>
+      <div class="radius-box" style="border-radius:30px"><span>pill</span><span>30px</span></div>
+      <div class="radius-box" style="border-radius:50%"><span>circle</span><span>50%</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Components</h2>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <h3>Buttons</h3>
+        <div class="btn-group">
+          <button class="btn btn-dark">Shop Now</button>
+          <button class="btn btn-light">View All</button>
+        </div>
+      </div>
+      <div class="comp-card">
+        <h3>Product Card</h3>
+        <div class="product-card">
+          <div class="product-img">&#128095;</div>
+          <div class="product-body">
+            <p class="category">Men's Shoes</p>
+            <h4>Nike Air Max 90</h4>
+            <p class="price">$130</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

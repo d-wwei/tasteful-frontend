@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotify Brand Tokens Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --surface: #121212;
+    --surface-card: #181818;
+    --surface-elevated: #1f1f1f;
+    --surface-card-alt: #252525;
+    --accent: #1ed760;
+    --accent-hover: #1fdf64;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --error: #f3727f;
+    --warning: #ffa42b;
+    --info: #539df5;
+    --border: #4d4d4d;
+    --border-light: #7c7c7c;
+    --font-body: Inter, -apple-system, Helvetica Neue, sans-serif;
+  }
+
+  body { font-family: var(--font-body); background: var(--surface); color: var(--text-primary); line-height: 1.4; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+
+  .brand-header {
+    text-align: center; margin-bottom: 80px; padding: 64px 32px;
+    background: var(--surface-card); border-radius: 8px;
+  }
+  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 16px; }
+  .brand-header .aesthetic { font-size: 16px; font-weight: 400; color: var(--text-secondary); margin-bottom: 16px; }
+  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .brand-header .tag {
+    font-size: 11px; padding: 6px 16px; background: var(--surface-elevated);
+    color: var(--text-secondary); border-radius: 9999px; font-weight: 700;
+    letter-spacing: 1.4px; text-transform: uppercase;
+  }
+
+  .section { margin-bottom: 80px; }
+  .section-title { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  .section-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 30px; }
+
+  .color-group { margin-bottom: 32px; }
+  .color-group-title { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary); margin-bottom: 12px; font-weight: 700; }
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .color-swatch { border-radius: 8px; overflow: hidden; background: var(--surface-card); }
+  .color-swatch .swatch-fill { height: 72px; }
+  .color-swatch .swatch-info { padding: 10px 12px; }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px; }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-secondary); }
+
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid #282828; }
+  .type-row:last-child { border-bottom: none; }
+  .type-label { flex: 0 0 100px; font-size: 11px; color: var(--text-secondary); text-align: right; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .type-sample { flex: 1; color: var(--text-primary); }
+  .type-meta { flex: 0 0 60px; font-size: 11px; color: var(--text-secondary); text-align: right; }
+
+  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .spacing-label { flex: 0 0 80px; font-size: 12px; color: var(--text-secondary); text-align: right; font-weight: 700; }
+  .spacing-bar { height: 24px; background: var(--accent); border-radius: 9999px; opacity: 0.6; transition: opacity 0.2s; }
+  .spacing-bar:hover { opacity: 1; }
+  .spacing-value { font-size: 11px; color: var(--text-secondary); min-width: 40px; }
+
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 16px; }
+  .radius-box { aspect-ratio: 1; background: var(--surface-elevated); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .radius-box .radius-name { font-size: 11px; color: var(--text-secondary); font-weight: 700; }
+  .radius-box .radius-val { font-size: 10px; color: var(--text-secondary); }
+
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+  .shadow-card { padding: 24px; border-radius: 8px; background: var(--surface-card); min-height: 120px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .shadow-card .shadow-name { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+  .shadow-card .shadow-desc { font-size: 11px; color: var(--text-secondary); }
+
+  .component-section { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  @media (max-width: 768px) {
+    .component-section { grid-template-columns: 1fr; }
+    .brand-header h1 { font-size: 32px; }
+    .type-label { flex: 0 0 70px; font-size: 9px; }
+  }
+
+  .comp-card { padding: 32px; background: var(--surface-card); border-radius: 8px; }
+  .comp-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--font-body); font-size: 14px; font-weight: 700;
+    cursor: pointer; border: none; transition: all 0.2s; text-decoration: none;
+    text-transform: uppercase; letter-spacing: 1.4px;
+  }
+  .btn-green { background: var(--accent); color: #000000; padding: 14px 32px; border-radius: 9999px; }
+  .btn-green:hover { background: var(--accent-hover); transform: scale(1.04); }
+  .btn-dark { background: var(--surface-elevated); color: var(--text-primary); padding: 8px 16px; border-radius: 9999px; }
+  .btn-outline { background: transparent; color: var(--text-primary); padding: 12px 32px; border: 1px solid var(--border-light); border-radius: 9999px; }
+  .btn-play { background: var(--accent); color: #000000; border-radius: 50%; padding: 12px; width: 48px; height: 48px; font-size: 18px; letter-spacing: 0; text-transform: none; }
+  .btn-group { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+
+  .track-row {
+    display: flex; align-items: center; gap: 16px; padding: 8px 12px; border-radius: 4px;
+    transition: background 0.15s;
+  }
+  .track-row:hover { background: rgba(255,255,255,0.1); }
+  .track-num { font-size: 14px; color: var(--text-secondary); width: 24px; text-align: right; }
+  .track-art { width: 40px; height: 40px; background: var(--surface-elevated); border-radius: 4px; }
+  .track-info { flex: 1; }
+  .track-info .track-name { font-size: 16px; font-weight: 400; color: var(--text-primary); }
+  .track-info .track-artist { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
+  .track-duration { font-size: 14px; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="brand-header">
+    <h1>Spotify</h1>
+    <p class="aesthetic">Dark immersive music cocoon with pill geometry</p>
+    <div class="tags">
+      <span class="tag">dark-immersive</span>
+      <span class="tag">green-functional-accent</span>
+      <span class="tag">pill-circle-geometry</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">Near-black immersive surfaces. Spotify Green for functional accents only. Album art provides color.</p>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Surface</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#121212"></div><div class="swatch-info"><div class="swatch-name">surface</div><div class="swatch-hex">#121212</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#181818"></div><div class="swatch-info"><div class="swatch-name">surface-card</div><div class="swatch-hex">#181818</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#1f1f1f"></div><div class="swatch-info"><div class="swatch-name">surface-elevated</div><div class="swatch-hex">#1f1f1f</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#252525"></div><div class="swatch-info"><div class="swatch-name">card-alt</div><div class="swatch-hex">#252525</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Accent & Text</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#1ed760"></div><div class="swatch-info"><div class="swatch-name">accent</div><div class="swatch-hex">#1ed760</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ffffff"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#ffffff</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#b3b3b3"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">#b3b3b3</div></div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <h3 class="color-group-title">Semantic</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-fill" style="background:#f3727f"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#f3727f</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#ffa42b"></div><div class="swatch-info"><div class="swatch-name">warning</div><div class="swatch-hex">#ffa42b</div></div></div>
+        <div class="color-swatch"><div class="swatch-fill" style="background:#539df5"></div><div class="swatch-info"><div class="swatch-name">info</div><div class="swatch-hex">#539df5</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Typography Scale</h2>
+    <p class="section-desc">SpotifyMixUI (CircularSp custom). Inter as web fallback. Compact sizing, bold/regular binary.</p>
+
+    <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:24px;font-weight:700">Your top mixes</span><span class="type-meta">24px</span></div>
+    <div class="type-row"><span class="type-label">feature</span><span class="type-sample" style="font-size:18px;font-weight:600;line-height:1.3">Recently played</span><span class="type-meta">18px</span></div>
+    <div class="type-row"><span class="type-label">body bold</span><span class="type-sample" style="font-size:16px;font-weight:700">Track title</span><span class="type-meta">16px</span></div>
+    <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:16px;font-weight:400;color:#b3b3b3">Standard body text for descriptions</span><span class="type-meta">16px</span></div>
+    <div class="type-row"><span class="type-label">button</span><span class="type-sample" style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.4px">Play now</span><span class="type-meta">14px</span></div>
+    <div class="type-row"><span class="type-label">caption</span><span class="type-sample" style="font-size:14px;font-weight:400;color:#b3b3b3">Artist name &middot; Album</span><span class="type-meta">14px</span></div>
+    <div class="type-row"><span class="type-label">small</span><span class="type-sample" style="font-size:12px;font-weight:400;color:#b3b3b3">12 songs, 42 min</span><span class="type-meta">12px</span></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-desc">Dense app-like spacing. Content packed tightly with dark background providing visual rest.</p>
+
+    <div class="spacing-row"><span class="spacing-label">xs</span><div class="spacing-bar" style="width:4px"></div><span class="spacing-value">4px</span></div>
+    <div class="spacing-row"><span class="spacing-label">sm</span><div class="spacing-bar" style="width:8px"></div><span class="spacing-value">8px</span></div>
+    <div class="spacing-row"><span class="spacing-label">md</span><div class="spacing-bar" style="width:12px"></div><span class="spacing-value">12px</span></div>
+    <div class="spacing-row"><span class="spacing-label">lg</span><div class="spacing-bar" style="width:16px"></div><span class="spacing-value">16px</span></div>
+    <div class="spacing-row"><span class="spacing-label">xl</span><div class="spacing-bar" style="width:20px"></div><span class="spacing-value">20px</span></div>
+    <div class="spacing-row"><span class="spacing-label">section</span><div class="spacing-bar" style="width:48px"></div><span class="spacing-value">48px</span></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Pill (9999px) for buttons, circle (50%) for play controls. Conservative rounding on cards.</p>
+
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:2px"><span class="radius-name">minimal</span><span class="radius-val">2px</span></div>
+      <div class="radius-box" style="border-radius:4px"><span class="radius-name">subtle</span><span class="radius-val">4px</span></div>
+      <div class="radius-box" style="border-radius:6px"><span class="radius-name">standard</span><span class="radius-val">6px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span class="radius-name">comfortable</span><span class="radius-val">8px</span></div>
+      <div class="radius-box" style="border-radius:9999px"><span class="radius-name">pill</span><span class="radius-val">9999px</span></div>
+      <div class="radius-box" style="border-radius:50%"><span class="radius-name">circle</span><span class="radius-val">50%</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Shadow Levels</h2>
+    <p class="section-desc">Heavy shadows for dark surfaces. 0.3-0.5 opacity for visible elevation.</p>
+
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow:none"><span class="shadow-name">Level 0 - Base</span><span class="shadow-desc">Deepest #121212 layer.</span></div>
+      <div class="shadow-card" style="box-shadow:rgba(0,0,0,0.3) 0px 8px 8px"><span class="shadow-name">Level 1 - Medium</span><span class="shadow-desc">Cards and dropdowns.</span></div>
+      <div class="shadow-card" style="box-shadow:rgba(0,0,0,0.5) 0px 8px 24px"><span class="shadow-name">Level 2 - Heavy</span><span class="shadow-desc">Dialogs and overlays.</span></div>
+      <div class="shadow-card" style="box-shadow:rgb(18,18,18) 0px 1px 0px,rgb(124,124,124) 0px 0px 0px 1px inset"><span class="shadow-name">Inset Border</span><span class="shadow-desc">Input border-shadow combo.</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Component Preview</h2>
+    <p class="section-desc">Dark, immersive components with pill buttons and compact typography.</p>
+
+    <div class="component-section">
+      <div class="comp-card">
+        <h3>Buttons</h3>
+        <div class="btn-group" style="margin-bottom:16px">
+          <button class="btn btn-green">Play</button>
+          <button class="btn btn-outline">Follow</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-dark">Podcasts</button>
+          <button class="btn btn-play">&#9654;</button>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <h3>Track List</h3>
+        <div class="track-row">
+          <span class="track-num">1</span>
+          <div class="track-art" style="background:linear-gradient(135deg,#1ed760,#169c46)"></div>
+          <div class="track-info"><span class="track-name">Midnight City</span><br><span class="track-artist">M83</span></div>
+          <span class="track-duration">4:03</span>
+        </div>
+        <div class="track-row">
+          <span class="track-num">2</span>
+          <div class="track-art" style="background:linear-gradient(135deg,#539df5,#2c5aa0)"></div>
+          <div class="track-info"><span class="track-name">Blinding Lights</span><br><span class="track-artist">The Weeknd</span></div>
+          <span class="track-duration">3:20</span>
+        </div>
+        <div class="track-row">
+          <span class="track-num">3</span>
+          <div class="track-art" style="background:linear-gradient(135deg,#f3727f,#c05060)"></div>
+          <div class="track-info"><span class="track-name">Levitating</span><br><span class="track-artist">Dua Lipa</span></div>
+          <span class="track-duration">3:23</span>
+        </div>
+      </div>
+
+      <div class="comp-card" style="grid-column: 1 / -1;">
+        <h3>Now Playing Bar</h3>
+        <div style="display:flex;align-items:center;gap:16px;padding:12px;background:#181818;border-radius:8px">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#1ed760,#169c46);border-radius:4px;flex-shrink:0"></div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Midnight City</div>
+            <div style="font-size:12px;color:#b3b3b3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">M83</div>
+          </div>
+          <button class="btn btn-play" style="width:32px;height:32px;padding:6px;font-size:12px">&#9654;</button>
+          <div style="flex:2;height:4px;background:#4d4d4d;border-radius:2px;position:relative;min-width:100px">
+            <div style="width:40%;height:100%;background:#1ed760;border-radius:2px"></div>
+          </div>
+          <span style="font-size:12px;color:#b3b3b3">1:37 / 4:03</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

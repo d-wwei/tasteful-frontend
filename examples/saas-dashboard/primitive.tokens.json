@@ -1,0 +1,100 @@
+{
+  "color": {
+    "slate-50": { "$value": "#f8fafc", "$type": "color" },
+    "slate-100": { "$value": "#f1f5f9", "$type": "color" },
+    "slate-200": { "$value": "#e2e8f0", "$type": "color" },
+    "slate-300": { "$value": "#cbd5e1", "$type": "color" },
+    "slate-400": { "$value": "#94a3b8", "$type": "color" },
+    "slate-500": { "$value": "#64748b", "$type": "color" },
+    "slate-600": { "$value": "#475569", "$type": "color" },
+    "slate-700": { "$value": "#334155", "$type": "color" },
+    "slate-800": { "$value": "#1e293b", "$type": "color" },
+    "slate-900": { "$value": "#0f172a", "$type": "color" },
+    "slate-950": { "$value": "#020617", "$type": "color" },
+    "coral-400": { "$value": "#f08c6f", "$type": "color" },
+    "coral-500": { "$value": "#e76f51", "$type": "color" },
+    "coral-600": { "$value": "#d4553d", "$type": "color" },
+    "red-500": { "$value": "#ef4444", "$type": "color" },
+    "green-500": { "$value": "#22c55e", "$type": "color" },
+    "amber-500": { "$value": "#f59e0b", "$type": "color" }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "Space Grotesk",
+      "$type": "fontFamily",
+      "$description": "Geometric sans with personality — display/heading"
+    },
+    "font-body": {
+      "$value": "Source Serif 4",
+      "$type": "fontFamily",
+      "$description": "Refined serif for readability — body text"
+    },
+    "font-mono": {
+      "$value": "JetBrains Mono",
+      "$type": "fontFamily",
+      "$description": "Code and data display"
+    },
+    "scale-xs": { "$value": "12px", "$type": "dimension" },
+    "scale-sm": { "$value": "14px", "$type": "dimension" },
+    "scale-base": { "$value": "16px", "$type": "dimension" },
+    "scale-lg": { "$value": "18px", "$type": "dimension" },
+    "scale-xl": { "$value": "24px", "$type": "dimension" },
+    "scale-2xl": { "$value": "32px", "$type": "dimension" },
+    "scale-3xl": { "$value": "48px", "$type": "dimension" },
+    "line-height-tight": { "$value": "1.25", "$type": "number" },
+    "line-height-normal": { "$value": "1.5", "$type": "number" },
+    "line-height-relaxed": { "$value": "1.75", "$type": "number" },
+    "weight-regular": { "$value": "400", "$type": "number" },
+    "weight-medium": { "$value": "500", "$type": "number" },
+    "weight-semibold": { "$value": "600", "$type": "number" },
+    "weight-bold": { "$value": "700", "$type": "number" }
+  },
+  "spacing": {
+    "unit": { "$value": "8px", "$type": "dimension", "$description": "Base grid unit" },
+    "space-1": { "$value": "4px", "$type": "dimension" },
+    "space-2": { "$value": "8px", "$type": "dimension" },
+    "space-3": { "$value": "12px", "$type": "dimension" },
+    "space-4": { "$value": "16px", "$type": "dimension" },
+    "space-6": { "$value": "24px", "$type": "dimension" },
+    "space-8": { "$value": "32px", "$type": "dimension" },
+    "space-10": { "$value": "40px", "$type": "dimension" },
+    "space-12": { "$value": "48px", "$type": "dimension" },
+    "space-16": { "$value": "64px", "$type": "dimension" },
+    "space-20": { "$value": "80px", "$type": "dimension" }
+  },
+  "border": {
+    "radius-sm": { "$value": "4px", "$type": "dimension" },
+    "radius-md": { "$value": "8px", "$type": "dimension" },
+    "radius-lg": { "$value": "16px", "$type": "dimension" },
+    "radius-full": { "$value": "9999px", "$type": "dimension" }
+  },
+  "shadow": {
+    "shadow-sm": {
+      "$value": [{ "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "0px", "color": "#0000000d" }],
+      "$type": "shadow"
+    },
+    "shadow-md": {
+      "$value": [{ "offsetX": "0px", "offsetY": "4px", "blur": "12px", "spread": "-2px", "color": "#0000001a" }],
+      "$type": "shadow"
+    },
+    "shadow-lg": {
+      "$value": [{ "offsetX": "0px", "offsetY": "8px", "blur": "24px", "spread": "-4px", "color": "#00000026" }],
+      "$type": "shadow"
+    }
+  },
+  "motion": {
+    "duration-fast": { "$value": "150ms", "$type": "duration" },
+    "duration-normal": { "$value": "200ms", "$type": "duration" },
+    "duration-slow": { "$value": "300ms", "$type": "duration" },
+    "easing-default": {
+      "$value": [0.16, 1, 0.3, 1],
+      "$type": "cubicBezier",
+      "$description": "Spring-like entrance curve"
+    },
+    "easing-exit": {
+      "$value": [0.4, 0, 1, 1],
+      "$type": "cubicBezier",
+      "$description": "Quick exit curve"
+    }
+  }
+}

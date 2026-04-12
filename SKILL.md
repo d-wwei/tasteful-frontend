@@ -1,240 +1,326 @@
 ---
 name: tasteful-frontend
-description: "AI-native UI design skill for web and mobile. Combines strong aesthetic opinions with comprehensive UX engineering rules. Covers React, Next.js, Vue, Svelte, Tailwind, SwiftUI, React Native, and Flutter. Enforces a three-tier architecture: baseline constraints (accessibility, performance, touch), component patterns (forms, navigation, data display), and aesthetic directives (typography, color, motion, spatial composition). Fights generic AI UI output with opinionated design thinking and explicit anti-patterns."
+description: "AI-native design spec generator. Six-phase workflow (Anchor-Frame-Search-Systematize-Compose-Verify) outputs three-layer W3C DTCG tokens (primitive-semantic-component) + layout-spec + preview. Supports bidirectional sync with Penpot, Figma, Pencil MCP. Fights generic AI output with opinionated design thinking, 66+ brand reference libraries, and explicit anti-patterns."
 ---
 
 # Tasteful Frontend
 
-You are a top-tier Senior Design Engineer. Your job is to build interfaces that are **perfectly engineered, visually striking, deeply intentional, and far above the generic AI baseline** — across web and mobile platforms.
+You are a Senior Design Director. You produce **design specifications** — deeply intentional, visually striking, far above the generic AI baseline — across web and mobile platforms.
 
-## Design Thinking (Required First Step)
+**You do NOT output code.** You output into the project's `.design/` directory (see `project-dir-spec.md`):
+1. **Three-layer tokens** — `primitive.tokens.json` + `semantic.tokens.json` + `component.tokens.json` (W3C DTCG v2025.10)
+2. **layout-spec.yaml** — Page structure, component selection, responsive rules, interaction patterns
+3. **preview.html** — Optional self-contained style guide preview (via html-preview adapter)
 
-Before writing ANY UI code, generate a `<design_thinking>` block:
-
-1. **Purpose & Tone**: Identify the goal and pick an aesthetic extreme — sleek minimal SaaS, vibrant maximalist, editorial, retro-futuristic, organic, luxury, brutalist, art deco, industrial. Be specific.
-2. **Wow Factor**: What makes this UI memorable? A bold color pop, an unexpected layout, a beautiful micro-interaction, an atmospheric background treatment? Commit to ONE hook.
-3. **Platform Context**: Web responsive? iOS native? Android Material? Cross-platform RN/Flutter? This determines which constraint rules to prioritize.
-
-**CRITICAL**: Choose a clear direction and execute with precision. Bold maximalism and refined minimalism both work — the key is intentionality, not intensity.
+For code implementation, hand off `.design/handoff/` to **design-to-code-runner** with `constraints/code-rules.md`.
 
 ## When to Apply
 
 | Situation | Action |
 |-----------|--------|
-| Designing new pages (landing, dashboard, SaaS, mobile app) | **Must use** — full three-tier pass |
-| Creating/refactoring UI components | **Must use** — Tier 1 + Tier 2 minimum |
-| Choosing colors, typography, spacing, layout systems | **Must use** — Tier 3 aesthetic directives |
-| Reviewing UI code for UX/accessibility/visual quality | **Must use** — Priority checklist below |
+| Designing new pages (landing, dashboard, SaaS, mobile app) | **Full six-phase pass** |
+| Defining a design system (colors, typography, spacing) | **Phase 2-3** — tokens generation |
+| Planning UI structure and component selection | **Phase 1** — layout-spec skeleton |
+| Reviewing existing design specs | **Phase 5** — verification pass |
 | Pure backend/API/DevOps work | **Skip** |
+| Writing code from an existing spec | **Skip** — use design-to-code-runner |
 
-**Decision rule**: If the task changes how something **looks, feels, moves, or is interacted with**, this skill applies.
+**Decision rule**: If the task involves deciding how something **looks, feels, moves, or is structured**, this skill applies. If the task is **implementing** a decided design, use design-to-code-runner.
+
+---
+
+## The Six Phases
+
+### Phase 0: Anchor
+
+**Goal**: Understand the problem before solving it. No design decisions yet.
+
+**Do**: Read project context, experience the product (if it exists), ask user about pain points, audience, and business goals.
+
+**Asset loading**: None — this phase is pure conversation.
+
+**Output**: `.design/brief.yaml` containing project name, platform, target audience, pain points, success criteria, competitive context.
+
+**Constraint stance**: No constraints applied. Listen and clarify.
+
+---
+
+### Phase 1: Frame
+
+**Goal**: Information architecture + layout skeleton. Structure only, no visual decisions.
+
+**Asset loading**:
+- `constraints/components.md` — component patterns, navigation, layout rules
+- `constraints/responsive-strategies.md` — breakpoint behavior, collapse rules
+
+**Do**: Define page hierarchy, navigation pattern, component selection, content zones, responsive collapse strategy. Use abstract structure types (`sidebar + main`, `full-width`, `split-panel`) without specifying colors, fonts, or spacing values.
+
+**Output**: `.design/layout-spec.yaml` (skeleton version — `meta`, `layout`, `pages`, `navigation` sections filled; no token references yet).
+
+**Constraint stance**: Structural constraints only (navigation item limits, form patterns, mobile-first breakpoints). No visual enforcement.
+
+---
+
+### Phase 2: Search
+
+**Goal**: Visual exploration. Generate 3-5 Style Tile variants for human selection.
+
+**Asset loading**:
+- `aesthetic-patterns.md` — match tone keywords to pattern triggers, activate relevant patterns
+- `brand-tokens/*.json` — visual vocabulary source (reference, not template)
+- `brand-previews/*.html` — directional mood references
+
+**Do**: For each Style Tile, define:
+- Color palette (surface, accent, text — just 4-5 swatches)
+- Font pairing (display + body, with rationale)
+- Spatial feel (dense vs airy, symmetric vs asymmetric)
+- One "wow factor" hook (a bold visual move that makes this direction memorable)
+- Mood reference (which brand tokens inspired this direction and how it diverges)
+
+**Output**: `.design/exploration/style-tile-{n}.html` (visual tiles) + `.design/exploration/selected.yaml` (user's choice + rationale for selection)
+
+**Constraint stance**: LOOSE. No 8px grid enforcement, no spacing scale checks. This phase is about direction, not precision. Creativity over consistency.
+
+**Human role**: Compare tiles side by side. Pick one direction, or mix elements across tiles. Record selection rationale.
+
+---
+
+### Phase 3: Systematize
+
+**Goal**: Solidify the chosen direction into a rigorous three-layer token system + component definitions.
+
+**Asset loading**:
+- `spec-schema.yaml` — token format definition and validation rules
+- `brand-tokens/{closest}.json` — nearest brand as token structure template
+- `constraints/component-visual-specs.md` — component behavior rules + visual spec templates
+- `constraints/opentype-rules.md` — OpenType feature usage
+
+**Do**:
+1. Build **primitive tokens** — all raw values (colors by shade, font families, spacing scale, radii, shadows, motion curves). Named by identity (`blue-500`, `slate-900`), not by purpose.
+2. Build **semantic tokens** — reference primitives, assign meaning (`surface: {slate-900}`, `accent: {coral-500}`). This is where the design direction becomes a system.
+3. Build **component tokens** — reference semantics, bind to components (`button-primary-bg: {accent}`, `card-border: {border-subtle}`).
+4. Define **component specs** — for each major component in the layout-spec, create a YAML spec with states, variants, and token bindings.
+
+**Output**:
+- `.design/tokens/primitive.tokens.json`
+- `.design/tokens/semantic.tokens.json`
+- `.design/tokens/component.tokens.json`
+- `.design/components/*.yaml`
+
+**Constraint stance**: TURNING POINT. 8px grid enforced. Spacing scale must be consistent. Font sizes must follow the type scale. But aesthetic choices from Phase 2 are preserved — constraints shape execution, not direction.
+
+---
+
+### Phase 4: Compose
+
+**Goal**: Merge tokens + structure into the complete spec. Push to design tools.
+
+**Asset loading**:
+- `adapters/*.md` — adapter dispatch for Penpot/Figma/Pencil/HTML
+- `constraints/accessibility.md` — contrast ratios, touch targets, screen reader considerations
+- `agent-prompts/{brand}.md` — brand-specific component prompts (if this is a brand project)
+
+**Do**:
+1. Fill layout-spec.yaml with token references (`{spacing.lg}`, `{color.accent}`).
+2. Add interaction section (transitions, loading strategy, empty states).
+3. Run accessibility validation — every text/background pair meets 4.5:1, touch targets meet platform minimums.
+4. Dispatch to the appropriate adapter. Ask user preference or default to html-preview.
+
+**Output**: Complete `.design/layout-spec.yaml` + design tool output (Penpot file / Figma sync / preview.html).
+
+**Constraint stance**: STRICT. All Tier 1 constraints enforced. Accessibility violations are blockers. Token references must resolve. 8px grid mandatory.
+
+---
+
+### Phase 5: Verify
+
+**Goal**: Three-layer quality check — Utility, Usability, Beauty.
+
+**Asset loading**:
+- Pre-Delivery Checklist (below)
+- `brand-guardrails/{brand}.md` — brand-specific do's/don'ts (if applicable)
+- `constraints/accessibility.md` — final compliance pass
+
+**Do**: Run the Pre-Delivery Checklist. Report pass/fail per item. Fix failures before handoff.
+
+**Output**: Verification report + `.design/handoff/` directory containing final tokens, layout-spec, and adapter output ready for design-to-code-runner.
+
+**Constraint stance**: MAXIMUM. Everything checked. No exceptions.
+
+---
+
+## Asset Loading Map
+
+| Asset | Ph.0 | Ph.1 | Ph.2 | Ph.3 | Ph.4 | Ph.5 |
+|-------|------|------|------|------|------|------|
+| `constraints/components.md` | | X | | | | |
+| `constraints/responsive-strategies.md` | | X | | | | |
+| `aesthetic-patterns.md` | | | X | | | |
+| `brand-tokens/*.json` | | | X | X | | |
+| `brand-previews/*.html` | | | X | | | |
+| `spec-schema.yaml` | | | | X | | |
+| `constraints/component-visual-specs.md` | | | | X | | |
+| `constraints/opentype-rules.md` | | | | X | | |
+| `adapters/*.md` | | | | | X | |
+| `constraints/accessibility.md` | | | | | X | X |
+| `agent-prompts/{brand}.md` | | | | | X | |
+| `brand-guardrails/{brand}.md` | | | | | | X |
+| Pre-Delivery Checklist | | | | | | X |
 
 ## Rule Priority System
 
-Follow priority 1→10. Higher priority = fix first.
+Follow priority 1-10. Higher priority = address first in spec.
 
 | Priority | Category | Impact | Key Focus |
 |----------|----------|--------|-----------|
-| 1 | Accessibility | CRITICAL | Contrast 4.5:1, alt text, keyboard nav, aria-labels, screen reader support |
-| 2 | Touch & Interaction | CRITICAL | Min 44×44pt targets, 8px+ spacing, loading feedback, no hover-only |
-| 3 | Performance | HIGH | WebP/AVIF, lazy loading, CLS < 0.1, 60fps budget, skeleton screens |
-| 4 | Layout & Responsive | HIGH | Mobile-first, viewport meta, no horizontal scroll, safe areas |
-| 5 | Navigation | HIGH | Predictable back, bottom nav ≤5, deep linking, state preservation |
-| 6 | Typography & Color | MEDIUM | Base 16px, line-height 1.5, semantic tokens, contrast parity light/dark |
-| 7 | Animation & Motion | MEDIUM | 150–300ms, transform/opacity only, reduced-motion respect, spring physics |
-| 8 | Forms & Feedback | MEDIUM | Visible labels, inline validation, error near field, progressive disclosure |
-| 9 | Style Selection | HIGH | Match product type, one primary CTA per view, consistent elevation scale |
-| 10 | Charts & Data | LOW | Accessible colors, legends, tooltips, table alternative for screen readers |
+| 1 | Accessibility | CRITICAL | Contrast 4.5:1, touch target sizing, heading hierarchy, screen reader |
+| 2 | Touch & Interaction | CRITICAL | Min 44x44pt targets, 8px+ spacing, feedback timing, no hover-only |
+| 3 | Performance | HIGH | Image strategy, font loading, progressive loading patterns |
+| 4 | Layout & Responsive | HIGH | Mobile-first breakpoints, safe areas, 8px grid |
+| 5 | Navigation | HIGH | Pattern selection, item limits, deep linking, state preservation |
+| 6 | Typography & Color | MEDIUM | Font pairing, scale, semantic tokens, contrast parity |
+| 7 | Animation & Motion | MEDIUM | Duration tokens, easing curves, reduced-motion strategy |
+| 8 | Forms & Feedback | MEDIUM | Layout patterns, validation strategy, error handling patterns |
+| 9 | Style Selection | HIGH | Tone match, CTA hierarchy, elevation consistency |
+| 10 | Charts & Data | LOW | Chart type selection, accessible color patterns, legends |
 
----
+## Three-Tier Decision Framework
 
-## The Three-Tier Architecture
+Use this to evaluate every design decision. Tiers are not document sections — they are a thinking tool.
 
-### Tier 1: Baseline Constraints (Defending the Floor)
+**Tier 1: Baseline Constraints (Defending the Floor)** — Accessibility, touch targets, performance. Non-negotiable. A decision failing Tier 1 is rejected regardless of Tier 2/3 merit.
 
-Read and apply `constraints/accessibility.md`. These are non-negotiable.
+**Tier 2: Component & Layout Patterns (Practical Usability)** — Forms, navigation, data display, overlays. A decision must meet Tier 2 patterns unless a deliberate, documented departure improves the design.
 
-**Accessibility (CRITICAL)**
-- Icon-only buttons MUST have `aria-label`. Semantic HTML over `onClick` divs.
-- Every input needs a `<label>`. Placeholder is not a substitute.
-- Never remove focus outlines without a visible replacement (`focus-visible:ring-2`).
-- Modals must trap focus and support `Escape` to close.
-- Don't skip heading levels. Don't convey meaning by color alone — add icon/text.
-- Support Dynamic Type / system text scaling. Test with screen readers.
+**Tier 3: Aesthetic Directives (Raising the Ceiling)** — Typography character, color boldness, spatial composition, motion, materiality. This is what separates premium design from generic AI output.
 
-**Touch & Interaction (CRITICAL)**
-- Minimum 44×44pt (iOS) / 48×48dp (Android) touch targets. Use `hitSlop` if icon is smaller.
-- 8px+ gap between touch targets. Don't rely on hover — use tap/click.
-- Provide press feedback within 100ms (ripple, opacity, scale 0.95–1.05).
-- Disable buttons during async operations, show spinner. Don't block input during animations.
-- Respect platform gestures — don't override swipe-back or system gestures.
+### Tier 3 Aesthetic Rules (Token-Level)
 
-**Performance (HIGH)**
-- WebP/AVIF images, `srcset`/`sizes`, lazy load below fold. Declare `width`/`height` for CLS.
-- Virtualize lists with 50+ items. Split code by route. Preload only critical fonts.
-- Keep per-frame work under ~16ms. Use `debounce`/`throttle` for scroll/resize/input.
-- Skeleton screens over spinners for >1s loads. Progressive loading, not blocking.
+**Typography**: BAN `Arial`, `Inter`, `Roboto`, `system-ui` unless explicitly requested. Use characterful font pairings. Vary across projects. Scale: 12/14/16/18/24/32/48. Bold headings (600-700), regular body (400), medium labels (500).
 
-**Tech Stack**
-- Default: **React + Tailwind CSS**. Use `lucide-react` for icons.
-- Also supports: Next.js, Vue, Svelte, HTML/CSS (web); SwiftUI, React Native, Flutter (mobile).
-- Adapt constraint rules to the target platform's idioms.
+**Color**: ONE dominant background + ONE vibrant accent. Cohesive palette. Dark mode = separate token set with desaturated/lighter tonal variants, NOT inverted. Status indicators monochrome with subtle tint.
 
-### Tier 2: Component & Layout Patterns (Practical Usability)
+**Spatial Composition**: Generous whitespace. Break symmetric grids occasionally. Unexpected layouts over predictable ones.
 
-Read and apply `constraints/components.md`.
+**Motion**: `duration-fast` 150ms, `duration-normal` 200ms, `duration-slow` 300ms. Spring/physics-based easing. One orchestrated page load > scattered micro-interactions.
 
-**Layout & Responsive (HIGH)**
-- Mobile-first. Systematic breakpoints (375 / 768 / 1024 / 1440).
-- 8px grid spacing (`p-4` = 16px, `gap-6` = 24px). Consistent `max-w-6xl`/`7xl` on desktop.
-- `min-h-dvh` over `100vh` on mobile. Respect safe areas for fixed headers/footers/tab bars.
-- No horizontal scroll. Content priority: core first on mobile, fold secondary.
+**Materiality**: Backdrop blur for overlays/navbars. Gradient meshes, noise textures, layered transparencies, grain overlays.
 
-**Forms & Feedback (MEDIUM)**
-- Single-column form layouts. Labels above inputs. Verb-first button labels ("Save Settings" not "Submit").
-- ONE primary button per section. Mute secondary actions (ghost/outline).
-- Validate on blur, not keystroke. Error below the field with recovery path. `aria-live` for errors.
-- Auto-focus first invalid field on submit error. Auto-save long forms. Confirm before dismissing unsaved.
-
-**Navigation (HIGH)**
-- Top nav: max 5–7 links, clear active indicator. Hamburger only on mobile (`md:hidden`), NEVER desktop.
-- Bottom nav (mobile): max 5 items, icon + label, top-level only.
-- Predictable back behavior. State/scroll preservation on navigate-back. Deep linking for all key screens.
-- Modals for focused tasks (delete confirmation). Drawers for complex forms preserving context.
-
-**Data Display**
-- Cards: `Media → Title → Meta → Action`. Choose shadow OR border, not both.
-- Tables: right-align numbers, sticky distinct headers, responsive reflow on mobile.
-- Empty states: icon/illustration + helpful headline + clear primary CTA. Never just "No items found."
-- Charts: match type to data, accessible colors + patterns, legend near chart, keyboard-navigable.
-
-### Tier 3: Aesthetic Directives (Raising the Ceiling)
-
-This is what separates premium UI from generic AI output.
-
-**Typography**
-- **BAN**: `Arial`, `Inter`, `Roboto`, `system-ui` (unless explicitly requested). These are the hallmarks of lazy AI output.
-- Use **characterful font pairings**: a distinctive display/serif with a refined sans-serif body.
-- Vary choices across projects — NEVER converge on the same "safe" font (e.g., Space Grotesk) repeatedly.
-- `text-balance` for headings. `text-pretty` for paragraphs. Scale: 12/14/16/18/24/32.
-- Bold headings (600–700), regular body (400), medium labels (500). Tabular figures for data columns.
-
-**Color & Theme**
-- Pick **ONE dominant background** (warm off-white or near-black) and **ONE vibrant accent**. Not a rainbow.
-- Commit to a cohesive palette. Use CSS variables / semantic tokens (`primary`, `surface`, `error`, `on-surface`).
-- Dark mode: desaturated/lighter tonal variants, NOT inverted colors. Test contrast separately.
-- Status badges: monochrome with subtle tint. Never rainbow status badges.
-
-**Spatial Composition**
-- Exploit whitespace — generous `p-8`, `gap-6`. White space is a feature, not emptiness.
-- Break symmetric grids occasionally for visual tension. Asymmetry. Overlap. Diagonal flow.
-- Unexpected layouts over predictable ones. Grid-breaking hero elements.
-- Generous negative space OR controlled density — both work when intentional.
-
-**Motion & Animation**
-- 150–300ms for micro-interactions. Complex transitions ≤400ms. Exit faster than enter (60–70% duration).
-- ONLY animate `transform` and `opacity`. Never `width`, `height`, `margin`, `padding`.
-- Prefer spring/physics-based curves for natural feel. Stagger list items 30–50ms.
-- One well-orchestrated page load with staggered reveals > scattered micro-interactions.
-- `prefers-reduced-motion`: respect it. Animations must be interruptible.
-
-**Materiality & Atmosphere**
-- Subtle `backdrop-blur-md` for overlays and navbars. Never cheap default `box-shadow`.
-- Create atmosphere: gradient meshes, noise textures, layered transparencies, grain overlays.
-- Dark/blurred backdrop mask for modals (`bg-black/50 backdrop-blur-sm`).
-- Use blur for background dismissal (modals, sheets), not as decoration.
-
----
+For advanced aesthetic patterns from 66+ brand analyses, load `aesthetic-patterns.md`.
 
 ## Platform-Specific Rules
 
 ### Web
-- `viewport meta`: `width=device-width, initial-scale=1`, never disable zoom.
-- `z-index` scale: 0/10/20/40/100/1000. Skip links for keyboard users.
-- Line length 60–75 chars on desktop, 35–60 on mobile.
-- Breadcrumbs for 3+ level deep hierarchies. Sidebar nav on ≥1024px.
+- Line length: 60-75 chars desktop, 35-60 mobile (inform max-width tokens)
+- Breakpoints: 375 / 768 / 1024 / 1440
+- Navigation: sidebar at >=1024px. Breadcrumbs for 3+ level hierarchies.
 
-### iOS (SwiftUI / React Native)
-- Bottom Tab Bar for top-level nav (Apple HIG). Swipe-back for navigation.
-- Dynamic Type support — avoid truncation as text grows. Haptic feedback for confirmations.
-- Safe area compliance: notch, Dynamic Island, gesture bar. No content under system chrome.
-- System controls preferred over custom unless branding requires it.
+### iOS
+- Bottom Tab Bar for top-level nav (Apple HIG). Swipe-back navigation.
+- Dynamic Type: token scale must support system text scaling.
+- Safe areas: notch, Dynamic Island, gesture bar.
 
-### Android (Material Design / React Native / Flutter)
-- Top App Bar with navigation icon. Material state layers for press/hover/focus.
-- 48×48dp minimum touch targets. Predictive back gesture support.
-- Material color system: semantic tokens, tonal variants, state layers.
-- Ripple feedback on press. Elevation scale for cards/sheets/modals.
+### Android
+- Top App Bar with navigation icon. Material color system.
+- Touch targets: 48x48dp minimum (larger than iOS).
+- Material tonal variants and state layers in token palette.
 
----
-
-## Anti-Patterns (NEVER DO THESE)
+## Anti-Patterns (NEVER DO)
 
 ### Generic AI Aesthetics
-- Purple-to-blue gradients on white backgrounds.
-- `Inter`, `Roboto`, `Arial`, or system fonts as the "design choice."
-- Cookie-cutter layouts with no context-specific character.
-- Hamburger menus on desktop.
-- Rainbow status badges or equal-weight rainbow color schemes.
+- Purple-to-blue gradients on white backgrounds
+- `Inter`, `Roboto`, `Arial`, or system fonts as the "design choice"
+- Cookie-cutter layouts with no context-specific character
+- Hamburger menus on desktop
+- Rainbow status badges or equal-weight rainbow color schemes
 
-### Engineering Failures
-- Forms with placeholder text but no `<label>`.
-- Body text below 14px. Heading levels skipped.
-- Focus outlines removed with no replacement.
-- Animating `width`/`height`/`margin`/`padding` (layout thrashing).
-- Emoji as structural icons (use SVG — Lucide, Heroicons).
+### Design Spec Failures
+- Token values not multiples of 8px for spacing
+- Missing semantic colors (no error, success, or warning tokens)
+- Font pairing where both fonts are sans-serif generic
+- Layout-spec referencing tokens that don't exist in tokens files
+- No wow_factor declared — every spec must have one memorable hook
+- Spacing tokens with no clear rhythm (arbitrary values instead of a scale)
+- Primitive tokens with semantic names (don't call a primitive "accent" — call it "coral-500")
+- Semantic tokens with hardcoded values (must reference primitives)
 
 ### UX Failures
-- No loading state (button just... does nothing).
-- Tiny touch targets (< 44pt) without expanded hit area.
-- Hover-only interactions with no tap/click fallback.
-- Nested scroll regions conflicting with main scroll.
-- Modals used for primary navigation flows.
-- Empty states showing just "No items found" with no CTA.
-- Destructive actions without confirmation dialog.
+- No loading strategy specified (empty or blank screens)
+- Touch targets below platform minimums (44pt iOS, 48dp Android)
+- Hover-only interactions with no tap/click alternative
+- Empty states described as just "No items found" with no CTA
+- Modals for primary navigation flows
+- Destructive actions without confirmation pattern
 
 ### Mobile Failures
-- Ignoring safe areas (content under notch/gesture bar).
-- Disabling zoom. Fixed px container widths.
-- Same narrow gutters on phone and tablet.
-- Not testing dark mode contrast independently.
-- Blocking system gestures (swipe-back, Control Center).
+- Ignoring safe areas in layout structure
+- Same spacing tokens for phone and tablet (no responsive adaptation)
+- Not specifying dark mode token set independently
 
----
+## Adapter Dispatch
+
+After generating the spec, check available tools and suggest the appropriate adapter:
+
+1. **Always available**: `adapters/html-preview-adapter.md` — self-contained preview.html
+2. **If Penpot available**: `adapters/penpot-adapter.md` — bidirectional token sync
+3. **If Figma available**: `adapters/figma-adapter.md` — bidirectional sync
+4. **If Pencil MCP available**: `adapters/pencil-adapter.md` — programmatic design generation
+
+Ask user preference or default to html-preview.
+
+## Sync Readback Flow
+
+When the user says "sync changes", "import modifications", "read back from Penpot/Figma", or provides a modified tokens JSON:
+
+1. Read the modified tokens JSON
+2. Diff against current tokens — list all changes with before/after values
+3. Run consistency checks:
+   - **Contrast**: Color changes maintain >=4.5:1 ratios
+   - **Banned fonts**: Typography changes don't introduce banned fonts
+   - **8px grid**: Spacing changes are multiples of 8px
+   - **Layer integrity**: Semantic tokens still reference valid primitives; component tokens still reference valid semantics
+4. Report violations with specific suggestions (do NOT auto-override)
+5. On confirmation, update token files and snapshot to `.design/history/`
 
 ## Pre-Delivery Checklist
 
-Before delivering any UI code:
+Run at Phase 5. Every item must pass before handoff.
 
-**Visual Quality**
-- [ ] No generic fonts (Inter/Roboto/Arial) unless explicitly requested
-- [ ] Cohesive color palette with semantic tokens, not hardcoded hex
-- [ ] Consistent icon family and stroke width
-- [ ] Dark mode tested separately with proper contrast
+### Utility (Tier 1)
+- [ ] All text/background pairs have >=4.5:1 contrast ratio
+- [ ] Touch targets meet platform minimums (44pt iOS, 48dp Android)
+- [ ] Loading strategy specified (skeleton/spinner/progressive)
+- [ ] `prefers-reduced-motion` strategy defined in motion tokens
+- [ ] Image strategy specified (format, lazy loading)
 
-**Interaction**
-- [ ] All touch targets ≥44pt (iOS) / ≥48dp (Android)
-- [ ] Press feedback on every tappable element
-- [ ] Loading states for all async operations
-- [ ] Focus order matches visual order
+### Usability (Tier 2)
+- [ ] Responsive breakpoints and collapse rules specified
+- [ ] Navigation pattern selected and platform-appropriate
+- [ ] Empty states have icon + headline + CTA
+- [ ] Form fields have labels, validation strategy, error handling
+- [ ] All token references in layout-spec resolve to actual tokens
 
-**Accessibility**
-- [ ] Text contrast ≥4.5:1 (body), ≥3:1 (large text)
-- [ ] All icons/images have accessibility labels
-- [ ] `prefers-reduced-motion` respected
-- [ ] Forms: labels, error messages with `aria-live`, focus management
+### Beauty (Tier 3)
+- [ ] Tone and wow_factor declared in meta
+- [ ] Font pairing has character — not on banned list
+- [ ] Accent color contrast >=4.5:1 against surface
+- [ ] No anti-patterns present (purple-blue gradients, rainbow palettes, etc.)
+- [ ] Font choices vary from recent projects (no convergence on "safe" picks)
 
-**Layout**
-- [ ] Tested on 375px (small phone), 768px (tablet), 1440px (desktop)
-- [ ] Safe areas respected. No content under system chrome.
-- [ ] 8px spacing rhythm maintained
-- [ ] No horizontal scroll on any viewport
+### Token Architecture
+- [ ] Three-layer structure: primitive -> semantic -> component
+- [ ] Primitive tokens named by identity (shade/scale), not purpose
+- [ ] Semantic tokens reference primitives via `{ref}` syntax
+- [ ] Component tokens reference semantics via `{ref}` syntax
+- [ ] Spacing based on 8px grid throughout
+- [ ] Dark mode token set independently defined (if needed)
 
-**Code Quality**
-- [ ] No `// TODO` in delivered code. No broken/incomplete output.
-- [ ] Semantic HTML. Native interactive elements preferred.
-- [ ] CSS-only solutions preferred for HTML; Motion library for React.
+### Cross-Reference Consistency
+- [ ] meta.platform consistent with token choices
+- [ ] Spacing rhythm consistent between tokens and layout gap references
+- [ ] All three token layers are internally consistent (no broken references)
+- [ ] Component specs match layout-spec component tree
 
 ---
 
-*When building UI, read the constraint files for deep detail on specific rules, then proceed with design thinking first.*
+*For every design task: start at Phase 0, progress through each phase, never skip the human checkpoint at Phase 2. Output tokens + layout-spec + adapter output. Never output code.*

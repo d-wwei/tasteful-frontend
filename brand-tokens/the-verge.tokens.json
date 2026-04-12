@@ -1,0 +1,252 @@
+{
+  "$extensions": {
+    "brand": "the-verge",
+    "source": "awesome-design-md",
+    "aesthetic": "tech media with bold editorial voice",
+    "key-characteristics": [
+      "bold-editorial",
+      "tech-media",
+      "high-contrast"
+    ]
+  },
+  "color": {
+    "surface": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Primary background"
+    },
+    "surface-subtle": {
+      "$value": "#f8f8f8",
+      "$type": "color",
+      "$description": "Secondary surface"
+    },
+    "accent": {
+      "$value": "#e3120b",
+      "$type": "color",
+      "$description": "Primary accent color"
+    },
+    "accent-hover": {
+      "$value": "#e3120b",
+      "$type": "color",
+      "$description": "Accent hover state"
+    },
+    "text-primary": {
+      "$value": "#1a1a1a",
+      "$type": "color",
+      "$description": "Primary text"
+    },
+    "text-secondary": {
+      "$value": "#6b6b6b",
+      "$type": "color",
+      "$description": "Secondary text"
+    },
+    "text-on-accent": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Text on accent"
+    },
+    "error": {
+      "$value": "#e3120b",
+      "$type": "color",
+      "$description": "Error state"
+    },
+    "success": {
+      "$value": "#2ecc71",
+      "$type": "color",
+      "$description": "Success state"
+    },
+    "border": {
+      "$value": "#e5e5e5",
+      "$type": "color",
+      "$description": "Default border"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "Inter, -apple-system, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Display font"
+    },
+    "font-body": {
+      "$value": "Inter, -apple-system, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body font"
+    },
+    "scale-display": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Display"
+    },
+    "scale-section": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Section"
+    },
+    "scale-base": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Body"
+    },
+    "scale-caption": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Caption"
+    },
+    "scale-small": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Small"
+    },
+    "line-height-tight": {
+      "$value": "1.15",
+      "$type": "number",
+      "$description": "Tight"
+    },
+    "line-height-normal": {
+      "$value": "1.50",
+      "$type": "number",
+      "$description": "Normal"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Regular"
+    },
+    "weight-medium": {
+      "$value": "500",
+      "$type": "number",
+      "$description": "Medium"
+    },
+    "weight-semibold": {
+      "$value": "600",
+      "$type": "number",
+      "$description": "Semibold"
+    }
+  },
+  "spacing": {
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base unit"
+    },
+    "xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Small"
+    },
+    "md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Medium"
+    },
+    "lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large"
+    },
+    "xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Extra large"
+    },
+    "2xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Double extra large"
+    },
+    "section-gap": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "Section spacing"
+    },
+    "container-max": {
+      "$value": "1200px",
+      "$type": "dimension",
+      "$description": "Max container width"
+    }
+  },
+  "border": {
+    "radius-standard": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "Standard radius"
+    },
+    "radius-pill": {
+      "$value": "9999px",
+      "$type": "dimension",
+      "$description": "Pill"
+    }
+  },
+  "shadow": {
+    "level-0": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Flat"
+    },
+    "level-1": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "8px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.08)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Subtle"
+    }
+  },
+  "motion": {
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Fast"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Normal"
+    },
+    "easing-default": {
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Ease"
+    }
+  },
+  "breakpoint": {
+    "mobile": {
+      "$value": "640px",
+      "$type": "dimension",
+      "$description": "Mobile"
+    },
+    "tablet": {
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Tablet"
+    },
+    "desktop": {
+      "$value": "1024px",
+      "$type": "dimension",
+      "$description": "Desktop"
+    }
+  }
+}

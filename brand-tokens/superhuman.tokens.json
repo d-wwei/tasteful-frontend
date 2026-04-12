@@ -1,0 +1,262 @@
+{
+  "$extensions": {
+    "brand": "superhuman",
+    "source": "awesome-design-md",
+    "aesthetic": "dark speed-optimized interface with purple energy",
+    "key-characteristics": [
+      "dark-speed-ui",
+      "purple-gradient-accent",
+      "keyboard-first"
+    ]
+  },
+  "color": {
+    "surface": {
+      "$value": "#1a1a2e",
+      "$type": "color",
+      "$description": "Deep navy-black background"
+    },
+    "surface-subtle": {
+      "$value": "#252547",
+      "$type": "color",
+      "$description": "Elevated dark surface"
+    },
+    "surface-elevated": {
+      "$value": "#2d2d55",
+      "$type": "color",
+      "$description": "Card surfaces"
+    },
+    "accent": {
+      "$value": "#7c5cfc",
+      "$type": "color",
+      "$description": "Superhuman Purple \u2014 primary accent"
+    },
+    "accent-hover": {
+      "$value": "#9b7dff",
+      "$type": "color",
+      "$description": "Lighter purple hover"
+    },
+    "text-primary": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "White primary text"
+    },
+    "text-secondary": {
+      "$value": "#a0a0b8",
+      "$type": "color",
+      "$description": "Muted lavender-gray"
+    },
+    "text-on-accent": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "White on purple"
+    },
+    "error": {
+      "$value": "#ff5c5c",
+      "$type": "color",
+      "$description": "Error red"
+    },
+    "success": {
+      "$value": "#4dd675",
+      "$type": "color",
+      "$description": "Success green"
+    },
+    "border": {
+      "$value": "rgba(255,255,255,0.08)",
+      "$type": "color",
+      "$description": "Subtle white border"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "-apple-system, BlinkMacSystemFont, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Display/heading font"
+    },
+    "font-body": {
+      "$value": "-apple-system, BlinkMacSystemFont, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body/UI font"
+    },
+    "scale-display": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Display \u2014 hero headlines"
+    },
+    "scale-section": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Section headings"
+    },
+    "scale-base": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Standard body"
+    },
+    "scale-caption": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Captions"
+    },
+    "scale-small": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Small text"
+    },
+    "line-height-tight": {
+      "$value": "1.15",
+      "$type": "number",
+      "$description": "Tight \u2014 headings"
+    },
+    "line-height-normal": {
+      "$value": "1.50",
+      "$type": "number",
+      "$description": "Normal \u2014 body"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Regular"
+    },
+    "weight-medium": {
+      "$value": "500",
+      "$type": "number",
+      "$description": "Medium"
+    },
+    "weight-semibold": {
+      "$value": "600",
+      "$type": "number",
+      "$description": "Semibold"
+    }
+  },
+  "spacing": {
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Small"
+    },
+    "md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Medium"
+    },
+    "lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large"
+    },
+    "xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Extra large"
+    },
+    "2xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Double extra large"
+    },
+    "section-gap": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "Section spacing"
+    },
+    "container-max": {
+      "$value": "1200px",
+      "$type": "dimension",
+      "$description": "Max container width"
+    }
+  },
+  "border": {
+    "radius-standard": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Standard radius"
+    },
+    "radius-comfortable": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Comfortable radius"
+    },
+    "radius-pill": {
+      "$value": "9999px",
+      "$type": "dimension",
+      "$description": "Pill shape"
+    }
+  },
+  "shadow": {
+    "level-0": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Flat"
+    },
+    "level-1": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "8px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.08)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Subtle elevation"
+    }
+  },
+  "motion": {
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Quick interactions"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Standard transitions"
+    },
+    "easing-default": {
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Standard ease"
+    }
+  },
+  "breakpoint": {
+    "mobile": {
+      "$value": "640px",
+      "$type": "dimension",
+      "$description": "Mobile"
+    },
+    "tablet": {
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Tablet"
+    },
+    "desktop": {
+      "$value": "1024px",
+      "$type": "dimension",
+      "$description": "Desktop"
+    }
+  }
+}

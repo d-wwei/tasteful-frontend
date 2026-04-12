@@ -1,0 +1,735 @@
+{
+  "$extensions": {
+    "brand": "linear",
+    "source": "awesome-design-md",
+    "aesthetic": "darkness as native medium, precision engineering",
+    "key-characteristics": [
+      "dark-mode-first",
+      "signature-weight-510",
+      "violet-accent-system",
+      "inter-variable-cv01-ss03",
+      "luminance-stacking-elevation",
+      "semi-transparent-white-borders"
+    ]
+  },
+
+  "color": {
+    "surface": {
+      "$value": "#08090a",
+      "$type": "color",
+      "$description": "Primary background — dark canvas from which content emerges"
+    },
+    "surface-subtle": {
+      "$value": "#0f1011",
+      "$type": "color",
+      "$description": "Subtle surface variation — panel and sidebar backgrounds"
+    },
+    "accent": {
+      "$value": "#5e6ad2",
+      "$type": "color",
+      "$description": "Primary brand accent — Linear indigo, CTAs and interactive highlights"
+    },
+    "error": {
+      "$value": "#e5484d",
+      "$type": "color",
+      "$description": "Error and destructive action state — warm red"
+    },
+    "success": {
+      "$value": "#27a644",
+      "$type": "color",
+      "$description": "Success and confirmation state — green"
+    },
+    "surface-marketing-black": {
+      "$value": "#010102",
+      "$type": "color",
+      "$description": "Deepest background — hero sections, marketing pages. Near-pure black with imperceptible blue-cool undertone"
+    },
+    "surface-marketing": {
+      "$value": "#08090a",
+      "$type": "color",
+      "$description": "Primary marketing background — the dark canvas from which content emerges"
+    },
+    "surface-panel": {
+      "$value": "#0f1011",
+      "$type": "color",
+      "$description": "Sidebar and panel backgrounds. One step up from marketing black"
+    },
+    "surface-elevated": {
+      "$value": "#191a1b",
+      "$type": "color",
+      "$description": "Elevated surface areas — card backgrounds, dropdowns, Level 3"
+    },
+    "surface-secondary": {
+      "$value": "#28282c",
+      "$type": "color",
+      "$description": "Lightest dark surface — hover states, slightly elevated components"
+    },
+    "surface-translucent-lowest": {
+      "$value": "rgba(255,255,255,0.02)",
+      "$type": "color",
+      "$description": "Near-invisible translucent surface — ghost button backgrounds, card defaults"
+    },
+    "surface-translucent-subtle": {
+      "$value": "rgba(255,255,255,0.03)",
+      "$type": "color",
+      "$description": "Barely visible translucent surface — icon button backgrounds"
+    },
+    "surface-translucent-low": {
+      "$value": "rgba(255,255,255,0.04)",
+      "$type": "color",
+      "$description": "Subtle translucent surface — subtle button backgrounds"
+    },
+    "surface-translucent-mid": {
+      "$value": "rgba(255,255,255,0.05)",
+      "$type": "color",
+      "$description": "Standard translucent surface — toolbar buttons, badges, card hover"
+    },
+
+    "text-primary": {
+      "$value": "#f7f8f8",
+      "$type": "color",
+      "$description": "Near-white with barely-warm cast — default text. Not pure white, prevents eye strain on dark backgrounds"
+    },
+    "text-secondary": {
+      "$value": "#d0d6e0",
+      "$type": "color",
+      "$description": "Cool silver-gray — body text, descriptions, secondary content"
+    },
+    "text-tertiary": {
+      "$value": "#8a8f98",
+      "$type": "color",
+      "$description": "Muted gray — placeholders, metadata, de-emphasized content"
+    },
+    "text-quaternary": {
+      "$value": "#62666d",
+      "$type": "color",
+      "$description": "Most subdued text — timestamps, disabled states, subtle labels"
+    },
+    "text-ghost-button": {
+      "$value": "#e2e4e7",
+      "$type": "color",
+      "$description": "Near-white text for ghost buttons"
+    },
+    "text-on-brand": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Pure white text on brand indigo CTA buttons"
+    },
+
+    "accent-brand-indigo": {
+      "$value": "#5e6ad2",
+      "$type": "color",
+      "$description": "Primary brand color — CTA button backgrounds, brand marks, key interactive surfaces"
+    },
+    "accent-violet": {
+      "$value": "#7170ff",
+      "$type": "color",
+      "$description": "Brighter variant for interactive elements — links, active states, selected items"
+    },
+    "accent-hover": {
+      "$value": "#828fff",
+      "$type": "color",
+      "$description": "Lighter, more saturated variant for hover states on accent elements"
+    },
+    "accent-security-lavender": {
+      "$value": "#7a7fad",
+      "$type": "color",
+      "$description": "Muted indigo for security-related UI elements"
+    },
+
+    "status-green": {
+      "$value": "#27a644",
+      "$type": "color",
+      "$description": "Primary success/active status — in-progress indicators"
+    },
+    "status-emerald": {
+      "$value": "#10b981",
+      "$type": "color",
+      "$description": "Secondary success — pill badges, completion states"
+    },
+
+    "border-primary": {
+      "$value": "#23252a",
+      "$type": "color",
+      "$description": "Solid dark border for prominent separations"
+    },
+    "border-secondary": {
+      "$value": "#34343a",
+      "$type": "color",
+      "$description": "Slightly lighter solid border"
+    },
+    "border-tertiary": {
+      "$value": "#3e3e44",
+      "$type": "color",
+      "$description": "Lightest solid border variant"
+    },
+    "border-subtle": {
+      "$value": "rgba(255,255,255,0.05)",
+      "$type": "color",
+      "$description": "Ultra-subtle semi-transparent border — the default for most elements"
+    },
+    "border-standard": {
+      "$value": "rgba(255,255,255,0.08)",
+      "$type": "color",
+      "$description": "Standard semi-transparent border for cards, inputs, code blocks"
+    },
+    "border-ghost-button": {
+      "$value": "rgb(36,40,44)",
+      "$type": "color",
+      "$description": "Ghost button border"
+    },
+    "border-pill": {
+      "$value": "rgb(35,37,42)",
+      "$type": "color",
+      "$description": "Pill and neutral badge border"
+    },
+    "line-tint": {
+      "$value": "#141516",
+      "$type": "color",
+      "$description": "Nearly invisible divider line for subtlest divisions"
+    },
+    "line-tertiary": {
+      "$value": "#18191a",
+      "$type": "color",
+      "$description": "Slightly more visible divider line"
+    },
+
+    "overlay-primary": {
+      "$value": "rgba(0,0,0,0.85)",
+      "$type": "color",
+      "$description": "Modal/dialog backdrop — extremely dark for focus isolation"
+    },
+
+    "light-background": {
+      "$value": "#f7f8f8",
+      "$type": "color",
+      "$description": "Page background in light mode contexts"
+    },
+    "light-surface": {
+      "$value": "#f3f4f5",
+      "$type": "color",
+      "$description": "Subtle surface tinting in light mode"
+    },
+    "light-surface-alt": {
+      "$value": "#f5f6f7",
+      "$type": "color",
+      "$description": "Alternative surface tinting in light mode"
+    },
+    "light-border": {
+      "$value": "#d0d6e0",
+      "$type": "color",
+      "$description": "Visible border in light mode contexts"
+    },
+    "light-border-alt": {
+      "$value": "#e6e6e6",
+      "$type": "color",
+      "$description": "Alternative lighter border in light mode"
+    },
+    "light-card-surface": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Card surfaces and highlights in light mode"
+    }
+  },
+
+  "typography": {
+    "font-primary": {
+      "$value": "Inter Variable, SF Pro Display, -apple-system, system-ui, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Primary typeface — Inter Variable with cv01/ss03 OpenType features for geometric alternates"
+    },
+    "font-mono": {
+      "$value": "Berkeley Mono, ui-monospace, SF Mono, Menlo, monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace typeface for code and technical labels"
+    },
+    "opentype-features": {
+      "$value": "\"cv01\", \"ss03\"",
+      "$type": "fontFeature",
+      "$description": "Required OpenType features — cv01 (single-story a), ss03 (cleaner geometric letterforms). Non-negotiable for Linear identity"
+    },
+
+    "weight-light": {
+      "$value": 300,
+      "$type": "number",
+      "$description": "Light weight — deliberately de-emphasized contexts only"
+    },
+    "weight-regular": {
+      "$value": 400,
+      "$type": "number",
+      "$description": "Regular weight — reading text, body copy"
+    },
+    "weight-signature": {
+      "$value": 510,
+      "$type": "number",
+      "$description": "Linear's signature weight — between regular (400) and medium (500). Default emphasis for UI text, navigation, labels"
+    },
+    "weight-semibold": {
+      "$value": 590,
+      "$type": "number",
+      "$description": "Semibold — strong emphasis, announcements. Maximum weight in the system (no 700 bold)"
+    },
+
+    "scale-display-xl": { "$value": "72px", "$type": "dimension", "$description": "4.50rem — Hero headlines, maximum impact" },
+    "scale-display-lg": { "$value": "64px", "$type": "dimension", "$description": "4.00rem — Secondary hero text" },
+    "scale-display": { "$value": "48px", "$type": "dimension", "$description": "3.00rem — Section headlines" },
+    "scale-h1": { "$value": "32px", "$type": "dimension", "$description": "2.00rem — Major section titles" },
+    "scale-h2": { "$value": "24px", "$type": "dimension", "$description": "1.50rem — Sub-section headings" },
+    "scale-h3": { "$value": "20px", "$type": "dimension", "$description": "1.25rem — Feature titles, card headers" },
+    "scale-body-lg": { "$value": "18px", "$type": "dimension", "$description": "1.13rem — Introduction text, feature descriptions" },
+    "scale-body-emphasis": { "$value": "17px", "$type": "dimension", "$description": "1.06rem — Emphasized body, sub-headings in content" },
+    "scale-body": { "$value": "16px", "$type": "dimension", "$description": "1.00rem — Standard reading text" },
+    "scale-small": { "$value": "15px", "$type": "dimension", "$description": "0.94rem — Secondary body text" },
+    "scale-caption-lg": { "$value": "14px", "$type": "dimension", "$description": "0.88rem — Sub-labels, category headers, mono body" },
+    "scale-caption": { "$value": "13px", "$type": "dimension", "$description": "0.81rem — Metadata, timestamps, navigation links" },
+    "scale-label": { "$value": "12px", "$type": "dimension", "$description": "0.75rem — Button text, small labels, toolbar text" },
+    "scale-micro": { "$value": "11px", "$type": "dimension", "$description": "0.69rem — Tiny labels" },
+    "scale-tiny": { "$value": "10px", "$type": "dimension", "$description": "0.63rem — Overline text, status dots, sometimes uppercase" },
+
+    "tracking-display-xl": { "$value": "-1.584px", "$type": "dimension", "$description": "Letter-spacing at 72px — aggressive compression" },
+    "tracking-display-lg": { "$value": "-1.408px", "$type": "dimension", "$description": "Letter-spacing at 64px" },
+    "tracking-display": { "$value": "-1.056px", "$type": "dimension", "$description": "Letter-spacing at 48px" },
+    "tracking-h1": { "$value": "-0.704px", "$type": "dimension", "$description": "Letter-spacing at 32px" },
+    "tracking-h2": { "$value": "-0.288px", "$type": "dimension", "$description": "Letter-spacing at 24px" },
+    "tracking-h3": { "$value": "-0.24px", "$type": "dimension", "$description": "Letter-spacing at 20px" },
+    "tracking-body-lg": { "$value": "-0.165px", "$type": "dimension", "$description": "Letter-spacing at 18px and 15px" },
+    "tracking-caption-lg": { "$value": "-0.182px", "$type": "dimension", "$description": "Letter-spacing at 14px" },
+    "tracking-caption": { "$value": "-0.13px", "$type": "dimension", "$description": "Letter-spacing at 13px" },
+    "tracking-tiny": { "$value": "-0.15px", "$type": "dimension", "$description": "Letter-spacing at 10px" },
+    "tracking-normal": { "$value": "0px", "$type": "dimension", "$description": "Normal letter-spacing — body (16px) and below where not specified" },
+
+    "line-height-display": { "$value": 1.00, "$type": "number", "$description": "Tight — display and hero headlines (48px+)" },
+    "line-height-h1": { "$value": 1.13, "$type": "number", "$description": "Tight — major section titles (32px)" },
+    "line-height-heading": { "$value": 1.33, "$type": "number", "$description": "Standard heading line-height (20px–24px)" },
+    "line-height-body": { "$value": 1.50, "$type": "number", "$description": "Standard body text, captions, labels" },
+    "line-height-relaxed": { "$value": 1.60, "$type": "number", "$description": "Relaxed — body large, small text, comfortable reading" },
+    "line-height-label": { "$value": 1.40, "$type": "number", "$description": "Labels, micro text, mono labels" },
+    "line-height-small-light": { "$value": 1.47, "$type": "number", "$description": "De-emphasized body at 15px weight 300" },
+    "line-height-link-medium": { "$value": 2.67, "$type": "number", "$description": "Spaced navigation links at 15px weight 510" },
+
+    "composite-display-xl": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "72px",
+        "fontWeight": 510,
+        "lineHeight": 1.00,
+        "letterSpacing": "-1.584px"
+      },
+      "$type": "typography",
+      "$description": "Hero headlines — maximum impact, aggressive compression"
+    },
+    "composite-display-lg": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "64px",
+        "fontWeight": 510,
+        "lineHeight": 1.00,
+        "letterSpacing": "-1.408px"
+      },
+      "$type": "typography",
+      "$description": "Secondary hero text"
+    },
+    "composite-display": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "48px",
+        "fontWeight": 510,
+        "lineHeight": 1.00,
+        "letterSpacing": "-1.056px"
+      },
+      "$type": "typography",
+      "$description": "Section headlines"
+    },
+    "composite-h1": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "32px",
+        "fontWeight": 400,
+        "lineHeight": 1.13,
+        "letterSpacing": "-0.704px"
+      },
+      "$type": "typography",
+      "$description": "Major section titles"
+    },
+    "composite-h2": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "24px",
+        "fontWeight": 400,
+        "lineHeight": 1.33,
+        "letterSpacing": "-0.288px"
+      },
+      "$type": "typography",
+      "$description": "Sub-section headings"
+    },
+    "composite-h3": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "20px",
+        "fontWeight": 590,
+        "lineHeight": 1.33,
+        "letterSpacing": "-0.24px"
+      },
+      "$type": "typography",
+      "$description": "Feature titles, card headers"
+    },
+    "composite-body-lg": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "18px",
+        "fontWeight": 400,
+        "lineHeight": 1.60,
+        "letterSpacing": "-0.165px"
+      },
+      "$type": "typography",
+      "$description": "Introduction text, feature descriptions"
+    },
+    "composite-body-emphasis": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "17px",
+        "fontWeight": 590,
+        "lineHeight": 1.60,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Emphasized body, sub-headings in content"
+    },
+    "composite-body": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "16px",
+        "fontWeight": 400,
+        "lineHeight": 1.50,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Standard reading text"
+    },
+    "composite-body-medium": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "16px",
+        "fontWeight": 510,
+        "lineHeight": 1.50,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Navigation, labels — signature weight"
+    },
+    "composite-body-semibold": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "16px",
+        "fontWeight": 590,
+        "lineHeight": 1.50,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Strong emphasis at body size"
+    },
+    "composite-small": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "15px",
+        "fontWeight": 400,
+        "lineHeight": 1.60,
+        "letterSpacing": "-0.165px"
+      },
+      "$type": "typography",
+      "$description": "Secondary body text"
+    },
+    "composite-small-medium": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "15px",
+        "fontWeight": 510,
+        "lineHeight": 1.60,
+        "letterSpacing": "-0.165px"
+      },
+      "$type": "typography",
+      "$description": "Emphasized small text — signature weight"
+    },
+    "composite-small-semibold": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "15px",
+        "fontWeight": 590,
+        "lineHeight": 1.60,
+        "letterSpacing": "-0.165px"
+      },
+      "$type": "typography",
+      "$description": "Strong small text"
+    },
+    "composite-small-light": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "15px",
+        "fontWeight": 300,
+        "lineHeight": 1.47,
+        "letterSpacing": "-0.165px"
+      },
+      "$type": "typography",
+      "$description": "De-emphasized body — light weight"
+    },
+    "composite-caption-lg": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "14px",
+        "fontWeight": 510,
+        "lineHeight": 1.50,
+        "letterSpacing": "-0.182px"
+      },
+      "$type": "typography",
+      "$description": "Sub-labels, category headers — weight range 510-590"
+    },
+    "composite-caption": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "13px",
+        "fontWeight": 400,
+        "lineHeight": 1.50,
+        "letterSpacing": "-0.13px"
+      },
+      "$type": "typography",
+      "$description": "Metadata, timestamps — weight range 400-510"
+    },
+    "composite-label": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "12px",
+        "fontWeight": 510,
+        "lineHeight": 1.40,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Button text, small labels, toolbar text — weight range 400-590"
+    },
+    "composite-micro": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "11px",
+        "fontWeight": 510,
+        "lineHeight": 1.40,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Tiny labels"
+    },
+    "composite-tiny": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "10px",
+        "fontWeight": 510,
+        "lineHeight": 1.50,
+        "letterSpacing": "-0.15px"
+      },
+      "$type": "typography",
+      "$description": "Overline text, status dots — sometimes uppercase. Weight range 400-510"
+    },
+    "composite-link-lg": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "16px",
+        "fontWeight": 400,
+        "lineHeight": 1.50,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Standard links"
+    },
+    "composite-link-medium": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "15px",
+        "fontWeight": 510,
+        "lineHeight": 2.67,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Spaced navigation links"
+    },
+    "composite-link-small": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "14px",
+        "fontWeight": 510,
+        "lineHeight": 1.50,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Compact links"
+    },
+    "composite-link-caption": {
+      "$value": {
+        "fontFamily": "Inter Variable",
+        "fontSize": "13px",
+        "fontWeight": 400,
+        "lineHeight": 1.50,
+        "letterSpacing": "-0.13px"
+      },
+      "$type": "typography",
+      "$description": "Footer, metadata links — weight range 400-510"
+    },
+    "composite-mono-body": {
+      "$value": {
+        "fontFamily": "Berkeley Mono",
+        "fontSize": "14px",
+        "fontWeight": 400,
+        "lineHeight": 1.50,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Code blocks"
+    },
+    "composite-mono-caption": {
+      "$value": {
+        "fontFamily": "Berkeley Mono",
+        "fontSize": "13px",
+        "fontWeight": 400,
+        "lineHeight": 1.50,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Code labels"
+    },
+    "composite-mono-label": {
+      "$value": {
+        "fontFamily": "Berkeley Mono",
+        "fontSize": "12px",
+        "fontWeight": 400,
+        "lineHeight": 1.40,
+        "letterSpacing": "normal"
+      },
+      "$type": "typography",
+      "$description": "Code metadata — sometimes uppercase"
+    }
+  },
+
+  "spacing": {
+    "unit": { "$value": "8px", "$type": "dimension", "$description": "Base grid unit" },
+    "1": { "$value": "1px", "$type": "dimension", "$description": "Pixel-level adjustment" },
+    "4": { "$value": "4px", "$type": "dimension", "$description": "Half-unit micro spacing" },
+    "7": { "$value": "7px", "$type": "dimension", "$description": "Optical alignment micro-adjustment" },
+    "8": { "$value": "8px", "$type": "dimension", "$description": "1x base unit" },
+    "11": { "$value": "11px", "$type": "dimension", "$description": "Optical alignment micro-adjustment" },
+    "12": { "$value": "12px", "$type": "dimension", "$description": "1.5x base unit" },
+    "16": { "$value": "16px", "$type": "dimension", "$description": "2x base unit — standard gap" },
+    "19": { "$value": "19px", "$type": "dimension", "$description": "Optical adjustment spacing" },
+    "20": { "$value": "20px", "$type": "dimension", "$description": "2.5x base unit" },
+    "22": { "$value": "22px", "$type": "dimension", "$description": "Optical adjustment spacing" },
+    "24": { "$value": "24px", "$type": "dimension", "$description": "3x base unit" },
+    "28": { "$value": "28px", "$type": "dimension", "$description": "3.5x base unit" },
+    "32": { "$value": "32px", "$type": "dimension", "$description": "4x base unit" },
+    "35": { "$value": "35px", "$type": "dimension", "$description": "Optical adjustment spacing" },
+    "48": { "$value": "48px", "$type": "dimension", "$description": "6x base unit — section spacing mobile" },
+    "64": { "$value": "64px", "$type": "dimension", "$description": "8x base unit" },
+    "80": { "$value": "80px", "$type": "dimension", "$description": "10x base unit — minimum section isolation on desktop" },
+    "page-margin-desktop": { "$value": "64px", "$type": "dimension", "$description": "Desktop page margin" },
+    "page-margin-mobile": { "$value": "20px", "$type": "dimension", "$description": "Mobile page margin" },
+    "max-content-width": { "$value": "1200px", "$type": "dimension", "$description": "Maximum content width" }
+  },
+
+  "border": {
+    "radius-micro": { "$value": "2px", "$type": "dimension", "$description": "Inline badges, toolbar buttons, subtle tags" },
+    "radius-sm": { "$value": "4px", "$type": "dimension", "$description": "Small containers, list items" },
+    "radius-comfortable": { "$value": "5px", "$type": "dimension", "$description": "Button-style inputs" },
+    "radius-md": { "$value": "6px", "$type": "dimension", "$description": "Buttons, inputs, functional elements" },
+    "radius-card": { "$value": "8px", "$type": "dimension", "$description": "Cards, dropdowns, popovers" },
+    "radius-panel": { "$value": "12px", "$type": "dimension", "$description": "Panels, featured cards, section containers, top-rounded images" },
+    "radius-lg": { "$value": "22px", "$type": "dimension", "$description": "Large panel elements" },
+    "radius-pill": { "$value": "9999px", "$type": "dimension", "$description": "Chips, filter pills, status tags — full pill shape" },
+    "radius-circle": { "$value": "50%", "$type": "dimension", "$description": "Icon buttons, avatars, status dots" },
+    "width-default": { "$value": "1px", "$type": "dimension", "$description": "Standard border width throughout the system" }
+  },
+
+  "shadow": {
+    "level-0-flat": {
+      "$value": [],
+      "$type": "shadow",
+      "$description": "Level 0 — No shadow. Page background, deepest canvas on #010102"
+    },
+    "level-1-subtle": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "1.2px", "blur": "0px", "spread": "0px", "color": "rgba(0,0,0,0.03)" }
+      ],
+      "$type": "shadow",
+      "$description": "Level 1 — Toolbar buttons, micro-elevation"
+    },
+    "level-2b-inset": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "0px", "blur": "12px", "spread": "0px", "color": "rgba(0,0,0,0.2)", "inset": true }
+      ],
+      "$type": "shadow",
+      "$description": "Level 2b — Recessed panels, inner shadow. Unique sunken effect for dimensional depth"
+    },
+    "level-3-ring": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "1px", "color": "rgba(0,0,0,0.2)" }
+      ],
+      "$type": "shadow",
+      "$description": "Level 3 — Border-as-shadow technique for cards and containers"
+    },
+    "level-4-elevated": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "2px", "blur": "4px", "spread": "0px", "color": "rgba(0,0,0,0.4)" }
+      ],
+      "$type": "shadow",
+      "$description": "Level 4 — Floating elements, dropdowns, screenshot shadows"
+    },
+    "level-5-dialog": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "8px", "blur": "2px", "spread": "0px", "color": "rgba(0,0,0,0)" },
+        { "offsetX": "0px", "offsetY": "5px", "blur": "2px", "spread": "0px", "color": "rgba(0,0,0,0.01)" },
+        { "offsetX": "0px", "offsetY": "3px", "blur": "2px", "spread": "0px", "color": "rgba(0,0,0,0.04)" },
+        { "offsetX": "0px", "offsetY": "1px", "blur": "1px", "spread": "0px", "color": "rgba(0,0,0,0.07)" },
+        { "offsetX": "0px", "offsetY": "0px", "blur": "1px", "spread": "0px", "color": "rgba(0,0,0,0.08)" }
+      ],
+      "$type": "shadow",
+      "$description": "Level 5 — Multi-layer stack for popovers, command palette, modals"
+    },
+    "level-6-focus": {
+      "$value": [
+        { "offsetX": "0px", "offsetY": "4px", "blur": "12px", "spread": "0px", "color": "rgba(0,0,0,0.1)" }
+      ],
+      "$type": "shadow",
+      "$description": "Level 6 — Keyboard focus on interactive elements (additional layers may apply)"
+    }
+  },
+
+  "motion": {
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Quick micro-interactions — hover states, opacity changes"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Standard transitions — button states, panel reveals"
+    },
+    "duration-slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Deliberate transitions — modal entrance, page transitions"
+    },
+    "easing-default": {
+      "$value": [0.16, 1, 0.3, 1],
+      "$type": "cubicBezier",
+      "$description": "Spring-like entrance curve — snappy with natural deceleration"
+    },
+    "easing-exit": {
+      "$value": [0.4, 0, 1, 1],
+      "$type": "cubicBezier",
+      "$description": "Quick exit curve — accelerates out of view"
+    }
+  },
+
+  "breakpoint": {
+    "mobile-sm": { "$value": "600px", "$type": "dimension", "$description": "Small mobile — single column, compact padding" },
+    "mobile": { "$value": "640px", "$type": "dimension", "$description": "Standard mobile layout" },
+    "tablet": { "$value": "768px", "$type": "dimension", "$description": "Two-column grids begin, navigation collapses" },
+    "desktop-sm": { "$value": "1024px", "$type": "dimension", "$description": "Full card grids, expanded padding" },
+    "desktop": { "$value": "1280px", "$type": "dimension", "$description": "Standard desktop, full navigation, generous margins" }
+  }
+}

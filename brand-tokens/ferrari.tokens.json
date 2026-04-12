@@ -1,0 +1,277 @@
+{
+  "$extensions": {
+    "brand": "ferrari",
+    "source": "awesome-design-md",
+    "aesthetic": "digital editorial with chiaroscuro drama",
+    "key-characteristics": [
+      "chiaroscuro-layout",
+      "ferrari-red-sparse",
+      "precision-engineering"
+    ]
+  },
+  "color": {
+    "surface": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "Absolute Black \u2014 hero sections, cinematic backgrounds"
+    },
+    "surface-subtle": {
+      "$value": "#303030",
+      "$type": "color",
+      "$description": "Dark Surface \u2014 footer, newsletter sections"
+    },
+    "surface-light": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "White \u2014 editorial content panels"
+    },
+    "accent": {
+      "$value": "#da291c",
+      "$type": "color",
+      "$description": "Ferrari Red \u2014 Rosso Corsa, extreme sparseness"
+    },
+    "accent-hover": {
+      "$value": "#b01e0a",
+      "$type": "color",
+      "$description": "Dark Red \u2014 hover/pressed states"
+    },
+    "text-primary": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "White text on dark backgrounds"
+    },
+    "text-secondary": {
+      "$value": "#666666",
+      "$type": "color",
+      "$description": "Dark Gray \u2014 subdued labels"
+    },
+    "text-tertiary": {
+      "$value": "#8f8f8f",
+      "$type": "color",
+      "$description": "Mid Gray \u2014 metadata"
+    },
+    "text-on-light": {
+      "$value": "#181818",
+      "$type": "color",
+      "$description": "Near Black \u2014 body text on white panels"
+    },
+    "text-on-accent": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "White on Ferrari Red"
+    },
+    "error": {
+      "$value": "#f13a2c",
+      "$type": "color",
+      "$description": "Warning Red \u2014 semantic alerts"
+    },
+    "success": {
+      "$value": "#03904a",
+      "$type": "color",
+      "$description": "Success Green \u2014 positive status"
+    },
+    "info": {
+      "$value": "#4c98b9",
+      "$type": "color",
+      "$description": "Info Blue \u2014 informational callouts"
+    },
+    "border": {
+      "$value": "#d2d2d2",
+      "$type": "color",
+      "$description": "Light Gray \u2014 borders on white panels"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "FerrariSans, Arial, Helvetica, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Display/heading font"
+    },
+    "font-body": {
+      "$value": "FerrariSans, Arial, Helvetica, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body/UI font"
+    },
+    "scale-display": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Display \u2014 hero headlines"
+    },
+    "scale-section": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Section headings"
+    },
+    "scale-base": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Standard body"
+    },
+    "scale-caption": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Captions"
+    },
+    "scale-small": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Small text"
+    },
+    "line-height-tight": {
+      "$value": "1.15",
+      "$type": "number",
+      "$description": "Tight \u2014 headings"
+    },
+    "line-height-normal": {
+      "$value": "1.50",
+      "$type": "number",
+      "$description": "Normal \u2014 body"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Regular"
+    },
+    "weight-medium": {
+      "$value": "500",
+      "$type": "number",
+      "$description": "Medium"
+    },
+    "weight-semibold": {
+      "$value": "600",
+      "$type": "number",
+      "$description": "Semibold"
+    }
+  },
+  "spacing": {
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Small"
+    },
+    "md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Medium"
+    },
+    "lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large"
+    },
+    "xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Extra large"
+    },
+    "2xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Double extra large"
+    },
+    "section-gap": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "Section spacing"
+    },
+    "container-max": {
+      "$value": "1200px",
+      "$type": "dimension",
+      "$description": "Max container width"
+    }
+  },
+  "border": {
+    "radius-standard": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Standard radius"
+    },
+    "radius-comfortable": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Comfortable radius"
+    },
+    "radius-pill": {
+      "$value": "9999px",
+      "$type": "dimension",
+      "$description": "Pill shape"
+    }
+  },
+  "shadow": {
+    "level-0": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Flat"
+    },
+    "level-1": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "8px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.08)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Subtle elevation"
+    }
+  },
+  "motion": {
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Quick interactions"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Standard transitions"
+    },
+    "easing-default": {
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Standard ease"
+    }
+  },
+  "breakpoint": {
+    "mobile": {
+      "$value": "640px",
+      "$type": "dimension",
+      "$description": "Mobile"
+    },
+    "tablet": {
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Tablet"
+    },
+    "desktop": {
+      "$value": "1024px",
+      "$type": "dimension",
+      "$description": "Desktop"
+    }
+  }
+}

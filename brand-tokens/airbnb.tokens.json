@@ -1,0 +1,420 @@
+{
+  "$extensions": {
+    "brand": "airbnb",
+    "source": "awesome-design-md",
+    "aesthetic": "warm travel magazine with photography-first cards",
+    "key-characteristics": ["rausch-red-accent", "photography-forward", "three-layer-shadows"]
+  },
+  "color": {
+    "surface": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Primary background — pure white canvas where photography provides color"
+    },
+    "surface-subtle": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Card surface — white for listing cards"
+    },
+    "surface-secondary": {
+      "$value": "#f2f2f2",
+      "$type": "color",
+      "$description": "Secondary surface — circular nav buttons and secondary controls"
+    },
+    "accent": {
+      "$value": "#ff385c",
+      "$type": "color",
+      "$description": "Rausch Red — named after Airbnb's first street address, singular brand accent"
+    },
+    "accent-hover": {
+      "$value": "#e00b41",
+      "$type": "color",
+      "$description": "Deep Rausch — pressed/dark variant of brand red"
+    },
+    "accent-luxe": {
+      "$value": "#460479",
+      "$type": "color",
+      "$description": "Luxe Purple — Airbnb Luxe tier premium branding"
+    },
+    "accent-plus": {
+      "$value": "#92174d",
+      "$type": "color",
+      "$description": "Plus Magenta — Airbnb Plus tier branding"
+    },
+    "text-primary": {
+      "$value": "#222222",
+      "$type": "color",
+      "$description": "Primary text — warm near-black, never pure black"
+    },
+    "text-secondary": {
+      "$value": "#6a6a6a",
+      "$type": "color",
+      "$description": "Secondary text — descriptions and metadata"
+    },
+    "text-focused": {
+      "$value": "#3f3f3f",
+      "$type": "color",
+      "$description": "Focused state text"
+    },
+    "text-disabled": {
+      "$value": "rgba(0,0,0,0.24)",
+      "$type": "color",
+      "$description": "Disabled text state"
+    },
+    "text-on-accent": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Text on Rausch Red buttons — white"
+    },
+    "error": {
+      "$value": "#c13515",
+      "$type": "color",
+      "$description": "Error text on light backgrounds"
+    },
+    "success": {
+      "$value": "#008a05",
+      "$type": "color",
+      "$description": "Success state — green for positive confirmation"
+    },
+    "warning": {
+      "$value": "#e07912",
+      "$type": "color",
+      "$description": "Warning state — amber for caution"
+    },
+    "info": {
+      "$value": "#428bff",
+      "$type": "color",
+      "$description": "Legal Blue — informational links and legal text"
+    },
+    "border": {
+      "$value": "#dddddd",
+      "$type": "color",
+      "$description": "Default border for cards and dividers"
+    },
+    "border-prominent": {
+      "$value": "#c1c1c1",
+      "$type": "color",
+      "$description": "Prominent borders — emphasized containment"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "Airbnb Cereal VF, Circular, -apple-system, system-ui, Roboto, Helvetica Neue, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Display/heading font — custom variable font with warm, rounded terminals"
+    },
+    "font-body": {
+      "$value": "Airbnb Cereal VF, Circular, -apple-system, system-ui, Roboto, Helvetica Neue, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body/UI font — same family at lighter weights"
+    },
+    "scale-section": {
+      "$value": "28px",
+      "$type": "dimension",
+      "$description": "Section heading — 1.75rem at weight 700"
+    },
+    "scale-card-heading": {
+      "$value": "22px",
+      "$type": "dimension",
+      "$description": "Card heading — 1.38rem at weight 600"
+    },
+    "scale-subheading": {
+      "$value": "21px",
+      "$type": "dimension",
+      "$description": "Sub-heading — 1.31rem at weight 700"
+    },
+    "scale-feature": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Feature title — 1.25rem at weight 600"
+    },
+    "scale-base": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "UI medium / button text — 1rem at weight 500"
+    },
+    "scale-body": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Standard body — 0.88rem at weight 400"
+    },
+    "scale-small": {
+      "$value": "13px",
+      "$type": "dimension",
+      "$description": "Descriptions — 0.81rem"
+    },
+    "scale-tag": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Tags and prices — 0.75rem"
+    },
+    "scale-badge": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Badges with salt OT feature — 0.69rem"
+    },
+    "scale-micro": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Micro uppercase — 0.5rem at weight 700"
+    },
+    "line-height-tight": {
+      "$value": "1.18",
+      "$type": "number",
+      "$description": "Tight — card headings and badges"
+    },
+    "line-height-normal": {
+      "$value": "1.25",
+      "$type": "number",
+      "$description": "Normal — buttons and UI text"
+    },
+    "line-height-relaxed": {
+      "$value": "1.43",
+      "$type": "number",
+      "$description": "Relaxed — section headings and body text"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Regular — body text and links"
+    },
+    "weight-medium": {
+      "$value": "500",
+      "$type": "number",
+      "$description": "Medium — nav, buttons, emphasized UI text"
+    },
+    "weight-semibold": {
+      "$value": "600",
+      "$type": "number",
+      "$description": "Semibold — card headings and feature titles"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold — section headings and primary emphasis"
+    },
+    "letter-spacing-heading": {
+      "$value": "-0.44px",
+      "$type": "dimension",
+      "$description": "Negative tracking for card headings — cozy intimacy"
+    },
+    "letter-spacing-feature": {
+      "$value": "-0.18px",
+      "$type": "dimension",
+      "$description": "Slight negative tracking for feature titles"
+    },
+    "letter-spacing-micro": {
+      "$value": "0.32px",
+      "$type": "dimension",
+      "$description": "Positive tracking for micro uppercase labels"
+    }
+  },
+  "spacing": {
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "2xs": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Micro spacing"
+    },
+    "xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small spacing"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Small spacing"
+    },
+    "md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Medium spacing"
+    },
+    "lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large spacing"
+    },
+    "xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Extra large — button horizontal padding"
+    },
+    "2xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Section spacing"
+    },
+    "section-gap": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Travel-magazine pacing between major sections"
+    },
+    "container-max": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Maximum container width"
+    }
+  },
+  "border": {
+    "radius-subtle": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small links"
+    },
+    "radius-standard": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Buttons, tabs, search elements"
+    },
+    "radius-badge": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Status badges and labels"
+    },
+    "radius-card": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Feature cards and large buttons"
+    },
+    "radius-large": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Large containers and hero elements"
+    },
+    "radius-circle": {
+      "$value": "50%",
+      "$type": "dimension",
+      "$description": "Nav controls, avatars, icons"
+    }
+  },
+  "shadow": {
+    "level-0": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Flat — no shadow"
+    },
+    "level-1": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "1px",
+          "color": "rgba(0,0,0,0.02)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "6px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.04)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "8px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.1)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Card — three-layer warm lift: border ring + soft blur + primary lift"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "12px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.08)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Hover — button hover elevation"
+    },
+    "level-3": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "4px",
+          "color": "rgb(255,255,255)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "2px",
+          "color": "#222222"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Active focus — white gap ring + focus ring"
+    }
+  },
+  "motion": {
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Quick micro-interactions"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Standard transitions"
+    },
+    "duration-slow": {
+      "$value": "350ms",
+      "$type": "duration",
+      "$description": "Card hover and carousel transitions"
+    },
+    "easing-default": {
+      "$value": [0.2, 0, 0.4, 1],
+      "$type": "cubicBezier",
+      "$description": "Smooth ease for transitions"
+    }
+  },
+  "breakpoint": {
+    "mobile": {
+      "$value": "550px",
+      "$type": "dimension",
+      "$description": "Mobile — single column listings"
+    },
+    "tablet": {
+      "$value": "744px",
+      "$type": "dimension",
+      "$description": "Tablet — 2-column listings"
+    },
+    "desktop-sm": {
+      "$value": "950px",
+      "$type": "dimension",
+      "$description": "Small desktop — 3-column listings"
+    },
+    "desktop": {
+      "$value": "1128px",
+      "$type": "dimension",
+      "$description": "Desktop — 4-column grid"
+    },
+    "desktop-lg": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Large desktop — 5-column grid"
+    }
+  }
+}

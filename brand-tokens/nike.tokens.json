@@ -1,0 +1,227 @@
+{
+  "$extensions": {
+    "brand": "nike",
+    "source": "awesome-design-md",
+    "aesthetic": "kinetic retail cathedral with monochromatic precision",
+    "key-characteristics": ["monochromatic-ui", "massive-uppercase-display", "full-bleed-photography"]
+  },
+  "color": {
+    "surface": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Primary background — white canvas where product photography provides color"
+    },
+    "surface-subtle": {
+      "$value": "#fafafa",
+      "$type": "color",
+      "$description": "Snow — lightest surface, near-white subtle differentiation"
+    },
+    "surface-secondary": {
+      "$value": "#f5f5f5",
+      "$type": "color",
+      "$description": "Light Gray — search input fill, image placeholder, loading skeleton"
+    },
+    "surface-hover": {
+      "$value": "#e5e5e5",
+      "$type": "color",
+      "$description": "Hover Gray — hover state background, disabled button fill"
+    },
+    "surface-dark": {
+      "$value": "#111111",
+      "$type": "color",
+      "$description": "Nike Black — hero sections and dark mode, deliberately not pure black"
+    },
+    "surface-dark-elevated": {
+      "$value": "#28282a",
+      "$type": "color",
+      "$description": "Dark Surface — elevated dark sections"
+    },
+    "accent": {
+      "$value": "#111111",
+      "$type": "color",
+      "$description": "Nike Black — primary button background, the UI is monochromatic"
+    },
+    "accent-hover": {
+      "$value": "#28282a",
+      "$type": "color",
+      "$description": "Dark hover variant"
+    },
+    "text-primary": {
+      "$value": "#111111",
+      "$type": "color",
+      "$description": "Primary text — Nike Black, fractionally softer than pure black"
+    },
+    "text-secondary": {
+      "$value": "#707072",
+      "$type": "color",
+      "$description": "Secondary text — descriptions, metadata, timestamps"
+    },
+    "text-disabled": {
+      "$value": "#9e9ea0",
+      "$type": "color",
+      "$description": "Disabled text — inactive elements"
+    },
+    "text-on-dark": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Text on dark backgrounds — white"
+    },
+    "text-on-accent": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Text on black buttons — white"
+    },
+    "error": {
+      "$value": "#d30005",
+      "$type": "color",
+      "$description": "Nike Red — critical errors, sale badges"
+    },
+    "success": {
+      "$value": "#007d48",
+      "$type": "color",
+      "$description": "Success Green — confirmation, availability"
+    },
+    "warning": {
+      "$value": "#fedf35",
+      "$type": "color",
+      "$description": "Warning Yellow — attention banners"
+    },
+    "info": {
+      "$value": "#1151ff",
+      "$type": "color",
+      "$description": "Link Blue — text links, informational highlights"
+    },
+    "border": {
+      "$value": "#cacacb",
+      "$type": "color",
+      "$description": "Border Secondary — subtle borders, input borders"
+    },
+    "border-prominent": {
+      "$value": "#707072",
+      "$type": "color",
+      "$description": "Border Primary — standard borders matching secondary text"
+    },
+    "focus": {
+      "$value": "rgba(39,93,197,1)",
+      "$type": "color",
+      "$description": "Focus ring — keyboard focus indicator"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "Nike Futura ND, Helvetica Now Text Medium, Helvetica, Arial, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Display font — custom condensed Futura variant for massive uppercase headlines"
+    },
+    "font-heading": {
+      "$value": "Helvetica Now Display Medium, Helvetica, Arial, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Heading font — section headings and product titles"
+    },
+    "font-body": {
+      "$value": "Helvetica Now Text, Helvetica, Arial, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body font — standard body copy, descriptions"
+    },
+    "scale-display": {
+      "$value": "96px",
+      "$type": "dimension",
+      "$description": "Hero display — 6rem, massive uppercase impact"
+    },
+    "scale-section": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Section heading — 2rem"
+    },
+    "scale-card-title": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Card title — 1.5rem"
+    },
+    "scale-body-lg": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Body large — 1.25rem"
+    },
+    "scale-base": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Standard body — 1rem"
+    },
+    "scale-caption": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Caption — 0.875rem"
+    },
+    "scale-small": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Small text — 0.75rem"
+    },
+    "line-height-display": {
+      "$value": "0.90",
+      "$type": "number",
+      "$description": "Extreme compression — display headlines, typographic shockwave"
+    },
+    "line-height-tight": {
+      "$value": "1.10",
+      "$type": "number",
+      "$description": "Section headings"
+    },
+    "line-height-normal": {
+      "$value": "1.40",
+      "$type": "number",
+      "$description": "Body text"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Regular — body text"
+    },
+    "weight-medium": {
+      "$value": "500",
+      "$type": "number",
+      "$description": "Medium — links, buttons, captions"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold — emphasis"
+    }
+  },
+  "spacing": {
+    "unit": { "$value": "8px", "$type": "dimension", "$description": "Base grid unit" },
+    "xs": { "$value": "4px", "$type": "dimension", "$description": "Extra small" },
+    "sm": { "$value": "8px", "$type": "dimension", "$description": "Small" },
+    "md": { "$value": "12px", "$type": "dimension", "$description": "Medium" },
+    "lg": { "$value": "16px", "$type": "dimension", "$description": "Large" },
+    "xl": { "$value": "24px", "$type": "dimension", "$description": "Extra large" },
+    "2xl": { "$value": "32px", "$type": "dimension", "$description": "Double extra large" },
+    "3xl": { "$value": "48px", "$type": "dimension", "$description": "Triple extra large" },
+    "section-gap": { "$value": "80px", "$type": "dimension", "$description": "Athletic discipline spacing between sections" },
+    "container-max": { "$value": "1440px", "$type": "dimension", "$description": "Maximum container width" }
+  },
+  "border": {
+    "radius-none": { "$value": "0px", "$type": "dimension", "$description": "No radius — full-bleed imagery" },
+    "radius-subtle": { "$value": "4px", "$type": "dimension", "$description": "Small interactive elements" },
+    "radius-standard": { "$value": "8px", "$type": "dimension", "$description": "Cards and containers" },
+    "radius-pill": { "$value": "30px", "$type": "dimension", "$description": "Pill-shaped buttons — primary interactive element" },
+    "radius-circle": { "$value": "50%", "$type": "dimension", "$description": "Circular elements" }
+  },
+  "shadow": {
+    "level-0": { "$value": [{ "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "0px", "color": "transparent" }], "$type": "shadow", "$description": "Flat — shadow-free design, elevation through grey shifts" },
+    "level-1": { "$value": [{ "offsetX": "0px", "offsetY": "2px", "blur": "6px", "spread": "0px", "color": "rgba(0,0,0,0.06)" }], "$type": "shadow", "$description": "Subtle — minimal lift for interactive elements" }
+  },
+  "motion": {
+    "duration-fast": { "$value": "150ms", "$type": "duration", "$description": "Quick interactions" },
+    "duration-normal": { "$value": "200ms", "$type": "duration", "$description": "Standard transitions" },
+    "duration-slow": { "$value": "300ms", "$type": "duration", "$description": "Deliberate transitions" },
+    "easing-default": { "$value": [0.25, 0.1, 0.25, 1], "$type": "cubicBezier", "$description": "Standard ease" }
+  },
+  "breakpoint": {
+    "mobile": { "$value": "600px", "$type": "dimension", "$description": "Mobile" },
+    "tablet": { "$value": "960px", "$type": "dimension", "$description": "Tablet" },
+    "desktop": { "$value": "1200px", "$type": "dimension", "$description": "Desktop" },
+    "desktop-lg": { "$value": "1440px", "$type": "dimension", "$description": "Large desktop" }
+  }
+}

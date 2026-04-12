@@ -1,0 +1,401 @@
+{
+  "$extensions": {
+    "brand": "figma",
+    "source": "awesome-design-md",
+    "aesthetic": "monochrome gallery with variable-weight precision",
+    "key-characteristics": ["black-white-binary", "variable-font-precision", "pill-geometry"]
+  },
+  "color": {
+    "surface": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Primary background — pure white gallery wall for product content"
+    },
+    "surface-subtle": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Card surfaces — same white, depth via shadow not background"
+    },
+    "surface-glass-dark": {
+      "$value": "rgba(0,0,0,0.08)",
+      "$type": "color",
+      "$description": "Subtle dark overlay for secondary circular buttons and glass effects"
+    },
+    "surface-glass-light": {
+      "$value": "rgba(255,255,255,0.16)",
+      "$type": "color",
+      "$description": "Frosted glass overlay for buttons on dark/colored surfaces"
+    },
+    "accent": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "Primary action color — pure black; Figma's interface is strictly monochrome"
+    },
+    "accent-hover": {
+      "$value": "#333333",
+      "$type": "color",
+      "$description": "Hover variant of black accent — slight lightening"
+    },
+    "text-primary": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "Primary text — pure black, the sole color of the interface"
+    },
+    "text-secondary": {
+      "$value": "#666666",
+      "$type": "color",
+      "$description": "Secondary text — mid gray for descriptions and metadata"
+    },
+    "text-on-dark": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Text on dark or gradient surfaces — pure white"
+    },
+    "text-on-accent": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Text on black accent buttons — pure white"
+    },
+    "error": {
+      "$value": "#f24822",
+      "$type": "color",
+      "$description": "Error state — Figma's red from the editor palette"
+    },
+    "success": {
+      "$value": "#14ae5c",
+      "$type": "color",
+      "$description": "Success state — Figma's green from the editor palette"
+    },
+    "warning": {
+      "$value": "#ffcd29",
+      "$type": "color",
+      "$description": "Warning state — Figma's yellow from the editor palette"
+    },
+    "border": {
+      "$value": "#e6e6e6",
+      "$type": "color",
+      "$description": "Default border — minimal light gray for subtle containment"
+    },
+    "border-prominent": {
+      "$value": "#cccccc",
+      "$type": "color",
+      "$description": "Prominent borders and section dividers"
+    },
+    "focus": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "Focus ring — dashed 2px black outline echoing editor selection handles"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "figmaSans, SF Pro Display, system-ui, Helvetica, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Display/heading font — custom variable font with unusual weight stops (320-700)"
+    },
+    "font-body": {
+      "$value": "figmaSans, SF Pro Display, system-ui, Helvetica, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body/UI font — same variable font at lighter weights (320-450)"
+    },
+    "font-mono": {
+      "$value": "figmaMono, SF Mono, Menlo, monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace font for uppercase technical labels with wide letter-spacing"
+    },
+    "scale-display": {
+      "$value": "86px",
+      "$type": "dimension",
+      "$description": "Hero display — 5.38rem, maximum impact with extreme negative tracking"
+    },
+    "scale-section": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Section heading — 4rem"
+    },
+    "scale-subheading": {
+      "$value": "26px",
+      "$type": "dimension",
+      "$description": "Sub-heading — 1.63rem, available in 540 and 340 weights"
+    },
+    "scale-feature": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Feature title — 1.5rem at weight 700"
+    },
+    "scale-lg": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Body large — 1.25rem, descriptions and intros at 330-450 weight"
+    },
+    "scale-body-light": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Body light — 1.13rem at ultra-light weight 320"
+    },
+    "scale-base": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Standard body and button text — 1rem"
+    },
+    "scale-mono-label": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Monospace uppercase section labels — 1.13rem"
+    },
+    "scale-mono-small": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Monospace uppercase tiny tags — 0.75rem"
+    },
+    "line-height-tight": {
+      "$value": "1.00",
+      "$type": "number",
+      "$description": "Tightest line-height — display hero and mono labels"
+    },
+    "line-height-snug": {
+      "$value": "1.10",
+      "$type": "number",
+      "$description": "Section headings"
+    },
+    "line-height-normal": {
+      "$value": "1.35",
+      "$type": "number",
+      "$description": "Sub-headings and descriptions"
+    },
+    "line-height-relaxed": {
+      "$value": "1.45",
+      "$type": "number",
+      "$description": "Body text and feature titles"
+    },
+    "weight-ultralight": {
+      "$value": "320",
+      "$type": "number",
+      "$description": "Ultralight — lightest stop, body light text"
+    },
+    "weight-thin": {
+      "$value": "330",
+      "$type": "number",
+      "$description": "Thin — body large light variant"
+    },
+    "weight-light": {
+      "$value": "340",
+      "$type": "number",
+      "$description": "Light — sub-heading light variant"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Regular — display hero, standard buttons"
+    },
+    "weight-medium-low": {
+      "$value": "450",
+      "$type": "number",
+      "$description": "Medium-low — body large descriptions"
+    },
+    "weight-medium": {
+      "$value": "480",
+      "$type": "number",
+      "$description": "Medium — product tab text"
+    },
+    "weight-semibold": {
+      "$value": "540",
+      "$type": "number",
+      "$description": "Semibold — emphasized sub-headings"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold — feature titles only"
+    },
+    "letter-spacing-display": {
+      "$value": "-1.72px",
+      "$type": "dimension",
+      "$description": "Display hero extreme negative tracking"
+    },
+    "letter-spacing-section": {
+      "$value": "-0.96px",
+      "$type": "dimension",
+      "$description": "Section heading negative tracking"
+    },
+    "letter-spacing-body": {
+      "$value": "-0.14px",
+      "$type": "dimension",
+      "$description": "Default body negative tracking"
+    },
+    "letter-spacing-mono": {
+      "$value": "0.54px",
+      "$type": "dimension",
+      "$description": "Positive tracking for monospace uppercase labels"
+    }
+  },
+  "spacing": {
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small spacing"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Small spacing — matches base unit"
+    },
+    "md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Medium spacing"
+    },
+    "lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large spacing"
+    },
+    "xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Extra large spacing"
+    },
+    "2xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Double extra large"
+    },
+    "3xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Triple extra large"
+    },
+    "section-gap": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "Gallery-like pacing between major product sections"
+    },
+    "container-max": {
+      "$value": "1920px",
+      "$type": "dimension",
+      "$description": "Maximum container width — ultra-wide support"
+    }
+  },
+  "border": {
+    "radius-minimal": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Small link elements"
+    },
+    "radius-subtle": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Small containers and dividers"
+    },
+    "radius-comfortable": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Cards, images, dialogs"
+    },
+    "radius-pill": {
+      "$value": "50px",
+      "$type": "dimension",
+      "$description": "Pill-shaped buttons and tab navigation — signature Figma geometry"
+    },
+    "radius-circle": {
+      "$value": "50%",
+      "$type": "dimension",
+      "$description": "Circular icon buttons"
+    }
+  },
+  "shadow": {
+    "level-0": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Flat — no shadow, page background and most text"
+    },
+    "level-1": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "8px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.08)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Subtle elevation for cards on white surfaces"
+    },
+    "level-2": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "16px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.12)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Medium elevation for floating cards and hover states"
+    }
+  },
+  "motion": {
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Quick micro-interactions — hover and focus transitions"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Standard transitions"
+    },
+    "duration-slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Deliberate transitions — section reveals"
+    },
+    "easing-default": {
+      "$value": [0.25, 0.1, 0.25, 1],
+      "$type": "cubicBezier",
+      "$description": "Standard ease for most transitions"
+    }
+  },
+  "breakpoint": {
+    "mobile": {
+      "$value": "559px",
+      "$type": "dimension",
+      "$description": "Small mobile — compact layout"
+    },
+    "tablet": {
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Tablet — 2-column layouts begin"
+    },
+    "desktop": {
+      "$value": "960px",
+      "$type": "dimension",
+      "$description": "Desktop — standard layout"
+    },
+    "desktop-lg": {
+      "$value": "1280px",
+      "$type": "dimension",
+      "$description": "Large desktop — expanded layout"
+    },
+    "desktop-xl": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Ultra-wide — maximum width"
+    }
+  }
+}

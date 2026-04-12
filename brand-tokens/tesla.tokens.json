@@ -1,0 +1,287 @@
+{
+  "$extensions": {
+    "brand": "tesla",
+    "source": "awesome-design-md",
+    "aesthetic": "radical subtraction with cinematic photography-first design",
+    "key-characteristics": [
+      "photography-first",
+      "single-blue-accent",
+      "zero-decoration"
+    ]
+  },
+  "color": {
+    "surface": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Primary background \u2014 white canvas for photography"
+    },
+    "surface-subtle": {
+      "$value": "#f4f4f4",
+      "$type": "color",
+      "$description": "Light Ash \u2014 subtle section differentiation"
+    },
+    "surface-dark": {
+      "$value": "#171a20",
+      "$type": "color",
+      "$description": "Carbon Dark \u2014 hero text overlays"
+    },
+    "surface-glass": {
+      "$value": "rgba(255,255,255,0.75)",
+      "$type": "color",
+      "$description": "Frosted glass \u2014 nav backdrop on scroll"
+    },
+    "accent": {
+      "$value": "#3e6ae1",
+      "$type": "color",
+      "$description": "Electric Blue \u2014 sole chromatic color, primary CTA only"
+    },
+    "accent-hover": {
+      "$value": "#3358c4",
+      "$type": "color",
+      "$description": "Darker blue for hover states"
+    },
+    "text-primary": {
+      "$value": "#171a20",
+      "$type": "color",
+      "$description": "Carbon Dark \u2014 primary text, blue undertone"
+    },
+    "text-secondary": {
+      "$value": "#393c41",
+      "$type": "color",
+      "$description": "Graphite \u2014 body text and secondary content"
+    },
+    "text-tertiary": {
+      "$value": "#5c5e62",
+      "$type": "color",
+      "$description": "Pewter \u2014 tertiary text for sub-links"
+    },
+    "text-disabled": {
+      "$value": "#8e8e8e",
+      "$type": "color",
+      "$description": "Silver Fog \u2014 placeholder and disabled"
+    },
+    "text-on-dark": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "White text on dark hero backgrounds"
+    },
+    "text-on-accent": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "White text on blue buttons"
+    },
+    "error": {
+      "$value": "#d30000",
+      "$type": "color",
+      "$description": "Error red \u2014 standard form errors"
+    },
+    "success": {
+      "$value": "#007d48",
+      "$type": "color",
+      "$description": "Success green \u2014 confirmation states"
+    },
+    "border": {
+      "$value": "#eeeeee",
+      "$type": "color",
+      "$description": "Cloud Gray \u2014 light borders and dividers"
+    },
+    "border-subtle": {
+      "$value": "#d0d1d2",
+      "$type": "color",
+      "$description": "Pale Silver \u2014 subtle UI borders"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "Universal Sans Display, -apple-system, Arial, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Display/heading font"
+    },
+    "font-body": {
+      "$value": "Universal Sans Text, -apple-system, Arial, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body/UI font"
+    },
+    "scale-display": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Display \u2014 hero headlines"
+    },
+    "scale-section": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Section headings"
+    },
+    "scale-base": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Standard body"
+    },
+    "scale-caption": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Captions"
+    },
+    "scale-small": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Small text"
+    },
+    "line-height-tight": {
+      "$value": "1.15",
+      "$type": "number",
+      "$description": "Tight \u2014 headings"
+    },
+    "line-height-normal": {
+      "$value": "1.50",
+      "$type": "number",
+      "$description": "Normal \u2014 body"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Regular"
+    },
+    "weight-medium": {
+      "$value": "500",
+      "$type": "number",
+      "$description": "Medium"
+    },
+    "weight-semibold": {
+      "$value": "600",
+      "$type": "number",
+      "$description": "Semibold"
+    }
+  },
+  "spacing": {
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Small"
+    },
+    "md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Medium"
+    },
+    "lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large"
+    },
+    "xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Extra large"
+    },
+    "2xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Double extra large"
+    },
+    "section-gap": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "Section spacing"
+    },
+    "container-max": {
+      "$value": "1200px",
+      "$type": "dimension",
+      "$description": "Max container width"
+    }
+  },
+  "border": {
+    "radius-standard": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Standard radius"
+    },
+    "radius-comfortable": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Comfortable radius"
+    },
+    "radius-pill": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Pill shape"
+    }
+  },
+  "shadow": {
+    "level-0": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Flat"
+    },
+    "level-1": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "8px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.08)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Subtle elevation"
+    }
+  },
+  "motion": {
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Quick interactions"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Standard transitions"
+    },
+    "easing-default": {
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Standard ease"
+    }
+  },
+  "breakpoint": {
+    "mobile": {
+      "$value": "640px",
+      "$type": "dimension",
+      "$description": "Mobile"
+    },
+    "tablet": {
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Tablet"
+    },
+    "desktop": {
+      "$value": "1024px",
+      "$type": "dimension",
+      "$description": "Desktop"
+    }
+  }
+}

@@ -1,0 +1,334 @@
+# Design Spec Schema — tasteful-frontend output format definition
+# Version: 3.0.0
+# Three-layer token architecture: primitive -> semantic -> component
+# This file documents the structure of all output files
+
+# =============================================================================
+# Three-Layer Token Architecture — W3C DTCG v2025.10 Format
+# Spec: https://www.designtokens.org/tr/drafts/format/
+# =============================================================================
+
+tokens_schema:
+  format: "W3C DTCG v2025.10"
+
+  files:
+    primitive: "{project}/.design/tokens/primitive.tokens.json"
+    semantic: "{project}/.design/tokens/semantic.tokens.json"
+    component: "{project}/.design/tokens/component.tokens.json"
+
+  # ---------------------------------------------------------------------------
+  # Layer 1: Primitive Tokens — Raw values, named by identity
+  # These are the atoms. Every concrete value lives here and nowhere else.
+  # Naming: {category}-{shade/scale} e.g. blue-500, slate-900, space-8
+  # ---------------------------------------------------------------------------
+  primitive_schema:
+    naming_convention: "{category}-{variant}"  # e.g. blue-500, slate-900, coral-400
+    rules:
+      - "All $value fields contain concrete values (hex, px, ms, numbers) — never references"
+      - "Names describe identity (what the value IS), not purpose (what it's FOR)"
+      - "A primitive called 'accent' is WRONG — call it 'coral-500' or 'indigo-600'"
+
+    required_groups:
+      color:
+        description: "Full color palette — neutrals + brand + status + extended"
+        required_tokens:
+          - "{neutral}-50"     # Lightest neutral
+          - "{neutral}-100"
+          - "{neutral}-200"
+          - "{neutral}-300"
+          - "{neutral}-400"
+          - "{neutral}-500"
+          - "{neutral}-600"
+          - "{neutral}-700"
+          - "{neutral}-800"
+          - "{neutral}-900"
+          - "{neutral}-950"    # Darkest neutral
+          - "{brand}-400"      # Brand color lighter
+          - "{brand}-500"      # Brand color base
+          - "{brand}-600"      # Brand color darker
+          - "red-500"          # Error base
+          - "green-500"        # Success base
+          - "amber-500"        # Warning base
+        note: "{neutral} and {brand} are project-specific names (e.g. slate, coral, indigo)"
+
+      typography:
+        required_tokens:
+          - font-display       # Display/heading font ($type: fontFamily)
+          - font-body          # Body text font ($type: fontFamily)
+          - scale-xs           # 12px ($type: dimension)
+          - scale-sm           # 14px
+          - scale-base         # 16px
+          - scale-lg           # 18px
+          - scale-xl           # 24px
+          - scale-2xl          # 32px
+          - scale-3xl          # 48px
+          - line-height-tight  # 1.25 ($type: number)
+          - line-height-normal # 1.5
+          - line-height-relaxed # 1.75
+          - weight-regular     # 400
+          - weight-medium      # 500
+          - weight-semibold    # 600
+          - weight-bold        # 700
+        optional_tokens:
+          - font-mono          # Monospace font
+
+      spacing:
+        required_tokens:
+          - unit               # Base unit: 8px
+          - space-1            # 4px
+          - space-2            # 8px
+          - space-3            # 12px
+          - space-4            # 16px
+          - space-6            # 24px
+          - space-8            # 32px
+          - space-10           # 40px
+          - space-12           # 48px
+          - space-16           # 64px
+          - space-20           # 80px
+
+      border:
+        required_tokens:
+          - radius-sm          # 4px
+          - radius-md          # 8px
+          - radius-lg          # 16px
+          - radius-full        # 9999px (pill shape)
+
+      shadow:
+        required_tokens:
+          - shadow-sm          # Subtle shadow
+          - shadow-md          # Medium shadow
+        optional_tokens:
+          - shadow-lg          # Large/elevated shadow
+          - shadow-none        # Explicit no-shadow
+
+      motion:
+        required_tokens:
+          - duration-fast      # 150ms
+          - duration-normal    # 200ms
+          - duration-slow      # 300ms
+          - easing-default     # Primary easing curve ($type: cubicBezier)
+          - easing-exit        # Exit animation curve
+
+  # ---------------------------------------------------------------------------
+  # Layer 2: Semantic Tokens — Purpose-based, reference primitives
+  # These assign meaning to raw values. Naming by purpose, not appearance.
+  # $value uses reference syntax: "{primitive-token-path}"
+  # ---------------------------------------------------------------------------
+  semantic_schema:
+    naming_convention: "{purpose}"  # e.g. surface, accent, text-primary
+    rules:
+      - "All $value fields are references to primitive tokens: \"{color.slate-900}\""
+      - "Names describe purpose (what it's FOR), not identity (what it IS)"
+      - "A semantic called 'blue-500' is WRONG — call it 'accent' or 'info'"
+      - "Switching a semantic from one primitive to another changes the whole theme"
+
+    required_groups:
+      color:
+        required_tokens:
+          - surface            # Primary background
+          - surface-subtle     # Secondary background
+          - accent             # Primary action/brand color
+          - accent-hover       # Accent hover state
+          - text-primary       # Primary text
+          - text-secondary     # Secondary/muted text
+          - border             # Default border
+          - error              # Error/danger
+          - success            # Success/confirmation
+        optional_tokens:
+          - warning            # Warning state
+          - info               # Informational state
+          - surface-overlay    # Overlay/modal background
+          - border-subtle      # Low-contrast border
+          - focus-ring         # Focus indicator
+
+      typography:
+        required_tokens:
+          - font-display       # -> {typography.font-display}
+          - font-body          # -> {typography.font-body}
+
+      spacing:
+        required_tokens:
+          - xs                 # -> {spacing.space-1}
+          - sm                 # -> {spacing.space-2}
+          - md                 # -> {spacing.space-4}
+          - lg                 # -> {spacing.space-6}
+          - xl                 # -> {spacing.space-8}
+          - 2xl                # -> {spacing.space-12}
+          - 3xl                # -> {spacing.space-16}
+          - section-gap        # -> {spacing.space-20} or similar
+          - page-margin-desktop
+          - page-margin-mobile
+
+  # ---------------------------------------------------------------------------
+  # Layer 3: Component Tokens — Component-scoped, reference semantics
+  # These bind design decisions to specific UI components.
+  # $value uses reference syntax: "{semantic-token-path}"
+  # ---------------------------------------------------------------------------
+  component_schema:
+    naming_convention: "{component}-{property}"  # e.g. button-primary-bg, card-border
+    rules:
+      - "All $value fields reference semantic tokens: \"{color.accent}\""
+      - "Names follow {component}-{variant}-{property} pattern"
+      - "Component tokens are the ONLY layer consumed by code/adapters"
+      - "Changing a semantic token cascades through all component tokens that reference it"
+
+    example_groups:
+      button:
+        - button-primary-bg          # -> {color.accent}
+        - button-primary-text        # -> {color.surface}
+        - button-primary-hover-bg    # -> {color.accent-hover}
+        - button-secondary-bg        # -> {color.surface-subtle}
+        - button-secondary-text      # -> {color.text-primary}
+        - button-radius              # -> {border.radius-md}
+        - button-padding-x           # -> {spacing.md}
+        - button-padding-y           # -> {spacing.sm}
+      card:
+        - card-bg                    # -> {color.surface-subtle}
+        - card-border                # -> {color.border}
+        - card-radius                # -> {border.radius-lg}
+        - card-padding               # -> {spacing.lg}
+        - card-shadow                # -> {shadow.shadow-md}
+      input:
+        - input-bg                   # -> {color.surface}
+        - input-border               # -> {color.border}
+        - input-border-focus         # -> {color.accent}
+        - input-text                 # -> {color.text-primary}
+        - input-placeholder          # -> {color.text-secondary}
+        - input-radius               # -> {border.radius-md}
+        - input-padding-x            # -> {spacing.sm}
+        - input-padding-y            # -> {spacing.xs}
+
+  # Brand token extensions — additional tokens real-world design systems use.
+  # Brand tokens live in brand-tokens/{brand}.tokens.json as reference libraries.
+  brand_extensions:
+    color:
+      - accent-secondary
+      - accent-tertiary
+      - surface-warm
+      - shadow-color
+      - "neutral-{50-950}"
+      - focus-ring
+      - "workflow-*"
+    typography:
+      - opentype-features
+      - "tracking-*"
+      - "composite-*"
+    shadow:
+      - shadow-lg
+      - shadow-xl
+      - shadow-ring
+      - shadow-inset
+      - shadow-focus
+    breakpoint:
+      - mobile
+      - tablet
+      - desktop
+
+  brand_metadata:
+    brand: string
+    source: string
+    aesthetic: string
+    key-characteristics: array
+
+  validation_rules:
+    - "typography.font-display and typography.font-body MUST NOT be Arial, Inter, Roboto, or system-ui"
+    - "semantic color.accent MUST have >= 4.5:1 contrast ratio against color.surface"
+    - "All spacing values MUST be multiples of 4px (8px preferred)"
+    - "No purple-to-blue gradient patterns in color tokens"
+    - "Primitive tokens MUST contain concrete values, never references"
+    - "Semantic tokens MUST reference primitives, never contain concrete values"
+    - "Component tokens MUST reference semantics, never reference primitives directly"
+    - "Brand tokens MUST include all required semantic tokens"
+    - "Brand $extensions.brand MUST match the filename stem"
+
+# =============================================================================
+# layout-spec.yaml — Custom Format
+# =============================================================================
+
+layout_spec_schema:
+  file: "{project}/.design/layout-spec.yaml"
+
+  meta:
+    project: string           # Required. Project name
+    platform:                 # Required. One of:
+      enum: [web, ios, android, cross-platform]
+    tone: string              # Required. Aesthetic direction (e.g., "sleek-minimal", "vibrant-maximalist")
+    wow_factor: string        # Required. One memorable design hook
+
+  layout:
+    structure: string         # Required. e.g., "sidebar + main", "full-width", "split-panel"
+    sidebar:                  # Optional. Present when structure includes sidebar
+      width: dimension
+      collapse_at: dimension
+      position:
+        enum: [left, right]
+    main:
+      max_width: dimension
+      alignment:
+        enum: [center, left]
+    breakpoints:              # Required for web/cross-platform
+      mobile: dimension       # Default: 375px
+      tablet: dimension       # Default: 768px
+      desktop: dimension      # Default: 1024px
+      wide: dimension         # Default: 1440px
+
+  pages:
+    type: array
+    items:
+      name: string
+      sections:
+        type: array
+        items:
+          type:               # Component type from the type catalog
+            enum_categories:
+              layout: [header, hero, card-group, grid, section, sidebar, footer]
+              content: [card, table, list, chart, empty-state, media]
+              input: [form, form-field, toggle, select, search, file-upload]
+              action: [button, link, icon-button, menu]
+              feedback: [toast, modal, drawer, loading, skeleton]
+              navigation: [nav-item, breadcrumb, tab, pagination]
+          layout: string      # e.g., "single-column", "grid-2", "masonry"
+          gap: token-ref      # e.g., "{spacing.lg}"
+          children: array     # Nested components
+
+  navigation:
+    type:
+      enum: [sidebar, bottom-tab, top-nav]
+    items:
+      type: array
+      items:
+        label: string
+        icon: string          # Icon name from lucide/heroicons
+        active: boolean       # Default: false
+
+  interaction:
+    transitions:
+      page_enter: string      # Animation referencing motion tokens
+      card_hover: string
+    loading:
+      strategy:
+        enum: [skeleton, spinner, progressive]
+      threshold: duration     # e.g., "1000ms"
+    empty_states:
+      pattern: string         # e.g., "icon + headline + cta"
+
+  token_reference_syntax: "{group.name}"  # How layout-spec references token values
+
+# =============================================================================
+# brief.yaml — Phase 0 Output
+# =============================================================================
+
+brief_schema:
+  file: "{project}/.design/brief.yaml"
+
+  required_fields:
+    project: string           # Project name
+    platform:
+      enum: [web, ios, android, cross-platform]
+    audience: string          # Target user description
+    pain_points: array        # What problems this design solves
+    success_criteria: array   # How to measure design success
+  optional_fields:
+    competitive_context: array  # Competing products/approaches
+    constraints: string       # Technical or business constraints
+    brand: string             # Brand identifier (triggers brand-tokens loading)

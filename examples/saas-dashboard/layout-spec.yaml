@@ -1,0 +1,120 @@
+meta:
+  project: "SaaS Dashboard"
+  platform: web
+  tone: "sleek-minimal with warm accents"
+  wow_factor: "Glassmorphism section dividers with staggered card fade-in on page load"
+
+layout:
+  structure: "sidebar + main"
+  sidebar:
+    width: 280px
+    collapse_at: 1024px
+    position: left
+  main:
+    max_width: 960px
+    alignment: center
+  breakpoints:
+    mobile: 375px
+    tablet: 768px
+    desktop: 1024px
+    wide: 1440px
+
+pages:
+  - name: dashboard
+    sections:
+      - type: header
+        content: "Dashboard"
+        level: h1
+      - type: grid
+        layout: grid-3
+        gap: "{spacing.lg}"
+        collapse_to: single-column
+        collapse_at: 768px
+        children:
+          - type: card
+            title: "Total Revenue"
+            content: metric
+            value: "$48,230"
+            trend: "+12.5%"
+            icon: "dollar-sign"
+          - type: card
+            title: "Active Users"
+            content: metric
+            value: "2,847"
+            trend: "+5.3%"
+            icon: "users"
+          - type: card
+            title: "Conversion Rate"
+            content: metric
+            value: "3.24%"
+            trend: "-0.8%"
+            icon: "trending-up"
+      - type: card-group
+        layout: single-column
+        gap: "{spacing.lg}"
+        children:
+          - type: card
+            title: "Revenue Over Time"
+            content: chart
+            chart_type: line
+            height: 320px
+          - type: card
+            title: "Recent Activity"
+            content: table
+            columns:
+              - { name: "User", align: left }
+              - { name: "Action", align: left }
+              - { name: "Date", align: right }
+              - { name: "Status", align: center }
+            empty_state:
+              icon: "activity"
+              headline: "No recent activity"
+              cta: "View all activity"
+
+  - name: settings
+    sections:
+      - type: header
+        content: "Settings"
+        level: h1
+      - type: card-group
+        layout: single-column
+        gap: "{spacing.lg}"
+        children:
+          - type: card
+            title: "Profile"
+            content: form
+            fields:
+              - { name: "avatar", type: file-upload, label: "Profile Photo" }
+              - { name: "display_name", type: form-field, label: "Display Name", required: true }
+              - { name: "email", type: form-field, label: "Email", input_type: email, required: true }
+              - { name: "bio", type: form-field, label: "Bio", input_type: textarea, max_length: 280 }
+            actions:
+              primary: "Save Profile"
+              secondary: "Cancel"
+          - type: card
+            title: "Notifications"
+            content: toggle-list
+            items:
+              - { label: "Email notifications", description: "Receive updates via email", default: true }
+              - { label: "Push notifications", description: "Browser push alerts", default: false }
+              - { label: "Weekly digest", description: "Summary every Monday", default: true }
+
+navigation:
+  type: sidebar
+  items:
+    - { label: "Dashboard", icon: "layout-dashboard", active: true }
+    - { label: "Analytics", icon: "bar-chart-3" }
+    - { label: "Customers", icon: "users" }
+    - { label: "Products", icon: "package" }
+    - { label: "Settings", icon: "settings" }
+
+interaction:
+  transitions:
+    page_enter: "fade-in {motion.duration-normal} {motion.easing-default}"
+    card_enter: "slide-up + fade-in {motion.duration-normal} {motion.easing-default} stagger 50ms"
+    card_hover: "scale(1.02) {motion.duration-fast} {motion.easing-default}"
+  loading:
+    strategy: skeleton
+    threshold: 1000ms
+  empty_states:
+    pattern: "icon + headline + cta"

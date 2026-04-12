@@ -1,0 +1,411 @@
+{
+  "$extensions": {
+    "brand": "apple",
+    "source": "awesome-design-md",
+    "aesthetic": "cinematic product theater with reductive minimalism",
+    "key-characteristics": ["cinematic-sections", "optical-sizing-typography", "singular-blue-accent"]
+  },
+  "color": {
+    "surface": {
+      "$value": "#f5f5f7",
+      "$type": "color",
+      "$description": "Primary light background — blue-gray tint prevents sterility, not pure white"
+    },
+    "surface-subtle": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "White surface for specific elements"
+    },
+    "surface-dark": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "Immersive hero section backgrounds — pure black for product showcases"
+    },
+    "surface-dark-elevated": {
+      "$value": "#272729",
+      "$type": "color",
+      "$description": "Card backgrounds in dark sections"
+    },
+    "surface-dark-elevated-2": {
+      "$value": "#2a2a2d",
+      "$type": "color",
+      "$description": "Highest dark surface elevation"
+    },
+    "surface-button": {
+      "$value": "#fafafc",
+      "$type": "color",
+      "$description": "Search/filter button backgrounds"
+    },
+    "surface-button-active": {
+      "$value": "#ededf2",
+      "$type": "color",
+      "$description": "Active/pressed state for light buttons"
+    },
+    "surface-overlay": {
+      "$value": "rgba(210,210,215,0.64)",
+      "$type": "color",
+      "$description": "Media control scrims and overlays"
+    },
+    "accent": {
+      "$value": "#0071e3",
+      "$type": "color",
+      "$description": "Apple Blue — the ONLY chromatic color, reserved for interactive elements"
+    },
+    "accent-hover": {
+      "$value": "#0077ed",
+      "$type": "color",
+      "$description": "Apple Blue hover — slightly brighter"
+    },
+    "accent-link": {
+      "$value": "#0066cc",
+      "$type": "color",
+      "$description": "Link Blue — inline text links on light backgrounds"
+    },
+    "accent-link-dark": {
+      "$value": "#2997ff",
+      "$type": "color",
+      "$description": "Bright Blue — links on dark backgrounds"
+    },
+    "text-primary": {
+      "$value": "#1d1d1f",
+      "$type": "color",
+      "$description": "Primary text on light backgrounds — near-black, slightly warm"
+    },
+    "text-secondary": {
+      "$value": "rgba(0,0,0,0.8)",
+      "$type": "color",
+      "$description": "Secondary text — slightly softened black"
+    },
+    "text-tertiary": {
+      "$value": "rgba(0,0,0,0.48)",
+      "$type": "color",
+      "$description": "Tertiary text — disabled states, carousel controls"
+    },
+    "text-on-dark": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Text on dark backgrounds — pure white"
+    },
+    "text-on-accent": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Text on Apple Blue buttons — white"
+    },
+    "error": {
+      "$value": "#de3730",
+      "$type": "color",
+      "$description": "Error state — Apple system red"
+    },
+    "success": {
+      "$value": "#248a3d",
+      "$type": "color",
+      "$description": "Success state — Apple system green"
+    },
+    "border": {
+      "$value": "rgba(0,0,0,0.04)",
+      "$type": "color",
+      "$description": "Default subtle border for filter buttons"
+    },
+    "focus": {
+      "$value": "#0071e3",
+      "$type": "color",
+      "$description": "Focus ring — Apple Blue, 2px solid outline"
+    },
+    "nav-bg": {
+      "$value": "rgba(0,0,0,0.8)",
+      "$type": "color",
+      "$description": "Navigation glass — translucent dark with blur"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Display font — SF Pro Display for 20px+ with optical sizing"
+    },
+    "font-body": {
+      "$value": "SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body font — SF Pro Text for below 20px with optical sizing"
+    },
+    "scale-display": {
+      "$value": "56px",
+      "$type": "dimension",
+      "$description": "Hero display — 3.5rem, product launch headlines"
+    },
+    "scale-section": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Section heading — 2.5rem"
+    },
+    "scale-nav-heading": {
+      "$value": "34px",
+      "$type": "dimension",
+      "$description": "Large navigation headings — 2.13rem"
+    },
+    "scale-tile": {
+      "$value": "28px",
+      "$type": "dimension",
+      "$description": "Product tile headlines — 1.75rem"
+    },
+    "scale-subnav": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Sub-navigation text — 1.5rem at weight 300"
+    },
+    "scale-card-title": {
+      "$value": "21px",
+      "$type": "dimension",
+      "$description": "Card headings — 1.31rem"
+    },
+    "scale-button-lg": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Large button text — 1.13rem at weight 300"
+    },
+    "scale-body": {
+      "$value": "17px",
+      "$type": "dimension",
+      "$description": "Standard body — 1.06rem"
+    },
+    "scale-link": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Body links and captions — 0.88rem"
+    },
+    "scale-nav": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Navigation text — 0.75rem"
+    },
+    "scale-nano": {
+      "$value": "10px",
+      "$type": "dimension",
+      "$description": "Legal text — 0.63rem, smallest size"
+    },
+    "line-height-compressed": {
+      "$value": "1.07",
+      "$type": "number",
+      "$description": "Extreme compression — display hero headlines"
+    },
+    "line-height-tight": {
+      "$value": "1.10",
+      "$type": "number",
+      "$description": "Section headings"
+    },
+    "line-height-snug": {
+      "$value": "1.19",
+      "$type": "number",
+      "$description": "Card titles and sub-headings"
+    },
+    "line-height-normal": {
+      "$value": "1.47",
+      "$type": "number",
+      "$description": "Body text and navigation headings"
+    },
+    "weight-light": {
+      "$value": "300",
+      "$type": "number",
+      "$description": "Light — decorative large text, sub-nav, large buttons"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "Regular — body text, links, standard buttons"
+    },
+    "weight-semibold": {
+      "$value": "600",
+      "$type": "number",
+      "$description": "Semibold — display headlines, section headings, emphasis"
+    },
+    "weight-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold — rare, card titles only"
+    },
+    "letter-spacing-display": {
+      "$value": "-0.28px",
+      "$type": "dimension",
+      "$description": "Display headline tracking"
+    },
+    "letter-spacing-body": {
+      "$value": "-0.374px",
+      "$type": "dimension",
+      "$description": "Body text tracking — tight even at reading sizes"
+    },
+    "letter-spacing-caption": {
+      "$value": "-0.224px",
+      "$type": "dimension",
+      "$description": "Caption and link tracking"
+    },
+    "letter-spacing-micro": {
+      "$value": "-0.12px",
+      "$type": "dimension",
+      "$description": "Fine print tracking"
+    }
+  },
+  "spacing": {
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Small"
+    },
+    "md": {
+      "$value": "15px",
+      "$type": "dimension",
+      "$description": "Medium — button horizontal padding"
+    },
+    "lg": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Large"
+    },
+    "xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Extra large"
+    },
+    "section-gap": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "Cinematic breathing room between product sections"
+    },
+    "container-max": {
+      "$value": "980px",
+      "$type": "dimension",
+      "$description": "Maximum content width — the recurring Apple dimension"
+    }
+  },
+  "border": {
+    "radius-micro": {
+      "$value": "5px",
+      "$type": "dimension",
+      "$description": "Small containers and link tags"
+    },
+    "radius-standard": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Buttons, product cards, image containers"
+    },
+    "radius-comfortable": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Search inputs and filter buttons"
+    },
+    "radius-large": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Feature panels and lifestyle image containers"
+    },
+    "radius-pill": {
+      "$value": "980px",
+      "$type": "dimension",
+      "$description": "CTA pills — the signature Apple capsule shape"
+    },
+    "radius-circle": {
+      "$value": "50%",
+      "$type": "dimension",
+      "$description": "Media controls"
+    }
+  },
+  "shadow": {
+    "level-0": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Flat — no shadow. Most elements."
+    },
+    "level-1": {
+      "$value": [
+        {
+          "offsetX": "3px",
+          "offsetY": "5px",
+          "blur": "30px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.22)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Subtle lift — product cards. Soft diffused offset mimicking studio light"
+    },
+    "nav-glass": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Navigation glass — no shadow, uses backdrop-filter: saturate(180%) blur(20px)"
+    }
+  },
+  "motion": {
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Quick micro-interactions"
+    },
+    "duration-normal": {
+      "$value": "250ms",
+      "$type": "duration",
+      "$description": "Standard transitions"
+    },
+    "duration-slow": {
+      "$value": "400ms",
+      "$type": "duration",
+      "$description": "Section reveals and product animations"
+    },
+    "easing-default": {
+      "$value": [0.25, 0.1, 0.25, 1],
+      "$type": "cubicBezier",
+      "$description": "Standard ease"
+    }
+  },
+  "breakpoint": {
+    "mobile": {
+      "$value": "480px",
+      "$type": "dimension",
+      "$description": "Mobile — standard mobile layout"
+    },
+    "tablet-sm": {
+      "$value": "640px",
+      "$type": "dimension",
+      "$description": "Small tablet — 2-column grids begin"
+    },
+    "tablet": {
+      "$value": "834px",
+      "$type": "dimension",
+      "$description": "Tablet — full tablet layout"
+    },
+    "desktop": {
+      "$value": "1024px",
+      "$type": "dimension",
+      "$description": "Desktop — standard desktop layout"
+    },
+    "desktop-lg": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Large desktop — centered with generous margins"
+    }
+  }
+}

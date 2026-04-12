@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple Brand Tokens Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --surface-light: #f5f5f7;
+    --surface-dark: #000000;
+    --surface-dark-elevated: #272729;
+    --accent: #0071e3;
+    --accent-link: #0066cc;
+    --accent-link-dark: #2997ff;
+    --text-light: #1d1d1f;
+    --text-secondary: rgba(0,0,0,0.8);
+    --text-tertiary: rgba(0,0,0,0.48);
+    --text-dark: #ffffff;
+    --button-surface: #fafafc;
+    --font-display: Inter, -apple-system, Helvetica Neue, sans-serif;
+    --font-body: Inter, -apple-system, Helvetica Neue, sans-serif;
+  }
+
+  body { font-family: var(--font-body); background: var(--surface-light); color: var(--text-light); line-height: 1.47; letter-spacing: -0.374px; }
+
+  .container-full { width: 100%; }
+  .container { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+  /* Dark section */
+  .section-dark { background: var(--surface-dark); color: var(--text-dark); padding: 100px 20px; text-align: center; }
+  .section-dark a { color: var(--accent-link-dark); }
+
+  /* Light section */
+  .section-light { background: var(--surface-light); color: var(--text-light); padding: 80px 20px; }
+
+  .brand-header {
+    text-align: center; padding: 100px 20px;
+    background: var(--surface-dark); color: var(--text-dark);
+  }
+  .brand-header h1 {
+    font-size: 56px; font-weight: 600; line-height: 1.07;
+    letter-spacing: -0.28px; margin-bottom: 12px;
+  }
+  .brand-header .aesthetic { font-size: 21px; font-weight: 400; color: rgba(255,255,255,0.8); line-height: 1.19; letter-spacing: 0.231px; margin-bottom: 16px; }
+  .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .brand-header .tag {
+    font-size: 12px; padding: 6px 16px; background: var(--surface-dark-elevated);
+    color: rgba(255,255,255,0.8); border-radius: 980px; font-weight: 400; letter-spacing: -0.12px;
+  }
+
+  .section-title {
+    font-size: 40px; font-weight: 600; line-height: 1.1;
+    margin-bottom: 8px; letter-spacing: normal;
+  }
+  .section-desc { font-size: 17px; color: var(--text-secondary); margin-bottom: 40px; letter-spacing: -0.374px; line-height: 1.47; }
+
+  .color-group { margin-bottom: 32px; }
+  .color-group-title { font-size: 12px; font-weight: 600; letter-spacing: -0.12px; color: var(--text-tertiary); margin-bottom: 12px; text-transform: uppercase; }
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .color-swatch { border-radius: 8px; overflow: hidden; background: white; }
+  .color-swatch .swatch-fill { height: 72px; }
+  .color-swatch .swatch-info { padding: 10px 12px; }
+  .color-swatch .swatch-name { font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 2px; letter-spacing: -0.12px; }
+  .color-swatch .swatch-hex { font-size: 11px; color: var(--text-tertiary); letter-spacing: -0.08px; }
+
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.04); }
+  .type-row:last-child { border-bottom: none; }
+  .type-label { flex: 0 0 100px; font-size: 12px; color: var(--text-tertiary); text-align: right; font-weight: 600; letter-spacing: -0.12px; }
+  .type-sample { flex: 1; color: var(--text-light); }
+  .type-meta { flex: 0 0 60px; font-size: 12px; color: var(--text-tertiary); text-align: right; letter-spacing: -0.12px; }
+
+  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .spacing-label { flex: 0 0 80px; font-size: 12px; color: var(--text-tertiary); text-align: right; font-weight: 600; letter-spacing: -0.12px; }
+  .spacing-bar { height: 24px; background: var(--accent); border-radius: 8px; opacity: 0.6; transition: opacity 0.2s; }
+  .spacing-bar:hover { opacity: 1; }
+  .spacing-value { font-size: 12px; color: var(--text-tertiary); min-width: 40px; letter-spacing: -0.12px; }
+
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 16px; }
+  .radius-box { aspect-ratio: 1; background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .radius-box .radius-name { font-size: 12px; color: var(--text-secondary); font-weight: 400; letter-spacing: -0.12px; }
+  .radius-box .radius-val { font-size: 10px; color: var(--text-tertiary); letter-spacing: -0.08px; }
+
+  .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+  .shadow-card { padding: 24px; border-radius: 8px; background: white; min-height: 120px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .shadow-card .shadow-name { font-size: 14px; font-weight: 600; color: var(--text-light); margin-bottom: 4px; letter-spacing: -0.224px; }
+  .shadow-card .shadow-desc { font-size: 12px; color: var(--text-tertiary); letter-spacing: -0.12px; }
+
+  .component-section { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 980px; margin: 0 auto; }
+  @media (max-width: 768px) {
+    .component-section { grid-template-columns: 1fr; }
+    .brand-header h1 { font-size: 40px; }
+    .section-title { font-size: 28px; }
+    .type-label { flex: 0 0 60px; font-size: 10px; }
+  }
+
+  .comp-card { padding: 32px; background: white; border-radius: 12px; box-shadow: rgba(0,0,0,0.22) 3px 5px 30px 0px; }
+  .comp-card h3 { font-size: 21px; font-weight: 700; margin-bottom: 20px; line-height: 1.19; letter-spacing: 0.231px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--font-body); font-size: 17px; font-weight: 400;
+    cursor: pointer; transition: all 0.25s; text-decoration: none;
+    letter-spacing: normal;
+  }
+  .btn-blue { background: var(--accent); color: #ffffff; padding: 8px 15px; border-radius: 8px; border: 1px solid transparent; }
+  .btn-blue:hover { opacity: 0.9; }
+  .btn-dark { background: #1d1d1f; color: #ffffff; padding: 8px 15px; border-radius: 8px; border: 1px solid transparent; }
+  .btn-pill { background: transparent; color: var(--accent-link); padding: 8px 20px; border-radius: 980px; border: 1px solid var(--accent-link); font-size: 14px; letter-spacing: -0.224px; }
+  .btn-pill:hover { text-decoration: underline; }
+  .btn-pill-dark { background: transparent; color: var(--accent-link-dark); padding: 8px 20px; border-radius: 980px; border: 1px solid var(--accent-link-dark); font-size: 14px; letter-spacing: -0.224px; }
+  .btn-group { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+
+  .product-card {
+    background: var(--surface-light); border-radius: 12px; overflow: hidden;
+    text-align: center; padding: 32px;
+  }
+  .product-card .product-img {
+    height: 160px; margin-bottom: 24px;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.02) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 64px; color: var(--text-tertiary);
+  }
+  .product-card h4 { font-size: 28px; font-weight: 400; line-height: 1.14; letter-spacing: 0.196px; margin-bottom: 8px; }
+  .product-card p { font-size: 14px; color: var(--text-secondary); letter-spacing: -0.224px; margin-bottom: 12px; }
+  .product-card .links { display: flex; gap: 20px; justify-content: center; }
+  .product-card .links a { font-size: 14px; color: var(--accent-link); text-decoration: none; letter-spacing: -0.224px; }
+  .product-card .links a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+  <header class="brand-header">
+    <div class="container">
+      <h1>Apple</h1>
+      <p class="aesthetic">Cinematic product theater with reductive minimalism</p>
+      <div class="tags">
+        <span class="tag">cinematic-sections</span>
+        <span class="tag">optical-sizing-typography</span>
+        <span class="tag">singular-blue-accent</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="section-light">
+    <div class="container">
+      <section style="margin-bottom:80px">
+        <h2 class="section-title">Color Palette</h2>
+        <p class="section-desc">Binary light/dark section rhythm. Apple Blue as singular interactive accent.</p>
+
+        <div class="color-group">
+          <h3 class="color-group-title">Surface</h3>
+          <div class="color-grid">
+            <div class="color-swatch"><div class="swatch-fill" style="background:#f5f5f7"></div><div class="swatch-info"><div class="swatch-name">surface-light</div><div class="swatch-hex">#f5f5f7</div></div></div>
+            <div class="color-swatch"><div class="swatch-fill" style="background:#000000"></div><div class="swatch-info"><div class="swatch-name">surface-dark</div><div class="swatch-hex">#000000</div></div></div>
+            <div class="color-swatch"><div class="swatch-fill" style="background:#272729"></div><div class="swatch-info"><div class="swatch-name">dark-elevated</div><div class="swatch-hex">#272729</div></div></div>
+            <div class="color-swatch"><div class="swatch-fill" style="background:#fafafc"></div><div class="swatch-info"><div class="swatch-name">button-surface</div><div class="swatch-hex">#fafafc</div></div></div>
+          </div>
+        </div>
+
+        <div class="color-group">
+          <h3 class="color-group-title">Interactive</h3>
+          <div class="color-grid">
+            <div class="color-swatch"><div class="swatch-fill" style="background:#0071e3"></div><div class="swatch-info"><div class="swatch-name">Apple Blue</div><div class="swatch-hex">#0071e3</div></div></div>
+            <div class="color-swatch"><div class="swatch-fill" style="background:#0066cc"></div><div class="swatch-info"><div class="swatch-name">link (light)</div><div class="swatch-hex">#0066cc</div></div></div>
+            <div class="color-swatch"><div class="swatch-fill" style="background:#2997ff"></div><div class="swatch-info"><div class="swatch-name">link (dark)</div><div class="swatch-hex">#2997ff</div></div></div>
+          </div>
+        </div>
+
+        <div class="color-group">
+          <h3 class="color-group-title">Text</h3>
+          <div class="color-grid">
+            <div class="color-swatch"><div class="swatch-fill" style="background:#1d1d1f"></div><div class="swatch-info"><div class="swatch-name">text-primary</div><div class="swatch-hex">#1d1d1f</div></div></div>
+            <div class="color-swatch"><div class="swatch-fill" style="background:rgba(0,0,0,0.8)"></div><div class="swatch-info"><div class="swatch-name">text-secondary</div><div class="swatch-hex">rgba(0,0,0,0.8)</div></div></div>
+            <div class="color-swatch"><div class="swatch-fill" style="background:rgba(0,0,0,0.48)"></div><div class="swatch-info"><div class="swatch-name">text-tertiary</div><div class="swatch-hex">rgba(0,0,0,0.48)</div></div></div>
+          </div>
+        </div>
+
+        <div class="color-group">
+          <h3 class="color-group-title">Semantic</h3>
+          <div class="color-grid">
+            <div class="color-swatch"><div class="swatch-fill" style="background:#de3730"></div><div class="swatch-info"><div class="swatch-name">error</div><div class="swatch-hex">#de3730</div></div></div>
+            <div class="color-swatch"><div class="swatch-fill" style="background:#248a3d"></div><div class="swatch-info"><div class="swatch-name">success</div><div class="swatch-hex">#248a3d</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-bottom:80px">
+        <h2 class="section-title">Typography Scale</h2>
+        <p class="section-desc">SF Pro Display (20px+) and SF Pro Text (below 20px) with optical sizing. Inter as web fallback.</p>
+
+        <div class="type-row"><span class="type-label">display</span><span class="type-sample" style="font-size:48px;font-weight:600;line-height:1.07;letter-spacing:-0.28px">iPhone 16 Pro</span><span class="type-meta">56px</span></div>
+        <div class="type-row"><span class="type-label">section</span><span class="type-sample" style="font-size:36px;font-weight:600;line-height:1.1">New features</span><span class="type-meta">40px</span></div>
+        <div class="type-row"><span class="type-label">tile</span><span class="type-sample" style="font-size:28px;font-weight:400;line-height:1.14;letter-spacing:0.196px">MacBook Air</span><span class="type-meta">28px</span></div>
+        <div class="type-row"><span class="type-label">card title</span><span class="type-sample" style="font-size:21px;font-weight:700;line-height:1.19;letter-spacing:0.231px">M4 chip. Blazingly fast.</span><span class="type-meta">21px</span></div>
+        <div class="type-row"><span class="type-label">body</span><span class="type-sample" style="font-size:17px;font-weight:400;line-height:1.47;letter-spacing:-0.374px">The most advanced personal devices we have ever created.</span><span class="type-meta">17px</span></div>
+        <div class="type-row"><span class="type-label">link</span><span class="type-sample" style="font-size:14px;font-weight:400;line-height:1.43;letter-spacing:-0.224px;color:#0066cc">Learn more &rsaquo;</span><span class="type-meta">14px</span></div>
+        <div class="type-row"><span class="type-label">nav</span><span class="type-sample" style="font-size:12px;font-weight:400;line-height:1.33;letter-spacing:-0.12px;color:rgba(0,0,0,0.48)">Mac  iPad  iPhone  Watch</span><span class="type-meta">12px</span></div>
+      </section>
+
+      <section style="margin-bottom:80px">
+        <h2 class="section-title">Border Radius</h2>
+        <p class="section-desc">Conservative rounding. 980px pill for CTA links. 50% circle for media controls.</p>
+
+        <div class="radius-grid">
+          <div class="radius-box" style="border-radius:5px"><span class="radius-name">micro</span><span class="radius-val">5px</span></div>
+          <div class="radius-box" style="border-radius:8px"><span class="radius-name">standard</span><span class="radius-val">8px</span></div>
+          <div class="radius-box" style="border-radius:11px"><span class="radius-name">comfortable</span><span class="radius-val">11px</span></div>
+          <div class="radius-box" style="border-radius:12px"><span class="radius-name">large</span><span class="radius-val">12px</span></div>
+          <div class="radius-box" style="border-radius:100px"><span class="radius-name">pill</span><span class="radius-val">980px</span></div>
+          <div class="radius-box" style="border-radius:50%"><span class="radius-name">circle</span><span class="radius-val">50%</span></div>
+        </div>
+      </section>
+
+      <section style="margin-bottom:80px">
+        <h2 class="section-title">Shadow</h2>
+        <p class="section-desc">Extremely sparse. One soft diffused shadow or nothing. Elevation via background contrast.</p>
+
+        <div class="shadow-grid">
+          <div class="shadow-card" style="box-shadow:none;border:1px solid rgba(0,0,0,0.04)"><span class="shadow-name">Flat</span><span class="shadow-desc">No shadow. Most elements.</span></div>
+          <div class="shadow-card" style="box-shadow:rgba(0,0,0,0.22) 3px 5px 30px 0px"><span class="shadow-name">Product Card</span><span class="shadow-desc">Soft diffused studio shadow.</span></div>
+        </div>
+      </section>
+
+      <section style="margin-bottom:80px">
+        <h2 class="section-title">Component Preview</h2>
+        <p class="section-desc">Reductive components serving the product. Blue for interactive. Everything else recedes.</p>
+
+        <div class="component-section">
+          <div class="comp-card">
+            <h3>Buttons</h3>
+            <div class="btn-group" style="margin-bottom:16px">
+              <button class="btn btn-blue">Buy</button>
+              <button class="btn btn-dark">Learn more</button>
+            </div>
+            <div class="btn-group">
+              <a href="#" class="btn btn-pill">Learn more &rsaquo;</a>
+              <a href="#" class="btn btn-pill">Shop &rsaquo;</a>
+            </div>
+          </div>
+
+          <div class="comp-card">
+            <h3>Product Card</h3>
+            <div class="product-card">
+              <div class="product-img">&#9741;</div>
+              <h4>MacBook Air</h4>
+              <p>Strikingly thin. Impressively capable.</p>
+              <div class="links">
+                <a href="#">Learn more &rsaquo;</a>
+                <a href="#">Buy &rsaquo;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="section-dark">
+    <div class="container">
+      <h2 style="font-size:48px;font-weight:600;line-height:1.07;letter-spacing:-0.28px;margin-bottom:12px">iPhone 16 Pro</h2>
+      <p style="font-size:21px;font-weight:400;line-height:1.19;letter-spacing:0.231px;color:rgba(255,255,255,0.8);margin-bottom:24px">Hello, Apple Intelligence.</p>
+      <div class="btn-group" style="justify-content:center">
+        <a href="#" class="btn btn-pill-dark">Learn more &rsaquo;</a>
+        <button class="btn btn-blue">Buy</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
