@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ================================================================
+       LAYER 1 — PRIMITIVE TOKENS
+       Raw values named by identity. No semantic meaning.
+       ================================================================ */
+    :root {
+      /* Color: Navy scale */
+      --p-navy-950: #111318;
+      --p-navy-900: #1d1f27;
+      --p-navy-800: #2c2e38;
+      --p-navy-700: #35374a;
+      --p-navy-600: #3b3d4f;
+      --p-navy-500: #565869;
+      --p-navy-400: #6b7280;
+      --p-navy-300: #9ba0aa;
+      --p-navy-200: #d1d5db;
+      --p-navy-50: #eeefe9;
+
+      /* Color: Orange accent */
+      --p-orange-500: #f54e00;
+      --p-orange-600: #e04600;
+
+      /* Color: Data viz palette */
+      --p-chart-blue: #1d8aed;
+      --p-chart-purple: #6c3ff2;
+      --p-chart-green: #42b983;
+      --p-chart-amber: #f1a82c;
+      --p-chart-rose: #ff6384;
+
+      /* Color: Status */
+      --p-success: #77b96c;
+      --p-error: #f44336;
+      --p-warning: #f1a82c;
+
+      /* Color: Utility */
+      --p-white: #ffffff;
+
+      /* Color: Funnel gradient endpoints */
+      --p-chart-blue-light: #36a2eb;
+      --p-chart-purple-light: #8b5cf6;
+      --p-chart-green-light: #5ed4a5;
+      --p-chart-amber-light: #f5c842;
+      --p-chart-rose-light: #ff8fa3;
+
+      /* Typography */
+      --p-font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --p-scale-xs: 11px;
+      --p-scale-sm: 12px;
+      --p-scale-caption: 13px;
+      --p-scale-base: 14px;
+      --p-scale-lg: 15px;
+      --p-scale-xl: 20px;
+      --p-scale-2xl: 24px;
+      --p-scale-3xl: 32px;
+      --p-lh-tight: 1.15;
+      --p-lh-snug: 1.25;
+      --p-lh-normal: 1.50;
+      --p-weight-regular: 400;
+      --p-weight-medium: 500;
+      --p-weight-semibold: 600;
+      --p-weight-bold: 700;
+
+      /* Spacing: Dense 4px grid */
+      --p-space-0-5: 2px;
+      --p-space-1: 4px;
+      --p-space-2: 8px;
+      --p-space-3: 12px;
+      --p-space-4: 16px;
+      --p-space-5: 20px;
+      --p-space-6: 24px;
+      --p-space-8: 32px;
+      --p-space-12: 48px;
+
+      /* Border */
+      --p-radius-sm: 4px;
+      --p-radius-md: 6px;
+      --p-radius-lg: 8px;
+
+      /* Motion */
+      --p-duration-fast: 150ms;
+      --p-duration-normal: 200ms;
+      --p-duration-slow: 350ms;
+      --p-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+      /* ================================================================
+         LAYER 2 — SEMANTIC TOKENS
+         References to primitives. Describes purpose, not identity.
+         ================================================================ */
+
+      /* Surfaces */
+      --surface: var(--p-navy-900);
+      --surface-elevated: var(--p-navy-800);
+      --surface-deepest: var(--p-navy-950);
+      --surface-input: var(--p-navy-700);
+      --surface-hover: var(--p-navy-600);
+
+      /* Accent */
+      --accent: var(--p-orange-500);
+      --accent-hover: var(--p-orange-600);
+
+      /* Text */
+      --text-primary: var(--p-navy-50);
+      --text-secondary: var(--p-navy-300);
+      --text-tertiary: var(--p-navy-400);
+      --text-disabled: var(--p-navy-500);
+
+      /* Borders */
+      --border: var(--p-navy-600);
+      --border-subtle: var(--p-navy-700);
+      --border-strong: var(--p-navy-500);
+
+      /* Chart palette */
+      --chart-1: var(--p-chart-blue);
+      --chart-2: var(--p-chart-purple);
+      --chart-3: var(--p-chart-green);
+      --chart-4: var(--p-chart-amber);
+      --chart-5: var(--p-chart-rose);
+
+      /* Status */
+      --success: var(--p-success);
+      --error: var(--p-error);
+      --warning: var(--p-warning);
+
+      /* Utility */
+      --white: var(--p-white);
+
+      /* Chart gradient endpoints */
+      --chart-1-light: var(--p-chart-blue-light);
+      --chart-2-light: var(--p-chart-purple-light);
+      --chart-3-light: var(--p-chart-green-light);
+      --chart-4-light: var(--p-chart-amber-light);
+      --chart-5-light: var(--p-chart-rose-light);
+
+      /* Typography semantic */
+      --font: var(--p-font-body);
+
+      /* ================================================================
+         LAYER 3 — COMPONENT TOKENS
+         References to semantics. Scoped to specific UI elements.
+         ================================================================ */
+
+      /* Metric card */
+      --metric-bg: var(--surface-elevated);
+      --metric-border: var(--border);
+      --metric-radius: var(--p-radius-lg);
+      --metric-padding: var(--p-space-5);
+      --metric-value-color: var(--text-primary);
+      --metric-label-color: var(--text-tertiary);
+      --metric-trend-up: var(--success);
+      --metric-trend-down: var(--error);
+
+      /* Chart container */
+      --chart-bg: var(--surface-elevated);
+      --chart-border: var(--border);
+      --chart-radius: var(--p-radius-lg);
+      --chart-padding: var(--p-space-6);
+      --chart-axis-color: var(--text-tertiary);
+      --chart-grid-color: var(--border-subtle);
+      --chart-tooltip-bg: var(--surface-deepest);
+      --chart-tooltip-text: var(--text-primary);
+
+      /* Event table */
+      --table-header-bg: var(--surface-hover);
+      --table-header-text: var(--text-secondary);
+      --table-row-bg: var(--surface-elevated);
+      --table-row-hover: var(--surface-hover);
+      --table-row-border: var(--border-subtle);
+      --table-cell-padding: var(--p-space-3);
+
+      /* Funnel */
+      --funnel-bg: var(--surface-elevated);
+      --funnel-label-color: var(--text-primary);
+      --funnel-value-color: var(--text-secondary);
+
+      /* Sidebar */
+      --sidebar-bg: var(--surface-deepest);
+      --sidebar-item-text: var(--text-secondary);
+      --sidebar-item-active-text: var(--accent);
+      --sidebar-item-active-bg: rgba(245, 78, 0, 0.1);
+      --sidebar-section-title: var(--text-tertiary);
+      --sidebar-icon-color: var(--text-tertiary);
+      --sidebar-divider: var(--border);
+
+      /* Header */
+      --header-bg: var(--surface);
+      --header-title-color: var(--text-primary);
+      --header-search-bg: var(--surface-input);
+      --header-search-border: var(--border);
+      --header-avatar-border: var(--border-strong);
+    }
+
+    /* ================================================================
+       RESET & BASE
+       ================================================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: var(--p-scale-lg);
+      font-weight: var(--p-weight-regular);
+      line-height: var(--p-lh-normal);
+      color: var(--text-primary);
+      background-color: var(--surface);
+    }
+
+    /* ================================================================
+       LAYOUT: SIDEBAR + MAIN
+       ================================================================ */
+    .app {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* --- Sidebar --- */
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--sidebar-divider);
+      padding: var(--p-space-4) 0;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 50;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--p-space-2);
+      padding: var(--p-space-3) var(--p-space-4);
+      margin-bottom: var(--p-space-4);
+      text-decoration: none;
+    }
+
+    .sidebar-logo-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: var(--p-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--p-scale-base);
+      color: var(--white);
+      font-weight: var(--p-weight-bold);
+    }
+
+    .sidebar-logo-text {
+      font-size: var(--p-scale-lg);
+      font-weight: var(--p-weight-semibold);
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .sidebar-section-title {
+      font-size: var(--p-scale-xs);
+      font-weight: var(--p-weight-semibold);
+      color: var(--sidebar-section-title);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: var(--p-space-2) var(--p-space-4);
+      margin-top: var(--p-space-2);
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--p-space-0-5);
+      padding: 0 var(--p-space-2);
+    }
+
+    .sidebar-nav-item {
+      display: flex;
+      align-items: center;
+      gap: var(--p-space-2);
+      padding: var(--p-space-2) var(--p-space-3);
+      border-radius: var(--p-radius-md);
+      font-size: var(--p-scale-base);
+      font-weight: var(--p-weight-regular);
+      color: var(--sidebar-item-text);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background var(--p-duration-fast) var(--p-ease),
+                  color var(--p-duration-fast) var(--p-ease);
+    }
+
+    .sidebar-nav-item:hover {
+      background: var(--surface-elevated);
+      color: var(--text-primary);
+    }
+
+    .sidebar-nav-item.active {
+      background: var(--sidebar-item-active-bg);
+      color: var(--sidebar-item-active-text);
+      font-weight: var(--p-weight-medium);
+    }
+
+    .sidebar-nav-item.active .nav-icon {
+      color: var(--sidebar-item-active-text);
+      opacity: 1;
+    }
+
+    .nav-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--sidebar-icon-color);
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--sidebar-divider);
+      margin: var(--p-space-2) var(--p-space-4);
+    }
+
+    .sidebar-spacer {
+      flex: 1;
+    }
+
+    /* --- Main content --- */
+    .main {
+      flex: 1;
+      margin-left: 240px;
+      min-width: 0;
+    }
+
+    /* --- Header --- */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--p-space-4) var(--p-space-6);
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .header-title {
+      font-size: var(--p-scale-xl);
+      font-weight: var(--p-weight-semibold);
+      color: var(--header-title-color);
+      line-height: var(--p-lh-snug);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--p-space-3);
+    }
+
+    .search-input {
+      display: flex;
+      align-items: center;
+      gap: var(--p-space-2);
+      background: var(--header-search-bg);
+      border: 1px solid var(--header-search-border);
+      border-radius: var(--p-radius-md);
+      padding: var(--p-space-2) var(--p-space-3);
+      color: var(--text-secondary);
+      font-size: var(--p-scale-caption);
+      font-family: var(--font);
+      min-width: 200px;
+      cursor: text;
+      transition: border-color var(--p-duration-fast) var(--p-ease);
+    }
+
+    .search-input:hover,
+    .search-input:focus-within {
+      border-color: var(--border-strong);
+    }
+
+    .search-input input {
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      font-size: var(--p-scale-caption);
+      font-family: var(--font);
+      width: 100%;
+    }
+
+    .search-input input::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    .search-icon {
+      width: 14px;
+      height: 14px;
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+    }
+
+    .date-range {
+      display: flex;
+      align-items: center;
+      gap: var(--p-space-2);
+      background: var(--header-search-bg);
+      border: 1px solid var(--header-search-border);
+      border-radius: var(--p-radius-md);
+      padding: var(--p-space-2) var(--p-space-3);
+      color: var(--text-secondary);
+      font-size: var(--p-scale-caption);
+      font-family: var(--font);
+      cursor: pointer;
+      transition: border-color var(--p-duration-fast) var(--p-ease);
+    }
+
+    .date-range:hover {
+      border-color: var(--border-strong);
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--surface-hover);
+      border: 2px solid var(--header-avatar-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--p-scale-sm);
+      font-weight: var(--p-weight-semibold);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: border-color var(--p-duration-fast) var(--p-ease);
+    }
+
+    .avatar:hover {
+      border-color: var(--text-secondary);
+    }
+
+    /* --- Content area --- */
+    .content {
+      padding: var(--p-space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--p-space-6);
+    }
+
+    /* ================================================================
+       METRIC CARDS
+       ================================================================ */
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--p-space-4);
+    }
+
+    .metric-card {
+      background: var(--metric-bg);
+      border: 1px solid var(--metric-border);
+      border-radius: var(--metric-radius);
+      padding: var(--metric-padding);
+      transition: border-color var(--p-duration-fast) var(--p-ease),
+                  transform var(--p-duration-fast) var(--p-ease);
+      cursor: default;
+    }
+
+    .metric-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }
+
+    .metric-label {
+      font-size: var(--p-scale-xs);
+      font-weight: var(--p-weight-semibold);
+      color: var(--metric-label-color);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: var(--p-lh-snug);
+      margin-bottom: var(--p-space-2);
+    }
+
+    .metric-value-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--p-space-2);
+    }
+
+    .metric-value {
+      font-size: var(--p-scale-3xl);
+      font-weight: var(--p-weight-semibold);
+      color: var(--metric-value-color);
+      line-height: var(--p-lh-snug);
+      letter-spacing: -0.02em;
+    }
+
+    .metric-trend {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--p-space-1);
+      font-size: var(--p-scale-caption);
+      font-weight: var(--p-weight-medium);
+      line-height: var(--p-lh-snug);
+    }
+
+    .metric-trend.up {
+      color: var(--metric-trend-up);
+    }
+
+    .metric-trend.down {
+      color: var(--metric-trend-down);
+    }
+
+    .metric-subtitle {
+      font-size: var(--p-scale-caption);
+      color: var(--text-tertiary);
+      margin-top: var(--p-space-1);
+    }
+
+    /* ================================================================
+       CHART SECTION
+       ================================================================ */
+    .chart-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--p-space-4);
+    }
+
+    .chart-card {
+      background: var(--chart-bg);
+      border: 1px solid var(--chart-border);
+      border-radius: var(--chart-radius);
+      padding: var(--chart-padding);
+    }
+
+    .chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--p-space-5);
+    }
+
+    .chart-title {
+      font-size: var(--p-scale-base);
+      font-weight: var(--p-weight-semibold);
+      color: var(--text-primary);
+      line-height: var(--p-lh-snug);
+    }
+
+    .chart-legend {
+      display: flex;
+      align-items: center;
+      gap: var(--p-space-3);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: var(--p-space-1);
+      font-size: var(--p-scale-xs);
+      color: var(--text-tertiary);
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* --- CSS-only Area Chart --- */
+    .area-chart {
+      position: relative;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .area-chart-grid {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .grid-line {
+      display: flex;
+      align-items: center;
+      gap: var(--p-space-2);
+    }
+
+    .grid-label {
+      font-size: var(--p-scale-xs);
+      color: var(--chart-axis-color);
+      width: 32px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .grid-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--chart-grid-color);
+    }
+
+    .area-chart-viz {
+      position: relative;
+      height: 160px;
+      margin-left: 40px;
+      overflow: hidden;
+      border-radius: 0 0 var(--p-radius-sm) var(--p-radius-sm);
+    }
+
+    .area-fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 0%
+      );
+      clip-path: polygon(
+        0% 70%, 5% 62%, 10% 55%, 15% 50%, 20% 48%,
+        25% 52%, 30% 45%, 35% 38%, 40% 35%, 45% 32%,
+        50% 36%, 55% 30%, 60% 25%, 65% 22%, 70% 28%,
+        75% 20%, 80% 18%, 85% 15%, 90% 12%, 95% 8%, 100% 5%,
+        100% 100%, 0% 100%
+      );
+      background: linear-gradient(
+        180deg,
+        rgba(29, 138, 237, 0.3) 0%,
+        rgba(29, 138, 237, 0.02) 100%
+      );
+    }
+
+    .area-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      clip-path: polygon(
+        0% 70%, 5% 62%, 10% 55%, 15% 50%, 20% 48%,
+        25% 52%, 30% 45%, 35% 38%, 40% 35%, 45% 32%,
+        50% 36%, 55% 30%, 60% 25%, 65% 22%, 70% 28%,
+        75% 20%, 80% 18%, 85% 15%, 90% 12%, 95% 8%, 100% 5%,
+        100% calc(5% + 2px), 95% calc(8% + 2px), 90% calc(12% + 2px),
+        85% calc(15% + 2px), 80% calc(18% + 2px), 75% calc(20% + 2px),
+        70% calc(28% + 2px), 65% calc(22% + 2px), 60% calc(25% + 2px),
+        55% calc(30% + 2px), 50% calc(36% + 2px), 45% calc(32% + 2px),
+        40% calc(35% + 2px), 35% calc(38% + 2px), 30% calc(45% + 2px),
+        25% calc(52% + 2px), 20% calc(48% + 2px), 15% calc(50% + 2px),
+        10% calc(55% + 2px), 5% calc(62% + 2px), 0% calc(70% + 2px)
+      );
+      background: var(--chart-1);
+    }
+
+    .area-chart-xaxis {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 40px;
+      margin-top: var(--p-space-2);
+    }
+
+    .xaxis-label {
+      font-size: var(--p-scale-xs);
+      color: var(--chart-axis-color);
+    }
+
+    /* --- CSS-only Bar Chart --- */
+    .bar-chart {
+      position: relative;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bar-chart-viz {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      gap: var(--p-space-3);
+      padding-left: 40px;
+    }
+
+    .bar-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--p-space-1);
+      position: relative;
+    }
+
+    .bar-stack {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 160px;
+    }
+
+    .bar {
+      flex: 1;
+      border-radius: var(--p-radius-sm) var(--p-radius-sm) 0 0;
+      transition: opacity var(--p-duration-fast) var(--p-ease);
+      position: relative;
+    }
+
+    .bar:hover {
+      opacity: 0.85;
+    }
+
+    .bar::after {
+      content: attr(data-value);
+      position: absolute;
+      bottom: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: var(--p-scale-xs);
+      color: var(--text-primary);
+      background: var(--chart-tooltip-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--p-radius-sm);
+      padding: var(--p-space-0-5) var(--p-space-1);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--p-duration-fast) var(--p-ease);
+    }
+
+    .bar:hover::after {
+      opacity: 1;
+    }
+
+    .bar-label {
+      font-size: var(--p-scale-xs);
+      color: var(--chart-axis-color);
+      text-align: center;
+    }
+
+    .bar-chart-yaxis {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 32px;
+    }
+
+    .yaxis-label {
+      font-size: var(--p-scale-xs);
+      color: var(--chart-axis-color);
+      text-align: right;
+    }
+
+    /* ================================================================
+       EVENT TABLE
+       ================================================================ */
+    .table-card {
+      background: var(--chart-bg);
+      border: 1px solid var(--chart-border);
+      border-radius: var(--chart-radius);
+      overflow: hidden;
+    }
+
+    .table-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--p-space-5) var(--p-space-6);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .table-card-title {
+      font-size: var(--p-scale-base);
+      font-weight: var(--p-weight-semibold);
+      color: var(--text-primary);
+    }
+
+    .table-card-action {
+      font-size: var(--p-scale-caption);
+      color: var(--chart-1);
+      text-decoration: none;
+      font-weight: var(--p-weight-medium);
+      cursor: pointer;
+      transition: color var(--p-duration-fast) var(--p-ease);
+    }
+
+    .table-card-action:hover {
+      color: var(--text-primary);
+    }
+
+    .event-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .event-table thead th {
+      background: var(--table-header-bg);
+      color: var(--table-header-text);
+      font-size: var(--p-scale-sm);
+      font-weight: var(--p-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: var(--table-cell-padding) var(--p-space-6);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .event-table thead th:nth-child(2),
+    .event-table thead th:nth-child(3),
+    .event-table thead th:nth-child(4) {
+      text-align: right;
+    }
+
+    .event-table tbody tr {
+      transition: background var(--p-duration-fast) var(--p-ease);
+    }
+
+    .event-table tbody tr:hover {
+      background: var(--table-row-hover);
+    }
+
+    .event-table tbody td {
+      padding: var(--table-cell-padding) var(--p-space-6);
+      font-size: var(--p-scale-base);
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--table-row-border);
+    }
+
+    .event-table tbody td:nth-child(2),
+    .event-table tbody td:nth-child(3),
+    .event-table tbody td:nth-child(4) {
+      text-align: right;
+    }
+
+    .event-name {
+      display: flex;
+      align-items: center;
+      gap: var(--p-space-2);
+    }
+
+    .event-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .event-count {
+      font-weight: var(--p-weight-medium);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .event-users {
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .event-time {
+      color: var(--text-tertiary);
+      font-size: var(--p-scale-caption);
+    }
+
+    .table-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--p-space-3) var(--p-space-6);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .pagination-info {
+      font-size: var(--p-scale-caption);
+      color: var(--text-tertiary);
+    }
+
+    .pagination-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--p-space-1);
+    }
+
+    .pagination-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--p-radius-sm);
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: var(--p-scale-caption);
+      font-family: var(--font);
+      cursor: pointer;
+      transition: background var(--p-duration-fast) var(--p-ease),
+                  border-color var(--p-duration-fast) var(--p-ease),
+                  color var(--p-duration-fast) var(--p-ease);
+    }
+
+    .pagination-btn:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-strong);
+      color: var(--text-primary);
+    }
+
+    .pagination-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    /* ================================================================
+       FUNNEL SECTION
+       ================================================================ */
+    .funnel-card {
+      background: var(--funnel-bg);
+      border: 1px solid var(--chart-border);
+      border-radius: var(--chart-radius);
+      padding: var(--chart-padding);
+    }
+
+    .funnel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--p-space-5);
+    }
+
+    .funnel-title {
+      font-size: var(--p-scale-base);
+      font-weight: var(--p-weight-semibold);
+      color: var(--text-primary);
+    }
+
+    .funnel-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .funnel-step {
+      display: flex;
+      align-items: center;
+      gap: var(--p-space-4);
+      padding: var(--p-space-3) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .funnel-step:last-child {
+      border-bottom: none;
+    }
+
+    .funnel-step-number {
+      font-size: var(--p-scale-xl);
+      font-weight: var(--p-weight-semibold);
+      color: var(--text-tertiary);
+      width: 28px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .funnel-bar-wrapper {
+      flex: 1;
+      height: 36px;
+      position: relative;
+      background: var(--surface-hover);
+      border-radius: var(--p-radius-sm);
+      overflow: hidden;
+    }
+
+    .funnel-bar-fill {
+      height: 100%;
+      border-radius: var(--p-radius-sm);
+      min-width: 24px;
+      display: flex;
+      align-items: center;
+      padding-left: var(--p-space-3);
+      transition: width var(--p-duration-slow) var(--p-ease);
+    }
+
+    .funnel-bar-label {
+      font-size: var(--p-scale-caption);
+      font-weight: var(--p-weight-medium);
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .funnel-step-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--p-space-0-5);
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .funnel-rate {
+      font-size: var(--p-scale-base);
+      font-weight: var(--p-weight-semibold);
+      color: var(--funnel-label-color);
+    }
+
+    .funnel-count {
+      font-size: var(--p-scale-sm);
+      color: var(--funnel-value-color);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .funnel-dropoff {
+      font-size: var(--p-scale-sm);
+      color: var(--error);
+      font-weight: var(--p-weight-medium);
+    }
+
+    .funnel-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: var(--p-space-4);
+      padding-top: var(--p-space-4);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .funnel-footer-label {
+      font-size: var(--p-scale-caption);
+      color: var(--text-tertiary);
+    }
+
+    .funnel-footer-value {
+      font-size: var(--p-scale-2xl);
+      font-weight: var(--p-weight-semibold);
+      color: var(--error);
+    }
+
+    /* ================================================================
+       MOBILE MENU TOGGLE (hidden on desktop)
+       ================================================================ */
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--p-radius-md);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background var(--p-duration-fast) var(--p-ease);
+    }
+
+    .mobile-menu-btn:hover {
+      background: var(--surface-hover);
+    }
+
+    .mobile-menu-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ================================================================
+       RESPONSIVE: TABLET (< 1024px)
+       ================================================================ */
+    @media (max-width: 1024px) {
+      .chart-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ================================================================
+       RESPONSIVE: TABLET (< 768px) — sidebar collapses
+       ================================================================ */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform var(--p-duration-normal) var(--p-ease);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .metric-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .chart-row {
+        grid-template-columns: 1fr;
+      }
+
+      .content {
+        padding: var(--p-space-4);
+        gap: var(--p-space-4);
+      }
+
+      .header {
+        padding: var(--p-space-3) var(--p-space-4);
+      }
+
+      .search-input {
+        min-width: 0;
+        flex: 1;
+      }
+
+      .table-card-header {
+        padding: var(--p-space-4);
+      }
+
+      .event-table thead th,
+      .event-table tbody td {
+        padding: var(--p-space-2) var(--p-space-4);
+      }
+
+      .funnel-step {
+        flex-wrap: wrap;
+      }
+
+      .funnel-bar-wrapper {
+        order: 3;
+        width: 100%;
+        flex: none;
+        margin-top: var(--p-space-2);
+      }
+    }
+
+    /* ================================================================
+       RESPONSIVE: MOBILE (< 375px)
+       ================================================================ */
+    @media (max-width: 480px) {
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-value {
+        font-size: var(--p-scale-2xl);
+      }
+
+      .header-actions {
+        gap: var(--p-space-2);
+      }
+
+      .date-range {
+        display: none;
+      }
+
+      .event-table thead th:nth-child(3),
+      .event-table tbody td:nth-child(3) {
+        display: none;
+      }
+    }
+
+    /* ================================================================
+       FOCUS STATES (accessibility)
+       ================================================================ */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    .sidebar-nav-item:focus-visible,
+    .pagination-btn:focus-visible {
+      outline: 2px solid var(--chart-1);
+      outline-offset: 2px;
+    }
+
+    /* ================================================================
+       SCROLLBAR (subtle on dark)
+       ================================================================ */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--border-strong);
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+    <aside class="sidebar" id="sidebar">
+      <a href="#" class="sidebar-logo">
+        <div class="sidebar-logo-icon">P</div>
+        <span class="sidebar-logo-text">PostHog</span>
+      </a>
+
+      <div class="sidebar-section-title">Analytics</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#" class="sidebar-nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18"/><path d="M18 9l-5 5-4-3-3 3"/>
+            </svg>
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            Events
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+            </svg>
+            Funnels
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+            Retention
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/>
+            </svg>
+            Paths
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-title">Configuration</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#" class="sidebar-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+            Settings
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="sidebar-divider"></div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#" class="sidebar-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            Help
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- ============================================================
+         MAIN
+         ============================================================ -->
+    <div class="main">
+      <!-- Header -->
+      <header class="header">
+        <div style="display: flex; align-items: center; gap: var(--p-space-3);">
+          <button class="mobile-menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <h1 class="header-title">Dashboard</h1>
+        </div>
+        <div class="header-actions">
+          <div class="search-input">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" placeholder="Search events, actions...">
+          </div>
+          <div class="date-range">
+            <svg style="width: 14px; height: 14px; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Last 7 days
+          </div>
+          <div class="avatar" title="User profile">JD</div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="content">
+        <!-- ========== METRIC ROW ========== -->
+        <div class="metric-row">
+          <div class="metric-card">
+            <div class="metric-label">Total Events</div>
+            <div class="metric-value-row">
+              <span class="metric-value">1,284,302</span>
+              <span class="metric-trend up">
+                <svg style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                12.3%
+              </span>
+            </div>
+            <div class="metric-subtitle">vs previous 7 days</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Unique Users</div>
+            <div class="metric-value-row">
+              <span class="metric-value">48,291</span>
+              <span class="metric-trend up">
+                <svg style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                5.7%
+              </span>
+            </div>
+            <div class="metric-subtitle">vs previous 7 days</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Avg Session</div>
+            <div class="metric-value-row">
+              <span class="metric-value">4m 32s</span>
+              <span class="metric-trend down">
+                <svg style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                2.1%
+              </span>
+            </div>
+            <div class="metric-subtitle">vs previous 7 days</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Conversion</div>
+            <div class="metric-value-row">
+              <span class="metric-value">3.24%</span>
+              <span class="metric-trend up">
+                <svg style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                0.8%
+              </span>
+            </div>
+            <div class="metric-subtitle">vs previous 7 days</div>
+          </div>
+        </div>
+
+        <!-- ========== CHART SECTION ========== -->
+        <div class="chart-row">
+          <!-- Area Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <span class="chart-title">Events Over Time</span>
+              <div class="chart-legend">
+                <span class="legend-item">
+                  <span class="legend-dot" style="background: var(--chart-1);"></span>
+                  Events
+                </span>
+              </div>
+            </div>
+            <div class="area-chart">
+              <div class="area-chart-grid">
+                <div class="grid-line"><span class="grid-label">200k</span><span class="grid-rule"></span></div>
+                <div class="grid-line"><span class="grid-label">150k</span><span class="grid-rule"></span></div>
+                <div class="grid-line"><span class="grid-label">100k</span><span class="grid-rule"></span></div>
+                <div class="grid-line"><span class="grid-label">50k</span><span class="grid-rule"></span></div>
+                <div class="grid-line"><span class="grid-label">0</span><span class="grid-rule"></span></div>
+              </div>
+              <div class="area-chart-viz">
+                <div class="area-fill"></div>
+                <div class="area-line"></div>
+              </div>
+            </div>
+            <div class="area-chart-xaxis">
+              <span class="xaxis-label">Mon</span>
+              <span class="xaxis-label">Tue</span>
+              <span class="xaxis-label">Wed</span>
+              <span class="xaxis-label">Thu</span>
+              <span class="xaxis-label">Fri</span>
+              <span class="xaxis-label">Sat</span>
+              <span class="xaxis-label">Sun</span>
+            </div>
+          </div>
+
+          <!-- Bar Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <span class="chart-title">Events by Type</span>
+              <div class="chart-legend">
+                <span class="legend-item"><span class="legend-dot" style="background: var(--chart-1);"></span>Pageview</span>
+                <span class="legend-item"><span class="legend-dot" style="background: var(--chart-2);"></span>Click</span>
+                <span class="legend-item"><span class="legend-dot" style="background: var(--chart-3);"></span>Submit</span>
+                <span class="legend-item"><span class="legend-dot" style="background: var(--chart-4);"></span>Custom</span>
+                <span class="legend-item"><span class="legend-dot" style="background: var(--chart-5);"></span>Error</span>
+              </div>
+            </div>
+            <div class="bar-chart">
+              <div class="bar-chart-yaxis">
+                <span class="yaxis-label">50k</span>
+                <span class="yaxis-label">40k</span>
+                <span class="yaxis-label">30k</span>
+                <span class="yaxis-label">20k</span>
+                <span class="yaxis-label">10k</span>
+                <span class="yaxis-label">0</span>
+              </div>
+              <div class="bar-chart-viz">
+                <!-- Monday -->
+                <div class="bar-group">
+                  <div class="bar-stack">
+                    <div class="bar" style="height: 85%; background: var(--chart-1);" data-value="42.3k"></div>
+                    <div class="bar" style="height: 60%; background: var(--chart-2);" data-value="29.8k"></div>
+                    <div class="bar" style="height: 30%; background: var(--chart-3);" data-value="14.9k"></div>
+                    <div class="bar" style="height: 20%; background: var(--chart-4);" data-value="9.8k"></div>
+                    <div class="bar" style="height: 10%; background: var(--chart-5);" data-value="4.9k"></div>
+                  </div>
+                  <span class="bar-label">Mon</span>
+                </div>
+                <!-- Tuesday -->
+                <div class="bar-group">
+                  <div class="bar-stack">
+                    <div class="bar" style="height: 90%; background: var(--chart-1);" data-value="44.8k"></div>
+                    <div class="bar" style="height: 65%; background: var(--chart-2);" data-value="32.4k"></div>
+                    <div class="bar" style="height: 35%; background: var(--chart-3);" data-value="17.3k"></div>
+                    <div class="bar" style="height: 22%; background: var(--chart-4);" data-value="10.9k"></div>
+                    <div class="bar" style="height: 8%; background: var(--chart-5);" data-value="3.9k"></div>
+                  </div>
+                  <span class="bar-label">Tue</span>
+                </div>
+                <!-- Wednesday -->
+                <div class="bar-group">
+                  <div class="bar-stack">
+                    <div class="bar" style="height: 95%; background: var(--chart-1);" data-value="47.2k"></div>
+                    <div class="bar" style="height: 70%; background: var(--chart-2);" data-value="34.8k"></div>
+                    <div class="bar" style="height: 38%; background: var(--chart-3);" data-value="18.8k"></div>
+                    <div class="bar" style="height: 25%; background: var(--chart-4);" data-value="12.4k"></div>
+                    <div class="bar" style="height: 12%; background: var(--chart-5);" data-value="5.9k"></div>
+                  </div>
+                  <span class="bar-label">Wed</span>
+                </div>
+                <!-- Thursday -->
+                <div class="bar-group">
+                  <div class="bar-stack">
+                    <div class="bar" style="height: 88%; background: var(--chart-1);" data-value="43.7k"></div>
+                    <div class="bar" style="height: 62%; background: var(--chart-2);" data-value="30.8k"></div>
+                    <div class="bar" style="height: 32%; background: var(--chart-3);" data-value="15.9k"></div>
+                    <div class="bar" style="height: 18%; background: var(--chart-4);" data-value="8.9k"></div>
+                    <div class="bar" style="height: 9%; background: var(--chart-5);" data-value="4.5k"></div>
+                  </div>
+                  <span class="bar-label">Thu</span>
+                </div>
+                <!-- Friday -->
+                <div class="bar-group">
+                  <div class="bar-stack">
+                    <div class="bar" style="height: 80%; background: var(--chart-1);" data-value="39.8k"></div>
+                    <div class="bar" style="height: 55%; background: var(--chart-2);" data-value="27.3k"></div>
+                    <div class="bar" style="height: 28%; background: var(--chart-3);" data-value="13.9k"></div>
+                    <div class="bar" style="height: 15%; background: var(--chart-4);" data-value="7.4k"></div>
+                    <div class="bar" style="height: 7%; background: var(--chart-5);" data-value="3.5k"></div>
+                  </div>
+                  <span class="bar-label">Fri</span>
+                </div>
+                <!-- Saturday -->
+                <div class="bar-group">
+                  <div class="bar-stack">
+                    <div class="bar" style="height: 55%; background: var(--chart-1);" data-value="27.3k"></div>
+                    <div class="bar" style="height: 38%; background: var(--chart-2);" data-value="18.9k"></div>
+                    <div class="bar" style="height: 18%; background: var(--chart-3);" data-value="8.9k"></div>
+                    <div class="bar" style="height: 10%; background: var(--chart-4);" data-value="4.9k"></div>
+                    <div class="bar" style="height: 5%; background: var(--chart-5);" data-value="2.5k"></div>
+                  </div>
+                  <span class="bar-label">Sat</span>
+                </div>
+                <!-- Sunday -->
+                <div class="bar-group">
+                  <div class="bar-stack">
+                    <div class="bar" style="height: 50%; background: var(--chart-1);" data-value="24.8k"></div>
+                    <div class="bar" style="height: 35%; background: var(--chart-2);" data-value="17.4k"></div>
+                    <div class="bar" style="height: 15%; background: var(--chart-3);" data-value="7.4k"></div>
+                    <div class="bar" style="height: 8%; background: var(--chart-4);" data-value="4.0k"></div>
+                    <div class="bar" style="height: 4%; background: var(--chart-5);" data-value="2.0k"></div>
+                  </div>
+                  <span class="bar-label">Sun</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== EVENT TABLE ========== -->
+        <div class="table-card">
+          <div class="table-card-header">
+            <span class="table-card-title">Recent Events</span>
+            <a href="#" class="table-card-action">View all</a>
+          </div>
+          <table class="event-table">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Count</th>
+                <th>Users</th>
+                <th>Last seen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="event-name">
+                    <span class="event-dot" style="background: var(--chart-1);"></span>
+                    $pageview
+                  </span>
+                </td>
+                <td><span class="event-count">482,193</span></td>
+                <td><span class="event-users">38,291</span></td>
+                <td><span class="event-time">2 min ago</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="event-name">
+                    <span class="event-dot" style="background: var(--chart-2);"></span>
+                    $autocapture
+                  </span>
+                </td>
+                <td><span class="event-count">284,921</span></td>
+                <td><span class="event-users">31,482</span></td>
+                <td><span class="event-time">2 min ago</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="event-name">
+                    <span class="event-dot" style="background: var(--chart-3);"></span>
+                    signup_completed
+                  </span>
+                </td>
+                <td><span class="event-count">12,847</span></td>
+                <td><span class="event-users">12,847</span></td>
+                <td><span class="event-time">5 min ago</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="event-name">
+                    <span class="event-dot" style="background: var(--chart-4);"></span>
+                    feature_flag_called
+                  </span>
+                </td>
+                <td><span class="event-count">98,432</span></td>
+                <td><span class="event-users">22,103</span></td>
+                <td><span class="event-time">8 min ago</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="event-name">
+                    <span class="event-dot" style="background: var(--chart-5);"></span>
+                    dashboard_viewed
+                  </span>
+                </td>
+                <td><span class="event-count">67,293</span></td>
+                <td><span class="event-users">15,832</span></td>
+                <td><span class="event-time">12 min ago</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="event-name">
+                    <span class="event-dot" style="background: var(--chart-1);"></span>
+                    insight_saved
+                  </span>
+                </td>
+                <td><span class="event-count">4,219</span></td>
+                <td><span class="event-users">2,891</span></td>
+                <td><span class="event-time">15 min ago</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-pagination">
+            <span class="pagination-info">Showing 1-6 of 142 events</span>
+            <div class="pagination-controls">
+              <button class="pagination-btn" aria-label="Previous page">&lsaquo;</button>
+              <button class="pagination-btn active">1</button>
+              <button class="pagination-btn">2</button>
+              <button class="pagination-btn">3</button>
+              <button class="pagination-btn" aria-label="Next page">&rsaquo;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== FUNNEL ========== -->
+        <div class="funnel-card">
+          <div class="funnel-header">
+            <span class="funnel-title">Signup Funnel</span>
+            <div class="date-range" style="font-size: var(--p-scale-caption);">
+              <svg style="width: 12px; height: 12px; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              Last 7 days
+            </div>
+          </div>
+          <div class="funnel-steps">
+            <!-- Step 1 -->
+            <div class="funnel-step">
+              <span class="funnel-step-number">1</span>
+              <div class="funnel-bar-wrapper">
+                <div class="funnel-bar-fill" style="width: 100%; background: linear-gradient(90deg, var(--chart-1), var(--chart-1-light));">
+                  <span class="funnel-bar-label">Page View</span>
+                </div>
+              </div>
+              <div class="funnel-step-meta">
+                <span class="funnel-rate">100%</span>
+                <span class="funnel-count">48,291</span>
+              </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="funnel-step">
+              <span class="funnel-step-number">2</span>
+              <div class="funnel-bar-wrapper">
+                <div class="funnel-bar-fill" style="width: 68%; background: linear-gradient(90deg, var(--chart-2), var(--chart-2-light));">
+                  <span class="funnel-bar-label">Sign Up Click</span>
+                </div>
+              </div>
+              <div class="funnel-step-meta">
+                <span class="funnel-rate">68%</span>
+                <span class="funnel-count">32,838</span>
+                <span class="funnel-dropoff">-32%</span>
+              </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="funnel-step">
+              <span class="funnel-step-number">3</span>
+              <div class="funnel-bar-wrapper">
+                <div class="funnel-bar-fill" style="width: 42%; background: linear-gradient(90deg, var(--chart-3), var(--chart-3-light));">
+                  <span class="funnel-bar-label">Form Submit</span>
+                </div>
+              </div>
+              <div class="funnel-step-meta">
+                <span class="funnel-rate">42%</span>
+                <span class="funnel-count">20,282</span>
+                <span class="funnel-dropoff">-26%</span>
+              </div>
+            </div>
+            <!-- Step 4 -->
+            <div class="funnel-step">
+              <span class="funnel-step-number">4</span>
+              <div class="funnel-bar-wrapper">
+                <div class="funnel-bar-fill" style="width: 28%; background: linear-gradient(90deg, var(--chart-4), var(--chart-4-light));">
+                  <span class="funnel-bar-label">Email Verified</span>
+                </div>
+              </div>
+              <div class="funnel-step-meta">
+                <span class="funnel-rate">28%</span>
+                <span class="funnel-count">13,521</span>
+                <span class="funnel-dropoff">-14%</span>
+              </div>
+            </div>
+            <!-- Step 5 -->
+            <div class="funnel-step">
+              <span class="funnel-step-number">5</span>
+              <div class="funnel-bar-wrapper">
+                <div class="funnel-bar-fill" style="width: 15%; background: linear-gradient(90deg, var(--chart-5), var(--chart-5-light));">
+                  <span class="funnel-bar-label">First Action</span>
+                </div>
+              </div>
+              <div class="funnel-step-meta">
+                <span class="funnel-rate">15%</span>
+                <span class="funnel-count">7,244</span>
+                <span class="funnel-dropoff">-13%</span>
+              </div>
+            </div>
+          </div>
+          <div class="funnel-footer">
+            <span class="funnel-footer-label">Overall conversion rate</span>
+            <span class="funnel-footer-value">15.0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+meta:
+  project: "Analytics Dashboard"
+  platform: web
+  tone: "data-dense with surgical precision"
+  wow_factor: "CSS-only chart visualizations with gradient fills and hover-revealing data tooltips"
+
+layout:
+  structure: "sidebar + main"
+  sidebar:
+    width: 240px
+    collapse_at: 768px
+    position: left
+  main:
+    max_width: none
+    alignment: stretch
+  breakpoints:
+    mobile: 375px
+    tablet: 768px
+    desktop: 1024px
+    wide: 1440px
+
+pages:
+  - name: dashboard
+    sections:
+      - type: header
+        content: "Dashboard"
+        children:
+          - type: search-input
+            placeholder: "Search events, actions..."
+          - type: date-range-selector
+            default: "Last 7 days"
+          - type: avatar
+            size: 32px
+      - type: metric-row
+        layout: grid-4
+        gap: "{spacing.lg}"
+        collapse_to: grid-2
+        collapse_at: 768px
+        children:
+          - type: metric-card
+            label: "Total Events"
+            value: "1,284,302"
+            trend: "+12.3%"
+            trend_direction: up
+          - type: metric-card
+            label: "Unique Users"
+            value: "48,291"
+            trend: "+5.7%"
+            trend_direction: up
+          - type: metric-card
+            label: "Avg Session"
+            value: "4m 32s"
+            trend: "-2.1%"
+            trend_direction: down
+          - type: metric-card
+            label: "Conversion"
+            value: "3.24%"
+            trend: "+0.8%"
+            trend_direction: up
+      - type: chart-section
+        layout: grid-2
+        gap: "{spacing.lg}"
+        collapse_to: single-column
+        collapse_at: 768px
+        children:
+          - type: chart-container
+            title: "Events Over Time"
+            chart_type: area
+            height: 240px
+            data_series: 1
+          - type: chart-container
+            title: "Events by Type"
+            chart_type: bar
+            height: 240px
+            data_series: 5
+      - type: event-table
+        title: "Recent Events"
+        layout: full-width
+        columns:
+          - { name: "Event", align: left }
+          - { name: "Count", align: right }
+          - { name: "Users", align: right }
+          - { name: "Last seen", align: right }
+        rows: 6
+        pagination: true
+      - type: funnel-section
+        title: "Signup Funnel"
+        layout: full-width
+        steps:
+          - { label: "Page View", value: "100%", count: 48291 }
+          - { label: "Sign Up Click", value: "68%", count: 32838 }
+          - { label: "Form Submit", value: "42%", count: 20282 }
+          - { label: "Email Verified", value: "28%", count: 13521 }
+          - { label: "First Action", value: "15%", count: 7244 }
+
+navigation:
+  type: sidebar
+  items:
+    - { label: "Dashboard", icon: "chart", active: true }
+    - { label: "Events", icon: "zap" }
+    - { label: "Funnels", icon: "filter" }
+    - { label: "Retention", icon: "refresh" }
+    - { label: "Paths", icon: "git-branch" }
+    - divider
+    - { label: "Settings", icon: "settings" }
+
+interaction:
+  transitions:
+    hover: "background {motion.duration-fast} ease, border-color {motion.duration-fast} ease"
+    metric_hover: "transform {motion.duration-fast} ease -- scale(1.01) subtle"
+    chart_bar_hover: "opacity {motion.duration-fast} ease"
+    sidebar_collapse: "{motion.duration-normal} ease"
+  loading:
+    strategy: skeleton
+    threshold: 500ms
+  empty_states:
+    pattern: "illustration + headline + cta"

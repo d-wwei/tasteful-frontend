@@ -1,0 +1,109 @@
+meta:
+  project: "Editorial Blog"
+  platform: web
+  tone: "warm-literary with intellectual gravitas"
+  wow_factor: "Light/dark section alternation creating visual rhythm, with ring-border cards and generous whitespace"
+
+layout:
+  structure: "sidebar + main"
+  sidebar:
+    width: 260px
+    collapse_at: 1024px
+    position: left
+  main:
+    max_width: 720px
+    alignment: left
+  breakpoints:
+    mobile: 375px
+    tablet: 768px
+    desktop: 1024px
+    wide: 1440px
+
+pages:
+  - name: home
+    description: "Article list — the magazine front page"
+    sections:
+      - type: header
+        content: "Wordmark logo + minimal nav + search icon"
+        layout: "sticky top, border-bottom, max-width container centered"
+        height: 64px
+      - type: featured-article
+        content: "Large hero card — image gradient, title, excerpt, author, date"
+        layout: "full-width within main, generous padding"
+        image: "CSS gradient placeholder (warm terracotta-to-parchment)"
+        padding: "{spacing.xl}"
+      - type: article-grid
+        content: "2-column article cards with ring borders"
+        layout: "grid-2, gap 24px"
+        collapse_to: single-column
+        collapse_at: 768px
+        children:
+          - type: article-card
+            content: "title + excerpt + tags + author avatar + date"
+            shadow: "ring-light default, lift on hover"
+      - type: dark-section
+        content: "Editor's Picks on dark background"
+        layout: "full-width bleed, parchment-900 background"
+        padding: "{spacing.4xl} {spacing.3xl}"
+        children:
+          - type: section-title
+            content: "Editor's Picks"
+            style: "overline label + serif heading on dark"
+          - type: pick-cards
+            layout: "3-column on desktop, stack on mobile"
+            children:
+              - type: pick-card
+                content: "number + title + excerpt on dark card"
+                shadow: "ring-dark border"
+      - type: footer
+        content: "Links, categories, copyright"
+        layout: "border-top, centered, generous top padding"
+
+  - name: article
+    description: "Single article reading view"
+    sections:
+      - type: article-header
+        content: "Category tag, title (display size), author badge, date, read time"
+        layout: "max-width 720px, generous vertical spacing"
+      - type: article-body
+        content: "Prose with blockquotes, subheadings, images"
+        layout: "max-width 720px, 60-75 char line width"
+        typography:
+          body: "16px DM Sans, line-height 1.7"
+          heading: "Source Serif 4, weight 600"
+          blockquote: "terracotta left border, ivory bg"
+      - type: author-bio
+        content: "Avatar, name, bio, social links"
+        layout: "border-top, flex row"
+      - type: related-articles
+        content: "3 related article cards"
+        layout: "grid-3, same as home cards"
+
+navigation:
+  type: sidebar
+  items:
+    - { label: "Latest", icon: "clock" }
+    - { label: "Popular", icon: "trending-up" }
+    - { label: "Technology", icon: "cpu" }
+    - { label: "Design", icon: "palette" }
+    - { label: "Culture", icon: "book-open" }
+  section_title: "Topics"
+  footer_items:
+    - { label: "About" }
+    - { label: "Archive" }
+    - { label: "Subscribe" }
+
+interaction:
+  transitions:
+    page_enter: "fade-in 400ms cubic-bezier(0.25, 0.1, 0.25, 1)"
+    card_hover: "translateY(-2px) + shadow-lift 150ms cubic-bezier(0.16, 1, 0.3, 1)"
+    nav_hover: "color transition 150ms ease"
+    section_reveal: "fade-in 400ms stagger 100ms"
+  loading:
+    strategy: skeleton
+    skeleton_bg: "{color.parchment-200}"
+    skeleton_shimmer: "{color.parchment-300}"
+  empty_states:
+    pattern: "icon + headline + cta"
+    icon_color: "{color.parchment-400}"
+    headline_font: "Source Serif 4"

@@ -1,0 +1,283 @@
+{
+  "article-card": {
+    "bg": {
+      "$value": "{color.surface-card}",
+      "$type": "color",
+      "$description": "Article card background — parchment-50"
+    },
+    "border": {
+      "$value": "{shadow.ring-light}",
+      "$type": "shadow",
+      "$description": "Ring-shadow border — 1px ring in border cream"
+    },
+    "radius": {
+      "$value": "{border.radius-md}",
+      "$type": "dimension",
+      "$description": "Card corner radius — 8px, soft not pill"
+    },
+    "padding": {
+      "$value": "{spacing.lg}",
+      "$type": "dimension",
+      "$description": "Card internal padding — 24px"
+    },
+    "title-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Article title — warm near-black"
+    },
+    "title-hover-color": {
+      "$value": "{color.accent}",
+      "$type": "color",
+      "$description": "Article title on hover — terracotta accent"
+    },
+    "meta-color": {
+      "$value": "{color.text-tertiary}",
+      "$type": "color",
+      "$description": "Date, read time — stone gray"
+    },
+    "excerpt-color": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Article excerpt — olive gray"
+    },
+    "shadow-default": {
+      "$value": "{shadow.ring-light}",
+      "$type": "shadow",
+      "$description": "Default state — subtle ring"
+    },
+    "shadow-hover": {
+      "$value": "{shadow.lift}",
+      "$type": "shadow",
+      "$description": "Hover state — ring + whisper lift"
+    }
+  },
+  "blockquote": {
+    "border-left-color": {
+      "$value": "{color.accent}",
+      "$type": "color",
+      "$description": "Left accent bar — terracotta"
+    },
+    "bg": {
+      "$value": "{color.surface-elevated}",
+      "$type": "color",
+      "$description": "Quote background — ivory"
+    },
+    "text-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Quote text — primary text"
+    },
+    "author-color": {
+      "$value": "{color.text-tertiary}",
+      "$type": "color",
+      "$description": "Attribution — stone gray"
+    },
+    "padding": {
+      "$value": "{spacing.lg}",
+      "$type": "dimension",
+      "$description": "Quote padding — 24px"
+    }
+  },
+  "sidebar-nav": {
+    "bg": {
+      "$value": "{color.surface-card}",
+      "$type": "color",
+      "$description": "Sidebar background — parchment-50"
+    },
+    "item-text": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Nav item default — olive gray"
+    },
+    "item-text-active": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Active nav item — near-black"
+    },
+    "item-bg-active": {
+      "$value": "{color.surface-interactive}",
+      "$type": "color",
+      "$description": "Active item background — warm sand"
+    },
+    "section-title-color": {
+      "$value": "{color.text-tertiary}",
+      "$type": "color",
+      "$description": "Section label — stone gray, uppercase"
+    },
+    "item-radius": {
+      "$value": "{border.radius-md}",
+      "$type": "dimension",
+      "$description": "Nav item radius — 8px"
+    },
+    "item-padding-x": {
+      "$value": "{spacing.md}",
+      "$type": "dimension",
+      "$description": "Nav item horizontal — 16px"
+    },
+    "item-padding-y": {
+      "$value": "{spacing.xs}",
+      "$type": "dimension",
+      "$description": "Nav item vertical — 8px"
+    }
+  },
+  "tag": {
+    "bg": {
+      "$value": "{color.surface-interactive}",
+      "$type": "color",
+      "$description": "Tag background — warm sand"
+    },
+    "text-color": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Tag text — olive gray"
+    },
+    "border": {
+      "$value": "{shadow.ring-light}",
+      "$type": "shadow",
+      "$description": "Tag ring border — subtle containment"
+    },
+    "radius": {
+      "$value": "{border.radius-sm}",
+      "$type": "dimension",
+      "$description": "Tag radius — 4px, compact"
+    },
+    "padding-x": {
+      "$value": "{spacing.xs}",
+      "$type": "dimension",
+      "$description": "Tag horizontal padding — 8px"
+    },
+    "padding-y": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Tag vertical padding — 4px"
+    }
+  },
+  "author-badge": {
+    "avatar-border": {
+      "$value": "{shadow.ring-warm}",
+      "$type": "shadow",
+      "$description": "Avatar ring border — warm gray"
+    },
+    "avatar-size": {
+      "$value": "36px",
+      "$type": "dimension",
+      "$description": "Avatar circle size"
+    },
+    "name-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Author name — near-black"
+    },
+    "role-color": {
+      "$value": "{color.text-tertiary}",
+      "$type": "color",
+      "$description": "Author role/date — stone gray"
+    }
+  },
+  "header": {
+    "bg": {
+      "$value": "{color.surface}",
+      "$type": "color",
+      "$description": "Header background — matches page parchment"
+    },
+    "border-bottom": {
+      "$value": "{color.border}",
+      "$type": "color",
+      "$description": "Header bottom border — warm cream"
+    },
+    "logo-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Wordmark — near-black"
+    },
+    "nav-text": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Nav links default — olive gray"
+    },
+    "nav-text-active": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Active nav link — near-black"
+    },
+    "nav-text-hover": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Hover nav link — near-black"
+    },
+    "search-bg": {
+      "$value": "{color.surface-interactive}",
+      "$type": "color",
+      "$description": "Search field background — warm sand"
+    },
+    "search-border": {
+      "$value": "{shadow.ring-light}",
+      "$type": "shadow",
+      "$description": "Search field ring — subtle border cream"
+    },
+    "search-text": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Search placeholder — olive gray"
+    }
+  },
+  "dark-section": {
+    "bg": {
+      "$value": "{color.surface-dark}",
+      "$type": "color",
+      "$description": "Dark section background — parchment-900"
+    },
+    "card-bg": {
+      "$value": "{color.surface-dark-card}",
+      "$type": "color",
+      "$description": "Card on dark — warm charcoal"
+    },
+    "card-border": {
+      "$value": "{shadow.ring-dark}",
+      "$type": "shadow",
+      "$description": "Card ring on dark — charcoal ring"
+    },
+    "title-color": {
+      "$value": "{color.text-on-dark}",
+      "$type": "color",
+      "$description": "Title on dark — lightest parchment"
+    },
+    "text-color": {
+      "$value": "{color.text-on-dark-secondary}",
+      "$type": "color",
+      "$description": "Body on dark — warm silver"
+    },
+    "accent": {
+      "$value": "{color.accent-hover}",
+      "$type": "color",
+      "$description": "Accent on dark — coral for visibility"
+    }
+  },
+  "footer": {
+    "bg": {
+      "$value": "{color.surface}",
+      "$type": "color",
+      "$description": "Footer background — parchment"
+    },
+    "border-top": {
+      "$value": "{color.border}",
+      "$type": "color",
+      "$description": "Footer top border — warm cream"
+    },
+    "text-color": {
+      "$value": "{color.text-tertiary}",
+      "$type": "color",
+      "$description": "Footer text — stone gray"
+    },
+    "link-color": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Footer links — olive gray"
+    },
+    "link-hover-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Footer link hover — near-black"
+    }
+  }
+}

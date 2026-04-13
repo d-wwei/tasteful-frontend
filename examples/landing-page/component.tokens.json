@@ -1,0 +1,229 @@
+{
+  "hero": {
+    "bg": {
+      "$value": "{color.surface}",
+      "$type": "color",
+      "$description": "Hero section background — darkest canvas"
+    },
+    "title-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Hero headline text"
+    },
+    "subtitle-color": {
+      "$value": "{color.text-muted}",
+      "$type": "color",
+      "$description": "Hero subtitle — de-emphasized"
+    },
+    "cta-bg": {
+      "$value": "{color.accent}",
+      "$type": "color",
+      "$description": "Primary CTA button background — brand indigo"
+    },
+    "cta-hover-bg": {
+      "$value": "{color.accent-hover}",
+      "$type": "color",
+      "$description": "Primary CTA hover state"
+    },
+    "cta-text": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "CTA button text — near-white"
+    },
+    "cta-radius": {
+      "$value": "{border.radius-sm}",
+      "$type": "dimension",
+      "$description": "CTA button corner radius"
+    },
+    "ghost-bg": {
+      "$value": "{color.surface-translucent}",
+      "$type": "color",
+      "$description": "Ghost button background"
+    },
+    "ghost-border": {
+      "$value": "{color.border}",
+      "$type": "color",
+      "$description": "Ghost button border"
+    },
+    "ghost-text": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Ghost button text"
+    }
+  },
+  "feature-card": {
+    "bg": {
+      "$value": "{color.surface-translucent}",
+      "$type": "color",
+      "$description": "Feature card background — translucent ghost surface"
+    },
+    "border": {
+      "$value": "{color.border}",
+      "$type": "color",
+      "$description": "Card border — semi-transparent white"
+    },
+    "radius": {
+      "$value": "{border.radius-md}",
+      "$type": "dimension",
+      "$description": "Card corner radius"
+    },
+    "padding": {
+      "$value": "{spacing.xl}",
+      "$type": "dimension",
+      "$description": "Card internal padding"
+    },
+    "title-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Card title text"
+    },
+    "desc-color": {
+      "$value": "{color.text-muted}",
+      "$type": "color",
+      "$description": "Card description text — muted"
+    },
+    "icon-color": {
+      "$value": "{color.accent-interactive}",
+      "$type": "color",
+      "$description": "Card icon accent"
+    },
+    "shadow": {
+      "$value": "{shadow.shadow-sm}",
+      "$type": "shadow",
+      "$description": "Minimal card shadow — Linear relies on borders, not shadows"
+    },
+    "hover-bg": {
+      "$value": "{color.surface-translucent-hover}",
+      "$type": "color",
+      "$description": "Card hover background shift"
+    }
+  },
+  "pricing-card": {
+    "bg": {
+      "$value": "{color.surface-translucent}",
+      "$type": "color",
+      "$description": "Pricing card background"
+    },
+    "border": {
+      "$value": "{color.border}",
+      "$type": "color",
+      "$description": "Pricing card border"
+    },
+    "radius": {
+      "$value": "{border.radius-lg}",
+      "$type": "dimension",
+      "$description": "Pricing card corner radius — slightly larger"
+    },
+    "padding": {
+      "$value": "{spacing.xl}",
+      "$type": "dimension",
+      "$description": "Pricing card internal padding"
+    },
+    "title-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Plan title text"
+    },
+    "price-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Price text"
+    },
+    "feature-color": {
+      "$value": "{color.text-muted}",
+      "$type": "color",
+      "$description": "Feature list item text"
+    },
+    "cta-bg": {
+      "$value": "{color.accent}",
+      "$type": "color",
+      "$description": "Pricing CTA button background"
+    },
+    "popular-border": {
+      "$value": "{color.accent}",
+      "$type": "color",
+      "$description": "Highlighted plan border — brand indigo"
+    }
+  },
+  "nav": {
+    "bg": {
+      "$value": "{color.surface-subtle}",
+      "$type": "color",
+      "$description": "Navigation bar background"
+    },
+    "item-text": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Nav link default color"
+    },
+    "item-text-active": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Nav link hover/active color"
+    },
+    "logo-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Logo text color"
+    },
+    "cta-bg": {
+      "$value": "{color.accent}",
+      "$type": "color",
+      "$description": "Nav CTA button background"
+    },
+    "cta-text": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Nav CTA button text"
+    },
+    "border": {
+      "$value": "{color.border-subtle}",
+      "$type": "color",
+      "$description": "Nav bottom border"
+    }
+  },
+  "footer": {
+    "bg": {
+      "$value": "{color.surface}",
+      "$type": "color",
+      "$description": "Footer background"
+    },
+    "text-color": {
+      "$value": "{color.text-muted}",
+      "$type": "color",
+      "$description": "Footer body text"
+    },
+    "link-color": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Footer link color"
+    },
+    "border": {
+      "$value": "{color.border-subtle}",
+      "$type": "color",
+      "$description": "Footer top border"
+    }
+  },
+  "cta-banner": {
+    "bg": {
+      "$value": "{color.surface-subtle}",
+      "$type": "color",
+      "$description": "CTA banner section background"
+    },
+    "title-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "CTA banner headline"
+    },
+    "subtitle-color": {
+      "$value": "{color.text-muted}",
+      "$type": "color",
+      "$description": "CTA banner subtitle"
+    },
+    "cta-bg": {
+      "$value": "{color.accent}",
+      "$type": "color",
+      "$description": "Banner CTA button background"
+    }
+  }
+}

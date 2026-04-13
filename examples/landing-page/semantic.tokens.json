@@ -1,0 +1,131 @@
+{
+  "color": {
+    "surface": {
+      "$value": "{color.gray-950}",
+      "$type": "color",
+      "$description": "Primary page background — near-black canvas"
+    },
+    "surface-subtle": {
+      "$value": "{color.gray-900}",
+      "$type": "color",
+      "$description": "Panel and nav backgrounds — one step up"
+    },
+    "surface-overlay": {
+      "$value": "{color.gray-850}",
+      "$type": "color",
+      "$description": "Elevated surfaces — cards, dropdowns"
+    },
+    "surface-translucent": {
+      "$value": "{color.white-alpha-2}",
+      "$type": "color",
+      "$description": "Ghost-level translucent card surface"
+    },
+    "surface-translucent-hover": {
+      "$value": "{color.white-alpha-5}",
+      "$type": "color",
+      "$description": "Hover state for translucent surfaces"
+    },
+    "accent": {
+      "$value": "{color.indigo-500}",
+      "$type": "color",
+      "$description": "Primary brand accent — Linear indigo"
+    },
+    "accent-hover": {
+      "$value": "{color.indigo-300}",
+      "$type": "color",
+      "$description": "Accent hover/active state — lighter violet"
+    },
+    "accent-interactive": {
+      "$value": "{color.indigo-400}",
+      "$type": "color",
+      "$description": "Links and active-state accents"
+    },
+    "text-primary": {
+      "$value": "{color.gray-50}",
+      "$type": "color",
+      "$description": "Primary text — near-white, never pure white"
+    },
+    "text-secondary": {
+      "$value": "{color.gray-300}",
+      "$type": "color",
+      "$description": "Body copy, descriptions — cool silver"
+    },
+    "text-muted": {
+      "$value": "{color.gray-400}",
+      "$type": "color",
+      "$description": "Placeholders, metadata — muted gray"
+    },
+    "text-subdued": {
+      "$value": "{color.gray-500}",
+      "$type": "color",
+      "$description": "Timestamps, disabled — most subdued text"
+    },
+    "border": {
+      "$value": "{color.white-alpha-8}",
+      "$type": "color",
+      "$description": "Standard semi-transparent white border"
+    },
+    "border-subtle": {
+      "$value": "{color.white-alpha-5}",
+      "$type": "color",
+      "$description": "Ultra-subtle containment border"
+    },
+    "error": {
+      "$value": "{color.red-500}",
+      "$type": "color",
+      "$description": "Error/destructive state"
+    },
+    "success": {
+      "$value": "{color.green-500}",
+      "$type": "color",
+      "$description": "Success/confirmation state"
+    },
+    "warning": {
+      "$value": "{color.amber-500}",
+      "$type": "color",
+      "$description": "Warning state"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "{typography.font-display}",
+      "$type": "fontFamily",
+      "$description": "Display/heading font — Inter with OpenType features"
+    },
+    "font-body": {
+      "$value": "{typography.font-body}",
+      "$type": "fontFamily",
+      "$description": "Body/UI font — Inter with OpenType features"
+    }
+  },
+  "spacing": {
+    "xs": { "$value": "{spacing.space-1}", "$type": "dimension", "$description": "4px — tight spacing" },
+    "sm": { "$value": "{spacing.space-2}", "$type": "dimension", "$description": "8px — small gaps" },
+    "md": { "$value": "{spacing.space-4}", "$type": "dimension", "$description": "16px — standard spacing" },
+    "lg": { "$value": "{spacing.space-6}", "$type": "dimension", "$description": "24px — generous spacing" },
+    "xl": { "$value": "{spacing.space-8}", "$type": "dimension", "$description": "32px — section padding" },
+    "2xl": { "$value": "{spacing.space-12}", "$type": "dimension", "$description": "48px — large gaps" },
+    "3xl": { "$value": "{spacing.space-16}", "$type": "dimension", "$description": "64px — major separation" },
+    "section-gap": { "$value": "{spacing.space-24}", "$type": "dimension", "$description": "96px — between major sections" },
+    "page-margin-desktop": { "$value": "{spacing.space-16}", "$type": "dimension", "$description": "64px desktop margin" },
+    "page-margin-mobile": { "$value": "{spacing.space-4}", "$type": "dimension", "$description": "16px mobile margin" }
+  },
+  "border": {
+    "radius-sm": { "$value": "{border.radius-sm}", "$type": "dimension" },
+    "radius-md": { "$value": "{border.radius-md}", "$type": "dimension" },
+    "radius-lg": { "$value": "{border.radius-lg}", "$type": "dimension" },
+    "radius-full": { "$value": "{border.radius-full}", "$type": "dimension" }
+  },
+  "shadow": {
+    "shadow-sm": { "$value": "{shadow.shadow-sm}", "$type": "shadow" },
+    "shadow-md": { "$value": "{shadow.shadow-md}", "$type": "shadow" },
+    "shadow-lg": { "$value": "{shadow.shadow-lg}", "$type": "shadow" }
+  },
+  "motion": {
+    "duration-fast": { "$value": "{motion.duration-fast}", "$type": "duration" },
+    "duration-normal": { "$value": "{motion.duration-normal}", "$type": "duration" },
+    "duration-slow": { "$value": "{motion.duration-slow}", "$type": "duration" },
+    "easing-default": { "$value": "{motion.easing-default}", "$type": "cubicBezier" },
+    "easing-exit": { "$value": "{motion.easing-exit}", "$type": "cubicBezier" }
+  }
+}

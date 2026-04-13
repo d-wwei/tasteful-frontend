@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Parchment -- Editorial Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    /* ================================================================
+       LAYER 1: PRIMITIVE TOKENS (--prim-*)
+       Raw values, named by identity. No semantic meaning.
+       ================================================================ */
+    :root {
+      /* Color — Parchment scale */
+      --prim-parchment-50: #faf8f5;
+      --prim-parchment-100: #f5f4ed;
+      --prim-parchment-200: #f0eee6;
+      --prim-parchment-300: #e8e6dc;
+      --prim-parchment-400: #d1cfc5;
+      --prim-parchment-500: #b0aea5;
+      --prim-parchment-600: #87867f;
+      --prim-parchment-700: #5e5d59;
+      --prim-parchment-800: #3d3d3a;
+      --prim-parchment-900: #2c2418;
+      --prim-parchment-950: #141413;
+
+      /* Color — Terracotta accent */
+      --prim-terracotta-400: #d97757;
+      --prim-terracotta-500: #c4654a;
+      --prim-terracotta-600: #a8533b;
+
+      /* Color — Clay / Neutral */
+      --prim-clay-400: #c2c0b6;
+      --prim-clay-500: #4d4c48;
+      --prim-clay-600: #30302e;
+      --prim-warm-white: #faf9f5;
+
+      /* Color — States */
+      --prim-error: #b53333;
+      --prim-success: #4d7c4d;
+      --prim-focus: #3898ec;
+
+      /* Typography */
+      --prim-font-display: 'Source Serif 4', Georgia, serif;
+      --prim-font-body: 'DM Sans', system-ui, sans-serif;
+      --prim-scale-xs: 12px;
+      --prim-scale-sm: 14px;
+      --prim-scale-base: 16px;
+      --prim-scale-lg: 18px;
+      --prim-scale-xl: 24px;
+      --prim-scale-2xl: 32px;
+      --prim-scale-3xl: 48px;
+      --prim-lh-tight: 1.2;
+      --prim-lh-heading: 1.3;
+      --prim-lh-normal: 1.5;
+      --prim-lh-body: 1.7;
+      --prim-weight-regular: 400;
+      --prim-weight-medium: 500;
+      --prim-weight-semibold: 600;
+      --prim-weight-bold: 700;
+
+      /* Spacing */
+      --prim-space-1: 8px;
+      --prim-space-1-5: 12px;
+      --prim-space-2: 16px;
+      --prim-space-3: 24px;
+      --prim-space-4: 32px;
+      --prim-space-6: 48px;
+      --prim-space-8: 64px;
+      --prim-space-10: 80px;
+      --prim-space-12: 96px;
+
+      /* Border */
+      --prim-radius-sm: 4px;
+      --prim-radius-md: 8px;
+      --prim-radius-lg: 12px;
+      --prim-radius-full: 9999px;
+
+      /* Shadow */
+      --prim-ring-light: 0 0 0 1px var(--prim-parchment-200);
+      --prim-ring-warm: 0 0 0 1px var(--prim-parchment-400);
+      --prim-ring-deep: 0 0 0 1px var(--prim-clay-400);
+      --prim-ring-dark: 0 0 0 1px var(--prim-clay-600);
+      --prim-whisper: 0 4px 24px 0 rgba(0,0,0,0.05);
+      --prim-lift: 0 0 0 1px var(--prim-parchment-400), 0 4px 24px 0 rgba(0,0,0,0.05);
+      --prim-lift-dark: 0 0 0 1px var(--prim-parchment-700), 0 4px 24px 0 rgba(0,0,0,0.15);
+
+      /* Motion */
+      --prim-dur-fast: 150ms;
+      --prim-dur-normal: 250ms;
+      --prim-dur-slow: 400ms;
+      --prim-ease-default: cubic-bezier(0.16, 1, 0.3, 1);
+      --prim-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+      --prim-ease-gentle: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+      /* ================================================================
+         LAYER 2: SEMANTIC TOKENS (--*)
+         Contextual meaning. All reference primitives.
+         ================================================================ */
+
+      /* Surfaces */
+      --surface: var(--prim-parchment-100);
+      --surface-card: var(--prim-parchment-50);
+      --surface-elevated: var(--prim-warm-white);
+      --surface-interactive: var(--prim-parchment-300);
+      --surface-dark: var(--prim-parchment-900);
+      --surface-dark-card: var(--prim-clay-600);
+      --surface-dark-deep: var(--prim-parchment-950);
+
+      /* Accent */
+      --accent: var(--prim-terracotta-500);
+      --accent-hover: var(--prim-terracotta-400);
+      --accent-pressed: var(--prim-terracotta-600);
+
+      /* Text */
+      --text-primary: var(--prim-parchment-950);
+      --text-secondary: var(--prim-parchment-700);
+      --text-tertiary: var(--prim-parchment-600);
+      --text-muted: var(--prim-parchment-400);
+      --text-on-dark: var(--prim-parchment-50);
+      --text-on-dark-secondary: var(--prim-parchment-500);
+      --text-on-accent: var(--prim-warm-white);
+      --text-link: var(--prim-parchment-800);
+
+      /* Border */
+      --border: var(--prim-parchment-200);
+      --border-prominent: var(--prim-parchment-300);
+      --border-dark: var(--prim-clay-600);
+
+      /* Ring */
+      --ring-default: var(--prim-parchment-400);
+      --ring-active: var(--prim-clay-400);
+
+      /* Shadows */
+      --shadow-ring: var(--prim-ring-light);
+      --shadow-ring-hover: var(--prim-ring-warm);
+      --shadow-ring-active: var(--prim-ring-deep);
+      --shadow-ring-dark: var(--prim-ring-dark);
+      --shadow-whisper: var(--prim-whisper);
+      --shadow-lift: var(--prim-lift);
+      --shadow-lift-dark: var(--prim-lift-dark);
+
+      /* Motion */
+      --transition-fast: var(--prim-dur-fast) var(--prim-ease-default);
+      --transition-normal: var(--prim-dur-normal) var(--prim-ease-default);
+      --transition-slow: var(--prim-dur-slow) var(--prim-ease-gentle);
+
+      /* Typography semantic */
+      --font-display: var(--prim-font-display);
+      --font-body: var(--prim-font-body);
+
+      /* ================================================================
+         LAYER 3: COMPONENT TOKENS (--comp-*)
+         Per-component. Reference semantics only.
+         ================================================================ */
+
+      /* Header */
+      --comp-header-bg: var(--surface);
+      --comp-header-border: var(--border);
+      --comp-header-logo-color: var(--text-primary);
+      --comp-header-nav-text: var(--text-secondary);
+      --comp-header-nav-text-hover: var(--text-primary);
+      --comp-header-nav-text-active: var(--text-primary);
+      --comp-header-search-bg: var(--surface-interactive);
+      --comp-header-search-border: var(--shadow-ring);
+      --comp-header-search-text: var(--text-secondary);
+
+      /* Article Card */
+      --comp-card-bg: var(--surface-card);
+      --comp-card-shadow: var(--shadow-ring);
+      --comp-card-shadow-hover: var(--shadow-lift);
+      --comp-card-radius: var(--prim-radius-md);
+      --comp-card-padding: var(--prim-space-3);
+      --comp-card-title-color: var(--text-primary);
+      --comp-card-title-hover: var(--accent);
+      --comp-card-meta-color: var(--text-tertiary);
+      --comp-card-excerpt-color: var(--text-secondary);
+
+      /* Featured Card */
+      --comp-featured-radius: var(--prim-radius-lg);
+      --comp-featured-padding: var(--prim-space-4);
+
+      /* Tag */
+      --comp-tag-bg: var(--surface-interactive);
+      --comp-tag-text: var(--text-secondary);
+      --comp-tag-radius: var(--prim-radius-sm);
+      --comp-tag-padding-x: var(--prim-space-1);
+      --comp-tag-padding-y: 4px;
+
+      /* Author Badge */
+      --comp-avatar-border: var(--shadow-ring-hover);
+      --comp-avatar-size: 36px;
+      --comp-author-name-color: var(--text-primary);
+      --comp-author-role-color: var(--text-tertiary);
+
+      /* Dark Section */
+      --comp-dark-bg: var(--surface-dark);
+      --comp-dark-card-bg: var(--surface-dark-card);
+      --comp-dark-card-border: var(--shadow-ring-dark);
+      --comp-dark-title-color: var(--text-on-dark);
+      --comp-dark-text-color: var(--text-on-dark-secondary);
+      --comp-dark-accent: var(--accent-hover);
+
+      /* Footer */
+      --comp-footer-bg: var(--surface);
+      --comp-footer-border: var(--border);
+      --comp-footer-text: var(--text-tertiary);
+      --comp-footer-link: var(--text-secondary);
+      --comp-footer-link-hover: var(--text-primary);
+
+      /* Sidebar */
+      --comp-sidebar-bg: var(--surface-card);
+      --comp-sidebar-item-text: var(--text-secondary);
+      --comp-sidebar-item-active-text: var(--text-primary);
+      --comp-sidebar-item-active-bg: var(--surface-interactive);
+      --comp-sidebar-section-title: var(--text-tertiary);
+    }
+
+    /* ================================================================
+       RESET & BASE
+       ================================================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--prim-scale-base);
+      font-weight: var(--prim-weight-regular);
+      line-height: var(--prim-lh-body);
+      color: var(--text-primary);
+      background-color: var(--surface);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* ================================================================
+       TYPOGRAPHY
+       ================================================================ */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      font-weight: var(--prim-weight-semibold);
+      line-height: var(--prim-lh-heading);
+      color: var(--text-primary);
+    }
+
+    h1 { font-size: var(--prim-scale-3xl); line-height: var(--prim-lh-tight); }
+    h2 { font-size: var(--prim-scale-2xl); }
+    h3 { font-size: var(--prim-scale-xl); }
+    h4 { font-size: var(--prim-scale-lg); }
+
+    p {
+      line-height: var(--prim-lh-body);
+      color: var(--text-secondary);
+    }
+
+    /* ================================================================
+       LAYOUT STRUCTURE
+       ================================================================ */
+    .page-wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      flex-shrink: 0;
+      background-color: var(--comp-sidebar-bg);
+      border-right: 1px solid var(--border);
+      padding: var(--prim-space-3) var(--prim-space-2);
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      overflow-y: auto;
+      z-index: 50;
+    }
+
+    .sidebar-logo {
+      font-family: var(--font-display);
+      font-size: var(--prim-scale-xl);
+      font-weight: var(--prim-weight-bold);
+      color: var(--comp-header-logo-color);
+      padding: var(--prim-space-1) var(--prim-space-2);
+      margin-bottom: var(--prim-space-4);
+      display: block;
+    }
+
+    .sidebar-logo span {
+      color: var(--accent);
+    }
+
+    .sidebar-section-title {
+      font-family: var(--font-body);
+      font-size: var(--prim-scale-xs);
+      font-weight: var(--prim-weight-medium);
+      color: var(--comp-sidebar-section-title);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: var(--prim-space-1) var(--prim-space-2);
+      margin-top: var(--prim-space-3);
+      margin-bottom: var(--prim-space-1);
+    }
+
+    .sidebar-nav {
+      list-style: none;
+    }
+
+    .sidebar-nav-item {
+      display: flex;
+      align-items: center;
+      gap: var(--prim-space-1-5);
+      padding: var(--prim-space-1) var(--prim-space-2);
+      border-radius: var(--prim-radius-md);
+      color: var(--comp-sidebar-item-text);
+      font-size: var(--prim-scale-sm);
+      font-weight: var(--prim-weight-regular);
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .sidebar-nav-item:hover {
+      color: var(--comp-sidebar-item-active-text);
+      background-color: var(--surface);
+    }
+
+    .sidebar-nav-item.active {
+      color: var(--comp-sidebar-item-active-text);
+      background-color: var(--comp-sidebar-item-active-bg);
+      font-weight: var(--prim-weight-medium);
+    }
+
+    .sidebar-nav-item svg {
+      width: 18px;
+      height: 18px;
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    .sidebar-nav-item.active svg {
+      opacity: 1;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: var(--prim-space-3);
+      border-top: 1px solid var(--border);
+    }
+
+    .sidebar-footer-link {
+      display: block;
+      padding: var(--prim-space-1) var(--prim-space-2);
+      color: var(--text-tertiary);
+      font-size: var(--prim-scale-sm);
+      transition: color var(--transition-fast);
+    }
+
+    .sidebar-footer-link:hover {
+      color: var(--text-primary);
+    }
+
+    /* Main content */
+    .main-content {
+      flex: 1;
+      margin-left: 260px;
+    }
+
+    .content-container {
+      max-width: 720px;
+      padding: 0 var(--prim-space-4);
+    }
+
+    /* ================================================================
+       HEADER (top bar within main)
+       ================================================================ */
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background-color: var(--comp-header-bg);
+      border-bottom: 1px solid var(--comp-header-border);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 var(--prim-space-4);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--prim-space-4);
+    }
+
+    .header-nav-link {
+      font-family: var(--font-body);
+      font-size: var(--prim-scale-sm);
+      font-weight: var(--prim-weight-regular);
+      color: var(--comp-header-nav-text);
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+
+    .header-nav-link:hover {
+      color: var(--comp-header-nav-text-hover);
+    }
+
+    .header-nav-link.active {
+      color: var(--comp-header-nav-text-active);
+      font-weight: var(--prim-weight-medium);
+    }
+
+    .header-nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--accent);
+      border-radius: var(--prim-radius-full);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--prim-space-2);
+    }
+
+    .search-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--prim-radius-md);
+      border: none;
+      background-color: transparent;
+      color: var(--text-tertiary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .search-toggle:hover {
+      background-color: var(--surface-interactive);
+      color: var(--text-primary);
+    }
+
+    .search-toggle svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .subscribe-btn {
+      font-family: var(--font-body);
+      font-size: var(--prim-scale-sm);
+      font-weight: var(--prim-weight-medium);
+      color: var(--text-on-accent);
+      background-color: var(--accent);
+      border: none;
+      padding: var(--prim-space-1) var(--prim-space-2);
+      border-radius: var(--prim-radius-lg);
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      box-shadow: 0 0 0 0 var(--accent), 0 0 0 1px var(--accent);
+    }
+
+    .subscribe-btn:hover {
+      background-color: var(--accent-hover);
+    }
+
+    /* Mobile header brand (hidden on desktop, shown on mobile) */
+    .header-mobile-brand {
+      display: none;
+      font-family: var(--font-display);
+      font-size: var(--prim-scale-lg);
+      font-weight: var(--prim-weight-bold);
+      color: var(--text-primary);
+    }
+
+    .header-mobile-brand span {
+      color: var(--accent);
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-radius: var(--prim-radius-md);
+    }
+
+    .mobile-menu-toggle:hover {
+      background-color: var(--surface-interactive);
+    }
+
+    .mobile-menu-toggle svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ================================================================
+       FEATURED ARTICLE
+       ================================================================ */
+    .section-featured {
+      padding: var(--prim-space-4) 0;
+    }
+
+    .featured-card {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 var(--prim-space-4);
+    }
+
+    .featured-card-inner {
+      background-color: var(--comp-card-bg);
+      border-radius: var(--comp-featured-radius);
+      box-shadow: var(--comp-card-shadow);
+      overflow: hidden;
+      transition: box-shadow var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .featured-card-inner:hover {
+      box-shadow: var(--comp-card-shadow-hover);
+    }
+
+    .featured-image {
+      width: 100%;
+      height: 360px;
+      background: linear-gradient(
+        135deg,
+        var(--prim-parchment-300) 0%,
+        var(--prim-terracotta-500) 40%,
+        var(--prim-terracotta-400) 60%,
+        var(--prim-parchment-400) 100%
+      );
+      position: relative;
+    }
+
+    .featured-image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to top, var(--comp-card-bg), transparent);
+    }
+
+    .featured-body {
+      padding: var(--comp-featured-padding);
+      padding-top: var(--prim-space-3);
+    }
+
+    .featured-tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: var(--prim-scale-xs);
+      font-weight: var(--prim-weight-medium);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--prim-space-1-5);
+    }
+
+    .featured-title {
+      font-size: var(--prim-scale-2xl);
+      font-weight: var(--prim-weight-bold);
+      line-height: var(--prim-lh-heading);
+      color: var(--comp-card-title-color);
+      margin-bottom: var(--prim-space-2);
+      transition: color var(--transition-fast);
+    }
+
+    .featured-card-inner:hover .featured-title {
+      color: var(--comp-card-title-hover);
+    }
+
+    .featured-excerpt {
+      font-size: var(--prim-scale-base);
+      line-height: var(--prim-lh-body);
+      color: var(--comp-card-excerpt-color);
+      margin-bottom: var(--prim-space-3);
+      max-width: 580px;
+    }
+
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--prim-space-1-5);
+    }
+
+    /* ================================================================
+       AUTHOR BADGE
+       ================================================================ */
+    .author-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--prim-space-1-5);
+    }
+
+    .author-avatar {
+      width: var(--comp-avatar-size);
+      height: var(--comp-avatar-size);
+      border-radius: var(--prim-radius-full);
+      background: linear-gradient(135deg, var(--prim-parchment-300), var(--prim-parchment-400));
+      box-shadow: var(--comp-avatar-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: var(--prim-scale-sm);
+      font-weight: var(--prim-weight-semibold);
+      color: var(--text-secondary);
+    }
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .author-name {
+      font-family: var(--font-body);
+      font-size: var(--prim-scale-sm);
+      font-weight: var(--prim-weight-medium);
+      color: var(--comp-author-name-color);
+    }
+
+    .author-date {
+      font-family: var(--font-body);
+      font-size: var(--prim-scale-xs);
+      color: var(--comp-author-role-color);
+    }
+
+    /* Meta separator */
+    .meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: var(--prim-radius-full);
+      background-color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .meta-text {
+      font-size: var(--prim-scale-xs);
+      color: var(--comp-card-meta-color);
+    }
+
+    /* ================================================================
+       ARTICLE GRID
+       ================================================================ */
+    .section-articles {
+      padding: var(--prim-space-3) 0 var(--prim-space-6);
+    }
+
+    .section-heading {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 var(--prim-space-4) var(--prim-space-3);
+    }
+
+    .section-heading h2 {
+      font-size: var(--prim-scale-xl);
+      font-weight: var(--prim-weight-semibold);
+    }
+
+    .article-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 var(--prim-space-4);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--prim-space-3);
+    }
+
+    /* ================================================================
+       ARTICLE CARD
+       ================================================================ */
+    .article-card {
+      background-color: var(--comp-card-bg);
+      border-radius: var(--comp-card-radius);
+      box-shadow: var(--comp-card-shadow);
+      overflow: hidden;
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .article-card:hover {
+      box-shadow: var(--comp-card-shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 180px;
+      position: relative;
+    }
+
+    .card-image-1 {
+      background: linear-gradient(160deg, var(--prim-parchment-200) 0%, var(--prim-parchment-400) 50%, var(--prim-parchment-300) 100%);
+    }
+
+    .card-image-2 {
+      background: linear-gradient(160deg, var(--prim-parchment-300) 0%, var(--prim-terracotta-600) 60%, var(--prim-parchment-900) 100%);
+    }
+
+    .card-image-3 {
+      background: linear-gradient(160deg, var(--prim-parchment-400) 0%, var(--prim-clay-600) 50%, var(--prim-parchment-800) 100%);
+    }
+
+    .card-image-4 {
+      background: linear-gradient(160deg, var(--prim-terracotta-400) 0%, var(--prim-parchment-300) 50%, var(--prim-parchment-200) 100%);
+    }
+
+    .card-body {
+      padding: var(--comp-card-padding);
+    }
+
+    .card-tags {
+      display: flex;
+      gap: var(--prim-space-1);
+      margin-bottom: var(--prim-space-1-5);
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: var(--prim-scale-xs);
+      font-weight: var(--prim-weight-medium);
+      color: var(--comp-tag-text);
+      background-color: var(--comp-tag-bg);
+      padding: var(--comp-tag-padding-y) var(--comp-tag-padding-x);
+      border-radius: var(--comp-tag-radius);
+      line-height: var(--prim-lh-normal);
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: var(--prim-scale-lg);
+      font-weight: var(--prim-weight-semibold);
+      line-height: var(--prim-lh-heading);
+      color: var(--comp-card-title-color);
+      margin-bottom: var(--prim-space-1);
+      transition: color var(--transition-fast);
+    }
+
+    .article-card:hover .card-title {
+      color: var(--comp-card-title-hover);
+    }
+
+    .card-excerpt {
+      font-size: var(--prim-scale-sm);
+      line-height: var(--prim-lh-body);
+      color: var(--comp-card-excerpt-color);
+      margin-bottom: var(--prim-space-2);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-footer .author-avatar {
+      width: 28px;
+      height: 28px;
+      font-size: var(--prim-scale-xs);
+    }
+
+    .card-read-time {
+      font-size: var(--prim-scale-xs);
+      color: var(--comp-card-meta-color);
+    }
+
+    /* ================================================================
+       DARK SECTION — EDITOR'S PICKS
+       ================================================================ */
+    .section-dark {
+      background-color: var(--comp-dark-bg);
+      padding: var(--prim-space-10) 0;
+      margin: var(--prim-space-4) 0 0;
+    }
+
+    .dark-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 var(--prim-space-4);
+    }
+
+    .dark-section-overline {
+      font-family: var(--font-body);
+      font-size: var(--prim-scale-xs);
+      font-weight: var(--prim-weight-medium);
+      color: var(--comp-dark-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: var(--prim-space-1);
+    }
+
+    .dark-section-title {
+      font-family: var(--font-display);
+      font-size: var(--prim-scale-2xl);
+      font-weight: var(--prim-weight-bold);
+      color: var(--comp-dark-title-color);
+      line-height: var(--prim-lh-heading);
+      margin-bottom: var(--prim-space-1);
+    }
+
+    .dark-section-subtitle {
+      font-size: var(--prim-scale-base);
+      line-height: var(--prim-lh-body);
+      color: var(--comp-dark-text-color);
+      margin-bottom: var(--prim-space-4);
+      max-width: 480px;
+    }
+
+    .picks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--prim-space-3);
+    }
+
+    .pick-card {
+      background-color: var(--comp-dark-card-bg);
+      border-radius: var(--comp-card-radius);
+      box-shadow: var(--comp-dark-card-border);
+      padding: var(--comp-card-padding);
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .pick-card:hover {
+      box-shadow: var(--shadow-lift-dark);
+      transform: translateY(-2px);
+    }
+
+    .pick-number {
+      font-family: var(--font-display);
+      font-size: var(--prim-scale-3xl);
+      font-weight: var(--prim-weight-bold);
+      color: var(--comp-dark-accent);
+      line-height: 1;
+      margin-bottom: var(--prim-space-2);
+      opacity: 0.4;
+    }
+
+    .pick-title {
+      font-family: var(--font-display);
+      font-size: var(--prim-scale-lg);
+      font-weight: var(--prim-weight-semibold);
+      color: var(--comp-dark-title-color);
+      line-height: var(--prim-lh-heading);
+      margin-bottom: var(--prim-space-1);
+    }
+
+    .pick-excerpt {
+      font-size: var(--prim-scale-sm);
+      line-height: var(--prim-lh-body);
+      color: var(--comp-dark-text-color);
+      margin-bottom: var(--prim-space-2);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .pick-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--prim-space-1);
+    }
+
+    .pick-author {
+      font-size: var(--prim-scale-xs);
+      color: var(--comp-dark-text-color);
+    }
+
+    .pick-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: var(--prim-radius-full);
+      background-color: var(--prim-parchment-600);
+    }
+
+    .pick-read-time {
+      font-size: var(--prim-scale-xs);
+      color: var(--prim-parchment-600);
+    }
+
+    /* ================================================================
+       FOOTER
+       ================================================================ */
+    .site-footer {
+      background-color: var(--comp-footer-bg);
+      border-top: 1px solid var(--comp-footer-border);
+      padding: var(--prim-space-6) 0 var(--prim-space-4);
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 var(--prim-space-4);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--prim-space-6);
+      margin-bottom: var(--prim-space-4);
+    }
+
+    .footer-brand {
+      max-width: 280px;
+    }
+
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: var(--prim-scale-xl);
+      font-weight: var(--prim-weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--prim-space-1);
+    }
+
+    .footer-brand-name span {
+      color: var(--accent);
+    }
+
+    .footer-brand-desc {
+      font-size: var(--prim-scale-sm);
+      color: var(--comp-footer-text);
+      line-height: var(--prim-lh-body);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: var(--prim-space-6);
+    }
+
+    .footer-column h4 {
+      font-family: var(--font-body);
+      font-size: var(--prim-scale-xs);
+      font-weight: var(--prim-weight-medium);
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--prim-space-1-5);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: var(--prim-space-1);
+    }
+
+    .footer-column a {
+      font-size: var(--prim-scale-sm);
+      color: var(--comp-footer-link);
+      transition: color var(--transition-fast);
+    }
+
+    .footer-column a:hover {
+      color: var(--comp-footer-link-hover);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--prim-space-3);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-copyright {
+      font-size: var(--prim-scale-xs);
+      color: var(--comp-footer-text);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: var(--prim-space-2);
+    }
+
+    .footer-social a {
+      color: var(--text-tertiary);
+      transition: color var(--transition-fast);
+    }
+
+    .footer-social a:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-social svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ================================================================
+       ANIMATIONS
+       ================================================================ */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-featured { animation: fadeInUp var(--prim-dur-slow) var(--prim-ease-gentle) both; }
+    .section-articles { animation: fadeInUp var(--prim-dur-slow) var(--prim-ease-gentle) 100ms both; }
+    .section-dark { animation: fadeInUp var(--prim-dur-slow) var(--prim-ease-gentle) 200ms both; }
+
+    /* Focus styles */
+    :focus-visible {
+      outline: 2px solid var(--prim-focus);
+      outline-offset: 2px;
+      border-radius: var(--prim-radius-sm);
+    }
+
+    /* ================================================================
+       RESPONSIVE — TABLET (< 1024px)
+       ================================================================ */
+    @media (max-width: 1024px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .header-mobile-brand {
+        display: block;
+      }
+    }
+
+    /* ================================================================
+       RESPONSIVE — TABLET SMALL (< 768px)
+       ================================================================ */
+    @media (max-width: 768px) {
+      .article-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .picks-grid {
+        grid-template-columns: 1fr;
+        gap: var(--prim-space-2);
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .featured-title {
+        font-size: var(--prim-scale-xl);
+      }
+
+      .featured-image {
+        height: 240px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        gap: var(--prim-space-4);
+      }
+
+      .footer-links {
+        gap: var(--prim-space-4);
+      }
+
+      .section-dark {
+        padding: var(--prim-space-6) 0;
+      }
+
+      .dark-section-title {
+        font-size: var(--prim-scale-xl);
+      }
+    }
+
+    /* ================================================================
+       RESPONSIVE — MOBILE (< 375px + small)
+       ================================================================ */
+    @media (max-width: 480px) {
+      .header-inner {
+        padding: 0 var(--prim-space-2);
+      }
+
+      .featured-card {
+        padding: 0 var(--prim-space-2);
+      }
+
+      .article-grid {
+        padding: 0 var(--prim-space-2);
+      }
+
+      .dark-container {
+        padding: 0 var(--prim-space-2);
+      }
+
+      .featured-body {
+        padding: var(--prim-space-3);
+      }
+
+      .footer-inner {
+        padding: 0 var(--prim-space-2);
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: var(--prim-space-3);
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: var(--prim-space-1-5);
+        text-align: center;
+      }
+
+      .subscribe-btn {
+        font-size: var(--prim-scale-xs);
+        padding: 6px var(--prim-space-1-5);
+      }
+
+      .featured-title {
+        font-size: var(--prim-scale-xl);
+      }
+
+      .card-image {
+        height: 140px;
+      }
+    }
+
+    /* ================================================================
+       RESPONSIVE — WIDE (> 1440px)
+       ================================================================ */
+    @media (min-width: 1440px) {
+      .header-inner,
+      .featured-card,
+      .article-grid,
+      .dark-container,
+      .footer-inner {
+        max-width: 1080px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- ============================================================
+         SIDEBAR NAVIGATION
+         ============================================================ -->
+    <aside class="sidebar">
+      <a href="#" class="sidebar-logo">The <span>Parchment</span></a>
+
+      <div class="sidebar-section-title">Browse</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#" class="sidebar-nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Latest
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            Popular
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-section-title">Topics</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#" class="sidebar-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+            Technology
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="0.5"/><circle cx="17.5" cy="10.5" r="0.5"/><circle cx="8.5" cy="7.5" r="0.5"/><circle cx="6.5" cy="12.5" r="0.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+            Design
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Culture
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <a href="#" class="sidebar-footer-link">About</a>
+        <a href="#" class="sidebar-footer-link">Archive</a>
+        <a href="#" class="sidebar-footer-link">Subscribe</a>
+      </div>
+    </aside>
+
+    <!-- ============================================================
+         MAIN CONTENT
+         ============================================================ -->
+    <div class="main-content">
+
+      <!-- Header (top bar) -->
+      <header class="top-header">
+        <div class="header-inner">
+          <div style="display: flex; align-items: center; gap: var(--prim-space-4);">
+            <button class="mobile-menu-toggle" aria-label="Open menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <div class="header-mobile-brand">The <span>Parchment</span></div>
+            <nav class="header-nav">
+              <a href="#" class="header-nav-link active">Latest</a>
+              <a href="#" class="header-nav-link">Popular</a>
+              <a href="#" class="header-nav-link">Technology</a>
+              <a href="#" class="header-nav-link">Design</a>
+              <a href="#" class="header-nav-link">Culture</a>
+            </nav>
+          </div>
+          <div class="header-actions">
+            <button class="search-toggle" aria-label="Search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+            <button class="subscribe-btn">Subscribe</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- ============================================================
+           FEATURED ARTICLE
+           ============================================================ -->
+      <section class="section-featured">
+        <div class="featured-card">
+          <article class="featured-card-inner">
+            <div class="featured-image">
+              <div class="featured-image-overlay"></div>
+            </div>
+            <div class="featured-body">
+              <span class="featured-tag">Technology</span>
+              <h1 class="featured-title">The Quiet Revolution of Thoughtful Software</h1>
+              <p class="featured-excerpt">
+                In an age of attention-grabbing interfaces and notification overload, a counter-movement
+                is emerging. Software that respects your time, values your attention, and communicates
+                with the restraint of a well-edited essay.
+              </p>
+              <div class="featured-meta">
+                <div class="author-badge">
+                  <div class="author-avatar">EM</div>
+                  <div class="author-info">
+                    <span class="author-name">Elena Marchetti</span>
+                    <span class="author-date">April 8, 2026</span>
+                  </div>
+                </div>
+                <div class="meta-dot"></div>
+                <span class="meta-text">12 min read</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           ARTICLE GRID
+           ============================================================ -->
+      <section class="section-articles">
+        <div class="section-heading">
+          <h2>Recent Articles</h2>
+        </div>
+        <div class="article-grid">
+
+          <!-- Card 1 -->
+          <article class="article-card">
+            <div class="card-image card-image-1"></div>
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="tag">Design</span>
+                <span class="tag">Typography</span>
+              </div>
+              <h3 class="card-title">Why Warm Color Palettes Are Replacing Cool Minimalism</h3>
+              <p class="card-excerpt">
+                The shift from sterile blue-gray interfaces to warm, parchment-toned designs reflects
+                a deeper cultural desire for digital spaces that feel human and inviting.
+              </p>
+              <div class="card-footer">
+                <div class="author-badge">
+                  <div class="author-avatar">JK</div>
+                  <div class="author-info">
+                    <span class="author-name">James Keller</span>
+                    <span class="author-date">April 6, 2026</span>
+                  </div>
+                </div>
+                <span class="card-read-time">8 min</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="article-card">
+            <div class="card-image card-image-2"></div>
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="tag">Technology</span>
+              </div>
+              <h3 class="card-title">Building AI That Reads the Room</h3>
+              <p class="card-excerpt">
+                The next frontier in AI isn't raw capability but contextual awareness -- systems that
+                understand not just what you said, but why you said it and what you need next.
+              </p>
+              <div class="card-footer">
+                <div class="author-badge">
+                  <div class="author-avatar">SW</div>
+                  <div class="author-info">
+                    <span class="author-name">Sarah Wu</span>
+                    <span class="author-date">April 4, 2026</span>
+                  </div>
+                </div>
+                <span class="card-read-time">10 min</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="article-card">
+            <div class="card-image card-image-3"></div>
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="tag">Culture</span>
+                <span class="tag">Philosophy</span>
+              </div>
+              <h3 class="card-title">The Return of Long-Form Reading in a Short-Form World</h3>
+              <p class="card-excerpt">
+                Against every prediction, long-form articles and essays are experiencing a renaissance.
+                Readers are choosing depth over speed, substance over scroll.
+              </p>
+              <div class="card-footer">
+                <div class="author-badge">
+                  <div class="author-avatar">AT</div>
+                  <div class="author-info">
+                    <span class="author-name">Amir Toussaint</span>
+                    <span class="author-date">April 2, 2026</span>
+                  </div>
+                </div>
+                <span class="card-read-time">14 min</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="article-card">
+            <div class="card-image card-image-4"></div>
+            <div class="card-body">
+              <div class="card-tags">
+                <span class="tag">Design</span>
+                <span class="tag">Craft</span>
+              </div>
+              <h3 class="card-title">Ring Shadows and the Art of Subtle Depth</h3>
+              <p class="card-excerpt">
+                How a simple 1-pixel ring shadow became the signature of an entire design language,
+                and what it teaches us about restraint in visual systems.
+              </p>
+              <div class="card-footer">
+                <div class="author-badge">
+                  <div class="author-avatar">LP</div>
+                  <div class="author-info">
+                    <span class="author-name">Lena Park</span>
+                    <span class="author-date">March 29, 2026</span>
+                  </div>
+                </div>
+                <span class="card-read-time">7 min</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============================================================
+           DARK SECTION — EDITOR'S PICKS
+           ============================================================ -->
+      <section class="section-dark">
+        <div class="dark-container">
+          <span class="dark-section-overline">Curated</span>
+          <h2 class="dark-section-title">Editor's Picks</h2>
+          <p class="dark-section-subtitle">
+            Handpicked stories that reward slow, attentive reading. The pieces our editors
+            keep returning to.
+          </p>
+
+          <div class="picks-grid">
+
+            <!-- Pick 1 -->
+            <article class="pick-card">
+              <div class="pick-number">01</div>
+              <h3 class="pick-title">The Parchment Manifesto: Designing for Warmth</h3>
+              <p class="pick-excerpt">
+                A deep dive into why the most compelling digital experiences are abandoning the
+                clinical whites and cool grays of the last decade in favor of something warmer.
+              </p>
+              <div class="pick-meta">
+                <span class="pick-author">Elena Marchetti</span>
+                <div class="pick-dot"></div>
+                <span class="pick-read-time">18 min</span>
+              </div>
+            </article>
+
+            <!-- Pick 2 -->
+            <article class="pick-card">
+              <div class="pick-number">02</div>
+              <h3 class="pick-title">Serif Fonts in the Interface Age</h3>
+              <p class="pick-excerpt">
+                For years, sans-serif dominated digital design. Now serifs are returning --
+                not as nostalgia, but as a statement about what technology can feel like.
+              </p>
+              <div class="pick-meta">
+                <span class="pick-author">James Keller</span>
+                <div class="pick-dot"></div>
+                <span class="pick-read-time">11 min</span>
+              </div>
+            </article>
+
+            <!-- Pick 3 -->
+            <article class="pick-card">
+              <div class="pick-number">03</div>
+              <h3 class="pick-title">Whitespace Is Not Empty Space</h3>
+              <p class="pick-excerpt">
+                The generous margins and breathing room of editorial design aren't wasted pixels.
+                They're the typographic equivalent of silence in music.
+              </p>
+              <div class="pick-meta">
+                <span class="pick-author">Lena Park</span>
+                <div class="pick-dot"></div>
+                <span class="pick-read-time">9 min</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           FOOTER
+           ============================================================ -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <div class="footer-brand-name">The <span>Parchment</span></div>
+              <p class="footer-brand-desc">
+                Thoughtful writing about technology, design, and culture.
+                Words that reward your attention.
+              </p>
+            </div>
+            <div class="footer-links">
+              <div class="footer-column">
+                <h4>Topics</h4>
+                <ul>
+                  <li><a href="#">Technology</a></li>
+                  <li><a href="#">Design</a></li>
+                  <li><a href="#">Culture</a></li>
+                  <li><a href="#">Philosophy</a></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                  <li><a href="#">Our Story</a></li>
+                  <li><a href="#">Contributors</a></li>
+                  <li><a href="#">Style Guide</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h4>Follow</h4>
+                <ul>
+                  <li><a href="#">Newsletter</a></li>
+                  <li><a href="#">RSS Feed</a></li>
+                  <li><a href="#">Twitter</a></li>
+                  <li><a href="#">Mastodon</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span class="footer-copyright">&copy; 2026 The Parchment. All rights reserved.</span>
+            <div class="footer-social">
+              <a href="#" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+              </a>
+              <a href="#" aria-label="RSS">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div><!-- /.main-content -->
+  </div><!-- /.page-wrapper -->
+
+</body>
+</html>

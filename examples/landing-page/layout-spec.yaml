@@ -1,0 +1,161 @@
+meta:
+  project: "Linear Landing Page"
+  platform: web
+  tone: "precise-minimal with compressed energy"
+  wow_factor: "Luminance-stacked elevation with semi-transparent borders creating depth without shadows"
+
+layout:
+  structure: full-width
+  max_width: 1200px
+  breakpoints:
+    mobile: 375px
+    tablet: 768px
+    desktop: 1024px
+    wide: 1440px
+
+pages:
+  - name: home
+    sections:
+      - type: navigation
+        behavior: sticky top
+        backdrop: "blur(12px) saturate(180%)"
+        border_bottom: "{color.border-subtle}"
+        height: 56px
+        content:
+          logo: "Linear"
+          links: [Features, Pricing, Docs, Blog]
+          cta: "Get Started"
+
+      - type: hero
+        layout: centered
+        padding: "120px {spacing.page-margin-desktop}"
+        mobile_padding: "64px {spacing.page-margin-mobile}"
+        content:
+          headline:
+            text: "Build software\nyou're proud of"
+            size: "{typography.scale-3xl}"
+            weight: 510
+            tracking: "{typography.tracking-display}"
+            line_height: 1.0
+          subtitle:
+            text: "Linear streamlines issues, projects, and product roadmaps."
+            size: "{typography.scale-lg}"
+            color: "{color.text-muted}"
+            max_width: 520px
+          cta_primary:
+            text: "Get Started"
+            style: brand-indigo
+          cta_secondary:
+            text: "See how it works"
+            style: ghost
+
+      - type: feature-grid
+        layout: grid-3
+        gap: "{spacing.lg}"
+        collapse_to: single-column
+        collapse_at: 768px
+        children:
+          - type: feature-card
+            icon: "zap"
+            title: "Built for speed"
+            description: "Optimized for the fastest possible workflow. Keyboard-first, instant search, real-time sync."
+          - type: feature-card
+            icon: "layers"
+            title: "Powerful workflows"
+            description: "Cycles, projects, and roadmaps that connect engineering work to company objectives."
+          - type: feature-card
+            icon: "git-branch"
+            title: "Seamless integration"
+            description: "GitHub, GitLab, Slack, Figma, and Sentry. Linear fits into your existing workflow."
+
+      - type: pricing
+        layout: grid-3
+        gap: "{spacing.lg}"
+        collapse_to: single-column
+        collapse_at: 768px
+        children:
+          - type: pricing-card
+            plan: "Free"
+            price: "$0"
+            period: "/month"
+            features:
+              - "Up to 250 issues"
+              - "Basic roadmaps"
+              - "Unlimited members"
+              - "API access"
+            cta: "Get Started"
+            style: ghost
+
+          - type: pricing-card
+            plan: "Standard"
+            price: "$8"
+            period: "/user/month"
+            popular: true
+            features:
+              - "Unlimited issues"
+              - "Advanced roadmaps"
+              - "Priority support"
+              - "Custom workflows"
+              - "Analytics"
+            cta: "Start Trial"
+            style: brand
+
+          - type: pricing-card
+            plan: "Plus"
+            price: "$14"
+            period: "/user/month"
+            features:
+              - "Everything in Standard"
+              - "Advanced integrations"
+              - "SAML SSO"
+              - "Audit log"
+              - "Dedicated support"
+            cta: "Contact Sales"
+            style: ghost
+
+      - type: cta-banner
+        layout: centered
+        padding: "96px {spacing.page-margin-desktop}"
+        content:
+          headline: "Start building today"
+          subtitle: "Join thousands of teams using Linear to build better products, faster."
+          cta:
+            text: "Get Started — Free"
+            style: brand-indigo
+
+      - type: footer
+        layout: multi-column
+        columns:
+          - heading: "Product"
+            links: [Features, Integrations, Changelog, Pricing, Security]
+          - heading: "Company"
+            links: [About, Blog, Careers, Press, Contact]
+          - heading: "Resources"
+            links: [Docs, API Reference, Status, Community]
+          - heading: "Legal"
+            links: [Privacy, Terms, DPA]
+        bottom:
+          copyright: "Linear Inc."
+          social: [twitter, github, discord]
+
+navigation:
+  type: top-bar
+  items:
+    - { label: "Features" }
+    - { label: "Pricing" }
+    - { label: "Docs" }
+    - { label: "Blog" }
+  cta: "Get Started"
+
+interaction:
+  transitions:
+    page_enter: "fade-in {motion.duration-slow} {motion.easing-default}"
+    card_enter: "slide-up + fade-in {motion.duration-slow} {motion.easing-default} stagger 80ms"
+    card_hover: "background-color {motion.duration-normal} ease"
+    button_hover: "background-color {motion.duration-fast} ease"
+    nav_link_hover: "color {motion.duration-fast} ease"
+  loading:
+    strategy: progressive
+    threshold: 500ms
+  empty_states:
+    pattern: "icon + headline + cta"

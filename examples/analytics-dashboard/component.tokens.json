@@ -1,0 +1,219 @@
+{
+  "metric-card": {
+    "bg": {
+      "$value": "{color.surface-elevated}",
+      "$type": "color",
+      "$description": "Metric card background"
+    },
+    "border": {
+      "$value": "{color.border}",
+      "$type": "color",
+      "$description": "Metric card border -- 1px solid"
+    },
+    "radius": {
+      "$value": "{border.radius-lg}",
+      "$type": "dimension",
+      "$description": "8px card radius"
+    },
+    "padding": {
+      "$value": "{spacing.xl}",
+      "$type": "dimension",
+      "$description": "20px internal padding"
+    },
+    "value-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Big metric number -- warm off-white"
+    },
+    "label-color": {
+      "$value": "{color.text-tertiary}",
+      "$type": "color",
+      "$description": "Metric label/overline -- de-emphasized"
+    },
+    "trend-up-color": {
+      "$value": "{color.success}",
+      "$type": "color",
+      "$description": "Positive trend indicator"
+    },
+    "trend-down-color": {
+      "$value": "{color.error}",
+      "$type": "color",
+      "$description": "Negative trend indicator"
+    }
+  },
+  "chart-container": {
+    "bg": {
+      "$value": "{color.surface-elevated}",
+      "$type": "color",
+      "$description": "Chart card background"
+    },
+    "border": {
+      "$value": "{color.border}",
+      "$type": "color",
+      "$description": "Chart card border"
+    },
+    "radius": {
+      "$value": "{border.radius-lg}",
+      "$type": "dimension",
+      "$description": "8px card radius"
+    },
+    "padding": {
+      "$value": "{spacing.2xl}",
+      "$type": "dimension",
+      "$description": "24px generous chart padding"
+    },
+    "axis-color": {
+      "$value": "{color.text-tertiary}",
+      "$type": "color",
+      "$description": "Axis labels and tick marks"
+    },
+    "grid-color": {
+      "$value": "{color.border-subtle}",
+      "$type": "color",
+      "$description": "Chart grid lines -- very low contrast"
+    },
+    "tooltip-bg": {
+      "$value": "{color.surface-deepest}",
+      "$type": "color",
+      "$description": "Tooltip background"
+    },
+    "tooltip-text": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Tooltip text"
+    }
+  },
+  "event-table": {
+    "header-bg": {
+      "$value": "{color.surface-hover}",
+      "$type": "color",
+      "$description": "Table header row background"
+    },
+    "header-text": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Table header text -- secondary weight"
+    },
+    "row-bg": {
+      "$value": "{color.surface-elevated}",
+      "$type": "color",
+      "$description": "Table row background"
+    },
+    "row-bg-hover": {
+      "$value": "{color.surface-hover}",
+      "$type": "color",
+      "$description": "Table row hover state"
+    },
+    "row-border": {
+      "$value": "{color.border-subtle}",
+      "$type": "color",
+      "$description": "Row divider -- low contrast"
+    },
+    "cell-padding": {
+      "$value": "{spacing.md}",
+      "$type": "dimension",
+      "$description": "12px cell padding"
+    }
+  },
+  "funnel-bar": {
+    "bar-color-1": {
+      "$value": "{color.chart-1}",
+      "$type": "color",
+      "$description": "Funnel step 1 -- blue"
+    },
+    "bar-color-2": {
+      "$value": "{color.chart-2}",
+      "$type": "color",
+      "$description": "Funnel step 2 -- purple"
+    },
+    "bar-color-3": {
+      "$value": "{color.chart-3}",
+      "$type": "color",
+      "$description": "Funnel step 3 -- green"
+    },
+    "bar-color-4": {
+      "$value": "{color.chart-4}",
+      "$type": "color",
+      "$description": "Funnel step 4 -- amber"
+    },
+    "bar-color-5": {
+      "$value": "{color.chart-5}",
+      "$type": "color",
+      "$description": "Funnel step 5 -- rose"
+    },
+    "label-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Funnel step labels"
+    },
+    "value-color": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Funnel percentage values"
+    },
+    "bg": {
+      "$value": "{color.surface-elevated}",
+      "$type": "color",
+      "$description": "Funnel container background"
+    }
+  },
+  "sidebar-nav": {
+    "bg": {
+      "$value": "{color.surface-deepest}",
+      "$type": "color",
+      "$description": "Sidebar background -- deepest dark"
+    },
+    "item-text": {
+      "$value": "{color.text-secondary}",
+      "$type": "color",
+      "$description": "Nav item default text"
+    },
+    "item-text-active": {
+      "$value": "{color.accent}",
+      "$type": "color",
+      "$description": "Nav item active text -- orange accent"
+    },
+    "item-bg-active": {
+      "$value": "rgba(245, 78, 0, 0.1)",
+      "$type": "color",
+      "$description": "Nav item active background -- faint orange"
+    },
+    "section-title-color": {
+      "$value": "{color.text-tertiary}",
+      "$type": "color",
+      "$description": "Section overline labels"
+    },
+    "icon-color": {
+      "$value": "{color.text-tertiary}",
+      "$type": "color",
+      "$description": "Nav item icon color -- de-emphasized"
+    }
+  },
+  "header": {
+    "bg": {
+      "$value": "{color.surface}",
+      "$type": "color",
+      "$description": "Header background -- matches main canvas"
+    },
+    "title-color": {
+      "$value": "{color.text-primary}",
+      "$type": "color",
+      "$description": "Page title color"
+    },
+    "search-bg": {
+      "$value": "{color.surface-input}",
+      "$type": "color",
+      "$description": "Search input background"
+    },
+    "search-border": {
+      "$value": "{color.border}",
+      "$type": "color",
+      "$description": "Search input border"
+    },
+    "avatar-border": {
+      "$value": "{color.border-strong}",
+      "$type": "color",
+      "$description": "Avatar ring border"
+    }
+  }
+}

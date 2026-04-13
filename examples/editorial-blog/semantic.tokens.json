@@ -1,0 +1,181 @@
+{
+  "color": {
+    "surface": {
+      "$value": "{color.parchment-100}",
+      "$type": "color",
+      "$description": "Primary page background — warm parchment canvas"
+    },
+    "surface-card": {
+      "$value": "{color.parchment-50}",
+      "$type": "color",
+      "$description": "Card backgrounds — one step lighter than canvas"
+    },
+    "surface-elevated": {
+      "$value": "{color.warm-white}",
+      "$type": "color",
+      "$description": "Elevated surfaces — ivory for highest contrast"
+    },
+    "surface-interactive": {
+      "$value": "{color.parchment-300}",
+      "$type": "color",
+      "$description": "Interactive surfaces — warm sand for buttons"
+    },
+    "surface-dark": {
+      "$value": "{color.parchment-900}",
+      "$type": "color",
+      "$description": "Dark section background — near-black warm"
+    },
+    "surface-dark-card": {
+      "$value": "{color.clay-600}",
+      "$type": "color",
+      "$description": "Cards on dark sections — warm charcoal"
+    },
+    "surface-dark-deep": {
+      "$value": "{color.parchment-950}",
+      "$type": "color",
+      "$description": "Deepest dark — dark page bg variant"
+    },
+    "accent": {
+      "$value": "{color.terracotta-500}",
+      "$type": "color",
+      "$description": "Primary accent — terracotta for CTAs, high-signal brand moments"
+    },
+    "accent-hover": {
+      "$value": "{color.terracotta-400}",
+      "$type": "color",
+      "$description": "Accent hover — lighter coral variant"
+    },
+    "accent-pressed": {
+      "$value": "{color.terracotta-600}",
+      "$type": "color",
+      "$description": "Accent pressed — deeper terracotta"
+    },
+    "text-primary": {
+      "$value": "{color.parchment-950}",
+      "$type": "color",
+      "$description": "Primary text on light surfaces — warm near-black"
+    },
+    "text-secondary": {
+      "$value": "{color.parchment-700}",
+      "$type": "color",
+      "$description": "Secondary text — olive gray for body"
+    },
+    "text-tertiary": {
+      "$value": "{color.parchment-600}",
+      "$type": "color",
+      "$description": "Tertiary text — stone gray for metadata"
+    },
+    "text-muted": {
+      "$value": "{color.parchment-400}",
+      "$type": "color",
+      "$description": "Muted text — warm stone for de-emphasized content"
+    },
+    "text-on-dark": {
+      "$value": "{color.parchment-50}",
+      "$type": "color",
+      "$description": "Primary text on dark surfaces — lightest parchment"
+    },
+    "text-on-dark-secondary": {
+      "$value": "{color.parchment-500}",
+      "$type": "color",
+      "$description": "Secondary text on dark — warm silver"
+    },
+    "text-on-accent": {
+      "$value": "{color.warm-white}",
+      "$type": "color",
+      "$description": "Text on accent buttons — ivory"
+    },
+    "text-link": {
+      "$value": "{color.parchment-800}",
+      "$type": "color",
+      "$description": "Link text on light surfaces"
+    },
+    "border": {
+      "$value": "{color.parchment-200}",
+      "$type": "color",
+      "$description": "Default border — barely visible warm cream"
+    },
+    "border-prominent": {
+      "$value": "{color.parchment-300}",
+      "$type": "color",
+      "$description": "Prominent border — section dividers, emphasized"
+    },
+    "border-dark": {
+      "$value": "{color.clay-600}",
+      "$type": "color",
+      "$description": "Border on dark surfaces"
+    },
+    "ring-default": {
+      "$value": "{color.parchment-400}",
+      "$type": "color",
+      "$description": "Default ring shadow — warm stone"
+    },
+    "ring-active": {
+      "$value": "{color.clay-400}",
+      "$type": "color",
+      "$description": "Active ring shadow — deeper warm"
+    },
+    "error": {
+      "$value": "{color.error}",
+      "$type": "color",
+      "$description": "Error state"
+    },
+    "success": {
+      "$value": "{color.success}",
+      "$type": "color",
+      "$description": "Success state"
+    },
+    "focus": {
+      "$value": "{color.focus}",
+      "$type": "color",
+      "$description": "Focus ring — the only cool color"
+    }
+  },
+  "typography": {
+    "font-display": {
+      "$value": "{typography.font-display}",
+      "$type": "fontFamily",
+      "$description": "Headline/display serif"
+    },
+    "font-body": {
+      "$value": "{typography.font-body}",
+      "$type": "fontFamily",
+      "$description": "Body/UI sans-serif"
+    }
+  },
+  "spacing": {
+    "xs": { "$value": "{spacing.space-1}", "$type": "dimension", "$description": "8px — tight spacing" },
+    "sm": { "$value": "{spacing.space-1-5}", "$type": "dimension", "$description": "12px — small gaps" },
+    "md": { "$value": "{spacing.space-2}", "$type": "dimension", "$description": "16px — standard spacing" },
+    "lg": { "$value": "{spacing.space-3}", "$type": "dimension", "$description": "24px — generous spacing" },
+    "xl": { "$value": "{spacing.space-4}", "$type": "dimension", "$description": "32px — section padding" },
+    "2xl": { "$value": "{spacing.space-6}", "$type": "dimension", "$description": "48px — large gaps" },
+    "3xl": { "$value": "{spacing.space-8}", "$type": "dimension", "$description": "64px — major separation" },
+    "4xl": { "$value": "{spacing.space-10}", "$type": "dimension", "$description": "80px — section gaps" },
+    "5xl": { "$value": "{spacing.space-12}", "$type": "dimension", "$description": "96px — hero padding" },
+    "page-margin-desktop": { "$value": "{spacing.space-8}", "$type": "dimension", "$description": "64px desktop margin" },
+    "page-margin-mobile": { "$value": "{spacing.space-2}", "$type": "dimension", "$description": "16px mobile margin" }
+  },
+  "border": {
+    "radius-sm": { "$value": "{border.radius-sm}", "$type": "dimension" },
+    "radius-md": { "$value": "{border.radius-md}", "$type": "dimension" },
+    "radius-lg": { "$value": "{border.radius-lg}", "$type": "dimension" },
+    "radius-full": { "$value": "{border.radius-full}", "$type": "dimension" }
+  },
+  "shadow": {
+    "ring-light": { "$value": "{shadow.ring-light}", "$type": "shadow" },
+    "ring-warm": { "$value": "{shadow.ring-warm}", "$type": "shadow" },
+    "ring-deep": { "$value": "{shadow.ring-deep}", "$type": "shadow" },
+    "ring-dark": { "$value": "{shadow.ring-dark}", "$type": "shadow" },
+    "whisper": { "$value": "{shadow.whisper}", "$type": "shadow" },
+    "lift": { "$value": "{shadow.lift}", "$type": "shadow" }
+  },
+  "motion": {
+    "duration-fast": { "$value": "{motion.duration-fast}", "$type": "duration" },
+    "duration-normal": { "$value": "{motion.duration-normal}", "$type": "duration" },
+    "duration-slow": { "$value": "{motion.duration-slow}", "$type": "duration" },
+    "easing-default": { "$value": "{motion.easing-default}", "$type": "cubicBezier" },
+    "easing-exit": { "$value": "{motion.easing-exit}", "$type": "cubicBezier" },
+    "easing-gentle": { "$value": "{motion.easing-gentle}", "$type": "cubicBezier" }
+  }
+}

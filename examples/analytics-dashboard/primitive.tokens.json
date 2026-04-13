@@ -1,0 +1,97 @@
+{
+  "color": {
+    "navy-950": { "$value": "#111318", "$type": "color", "$description": "Deepest dark -- sidebar, deepest overlays" },
+    "navy-900": { "$value": "#1d1f27", "$type": "color", "$description": "Primary dark canvas -- PostHog's native background" },
+    "navy-800": { "$value": "#2c2e38", "$type": "color", "$description": "Elevated surface -- cards, panels on dark" },
+    "navy-700": { "$value": "#35374a", "$type": "color", "$description": "Input fields, dropdown backgrounds on dark" },
+    "navy-600": { "$value": "#3b3d4f", "$type": "color", "$description": "Default border, hover surfaces on dark" },
+    "navy-500": { "$value": "#565869", "$type": "color", "$description": "Strong border, emphasized separation" },
+    "navy-400": { "$value": "#6b7280", "$type": "color", "$description": "Tertiary text, de-emphasized metadata" },
+    "navy-300": { "$value": "#9ba0aa", "$type": "color", "$description": "Secondary text on dark surfaces" },
+    "navy-200": { "$value": "#d1d5db", "$type": "color", "$description": "Disabled elements on light" },
+    "navy-100": { "$value": "#e5e7eb", "$type": "color", "$description": "Border on light surfaces" },
+    "navy-50": { "$value": "#eeefe9", "$type": "color", "$description": "Primary text on dark -- warm off-white" },
+    "orange-400": { "$value": "#ff6a2f", "$type": "color", "$description": "Lighter orange -- light-mode accent variant" },
+    "orange-500": { "$value": "#f54e00", "$type": "color", "$description": "PostHog Orange -- primary brand accent" },
+    "orange-600": { "$value": "#e04600", "$type": "color", "$description": "Darker orange -- hover/pressed state" },
+    "chart-blue": { "$value": "#1d8aed", "$type": "color", "$description": "Chart series 1 -- primary blue" },
+    "chart-purple": { "$value": "#6c3ff2", "$type": "color", "$description": "Chart series 2 -- purple" },
+    "chart-green": { "$value": "#42b983", "$type": "color", "$description": "Chart series 4 -- teal-green" },
+    "chart-amber": { "$value": "#f1a82c", "$type": "color", "$description": "Chart series 5 -- warm amber" },
+    "chart-rose": { "$value": "#ff6384", "$type": "color", "$description": "Chart series 6 -- pink-coral" },
+    "success": { "$value": "#77b96c", "$type": "color", "$description": "Success/positive -- muted green" },
+    "error": { "$value": "#f44336", "$type": "color", "$description": "Error/danger -- warm red, distinct from brand orange" },
+    "warning": { "$value": "#f1a82c", "$type": "color", "$description": "Warning/caution -- amber" },
+    "info": { "$value": "#1d8aed", "$type": "color", "$description": "Informational state -- blue" },
+    "white": { "$value": "#ffffff", "$type": "color" },
+    "black": { "$value": "#000000", "$type": "color" }
+  },
+  "typography": {
+    "font-body": {
+      "$value": "IBM Plex Sans",
+      "$type": "fontFamily",
+      "$description": "Single-family system -- IBM Plex Sans for all UI, headings, and body"
+    },
+    "font-mono": {
+      "$value": "Source Code Pro",
+      "$type": "fontFamily",
+      "$description": "Code, HogQL queries, technical output only"
+    },
+    "scale-xs": { "$value": "11px", "$type": "dimension", "$description": "Overline labels, chart axis labels" },
+    "scale-sm": { "$value": "12px", "$type": "dimension", "$description": "Badges, table headers, small metadata" },
+    "scale-caption": { "$value": "13px", "$type": "dimension", "$description": "Sidebar items, tooltips, chart legends" },
+    "scale-base": { "$value": "14px", "$type": "dimension", "$description": "Button labels, dropdown items, secondary body" },
+    "scale-lg": { "$value": "15px", "$type": "dimension", "$description": "Standard body text -- PostHog app default" },
+    "scale-xl": { "$value": "20px", "$type": "dimension", "$description": "Card titles, feature headings" },
+    "scale-2xl": { "$value": "24px", "$type": "dimension", "$description": "Section headings within dashboards" },
+    "scale-3xl": { "$value": "32px", "$type": "dimension", "$description": "Page titles, major metric values" },
+    "line-height-tight": { "$value": "1.15", "$type": "number", "$description": "Display headings -- compact for impact" },
+    "line-height-snug": { "$value": "1.25", "$type": "number", "$description": "Headings, card titles, metric values" },
+    "line-height-normal": { "$value": "1.50", "$type": "number", "$description": "Body text -- efficient for data-dense UIs" },
+    "weight-regular": { "$value": "400", "$type": "number" },
+    "weight-medium": { "$value": "500", "$type": "number" },
+    "weight-semibold": { "$value": "600", "$type": "number" },
+    "weight-bold": { "$value": "700", "$type": "number" }
+  },
+  "spacing": {
+    "unit": { "$value": "4px", "$type": "dimension", "$description": "Base grid unit -- 4px for dense analytics layouts" },
+    "space-0.5": { "$value": "2px", "$type": "dimension" },
+    "space-1": { "$value": "4px", "$type": "dimension" },
+    "space-2": { "$value": "8px", "$type": "dimension" },
+    "space-3": { "$value": "12px", "$type": "dimension" },
+    "space-4": { "$value": "16px", "$type": "dimension" },
+    "space-5": { "$value": "20px", "$type": "dimension" },
+    "space-6": { "$value": "24px", "$type": "dimension" },
+    "space-8": { "$value": "32px", "$type": "dimension" },
+    "space-12": { "$value": "48px", "$type": "dimension" }
+  },
+  "border": {
+    "radius-sm": { "$value": "4px", "$type": "dimension", "$description": "Badges, inline code, chips" },
+    "radius-md": { "$value": "6px", "$type": "dimension", "$description": "Buttons, inputs, dropdowns -- workhorse radius" },
+    "radius-lg": { "$value": "8px", "$type": "dimension", "$description": "Cards, modals, dashboard tiles" },
+    "radius-pill": { "$value": "9999px", "$type": "dimension", "$description": "Pill badges, status indicators" }
+  },
+  "shadow": {
+    "shadow-sm": {
+      "$value": [{ "offsetX": "0px", "offsetY": "1px", "blur": "3px", "spread": "0px", "color": "rgba(0,0,0,0.12)" }],
+      "$type": "shadow",
+      "$description": "Subtle lift -- dropdowns, tooltips only. PostHog uses borders, not shadows."
+    }
+  },
+  "motion": {
+    "duration-instant": { "$value": "75ms", "$type": "duration", "$description": "Toggle switches, checkbox ticks" },
+    "duration-fast": { "$value": "150ms", "$type": "duration", "$description": "Hover states, button press, tab switch" },
+    "duration-normal": { "$value": "200ms", "$type": "duration", "$description": "Dropdowns, tooltips, sidebar collapse" },
+    "duration-slow": { "$value": "350ms", "$type": "duration", "$description": "Chart animations, modal entrance" },
+    "easing-default": {
+      "$value": [0.25, 0.1, 0.25, 1],
+      "$type": "cubicBezier",
+      "$description": "Standard ease -- smooth and predictable"
+    },
+    "easing-entrance": {
+      "$value": [0.0, 0.0, 0.2, 1],
+      "$type": "cubicBezier",
+      "$description": "Elements entering view"
+    }
+  }
+}

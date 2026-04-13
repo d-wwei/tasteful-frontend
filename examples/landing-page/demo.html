@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear — Build software you're proud of</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       LAYER 1 — PRIMITIVES  (--prim-*)
+       Raw values named by identity, not purpose.
+       ============================================================ */
+    :root {
+      /* Color — gray scale */
+      --prim-gray-950: #0a0a0c;
+      --prim-gray-900: #131316;
+      --prim-gray-850: #191a1b;
+      --prim-gray-800: #1e1f22;
+      --prim-gray-700: #28282c;
+      --prim-gray-600: #3e3e44;
+      --prim-gray-500: #62666d;
+      --prim-gray-400: #8a8f98;
+      --prim-gray-300: #d0d6e0;
+      --prim-gray-200: #e2e4e7;
+      --prim-gray-100: #f0f1f3;
+      --prim-gray-50:  #f7f8f8;
+
+      /* Color — translucent white */
+      --prim-white-a2:  rgba(255,255,255,0.02);
+      --prim-white-a4:  rgba(255,255,255,0.04);
+      --prim-white-a5:  rgba(255,255,255,0.05);
+      --prim-white-a8:  rgba(255,255,255,0.08);
+      --prim-white-a10: rgba(255,255,255,0.10);
+      --prim-black-a85: rgba(0,0,0,0.85);
+
+      /* Color — accent (indigo/violet) */
+      --prim-indigo-600: #4f5abd;
+      --prim-indigo-500: #5e6ad2;
+      --prim-indigo-400: #7170ff;
+      --prim-indigo-300: #828fff;
+
+      /* Color — status */
+      --prim-red-500:   #e5484d;
+      --prim-green-500: #27a644;
+      --prim-amber-500: #f59e0b;
+
+      /* Typography */
+      --prim-font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+      --prim-scale-xs:  12px;
+      --prim-scale-sm:  13px;
+      --prim-scale-base: 15px;
+      --prim-scale-md:  16px;
+      --prim-scale-lg:  18px;
+      --prim-scale-xl:  20px;
+      --prim-scale-2xl: 32px;
+      --prim-scale-3xl: 48px;
+      --prim-scale-4xl: 64px;
+
+      --prim-lh-tight:   1.0;
+      --prim-lh-snug:    1.13;
+      --prim-lh-heading: 1.33;
+      --prim-lh-normal:  1.5;
+      --prim-lh-relaxed: 1.6;
+
+      --prim-weight-regular:   400;
+      --prim-weight-signature: 510;
+      --prim-weight-semibold:  590;
+
+      --prim-tracking-display: -1.056px;
+      --prim-tracking-h1:     -0.704px;
+      --prim-tracking-h2:     -0.288px;
+      --prim-tracking-h3:     -0.24px;
+      --prim-tracking-body-lg: -0.165px;
+
+      /* Spacing — 8px grid */
+      --prim-space-1:  4px;
+      --prim-space-2:  8px;
+      --prim-space-3:  12px;
+      --prim-space-4:  16px;
+      --prim-space-6:  24px;
+      --prim-space-8:  32px;
+      --prim-space-12: 48px;
+      --prim-space-16: 64px;
+      --prim-space-24: 96px;
+
+      /* Border */
+      --prim-radius-sm:   6px;
+      --prim-radius-md:   8px;
+      --prim-radius-lg:   12px;
+      --prim-radius-full: 9999px;
+
+      /* Shadow */
+      --prim-shadow-sm: 0 1px 2px rgba(0,0,0,0.12);
+      --prim-shadow-md: 0 0 1px rgba(0,0,0,0.08), 0 3px 8px -2px rgba(0,0,0,0.16);
+      --prim-shadow-lg: 0 0 1px rgba(0,0,0,0.08), 0 8px 24px -4px rgba(0,0,0,0.24);
+
+      /* Motion */
+      --prim-dur-fast:   100ms;
+      --prim-dur-normal: 200ms;
+      --prim-dur-slow:   350ms;
+      --prim-ease-default: cubic-bezier(0.16, 1, 0.3, 1);
+      --prim-ease-exit:    cubic-bezier(0.4, 0, 1, 1);
+
+      /* ============================================================
+         LAYER 2 — SEMANTICS  (--*)
+         Purpose-driven aliases referencing primitives.
+         ============================================================ */
+
+      /* Surfaces */
+      --surface:             var(--prim-gray-950);
+      --surface-subtle:      var(--prim-gray-900);
+      --surface-overlay:     var(--prim-gray-850);
+      --surface-translucent: var(--prim-white-a2);
+      --surface-hover:       var(--prim-white-a5);
+
+      /* Accent */
+      --accent:              var(--prim-indigo-500);
+      --accent-hover:        var(--prim-indigo-300);
+      --accent-interactive:  var(--prim-indigo-400);
+
+      /* Text */
+      --text-primary:   var(--prim-gray-50);
+      --text-secondary: var(--prim-gray-300);
+      --text-muted:     var(--prim-gray-400);
+      --text-subdued:   var(--prim-gray-500);
+
+      /* Borders */
+      --border:        var(--prim-white-a8);
+      --border-subtle: var(--prim-white-a5);
+
+      /* Status */
+      --error:   var(--prim-red-500);
+      --success: var(--prim-green-500);
+      --warning: var(--prim-amber-500);
+
+      /* Typography */
+      --font-display: var(--prim-font-inter);
+      --font-body:    var(--prim-font-inter);
+
+      /* Spacing */
+      --space-xs:  var(--prim-space-1);
+      --space-sm:  var(--prim-space-2);
+      --space-md:  var(--prim-space-4);
+      --space-lg:  var(--prim-space-6);
+      --space-xl:  var(--prim-space-8);
+      --space-2xl: var(--prim-space-12);
+      --space-3xl: var(--prim-space-16);
+      --section-gap: var(--prim-space-24);
+      --page-margin: var(--prim-space-16);
+
+      /* Border radius */
+      --radius-sm:   var(--prim-radius-sm);
+      --radius-md:   var(--prim-radius-md);
+      --radius-lg:   var(--prim-radius-lg);
+      --radius-full: var(--prim-radius-full);
+
+      /* Shadow */
+      --shadow-sm: var(--prim-shadow-sm);
+      --shadow-md: var(--prim-shadow-md);
+      --shadow-lg: var(--prim-shadow-lg);
+
+      /* Motion */
+      --dur-fast:   var(--prim-dur-fast);
+      --dur-normal: var(--prim-dur-normal);
+      --dur-slow:   var(--prim-dur-slow);
+      --ease:       var(--prim-ease-default);
+
+      /* ============================================================
+         LAYER 3 — COMPONENTS  (--comp-*)
+         Component-scoped tokens referencing semantics.
+         ============================================================ */
+
+      /* Nav */
+      --comp-nav-bg:          var(--surface-subtle);
+      --comp-nav-border:      var(--border-subtle);
+      --comp-nav-link:        var(--text-secondary);
+      --comp-nav-link-active: var(--text-primary);
+      --comp-nav-logo:        var(--text-primary);
+      --comp-nav-cta-bg:      var(--accent);
+      --comp-nav-cta-text:    var(--text-primary);
+
+      /* Hero */
+      --comp-hero-bg:           var(--surface);
+      --comp-hero-title:        var(--text-primary);
+      --comp-hero-subtitle:     var(--text-muted);
+      --comp-hero-cta-bg:       var(--accent);
+      --comp-hero-cta-hover:    var(--accent-hover);
+      --comp-hero-cta-text:     var(--text-primary);
+      --comp-hero-ghost-bg:     var(--surface-translucent);
+      --comp-hero-ghost-border: var(--border);
+      --comp-hero-ghost-text:   var(--text-secondary);
+
+      /* Feature card */
+      --comp-card-bg:        var(--surface-translucent);
+      --comp-card-hover-bg:  var(--surface-hover);
+      --comp-card-border:    var(--border);
+      --comp-card-radius:    var(--radius-md);
+      --comp-card-padding:   var(--space-xl);
+      --comp-card-title:     var(--text-primary);
+      --comp-card-desc:      var(--text-muted);
+      --comp-card-icon:      var(--accent-interactive);
+
+      /* Pricing card */
+      --comp-pricing-bg:           var(--surface-translucent);
+      --comp-pricing-border:       var(--border);
+      --comp-pricing-radius:       var(--radius-lg);
+      --comp-pricing-padding:      var(--space-xl);
+      --comp-pricing-title:        var(--text-primary);
+      --comp-pricing-price:        var(--text-primary);
+      --comp-pricing-feature:      var(--text-muted);
+      --comp-pricing-cta-bg:       var(--accent);
+      --comp-pricing-popular-border: var(--accent);
+
+      /* CTA banner */
+      --comp-banner-bg:       var(--surface-subtle);
+      --comp-banner-title:    var(--text-primary);
+      --comp-banner-subtitle: var(--text-muted);
+      --comp-banner-cta-bg:   var(--accent);
+
+      /* Footer */
+      --comp-footer-bg:     var(--surface);
+      --comp-footer-text:   var(--text-muted);
+      --comp-footer-link:   var(--text-secondary);
+      --comp-footer-border: var(--border-subtle);
+    }
+
+    /* ============================================================
+       OPTIONAL LIGHT MODE OVERRIDE
+       ============================================================ */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --surface:             #f7f8f8;
+        --surface-subtle:      #f0f1f3;
+        --surface-overlay:     #ffffff;
+        --surface-translucent: rgba(0,0,0,0.02);
+        --surface-hover:       rgba(0,0,0,0.05);
+        --text-primary:   #0a0a0c;
+        --text-secondary: #62666d;
+        --text-muted:     #8a8f98;
+        --text-subdued:   #d0d6e0;
+        --border:        rgba(0,0,0,0.08);
+        --border-subtle: rgba(0,0,0,0.05);
+      }
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-feature-settings: "cv01", "ss03";
+      background-color: var(--surface);
+      color: var(--text-primary);
+      font-size: var(--prim-scale-md);
+      line-height: var(--prim-lh-normal);
+      font-weight: var(--prim-weight-regular);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      font-feature-settings: "cv01", "ss03";
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    ul { list-style: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: var(--page-margin);
+      padding-right: var(--page-margin);
+    }
+
+    /* ============================================================
+       NAVIGATION
+       ============================================================ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 12, 0.80);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border-bottom: 1px solid var(--comp-nav-border);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav__left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+
+    .nav__logo {
+      font-size: var(--prim-scale-md);
+      font-weight: var(--prim-weight-semibold);
+      color: var(--comp-nav-logo);
+      letter-spacing: var(--prim-tracking-h3);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .nav__logo-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: var(--space-lg);
+    }
+
+    .nav__link {
+      font-size: var(--prim-scale-sm);
+      font-weight: var(--prim-weight-signature);
+      color: var(--comp-nav-link);
+      transition: color var(--dur-fast) ease;
+      letter-spacing: var(--prim-tracking-body-lg);
+    }
+
+    .nav__link:hover,
+    .nav__link:focus-visible {
+      color: var(--comp-nav-link-active);
+    }
+
+    .nav__right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .nav__signin {
+      font-size: var(--prim-scale-sm);
+      font-weight: var(--prim-weight-signature);
+      color: var(--comp-nav-link);
+      transition: color var(--dur-fast) ease;
+    }
+
+    .nav__signin:hover {
+      color: var(--comp-nav-link-active);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--prim-weight-signature);
+      font-feature-settings: "cv01", "ss03";
+      transition: background-color var(--dur-normal) ease, border-color var(--dur-normal) ease, color var(--dur-normal) ease;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--accent-interactive);
+      outline-offset: 2px;
+    }
+
+    .btn--sm {
+      font-size: var(--prim-scale-sm);
+      padding: 6px var(--space-md);
+      border-radius: var(--radius-sm);
+    }
+
+    .btn--md {
+      font-size: var(--prim-scale-base);
+      padding: var(--space-sm) var(--space-lg);
+      border-radius: var(--radius-sm);
+    }
+
+    .btn--brand {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn--brand:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn--brand:active {
+      background-color: var(--prim-indigo-600);
+    }
+
+    .btn--ghost {
+      background-color: var(--surface-translucent);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    .btn--ghost:hover {
+      background-color: var(--surface-hover);
+      color: var(--text-primary);
+    }
+
+    .btn--ghost:active {
+      background-color: var(--prim-white-a8);
+    }
+
+    .btn--full {
+      width: 100%;
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      background-color: var(--comp-hero-bg);
+      padding: 120px 0 var(--section-gap);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(94, 106, 210, 0.12) 0%, rgba(94, 106, 210, 0.04) 40%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: var(--prim-scale-3xl);
+      font-weight: var(--prim-weight-signature);
+      line-height: var(--prim-lh-tight);
+      letter-spacing: var(--prim-tracking-display);
+      color: var(--comp-hero-title);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero__subtitle {
+      font-size: var(--prim-scale-lg);
+      font-weight: var(--prim-weight-regular);
+      line-height: var(--prim-lh-relaxed);
+      letter-spacing: var(--prim-tracking-body-lg);
+      color: var(--comp-hero-subtitle);
+      max-width: 520px;
+      margin: var(--space-lg) auto 0;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+      margin-top: var(--space-xl);
+    }
+
+    /* ============================================================
+       SECTION SHARED
+       ============================================================ */
+    .section {
+      padding: var(--section-gap) 0;
+    }
+
+    .section__header {
+      text-align: center;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .section__label {
+      font-size: var(--prim-scale-sm);
+      font-weight: var(--prim-weight-signature);
+      color: var(--accent-interactive);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-md);
+    }
+
+    .section__title {
+      font-family: var(--font-display);
+      font-size: var(--prim-scale-2xl);
+      font-weight: var(--prim-weight-signature);
+      line-height: var(--prim-lh-snug);
+      letter-spacing: var(--prim-tracking-h1);
+      color: var(--text-primary);
+    }
+
+    .section__subtitle {
+      font-size: var(--prim-scale-lg);
+      font-weight: var(--prim-weight-regular);
+      line-height: var(--prim-lh-relaxed);
+      letter-spacing: var(--prim-tracking-body-lg);
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: var(--space-md) auto 0;
+    }
+
+    /* ============================================================
+       FEATURES
+       ============================================================ */
+    .features__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .feature-card {
+      background: var(--comp-card-bg);
+      border: 1px solid var(--comp-card-border);
+      border-radius: var(--comp-card-radius);
+      padding: var(--comp-card-padding);
+      transition: background-color var(--dur-normal) ease;
+    }
+
+    .feature-card:hover {
+      background: var(--comp-card-hover-bg);
+    }
+
+    .feature-card__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--prim-white-a5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-lg);
+      color: var(--comp-card-icon);
+    }
+
+    .feature-card__icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .feature-card__title {
+      font-size: var(--prim-scale-xl);
+      font-weight: var(--prim-weight-semibold);
+      line-height: var(--prim-lh-heading);
+      letter-spacing: var(--prim-tracking-h3);
+      color: var(--comp-card-title);
+      margin-bottom: var(--space-sm);
+    }
+
+    .feature-card__desc {
+      font-size: var(--prim-scale-base);
+      font-weight: var(--prim-weight-regular);
+      line-height: var(--prim-lh-relaxed);
+      letter-spacing: var(--prim-tracking-body-lg);
+      color: var(--comp-card-desc);
+    }
+
+    /* ============================================================
+       PRICING
+       ============================================================ */
+    .pricing__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    .pricing-card {
+      background: var(--comp-pricing-bg);
+      border: 1px solid var(--comp-pricing-border);
+      border-radius: var(--comp-pricing-radius);
+      padding: var(--comp-pricing-padding);
+      display: flex;
+      flex-direction: column;
+      transition: background-color var(--dur-normal) ease;
+    }
+
+    .pricing-card:hover {
+      background: var(--surface-hover);
+    }
+
+    .pricing-card--popular {
+      border-color: var(--comp-pricing-popular-border);
+      position: relative;
+    }
+
+    .pricing-card--popular::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: calc(var(--space-md) * -1);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #ffffff;
+      font-size: var(--prim-scale-xs);
+      font-weight: var(--prim-weight-signature);
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+    }
+
+    .pricing-card__plan {
+      font-size: var(--prim-scale-base);
+      font-weight: var(--prim-weight-signature);
+      color: var(--comp-pricing-title);
+      margin-bottom: var(--space-md);
+    }
+
+    .pricing-card__price {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-lg);
+    }
+
+    .pricing-card__amount {
+      font-size: var(--prim-scale-2xl);
+      font-weight: var(--prim-weight-signature);
+      line-height: var(--prim-lh-tight);
+      letter-spacing: var(--prim-tracking-h1);
+      color: var(--comp-pricing-price);
+    }
+
+    .pricing-card__period {
+      font-size: var(--prim-scale-sm);
+      color: var(--text-muted);
+    }
+
+    .pricing-card__features {
+      flex: 1;
+      margin-bottom: var(--space-lg);
+    }
+
+    .pricing-card__feature {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: var(--prim-scale-base);
+      color: var(--comp-pricing-feature);
+      padding: var(--space-sm) 0;
+    }
+
+    .pricing-card__check {
+      width: 16px;
+      height: 16px;
+      color: var(--success);
+      flex-shrink: 0;
+    }
+
+    .pricing-card__check svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* ============================================================
+       CTA BANNER
+       ============================================================ */
+    .cta-banner {
+      background: var(--comp-banner-bg);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: var(--section-gap) 0;
+      text-align: center;
+    }
+
+    .cta-banner__title {
+      font-family: var(--font-display);
+      font-size: var(--prim-scale-2xl);
+      font-weight: var(--prim-weight-signature);
+      line-height: var(--prim-lh-snug);
+      letter-spacing: var(--prim-tracking-h1);
+      color: var(--comp-banner-title);
+      margin-bottom: var(--space-md);
+    }
+
+    .cta-banner__subtitle {
+      font-size: var(--prim-scale-lg);
+      font-weight: var(--prim-weight-regular);
+      line-height: var(--prim-lh-relaxed);
+      letter-spacing: var(--prim-tracking-body-lg);
+      color: var(--comp-banner-subtitle);
+      max-width: 480px;
+      margin: 0 auto var(--space-xl);
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      background: var(--comp-footer-bg);
+      border-top: 1px solid var(--comp-footer-border);
+      padding: var(--space-3xl) 0 var(--space-xl);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xl);
+      margin-bottom: var(--space-3xl);
+    }
+
+    .footer__heading {
+      font-size: var(--prim-scale-sm);
+      font-weight: var(--prim-weight-signature);
+      color: var(--text-primary);
+      margin-bottom: var(--space-md);
+    }
+
+    .footer__link {
+      display: block;
+      font-size: var(--prim-scale-sm);
+      color: var(--comp-footer-text);
+      padding: var(--space-xs) 0;
+      transition: color var(--dur-fast) ease;
+    }
+
+    .footer__link:hover,
+    .footer__link:focus-visible {
+      color: var(--comp-footer-link);
+    }
+
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--comp-footer-border);
+      padding-top: var(--space-lg);
+    }
+
+    .footer__copy {
+      font-size: var(--prim-scale-sm);
+      color: var(--text-subdued);
+    }
+
+    .footer__social {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .footer__social-link {
+      color: var(--text-subdued);
+      transition: color var(--dur-fast) ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer__social-link:hover {
+      color: var(--text-secondary);
+    }
+
+    .footer__social-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* ============================================================
+       RESPONSIVE — TABLET  (max 1024px)
+       ============================================================ */
+    @media (max-width: 1024px) {
+      :root {
+        --page-margin: var(--prim-space-8);
+      }
+
+      .hero__title {
+        font-size: 40px;
+        letter-spacing: -0.88px;
+      }
+
+      .features__grid,
+      .pricing__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ============================================================
+       RESPONSIVE — MOBILE  (max 768px)
+       ============================================================ */
+    @media (max-width: 768px) {
+      :root {
+        --page-margin: var(--prim-space-6);
+      }
+
+      .hero {
+        padding: var(--space-3xl) 0 var(--space-3xl);
+      }
+
+      .hero__title {
+        font-size: var(--prim-scale-2xl);
+        letter-spacing: var(--prim-tracking-h1);
+      }
+
+      .hero__subtitle {
+        font-size: var(--prim-scale-base);
+      }
+
+      .hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .section {
+        padding: var(--space-3xl) 0;
+      }
+
+      .section__title {
+        font-size: var(--prim-scale-xl);
+        letter-spacing: var(--prim-tracking-h3);
+      }
+
+      .features__grid,
+      .pricing__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav__links {
+        display: none;
+      }
+
+      .nav__menu-btn {
+        display: flex;
+      }
+
+      .footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+      }
+
+      .footer__bottom {
+        flex-direction: column;
+        gap: var(--space-md);
+        text-align: center;
+      }
+
+      .cta-banner__title {
+        font-size: var(--prim-scale-xl);
+        letter-spacing: var(--prim-tracking-h3);
+      }
+    }
+
+    /* ============================================================
+       RESPONSIVE — SMALL MOBILE  (max 375px)
+       ============================================================ */
+    @media (max-width: 375px) {
+      :root {
+        --page-margin: var(--prim-space-4);
+      }
+
+      .hero__title {
+        font-size: 28px;
+        letter-spacing: -0.5px;
+      }
+
+      .feature-card,
+      .pricing-card {
+        padding: var(--space-lg);
+      }
+    }
+
+    /* ============================================================
+       RESPONSIVE — WIDE  (min 1440px)
+       ============================================================ */
+    @media (min-width: 1440px) {
+      .hero__title {
+        font-size: var(--prim-scale-4xl);
+        letter-spacing: -1.408px;
+      }
+
+      .hero__subtitle {
+        font-size: var(--prim-scale-xl);
+        letter-spacing: var(--prim-tracking-h3);
+      }
+    }
+
+    /* ============================================================
+       ENTRANCE ANIMATIONS
+       ============================================================ */
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero__content {
+      animation: fade-in var(--dur-slow) var(--ease) both;
+    }
+
+    .feature-card:nth-child(1) { animation: slide-up var(--dur-slow) var(--ease) 0.1s both; }
+    .feature-card:nth-child(2) { animation: slide-up var(--dur-slow) var(--ease) 0.18s both; }
+    .feature-card:nth-child(3) { animation: slide-up var(--dur-slow) var(--ease) 0.26s both; }
+
+    .pricing-card:nth-child(1) { animation: slide-up var(--dur-slow) var(--ease) 0.1s both; }
+    .pricing-card:nth-child(2) { animation: slide-up var(--dur-slow) var(--ease) 0.18s both; }
+    .pricing-card:nth-child(3) { animation: slide-up var(--dur-slow) var(--ease) 0.26s both; }
+
+    /* Hidden on desktop, shown on mobile */
+    .nav__menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      color: var(--text-secondary);
+    }
+
+    .nav__menu-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      fill: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <div class="nav__left">
+        <a href="#" class="nav__logo" aria-label="Linear home">
+          <svg class="nav__logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.35 58.26a52.95 52.95 0 0 1-1.2-6.2L40.06 90.0a52.07 52.07 0 0 1-6.2-1.2L3.35 58.26ZM0.71 45.06a53.94 53.94 0 0 0-.16 2.72L43.67 95.0c.91.02 1.82-.01 2.72-.16L.7 45.06ZM9.05 68.36a50.53 50.53 0 0 1-2.34-3.96l29.46 29.46a50.53 50.53 0 0 1-3.96-2.34L9.05 68.36ZM18.59 77.42a49.18 49.18 0 0 1-3.08-2.87L37.3 96.34a49.18 49.18 0 0 1-2.87-3.08l-15.84-15.84ZM29.42 84.09a48.98 48.98 0 0 1-3.5-2.24L45.37 101.3a48.98 48.98 0 0 1-2.24-3.5L29.42 84.09ZM50.0 2.5C24.16 2.5 3.04 22.72 1.44 48.22L51.78 98.56C77.28 96.96 97.5 75.84 97.5 50.0 97.5 23.77 76.23 2.5 50.0 2.5Z" fill="currentColor"/>
+          </svg>
+          Linear
+        </a>
+        <ul class="nav__links">
+          <li><a href="#features" class="nav__link">Features</a></li>
+          <li><a href="#pricing" class="nav__link">Pricing</a></li>
+          <li><a href="#" class="nav__link">Docs</a></li>
+          <li><a href="#" class="nav__link">Blog</a></li>
+        </ul>
+      </div>
+      <div class="nav__right">
+        <a href="#" class="nav__signin">Log in</a>
+        <a href="#" class="btn btn--sm btn--brand">Get Started</a>
+        <button class="nav__menu-btn" aria-label="Open menu">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="container hero__content">
+      <h1 class="hero__title">Build software<br>you're proud of</h1>
+      <p class="hero__subtitle">Linear streamlines issues, projects, and product roadmaps. So you can focus on what matters -- building great products.</p>
+      <div class="hero__actions">
+        <a href="#" class="btn btn--md btn--brand">Get Started</a>
+        <a href="#" class="btn btn--md btn--ghost">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURES ========== -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__label">Features</p>
+        <h2 class="section__title">Purpose-built for modern teams</h2>
+        <p class="section__subtitle">Every interaction is designed for speed. Keyboard shortcuts, real-time sync, and instant search -- so your workflow never breaks.</p>
+      </div>
+      <div class="features__grid">
+
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3 class="feature-card__title">Built for speed</h3>
+          <p class="feature-card__desc">Optimized for the fastest possible workflow. Keyboard-first design, instant search, and real-time sync across your entire team.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3 class="feature-card__title">Powerful workflows</h3>
+          <p class="feature-card__desc">Cycles, projects, and roadmaps that connect engineering work to company objectives. Keep everyone aligned on what matters.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+          </div>
+          <h3 class="feature-card__title">Seamless integration</h3>
+          <p class="feature-card__desc">GitHub, GitLab, Slack, Figma, and Sentry. Linear connects to your existing tools so your team stays in flow.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3 class="feature-card__title">Enterprise security</h3>
+          <p class="feature-card__desc">SOC 2 compliant, SAML SSO, SCIM provisioning, and audit logs. Built for teams that take security seriously.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <h3 class="feature-card__title">API-first platform</h3>
+          <p class="feature-card__desc">A robust GraphQL API that lets you build custom integrations, automations, and workflows on top of Linear.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="feature-card__title">Made for scale</h3>
+          <p class="feature-card__desc">From startups to public companies. Linear scales with your team -- handling thousands of issues without slowing down.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING ========== -->
+  <section id="pricing" class="section">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__label">Pricing</p>
+        <h2 class="section__title">Start free, scale as you grow</h2>
+        <p class="section__subtitle">Simple, transparent pricing that grows with you. No hidden fees, no surprises.</p>
+      </div>
+      <div class="pricing__grid">
+
+        <!-- Free -->
+        <div class="pricing-card">
+          <div class="pricing-card__plan">Free</div>
+          <div class="pricing-card__price">
+            <span class="pricing-card__amount">$0</span>
+            <span class="pricing-card__period">/month</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Up to 250 issues
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Basic roadmaps
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Unlimited members
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              API access
+            </li>
+          </ul>
+          <a href="#" class="btn btn--md btn--ghost btn--full">Get Started</a>
+        </div>
+
+        <!-- Standard (Popular) -->
+        <div class="pricing-card pricing-card--popular">
+          <div class="pricing-card__plan">Standard</div>
+          <div class="pricing-card__price">
+            <span class="pricing-card__amount">$8</span>
+            <span class="pricing-card__period">/user/month</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Unlimited issues
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Advanced roadmaps
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Priority support
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Custom workflows
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Analytics
+            </li>
+          </ul>
+          <a href="#" class="btn btn--md btn--brand btn--full">Start Trial</a>
+        </div>
+
+        <!-- Plus -->
+        <div class="pricing-card">
+          <div class="pricing-card__plan">Plus</div>
+          <div class="pricing-card__price">
+            <span class="pricing-card__amount">$14</span>
+            <span class="pricing-card__period">/user/month</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Everything in Standard
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Advanced integrations
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              SAML SSO
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Audit log
+            </li>
+            <li class="pricing-card__feature">
+              <span class="pricing-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Dedicated support
+            </li>
+          </ul>
+          <a href="#" class="btn btn--md btn--ghost btn--full">Contact Sales</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA BANNER ========== -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2 class="cta-banner__title">Start building today</h2>
+      <p class="cta-banner__subtitle">Join thousands of teams using Linear to build better products, faster.</p>
+      <a href="#" class="btn btn--md btn--brand">Get Started &mdash; Free</a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h4 class="footer__heading">Product</h4>
+          <a href="#" class="footer__link">Features</a>
+          <a href="#" class="footer__link">Integrations</a>
+          <a href="#" class="footer__link">Changelog</a>
+          <a href="#" class="footer__link">Pricing</a>
+          <a href="#" class="footer__link">Security</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Company</h4>
+          <a href="#" class="footer__link">About</a>
+          <a href="#" class="footer__link">Blog</a>
+          <a href="#" class="footer__link">Careers</a>
+          <a href="#" class="footer__link">Press</a>
+          <a href="#" class="footer__link">Contact</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Resources</h4>
+          <a href="#" class="footer__link">Docs</a>
+          <a href="#" class="footer__link">API Reference</a>
+          <a href="#" class="footer__link">Status</a>
+          <a href="#" class="footer__link">Community</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Legal</h4>
+          <a href="#" class="footer__link">Privacy</a>
+          <a href="#" class="footer__link">Terms</a>
+          <a href="#" class="footer__link">DPA</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Linear Inc. All rights reserved.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 17.07 3.633 16.7 3.633 16.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Discord">
+            <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

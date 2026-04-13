@@ -1,0 +1,145 @@
+{
+  "color": {
+    "surface": {
+      "$value": "{color.navy-900}",
+      "$type": "color",
+      "$description": "Primary background -- PostHog's dark analytics canvas"
+    },
+    "surface-elevated": {
+      "$value": "{color.navy-800}",
+      "$type": "color",
+      "$description": "Cards, panels, sidebar on dark"
+    },
+    "surface-deepest": {
+      "$value": "{color.navy-950}",
+      "$type": "color",
+      "$description": "Sidebar background, deepest layer"
+    },
+    "surface-input": {
+      "$value": "{color.navy-700}",
+      "$type": "color",
+      "$description": "Input fields, dropdown backgrounds"
+    },
+    "surface-hover": {
+      "$value": "{color.navy-600}",
+      "$type": "color",
+      "$description": "Row hover, list item hover states"
+    },
+    "accent": {
+      "$value": "{color.orange-500}",
+      "$type": "color",
+      "$description": "Primary accent -- CTAs and brand moments only"
+    },
+    "accent-hover": {
+      "$value": "{color.orange-600}",
+      "$type": "color",
+      "$description": "Accent hover/pressed state"
+    },
+    "text-primary": {
+      "$value": "{color.navy-50}",
+      "$type": "color",
+      "$description": "Primary text on dark -- warm off-white"
+    },
+    "text-secondary": {
+      "$value": "{color.navy-300}",
+      "$type": "color",
+      "$description": "Descriptions, metadata, body text on dark"
+    },
+    "text-tertiary": {
+      "$value": "{color.navy-400}",
+      "$type": "color",
+      "$description": "Timestamps, helper text, de-emphasized metadata"
+    },
+    "text-disabled": {
+      "$value": "{color.navy-500}",
+      "$type": "color",
+      "$description": "Disabled text, placeholder content"
+    },
+    "border": {
+      "$value": "{color.navy-600}",
+      "$type": "color",
+      "$description": "Default border -- 1px solid separation on dark"
+    },
+    "border-subtle": {
+      "$value": "{color.navy-700}",
+      "$type": "color",
+      "$description": "Low-contrast border for input backgrounds"
+    },
+    "border-strong": {
+      "$value": "{color.navy-500}",
+      "$type": "color",
+      "$description": "Emphasized border -- table headers, focus"
+    },
+    "chart-1": {
+      "$value": "{color.chart-blue}",
+      "$type": "color",
+      "$description": "Chart series 1 -- always leads"
+    },
+    "chart-2": {
+      "$value": "{color.chart-purple}",
+      "$type": "color",
+      "$description": "Chart series 2"
+    },
+    "chart-3": {
+      "$value": "{color.chart-green}",
+      "$type": "color",
+      "$description": "Chart series 3"
+    },
+    "chart-4": {
+      "$value": "{color.chart-amber}",
+      "$type": "color",
+      "$description": "Chart series 4"
+    },
+    "chart-5": {
+      "$value": "{color.chart-rose}",
+      "$type": "color",
+      "$description": "Chart series 5"
+    },
+    "success": {
+      "$value": "{color.success}",
+      "$type": "color",
+      "$description": "Positive trend, success state"
+    },
+    "error": {
+      "$value": "{color.error}",
+      "$type": "color",
+      "$description": "Negative trend, error state"
+    },
+    "warning": {
+      "$value": "{color.warning}",
+      "$type": "color",
+      "$description": "Warning/caution state"
+    }
+  },
+  "typography": {
+    "font-body": {
+      "$value": "{typography.font-body}",
+      "$type": "fontFamily",
+      "$description": "IBM Plex Sans -- single-family for all text"
+    }
+  },
+  "spacing": {
+    "xs": { "$value": "{spacing.space-1}", "$type": "dimension", "$description": "4px -- tight inline" },
+    "sm": { "$value": "{spacing.space-2}", "$type": "dimension", "$description": "8px -- small gaps" },
+    "md": { "$value": "{spacing.space-3}", "$type": "dimension", "$description": "12px -- standard gap" },
+    "lg": { "$value": "{spacing.space-4}", "$type": "dimension", "$description": "16px -- card padding small" },
+    "xl": { "$value": "{spacing.space-5}", "$type": "dimension", "$description": "20px -- card padding standard" },
+    "2xl": { "$value": "{spacing.space-6}", "$type": "dimension", "$description": "24px -- dashboard card padding" },
+    "3xl": { "$value": "{spacing.space-8}", "$type": "dimension", "$description": "32px -- section internal padding" },
+    "4xl": { "$value": "{spacing.space-12}", "$type": "dimension", "$description": "48px -- page section gaps" }
+  },
+  "border": {
+    "radius-sm": { "$value": "{border.radius-sm}", "$type": "dimension" },
+    "radius-md": { "$value": "{border.radius-md}", "$type": "dimension" },
+    "radius-lg": { "$value": "{border.radius-lg}", "$type": "dimension" }
+  },
+  "shadow": {
+    "shadow-sm": { "$value": "{shadow.shadow-sm}", "$type": "shadow", "$description": "Dropdowns and tooltips only" }
+  },
+  "motion": {
+    "duration-fast": { "$value": "{motion.duration-fast}", "$type": "duration" },
+    "duration-normal": { "$value": "{motion.duration-normal}", "$type": "duration" },
+    "duration-slow": { "$value": "{motion.duration-slow}", "$type": "duration" },
+    "easing-default": { "$value": "{motion.easing-default}", "$type": "cubicBezier" }
+  }
+}
