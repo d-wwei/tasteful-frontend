@@ -144,6 +144,7 @@
     }
   },
   "spacing": {
+    "2xs": { "$value": "{spacing.space-half}", "$type": "dimension", "$description": "4px — minimal padding" },
     "xs": { "$value": "{spacing.space-1}", "$type": "dimension", "$description": "8px — tight spacing" },
     "sm": { "$value": "{spacing.space-1-5}", "$type": "dimension", "$description": "12px — small gaps" },
     "md": { "$value": "{spacing.space-2}", "$type": "dimension", "$description": "16px — standard spacing" },

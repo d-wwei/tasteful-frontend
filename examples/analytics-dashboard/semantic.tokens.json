@@ -35,6 +35,11 @@
       "$type": "color",
       "$description": "Accent hover/pressed state"
     },
+    "accent-subtle": {
+      "$value": "{color.orange-500-alpha-10}",
+      "$type": "color",
+      "$description": "Faint accent tint for active state backgrounds"
+    },
     "text-primary": {
       "$value": "{color.navy-50}",
       "$type": "color",
@@ -116,6 +121,11 @@
       "$value": "{typography.font-body}",
       "$type": "fontFamily",
       "$description": "IBM Plex Sans -- single-family for all text"
+    },
+    "font-mono": {
+      "$value": "{typography.font-mono}",
+      "$type": "fontFamily",
+      "$description": "Source Code Pro -- code snippets, event names"
     }
   },
   "spacing": {

@@ -51,6 +51,7 @@
   },
   "spacing": {
     "unit": { "$value": "8px", "$type": "dimension", "$description": "Base grid unit" },
+    "space-half": { "$value": "4px", "$type": "dimension", "$description": "Half grid unit — tight padding" },
     "space-1": { "$value": "8px", "$type": "dimension" },
     "space-1-5": { "$value": "12px", "$type": "dimension" },
     "space-2": { "$value": "16px", "$type": "dimension" },

@@ -147,7 +147,7 @@
       "$description": "Tag horizontal padding — 8px"
     },
     "padding-y": {
-      "$value": "4px",
+      "$value": "{spacing.2xs}",
       "$type": "dimension",
       "$description": "Tag vertical padding — 4px"
     }
@@ -159,9 +159,9 @@
       "$description": "Avatar ring border — warm gray"
     },
     "avatar-size": {
-      "$value": "36px",
+      "$value": "{spacing.xl}",
       "$type": "dimension",
-      "$description": "Avatar circle size"
+      "$description": "Avatar circle size — 32px (8px grid aligned)"
     },
     "name-color": {
       "$value": "{color.text-primary}",

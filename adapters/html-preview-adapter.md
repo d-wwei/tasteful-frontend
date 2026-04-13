@@ -285,7 +285,7 @@ The generated `.design/demo.html` must include all seven of the following:
 The demo.html must meet ALL of the following:
 
 - **Looks like a real page** — a landing page, dashboard, or app screen. NOT a component library, NOT a style guide, NOT a wireframe.
-- **Zero hardcoded values** — every color, font, spacing, shadow, radius value must come from CSS custom properties mapped to tokens. Grep for hex codes outside `:root` → should find zero.
+- **Zero hardcoded values** — every color, font, spacing, shadow, radius value must come from CSS custom properties mapped to tokens. Grep for hex codes outside `:root` blocks (including theme override `:root` in `@media`) → should find zero.
 - **Responsive at all breakpoints** — open at 375px, 768px, 1024px, 1440px and verify layout changes appropriately.
 - **Passes the Pre-Delivery Checklist** — same checklist as spec mode (contrast ratios, touch targets, loading strategy, etc.) applies to demo output.
 - **Interaction states work** — hover a button, tab through focusable elements, click — visual feedback must be present.

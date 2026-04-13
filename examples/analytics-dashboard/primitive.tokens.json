@@ -24,7 +24,13 @@
     "warning": { "$value": "#f1a82c", "$type": "color", "$description": "Warning/caution -- amber" },
     "info": { "$value": "#1d8aed", "$type": "color", "$description": "Informational state -- blue" },
     "white": { "$value": "#ffffff", "$type": "color" },
-    "black": { "$value": "#000000", "$type": "color" }
+    "black": { "$value": "#000000", "$type": "color" },
+    "chart-blue-light": { "$value": "#36a2eb", "$type": "color", "$description": "Light blue for funnel gradients" },
+    "chart-purple-light": { "$value": "#8b5cf6", "$type": "color", "$description": "Light purple for funnel gradients" },
+    "chart-green-light": { "$value": "#5ed4a5", "$type": "color", "$description": "Light green for funnel gradients" },
+    "chart-amber-light": { "$value": "#f5c842", "$type": "color", "$description": "Light amber for funnel gradients" },
+    "chart-rose-light": { "$value": "#ff8fa3", "$type": "color", "$description": "Light rose for funnel gradients" },
+    "orange-500-alpha-10": { "$value": "rgba(245, 78, 0, 0.1)", "$type": "color", "$description": "10% opacity orange for active nav highlight" }
   },
   "typography": {
     "font-body": {

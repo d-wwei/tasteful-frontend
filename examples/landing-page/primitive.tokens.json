@@ -13,6 +13,7 @@
     "gray-100": { "$value": "#f0f1f3", "$type": "color" },
     "gray-50": { "$value": "#f7f8f8", "$type": "color" },
     "white-alpha-2": { "$value": "rgba(255,255,255,0.02)", "$type": "color" },
+    "white-alpha-4": { "$value": "rgba(255,255,255,0.04)", "$type": "color" },
     "white-alpha-5": { "$value": "rgba(255,255,255,0.05)", "$type": "color" },
     "white-alpha-8": { "$value": "rgba(255,255,255,0.08)", "$type": "color" },
     "white-alpha-10": { "$value": "rgba(255,255,255,0.10)", "$type": "color" },
@@ -29,12 +30,12 @@
     "font-display": {
       "$value": "Inter, system-ui, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Inter Variable with cv01/ss03 — display and heading use"
+      "$description": "Inter Variable with cv01/ss03 — display and heading use. Inter is normally banned but used here to faithfully replicate the Linear brand."
     },
     "font-body": {
       "$value": "Inter, system-ui, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Inter Variable with cv01/ss03 — body and UI text"
+      "$description": "Inter Variable with cv01/ss03 — body and UI text. Brand exception per Linear guardrails."
     },
     "scale-xs": { "$value": "12px", "$type": "dimension" },
     "scale-sm": { "$value": "13px", "$type": "dimension" },

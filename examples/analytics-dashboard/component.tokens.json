@@ -174,7 +174,7 @@
       "$description": "Nav item active text -- orange accent"
     },
     "item-bg-active": {
-      "$value": "rgba(245, 78, 0, 0.1)",
+      "$value": "{color.accent-subtle}",
       "$type": "color",
       "$description": "Nav item active background -- faint orange"
     },

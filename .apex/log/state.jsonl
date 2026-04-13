@@ -1,0 +1,7 @@
+{"ts":"2026-04-13T02:56:01Z","session_id":"apex-2026-04-13-b93nwu","domain":"state","type":"stage.set","payload":{"stage":"review","previous":"idle"}}
+{"ts":"2026-04-13T03:07:52Z","session_id":"apex-2026-04-13-b93nwu","domain":"state","type":"stage.completed","payload":{"stage":"review"}}
+{"ts":"2026-04-13T03:07:52Z","session_id":"apex-2026-04-13-b93nwu","domain":"state","type":"stage.set","payload":{"stage":"execute","previous":"review"}}
+{"ts":"2026-04-13T03:20:02Z","session_id":"apex-2026-04-13-b93nwu","domain":"state","type":"stage.completed","payload":{"stage":"execute"}}
+{"ts":"2026-04-13T03:20:02Z","session_id":"apex-2026-04-13-b93nwu","domain":"state","type":"stage.set","payload":{"stage":"review","previous":"execute"}}
+{"ts":"2026-04-13T03:20:02Z","session_id":"apex-2026-04-13-b93nwu","domain":"state","type":"stage.completed","payload":{"stage":"review"}}
+{"ts":"2026-04-13T03:20:02Z","session_id":"apex-2026-04-13-b93nwu","domain":"state","type":"stage.set","payload":{"stage":"ship","previous":"review"}}
