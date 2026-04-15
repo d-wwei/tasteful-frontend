@@ -216,15 +216,15 @@
     }
   },
   "spacing": {
-    "unit": {
-      "$value": "8px",
-      "$type": "dimension",
-      "$description": "Base unit — all spacing derives from 8px grid"
-    },
     "0": {
       "$value": "0px",
       "$type": "dimension",
       "$description": "None"
+    },
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base unit — all spacing derives from 8px grid"
     },
     "xs": {
       "$value": "4px",
@@ -391,19 +391,49 @@
       "$description": "Slow — page transitions, modal entry"
     },
     "easing-default": {
-      "$value": [0.25, 0.1, 0.25, 1],
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Ease — standard easing"
     },
     "easing-enter": {
-      "$value": [0, 0, 0.2, 1],
+      "$value": [
+        0,
+        0,
+        0.2,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Enter — element appearing"
     },
     "easing-exit": {
-      "$value": [0.4, 0, 1, 1],
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Exit — element leaving"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

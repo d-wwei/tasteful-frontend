@@ -3,7 +3,11 @@
     "brand": "airbnb",
     "source": "awesome-design-md",
     "aesthetic": "warm travel magazine with photography-first cards",
-    "key-characteristics": ["rausch-red-accent", "photography-forward", "three-layer-shadows"]
+    "key-characteristics": [
+      "rausch-red-accent",
+      "photography-forward",
+      "three-layer-shadows"
+    ]
   },
   "color": {
     "surface": {
@@ -314,21 +318,21 @@
           "offsetY": "0px",
           "blur": "0px",
           "spread": "1px",
-          "color": "rgba(0,0,0,0.02)"
+          "color": "rgba(44,36,24,0.02)"
         },
         {
           "offsetX": "0px",
           "offsetY": "2px",
           "blur": "6px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.04)"
+          "color": "rgba(44,36,24,0.04)"
         },
         {
           "offsetX": "0px",
           "offsetY": "4px",
           "blur": "8px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.1)"
+          "color": "rgba(44,36,24,0.1)"
         }
       ],
       "$type": "shadow",
@@ -341,7 +345,7 @@
           "offsetY": "4px",
           "blur": "12px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(44,36,24,0.08)"
         }
       ],
       "$type": "shadow",
@@ -385,9 +389,29 @@
       "$description": "Card hover and carousel transitions"
     },
     "easing-default": {
-      "$value": [0.2, 0, 0.4, 1],
+      "$value": [
+        0.2,
+        0,
+        0.4,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Smooth ease for transitions"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

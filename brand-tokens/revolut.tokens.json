@@ -305,11 +305,6 @@
     }
   },
   "spacing": {
-    "unit": {
-      "$value": "8px",
-      "$type": "dimension",
-      "$description": "Base grid unit — all spacing derives from 4/8px grid"
-    },
     "2": {
       "$value": "2px",
       "$type": "dimension",
@@ -374,6 +369,11 @@
       "$value": "80px",
       "$type": "dimension",
       "$description": "Hero spacing, maximum section gap"
+    },
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit — all spacing derives from 4/8px grid"
     },
     "page-margin-mobile": {
       "$value": "16px",
@@ -571,6 +571,21 @@
       ],
       "$type": "cubicBezier",
       "$description": "Quick exit — dismissals, swipe-away"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

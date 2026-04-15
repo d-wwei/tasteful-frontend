@@ -3,7 +3,11 @@
     "brand": "figma",
     "source": "awesome-design-md",
     "aesthetic": "monochrome gallery with variable-weight precision",
-    "key-characteristics": ["black-white-binary", "variable-font-precision", "pill-geometry"]
+    "key-characteristics": [
+      "black-white-binary",
+      "variable-font-precision",
+      "pill-geometry"
+    ]
   },
   "color": {
     "surface": {
@@ -366,9 +370,29 @@
       "$description": "Deliberate transitions — section reveals"
     },
     "easing-default": {
-      "$value": [0.25, 0.1, 0.25, 1],
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Standard ease for most transitions"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

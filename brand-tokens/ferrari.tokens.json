@@ -390,19 +390,49 @@
       "$description": "Cinematic — vehicle reveal animations, full-screen transitions"
     },
     "easing-default": {
-      "$value": [0.25, 0.1, 0.25, 1.0],
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Standard ease — general UI transitions"
     },
     "easing-dramatic": {
-      "$value": [0.16, 1, 0.3, 1],
+      "$value": [
+        0.16,
+        1,
+        0.3,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Dramatic ease-out — vehicle reveals, hero transitions, cinematic entrances"
     },
     "easing-precision": {
-      "$value": [0.4, 0, 0.2, 1],
+      "$value": [
+        0.4,
+        0,
+        0.2,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Precision — spec counter animations, data reveals"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

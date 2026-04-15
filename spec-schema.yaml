@@ -311,6 +311,10 @@ layout_spec_schema:
           layout: string      # e.g., "single-column", "grid-2", "masonry"
           gap: token-ref      # e.g., "{spacing.lg}"
           children: array     # Nested components
+          decoration:         # Optional. Content-level design elements (from domain-patterns.md)
+            decorative_text: string       # Cultural/branded text elements (e.g., "一期一会", code snippets, score displays)
+            atmospheric_effect: string    # Background treatment (e.g., "noise-texture", "gradient-mesh", "code-watermark")
+            visual_placeholder_strategy: string  # What fills image/media zones (e.g., "product-mockup", "terminal-window", "artisan-process-shot")
 
   navigation:
     type:
@@ -346,6 +350,10 @@ brief_schema:
     project: string           # Project name
     platform:
       enum: [web, ios, android, cross-platform]
+    domain: string            # Product domain (from constraints/domain-patterns.md). One of:
+                              # saas-productivity, developer-tool, e-commerce, game-interactive,
+                              # event-promotional, editorial-blog, cultural-luxury, finance-fintech,
+                              # health-education, media-entertainment
     audience: string          # Target user description
     pain_points: array        # What problems this design solves
     success_criteria: array   # How to measure design success
@@ -353,3 +361,6 @@ brief_schema:
     competitive_context: array  # Competing products/approaches
     constraints: string       # Technical or business constraints
     brand: string             # Brand identifier (triggers brand-tokens loading)
+    cultural_context: string  # Cultural elements relevant to the brand (e.g., "Japanese tea ceremony,
+                              # wabi-sabi philosophy, kanji decorative typography"). Informs Phase 4
+                              # Content Design Layer for cultural/luxury/heritage domains

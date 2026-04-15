@@ -376,19 +376,49 @@
       "$description": "Slow — hero image fades, page-level transitions, configurator 3D rotations."
     },
     "easing-default": {
-      "$value": [0.25, 0.1, 0.25, 1.0],
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Standard ease — smooth deceleration for most transitions."
     },
     "easing-enter": {
-      "$value": [0.0, 0.0, 0.2, 1.0],
+      "$value": [
+        0,
+        0,
+        0.2,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Enter ease — elements appearing on screen (fade in, slide in)."
     },
     "easing-exit": {
-      "$value": [0.4, 0.0, 1.0, 1.0],
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Exit ease — elements leaving screen."
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

@@ -3,7 +3,11 @@
     "brand": "claude",
     "source": "awesome-design-md",
     "aesthetic": "literary salon on parchment",
-    "key-characteristics": ["warm-editorial", "serif-driven", "parchment-canvas"]
+    "key-characteristics": [
+      "warm-editorial",
+      "serif-driven",
+      "parchment-canvas"
+    ]
   },
   "color": {
     "surface": {
@@ -556,7 +560,7 @@
           "offsetY": "4px",
           "blur": "24px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.05)"
+          "color": "rgba(44,36,24,0.05)"
         }
       ],
       "$type": "shadow",
@@ -570,7 +574,7 @@
           "offsetY": "0px",
           "blur": "0px",
           "spread": "1px",
-          "color": "rgba(0,0,0,0.15)"
+          "color": "rgba(44,36,24,0.15)"
         }
       ],
       "$type": "shadow",
@@ -654,14 +658,39 @@
       "$description": "Deliberate transitions — section reveals, card expansions"
     },
     "easing-default": {
-      "$value": [0.16, 1, 0.3, 1],
+      "$value": [
+        0.16,
+        1,
+        0.3,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Spring-like entrance — unhurried, literary pacing"
     },
     "easing-exit": {
-      "$value": [0.4, 0, 1, 1],
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Quick exit — clean departure without lingering"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

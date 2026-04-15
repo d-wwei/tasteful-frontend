@@ -300,14 +300,14 @@
           "offsetY": "1px",
           "blur": "2px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.08)"
+          "color": "rgba(44,36,24,0.08)"
         },
         {
           "offsetX": "0px",
           "offsetY": "2px",
           "blur": "8px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.06)"
+          "color": "rgba(44,36,24,0.06)"
         }
       ],
       "$type": "shadow",
@@ -320,7 +320,7 @@
           "offsetY": "4px",
           "blur": "16px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.12)"
+          "color": "rgba(44,36,24,0.12)"
         }
       ],
       "$type": "shadow",
@@ -333,7 +333,7 @@
           "offsetY": "8px",
           "blur": "32px",
           "spread": "0px",
-          "color": "rgba(0,0,0,0.16)"
+          "color": "rgba(44,36,24,0.16)"
         }
       ],
       "$type": "shadow",
@@ -357,19 +357,49 @@
       "$description": "Slow -- modal open/close, sheet transitions"
     },
     "easing-default": {
-      "$value": [0.25, 0.1, 0.25, 1.0],
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Ease-out -- standard for most interactions"
     },
     "easing-enter": {
-      "$value": [0.0, 0.0, 0.2, 1.0],
+      "$value": [
+        0,
+        0,
+        0.2,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Enter -- elements appearing on screen"
     },
     "easing-exit": {
-      "$value": [0.4, 0.0, 1.0, 1.0],
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Exit -- elements leaving screen"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

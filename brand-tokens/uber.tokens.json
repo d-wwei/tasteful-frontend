@@ -395,19 +395,49 @@
       "$description": "Slow -- full-screen transitions, map animations"
     },
     "easing-default": {
-      "$value": [0.25, 0.1, 0.25, 1.0],
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Ease-out -- Uber's default, feels direct and confident"
     },
     "easing-enter": {
-      "$value": [0.0, 0.0, 0.2, 1.0],
+      "$value": [
+        0,
+        0,
+        0.2,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Enter/decelerate -- elements arriving on screen"
     },
     "easing-exit": {
-      "$value": [0.4, 0.0, 1.0, 1.0],
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Exit/accelerate -- elements leaving screen"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

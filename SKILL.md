@@ -35,11 +35,12 @@ For code implementation, hand off `.design/handoff/` to **design-to-code-runner*
 
 **Goal**: Understand the problem before solving it. No design decisions yet.
 
-**Do**: Read project context, experience the product (if it exists), ask user about pain points, audience, and business goals.
+**Do**: Read project context, experience the product (if it exists), ask user about pain points, audience, and business goals. **Identify the product domain** — match the brief against `constraints/domain-patterns.md` trigger keywords and set the `domain` field in brief.yaml. If the project spans domains, pick the one matching the end user's expectation and note the secondary influence.
 
-**Asset loading**: None — this phase is pure conversation.
+**Asset loading**:
+- `constraints/domain-patterns.md` — domain identification only (read trigger keywords to classify the brief)
 
-**Output**: `.design/brief.yaml` containing project name, platform, target audience, pain points, success criteria, competitive context.
+**Output**: `.design/brief.yaml` containing project name, platform, **domain**, target audience, pain points, success criteria, competitive context, and optional cultural_context.
 
 **Constraint stance**: No constraints applied. Listen and clarify.
 
@@ -66,16 +67,18 @@ For code implementation, hand off `.design/handoff/` to **design-to-code-runner*
 **Goal**: Visual exploration. Generate 3-5 Style Tile variants for human selection.
 
 **Asset loading**:
-- `aesthetic-patterns.md` — match tone keywords to pattern triggers, activate relevant patterns
+- `constraints/domain-patterns.md` — load the domain identified in Phase 0; use its recommended aesthetic patterns AND content design strategy to inform tile generation
+- `aesthetic-patterns.md` — match tone keywords to pattern triggers, activate relevant patterns; **filter through domain anti-patterns** (some patterns misfire in certain domains)
 - `brand-tokens/*.json` — visual vocabulary source (reference, not template)
 - `brand-previews/*.html` — directional mood references
 
 **Do**: For each Style Tile, define:
-- Color palette (surface, accent, text — just 4-5 swatches)
-- Font pairing (display + body, with rationale)
+- Color palette (surface, accent, text — just 4-5 swatches). **Domain-informed**: dev tools lean green/dark, games lean vibrant/dark, cultural brands derive from their tradition
+- Font pairing (display + body, with rationale). **Domain-informed**: dev tools need monospace accent, editorial needs serif headlines, games need display fonts with character
 - Spatial feel (dense vs airy, symmetric vs asymmetric)
 - One "wow factor" hook (a bold visual move that makes this direction memorable)
 - Mood reference (which brand tokens inspired this direction and how it diverges)
+- **Content design direction** (from domain-patterns.md): what decorative elements, atmospheric effects, and domain-specific content will make this page feel authentic — not just well-tokened
 
 **Output**: `.design/exploration/style-tile-{n}.html` (visual tiles) + `.design/exploration/selected.yaml` (user's choice + rationale for selection)
 
@@ -123,9 +126,14 @@ For code implementation, hand off `.design/handoff/` to **design-to-code-runner*
 **Do**:
 1. Fill layout-spec.yaml with token references (`{spacing.lg}`, `{color.accent}`).
 2. Add interaction section (transitions, loading strategy, empty states).
-3. Run accessibility validation — every text/background pair meets 4.5:1, touch targets meet platform minimums.
-4. Dispatch to the appropriate adapter. Ask user preference or default to html-preview.
-5. **If demo mode**: Generate `.design/demo.html` using the html-preview adapter in demo mode. This file must be a complete, production-quality page — not a token showcase. It must render real components (hero sections, feature cards, navigation, CTAs) with exact token values, full responsive behavior, and interaction states. Use `agent-prompts/{brand}.md` for component-level specs.
+3. **Content Design Layer** — Apply domain-appropriate content elements from `constraints/domain-patterns.md`. For each section in the layout-spec, evaluate and add:
+   - **Decorative text**: Cultural typography, branded phrases, decorative characters (e.g., Japanese kanji for cultural brands, code snippets for dev tools, score displays for games)
+   - **Atmospheric effects**: Background textures (noise, grain, gradients), ambient animations, scroll-triggered reveals — matched to the domain's atmosphere guidelines
+   - **Visual placeholder strategy**: What goes in image/media zones — product mockups, code blocks, data visualizations, artisan process shots — specified concretely, not left as generic gray boxes
+   - Record content design decisions in `layout-spec.yaml` section `decoration` fields
+4. Run accessibility validation — every text/background pair meets 4.5:1, touch targets meet platform minimums.
+5. Dispatch to the appropriate adapter. Ask user preference or default to html-preview.
+6. **If demo mode**: Generate `.design/demo.html` using the html-preview adapter in demo mode. This file must be a complete, production-quality page — not a token showcase. It must render real components (hero sections, feature cards, navigation, CTAs) with exact token values, full responsive behavior, and interaction states. **Apply all content design elements from step 3** — the demo must include domain-specific decoration, not just well-tokened components. Use `agent-prompts/{brand}.md` for component-level specs.
 
 **Output**: Complete `.design/layout-spec.yaml` + design tool output (Penpot file / Figma sync / preview.html / demo.html).
 
@@ -154,6 +162,7 @@ For code implementation, hand off `.design/handoff/` to **design-to-code-runner*
 
 | Asset | Ph.0 | Ph.1 | Ph.2 | Ph.3 | Ph.4 | Ph.5 |
 |-------|------|------|------|------|------|------|
+| `constraints/domain-patterns.md` | X | | X | | X | |
 | `constraints/components.md` | | X | | | | |
 | `constraints/responsive-strategies.md` | | X | | | | |
 | `aesthetic-patterns.md` | | | X | | | |
@@ -362,3 +371,24 @@ Run all six phases identically. At Phase 4 (Compose), instead of only outputting
 - Self-contained — opens in any browser, zero dependencies
 
 The six phases are NOT simplified. Phase 0 still anchors requirements. Phase 2 still generates style tiles for human selection. Phase 5 still runs the full checklist. The only difference is the deliverable format: a complete `.design/demo.html` that IS the deliverable, not a preview of one.
+
+### Lightweight Mode
+
+**Trigger**: Activates when ALL of the following are true:
+- The task is a **single page** (not a design system, not multi-page)
+- No existing token system needs to be extended
+- The user has not requested full spec mode
+
+**What changes**:
+- **Skip 3-layer token architecture**: Instead of primitive -> semantic -> component token files, generate a single flat `tokens.json` with CSS custom properties. The three-layer indirection adds value at scale but is overhead for one page.
+- **Merge Phases 3+4**: Systematize and Compose happen in a single pass — generate tokens + fill layout-spec + apply content design layer + produce output simultaneously.
+- **Simplified output**: `tokens.json` (flat) + `layout-spec.yaml` + `demo.html` in one pass.
+
+**What does NOT change**:
+- Phase 0 (Anchor) still runs — domain identification is critical for single pages too.
+- Phase 2 (Search) still generates style tiles — human selection prevents generic output.
+- Phase 5 (Verify) still runs the accessibility checklist — single pages still need 4.5:1 contrast and proper touch targets.
+- Domain-patterns.md is still loaded — domain adaptation is MORE important for single pages, not less (this is where the A/B losses happened).
+- Content Design Layer still applies — decorative elements, cultural typography, atmospheric effects.
+
+**Why**: In A/B tests, Skill lost 4/5 single-page comparisons. The three-layer token architecture consumed cognitive budget that should have gone toward expressiveness and domain adaptation. Lightweight mode redirects that budget toward the content design layer where single pages are actually won or lost.

@@ -51,6 +51,11 @@
       "$type": "color",
       "$description": "Success and confirmation state — green"
     },
+    "warning": {
+      "$value": "#d97706",
+      "$type": "color",
+      "$description": "Warning state -- standard amber for caution signals"
+    },
     "text-tertiary": {
       "$value": "#666666",
       "$type": "color",
@@ -365,11 +370,6 @@
     }
   },
   "spacing": {
-    "unit": {
-      "$value": "8px",
-      "$type": "dimension",
-      "$description": "Base grid unit"
-    },
     "1": {
       "$value": "1px",
       "$type": "dimension",
@@ -439,6 +439,11 @@
       "$value": "40px",
       "$type": "dimension",
       "$description": "XL spacing"
+    },
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
     },
     "section-gap-mobile": {
       "$value": "48px",
@@ -638,14 +643,39 @@
       "$description": "Deliberate transitions — card hover, shadow intensification"
     },
     "easing-default": {
-      "$value": [0.16, 1, 0.3, 1],
+      "$value": [
+        0.16,
+        1,
+        0.3,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Spring-like entrance curve — smooth, decelerating"
     },
     "easing-exit": {
-      "$value": [0.4, 0, 1, 1],
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Quick exit curve — accelerating out"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

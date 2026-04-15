@@ -3,7 +3,11 @@
     "brand": "nike",
     "source": "awesome-design-md",
     "aesthetic": "kinetic retail cathedral with monochromatic precision",
-    "key-characteristics": ["monochromatic-ui", "massive-uppercase-display", "full-bleed-photography"]
+    "key-characteristics": [
+      "monochromatic-ui",
+      "massive-uppercase-display",
+      "full-bleed-photography"
+    ]
   },
   "color": {
     "surface": {
@@ -190,38 +194,174 @@
     }
   },
   "spacing": {
-    "unit": { "$value": "8px", "$type": "dimension", "$description": "Base grid unit" },
-    "xs": { "$value": "4px", "$type": "dimension", "$description": "Extra small" },
-    "sm": { "$value": "8px", "$type": "dimension", "$description": "Small" },
-    "md": { "$value": "12px", "$type": "dimension", "$description": "Medium" },
-    "lg": { "$value": "16px", "$type": "dimension", "$description": "Large" },
-    "xl": { "$value": "24px", "$type": "dimension", "$description": "Extra large" },
-    "2xl": { "$value": "32px", "$type": "dimension", "$description": "Double extra large" },
-    "3xl": { "$value": "48px", "$type": "dimension", "$description": "Triple extra large" },
-    "section-gap": { "$value": "80px", "$type": "dimension", "$description": "Athletic discipline spacing between sections" },
-    "container-max": { "$value": "1440px", "$type": "dimension", "$description": "Maximum container width" }
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Extra small"
+    },
+    "sm": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Small"
+    },
+    "md": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Medium"
+    },
+    "lg": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large"
+    },
+    "xl": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Extra large"
+    },
+    "2xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Double extra large"
+    },
+    "3xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "Triple extra large"
+    },
+    "section-gap": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "Athletic discipline spacing between sections"
+    },
+    "container-max": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Maximum container width"
+    }
   },
   "border": {
-    "radius-none": { "$value": "0px", "$type": "dimension", "$description": "No radius — full-bleed imagery" },
-    "radius-subtle": { "$value": "4px", "$type": "dimension", "$description": "Small interactive elements" },
-    "radius-standard": { "$value": "8px", "$type": "dimension", "$description": "Cards and containers" },
-    "radius-pill": { "$value": "30px", "$type": "dimension", "$description": "Pill-shaped buttons — primary interactive element" },
-    "radius-circle": { "$value": "50%", "$type": "dimension", "$description": "Circular elements" }
+    "radius-none": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "No radius — full-bleed imagery"
+    },
+    "radius-subtle": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Small interactive elements"
+    },
+    "radius-standard": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Cards and containers"
+    },
+    "radius-pill": {
+      "$value": "30px",
+      "$type": "dimension",
+      "$description": "Pill-shaped buttons — primary interactive element"
+    },
+    "radius-circle": {
+      "$value": "50%",
+      "$type": "dimension",
+      "$description": "Circular elements"
+    }
   },
   "shadow": {
-    "level-0": { "$value": [{ "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "0px", "color": "transparent" }], "$type": "shadow", "$description": "Flat — shadow-free design, elevation through grey shifts" },
-    "level-1": { "$value": [{ "offsetX": "0px", "offsetY": "2px", "blur": "6px", "spread": "0px", "color": "rgba(0,0,0,0.06)" }], "$type": "shadow", "$description": "Subtle — minimal lift for interactive elements" }
+    "level-0": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "0px",
+          "spread": "0px",
+          "color": "transparent"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Flat — shadow-free design, elevation through grey shifts"
+    },
+    "level-1": {
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "6px",
+          "spread": "0px",
+          "color": "rgba(0,0,0,0.06)"
+        }
+      ],
+      "$type": "shadow",
+      "$description": "Subtle — minimal lift for interactive elements"
+    }
   },
   "motion": {
-    "duration-fast": { "$value": "150ms", "$type": "duration", "$description": "Quick interactions" },
-    "duration-normal": { "$value": "200ms", "$type": "duration", "$description": "Standard transitions" },
-    "duration-slow": { "$value": "300ms", "$type": "duration", "$description": "Deliberate transitions" },
-    "easing-default": { "$value": [0.25, 0.1, 0.25, 1], "$type": "cubicBezier", "$description": "Standard ease" }
+    "duration-fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Quick interactions"
+    },
+    "duration-normal": {
+      "$value": "200ms",
+      "$type": "duration",
+      "$description": "Standard transitions"
+    },
+    "duration-slow": {
+      "$value": "300ms",
+      "$type": "duration",
+      "$description": "Deliberate transitions"
+    },
+    "easing-default": {
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Standard ease"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
+    }
   },
   "breakpoint": {
-    "mobile": { "$value": "600px", "$type": "dimension", "$description": "Mobile" },
-    "tablet": { "$value": "960px", "$type": "dimension", "$description": "Tablet" },
-    "desktop": { "$value": "1200px", "$type": "dimension", "$description": "Desktop" },
-    "desktop-lg": { "$value": "1440px", "$type": "dimension", "$description": "Large desktop" }
+    "mobile": {
+      "$value": "600px",
+      "$type": "dimension",
+      "$description": "Mobile"
+    },
+    "tablet": {
+      "$value": "960px",
+      "$type": "dimension",
+      "$description": "Tablet"
+    },
+    "desktop": {
+      "$value": "1200px",
+      "$type": "dimension",
+      "$description": "Desktop"
+    },
+    "desktop-lg": {
+      "$value": "1440px",
+      "$type": "dimension",
+      "$description": "Large desktop"
+    }
   }
 }

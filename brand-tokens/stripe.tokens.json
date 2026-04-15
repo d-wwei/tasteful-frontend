@@ -3,9 +3,12 @@
     "brand": "stripe",
     "source": "awesome-design-md",
     "aesthetic": "weight-300 elegance, blue-tinted shadows",
-    "key-characteristics": ["minimal-luxury", "light-weight-typography", "blue-shadow-depth"]
+    "key-characteristics": [
+      "minimal-luxury",
+      "light-weight-typography",
+      "blue-shadow-depth"
+    ]
   },
-
   "color": {
     "surface": {
       "$value": "#ffffff",
@@ -238,7 +241,6 @@
       "$description": "Keyboard focus ring — 2px solid purple outline"
     }
   },
-
   "typography": {
     "font-primary": {
       "$value": "sohne-var",
@@ -260,75 +262,309 @@
       "$type": "string",
       "$description": "Tabular numerals — used for financial data, tables, charts. Never combined with ss01."
     },
-
-    "scale-nano": { "$value": "8px", "$type": "dimension", "$description": "0.50rem — smallest labels" },
-    "scale-micro": { "$value": "10px", "$type": "dimension", "$description": "0.63rem — tiny labels, axis markers" },
-    "scale-code-micro": { "$value": "9px", "$type": "dimension", "$description": "0.56rem — tiny code annotations" },
-    "scale-caption-sm": { "$value": "12px", "$type": "dimension", "$description": "0.75rem — fine print, timestamps, code body" },
-    "scale-caption": { "$value": "13px", "$type": "dimension", "$description": "0.81rem — small labels, metadata" },
-    "scale-sm": { "$value": "14px", "$type": "dimension", "$description": "0.88rem — links, small buttons" },
-    "scale-base": { "$value": "16px", "$type": "dimension", "$description": "1.00rem — standard body text, buttons" },
-    "scale-lg": { "$value": "18px", "$type": "dimension", "$description": "1.13rem — feature descriptions, intro text" },
-    "scale-xl": { "$value": "22px", "$type": "dimension", "$description": "1.38rem — smaller section heads" },
-    "scale-2xl": { "$value": "26px", "$type": "dimension", "$description": "1.63rem — card headings, sub-sections" },
-    "scale-3xl": { "$value": "32px", "$type": "dimension", "$description": "2.00rem — section heading" },
-    "scale-4xl": { "$value": "48px", "$type": "dimension", "$description": "3.00rem — display large / secondary hero" },
-    "scale-5xl": { "$value": "56px", "$type": "dimension", "$description": "3.50rem — display hero / maximum size" },
-    "scale-pill": { "$value": "11px", "$type": "dimension", "$description": "Neutral pill font size" },
-    "scale-badge": { "$value": "10px", "$type": "dimension", "$description": "Success badge font size" },
-
-    "weight-light": { "$value": "300", "$type": "number", "$description": "Signature headline and body weight — lightness as luxury" },
-    "weight-regular": { "$value": "400", "$type": "number", "$description": "UI weight — buttons, links, navigation" },
-    "weight-code-medium": { "$value": "500", "$type": "number", "$description": "Code body weight" },
-    "weight-code-bold": { "$value": "700", "$type": "number", "$description": "Bold code, keywords" },
-
-    "line-height-ultra-tight": { "$value": "1.00", "$type": "number", "$description": "Buttons — flush line-height" },
-    "line-height-tightest": { "$value": "1.03", "$type": "number", "$description": "Display hero — extreme tight" },
-    "line-height-nano": { "$value": "1.07", "$type": "number", "$description": "Nano labels" },
-    "line-height-tight": { "$value": "1.10", "$type": "number", "$description": "Section headings, sub-headings" },
-    "line-height-snug": { "$value": "1.12", "$type": "number", "$description": "Sub-heading large" },
-    "line-height-display": { "$value": "1.15", "$type": "number", "$description": "Display large headlines, micro labels" },
-    "line-height-caption": { "$value": "1.33", "$type": "number", "$description": "Caption tabular, small captions" },
-    "line-height-normal": { "$value": "1.40", "$type": "number", "$description": "Body text, feature descriptions" },
-    "line-height-caption-sm": { "$value": "1.45", "$type": "number", "$description": "Caption small upper range" },
-    "line-height-relaxed": { "$value": "2.00", "$type": "number", "$description": "Code blocks — generous for readability" },
-
-    "tracking-hero": { "$value": "-1.4px", "$type": "dimension", "$description": "56px display — maximum tightening" },
-    "tracking-display": { "$value": "-0.96px", "$type": "dimension", "$description": "48px display" },
-    "tracking-section": { "$value": "-0.64px", "$type": "dimension", "$description": "32px section heading" },
-    "tracking-subheading-lg": { "$value": "-0.26px", "$type": "dimension", "$description": "26px sub-heading large" },
-    "tracking-subheading": { "$value": "-0.22px", "$type": "dimension", "$description": "22px sub-heading" },
-    "tracking-tabular": { "$value": "-0.36px", "$type": "dimension", "$description": "12px caption tabular" },
-    "tracking-tabular-micro": { "$value": "-0.3px", "$type": "dimension", "$description": "10px micro tabular" },
-    "tracking-micro-wide": { "$value": "0.1px", "$type": "dimension", "$description": "10px micro labels — slight widening" },
-    "tracking-normal": { "$value": "0px", "$type": "dimension", "$description": "16px and below — no adjustment" }
+    "scale-nano": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "0.50rem — smallest labels"
+    },
+    "scale-micro": {
+      "$value": "10px",
+      "$type": "dimension",
+      "$description": "0.63rem — tiny labels, axis markers"
+    },
+    "scale-code-micro": {
+      "$value": "9px",
+      "$type": "dimension",
+      "$description": "0.56rem — tiny code annotations"
+    },
+    "scale-caption-sm": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "0.75rem — fine print, timestamps, code body"
+    },
+    "scale-caption": {
+      "$value": "13px",
+      "$type": "dimension",
+      "$description": "0.81rem — small labels, metadata"
+    },
+    "scale-sm": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "0.88rem — links, small buttons"
+    },
+    "scale-base": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "1.00rem — standard body text, buttons"
+    },
+    "scale-lg": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "1.13rem — feature descriptions, intro text"
+    },
+    "scale-xl": {
+      "$value": "22px",
+      "$type": "dimension",
+      "$description": "1.38rem — smaller section heads"
+    },
+    "scale-2xl": {
+      "$value": "26px",
+      "$type": "dimension",
+      "$description": "1.63rem — card headings, sub-sections"
+    },
+    "scale-3xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "2.00rem — section heading"
+    },
+    "scale-4xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "3.00rem — display large / secondary hero"
+    },
+    "scale-5xl": {
+      "$value": "56px",
+      "$type": "dimension",
+      "$description": "3.50rem — display hero / maximum size"
+    },
+    "scale-pill": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Neutral pill font size"
+    },
+    "scale-badge": {
+      "$value": "10px",
+      "$type": "dimension",
+      "$description": "Success badge font size"
+    },
+    "weight-light": {
+      "$value": "300",
+      "$type": "number",
+      "$description": "Signature headline and body weight — lightness as luxury"
+    },
+    "weight-regular": {
+      "$value": "400",
+      "$type": "number",
+      "$description": "UI weight — buttons, links, navigation"
+    },
+    "weight-code-medium": {
+      "$value": "500",
+      "$type": "number",
+      "$description": "Code body weight"
+    },
+    "weight-code-bold": {
+      "$value": "700",
+      "$type": "number",
+      "$description": "Bold code, keywords"
+    },
+    "line-height-ultra-tight": {
+      "$value": "1.00",
+      "$type": "number",
+      "$description": "Buttons — flush line-height"
+    },
+    "line-height-tightest": {
+      "$value": "1.03",
+      "$type": "number",
+      "$description": "Display hero — extreme tight"
+    },
+    "line-height-nano": {
+      "$value": "1.07",
+      "$type": "number",
+      "$description": "Nano labels"
+    },
+    "line-height-tight": {
+      "$value": "1.10",
+      "$type": "number",
+      "$description": "Section headings, sub-headings"
+    },
+    "line-height-snug": {
+      "$value": "1.12",
+      "$type": "number",
+      "$description": "Sub-heading large"
+    },
+    "line-height-display": {
+      "$value": "1.15",
+      "$type": "number",
+      "$description": "Display large headlines, micro labels"
+    },
+    "line-height-caption": {
+      "$value": "1.33",
+      "$type": "number",
+      "$description": "Caption tabular, small captions"
+    },
+    "line-height-normal": {
+      "$value": "1.40",
+      "$type": "number",
+      "$description": "Body text, feature descriptions"
+    },
+    "line-height-caption-sm": {
+      "$value": "1.45",
+      "$type": "number",
+      "$description": "Caption small upper range"
+    },
+    "line-height-relaxed": {
+      "$value": "2.00",
+      "$type": "number",
+      "$description": "Code blocks — generous for readability"
+    },
+    "tracking-hero": {
+      "$value": "-1.4px",
+      "$type": "dimension",
+      "$description": "56px display — maximum tightening"
+    },
+    "tracking-display": {
+      "$value": "-0.96px",
+      "$type": "dimension",
+      "$description": "48px display"
+    },
+    "tracking-section": {
+      "$value": "-0.64px",
+      "$type": "dimension",
+      "$description": "32px section heading"
+    },
+    "tracking-subheading-lg": {
+      "$value": "-0.26px",
+      "$type": "dimension",
+      "$description": "26px sub-heading large"
+    },
+    "tracking-subheading": {
+      "$value": "-0.22px",
+      "$type": "dimension",
+      "$description": "22px sub-heading"
+    },
+    "tracking-tabular": {
+      "$value": "-0.36px",
+      "$type": "dimension",
+      "$description": "12px caption tabular"
+    },
+    "tracking-tabular-micro": {
+      "$value": "-0.3px",
+      "$type": "dimension",
+      "$description": "10px micro tabular"
+    },
+    "tracking-micro-wide": {
+      "$value": "0.1px",
+      "$type": "dimension",
+      "$description": "10px micro labels — slight widening"
+    },
+    "tracking-normal": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "16px and below — no adjustment"
+    }
   },
-
   "spacing": {
-    "unit": { "$value": "8px", "$type": "dimension", "$description": "Base grid unit" },
-    "1": { "$value": "1px", "$type": "dimension", "$description": "Finest spacing — micro adjustments" },
-    "2": { "$value": "2px", "$type": "dimension", "$description": "Minimal gap" },
-    "4": { "$value": "4px", "$type": "dimension", "$description": "Tight internal padding" },
-    "6": { "$value": "6px", "$type": "dimension", "$description": "Badge horizontal padding, compact gaps" },
-    "8": { "$value": "8px", "$type": "dimension", "$description": "Base unit — button vertical padding" },
-    "10": { "$value": "10px", "$type": "dimension", "$description": "Dense scale step" },
-    "11": { "$value": "11px", "$type": "dimension", "$description": "Dense scale step — precision spacing" },
-    "12": { "$value": "12px", "$type": "dimension", "$description": "Dense scale step" },
-    "14": { "$value": "14px", "$type": "dimension", "$description": "Moderate spacing" },
-    "16": { "$value": "16px", "$type": "dimension", "$description": "Button horizontal padding, standard gap" },
-    "18": { "$value": "18px", "$type": "dimension", "$description": "Extended step" },
-    "20": { "$value": "20px", "$type": "dimension", "$description": "Mobile page margin, comfortable gap" },
-    "40": { "$value": "40px", "$type": "dimension", "$description": "Mobile section spacing" },
-    "64": { "$value": "64px", "$type": "dimension", "$description": "Desktop section spacing, page margin" },
-    "section-gap-desktop": { "$value": "64px", "$type": "dimension", "$description": "Section rhythm spacing on desktop" },
-    "section-gap-mobile": { "$value": "40px", "$type": "dimension", "$description": "Compressed section spacing on mobile" },
-    "page-margin-mobile": { "$value": "20px", "$type": "dimension", "$description": "Mobile horizontal page margin" },
-    "content-max-width": { "$value": "1080px", "$type": "dimension", "$description": "Maximum content width" },
-    "button-padding": { "$value": "8px 16px", "$type": "string", "$description": "Standard button padding — vertical horizontal" },
-    "badge-padding": { "$value": "1px 6px", "$type": "string", "$description": "Success badge padding" },
-    "pill-padding": { "$value": "0px 6px", "$type": "string", "$description": "Neutral pill padding" }
+    "1": {
+      "$value": "1px",
+      "$type": "dimension",
+      "$description": "Finest spacing — micro adjustments"
+    },
+    "2": {
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Minimal gap"
+    },
+    "4": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Tight internal padding"
+    },
+    "6": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "Badge horizontal padding, compact gaps"
+    },
+    "8": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base unit — button vertical padding"
+    },
+    "10": {
+      "$value": "10px",
+      "$type": "dimension",
+      "$description": "Dense scale step"
+    },
+    "11": {
+      "$value": "11px",
+      "$type": "dimension",
+      "$description": "Dense scale step — precision spacing"
+    },
+    "12": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Dense scale step"
+    },
+    "14": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "Moderate spacing"
+    },
+    "16": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Button horizontal padding, standard gap"
+    },
+    "18": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Extended step"
+    },
+    "20": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Mobile page margin, comfortable gap"
+    },
+    "40": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Mobile section spacing"
+    },
+    "64": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Desktop section spacing, page margin"
+    },
+    "unit": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Base grid unit"
+    },
+    "section-gap-desktop": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "Section rhythm spacing on desktop"
+    },
+    "section-gap-mobile": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "Compressed section spacing on mobile"
+    },
+    "page-margin-mobile": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "Mobile horizontal page margin"
+    },
+    "content-max-width": {
+      "$value": "1080px",
+      "$type": "dimension",
+      "$description": "Maximum content width"
+    },
+    "button-padding": {
+      "$value": "8px 16px",
+      "$type": "string",
+      "$description": "Standard button padding — vertical horizontal"
+    },
+    "badge-padding": {
+      "$value": "1px 6px",
+      "$type": "string",
+      "$description": "Success badge padding"
+    },
+    "pill-padding": {
+      "$value": "0px 6px",
+      "$type": "string",
+      "$description": "Neutral pill padding"
+    }
   },
-
   "border": {
     "radius-micro": {
       "$value": "1px",
@@ -371,7 +607,6 @@
       "$description": "Focus ring border width"
     }
   },
-
   "shadow": {
     "level-0": {
       "$value": [],
@@ -380,30 +615,66 @@
     },
     "level-1": {
       "$value": [
-        { "offsetX": "0px", "offsetY": "3px", "blur": "6px", "spread": "0px", "color": "rgba(23,23,23,0.06)" }
+        {
+          "offsetX": "0px",
+          "offsetY": "3px",
+          "blur": "6px",
+          "spread": "0px",
+          "color": "rgba(23,23,23,0.06)"
+        }
       ],
       "$type": "shadow",
       "$description": "Ambient — subtle card lift, hover hints"
     },
     "level-2": {
       "$value": [
-        { "offsetX": "0px", "offsetY": "15px", "blur": "35px", "spread": "0px", "color": "rgba(23,23,23,0.08)" }
+        {
+          "offsetX": "0px",
+          "offsetY": "15px",
+          "blur": "35px",
+          "spread": "0px",
+          "color": "rgba(23,23,23,0.08)"
+        }
       ],
       "$type": "shadow",
       "$description": "Standard — cards, content panels"
     },
     "level-3": {
       "$value": [
-        { "offsetX": "0px", "offsetY": "30px", "blur": "45px", "spread": "-30px", "color": "rgba(50,50,93,0.25)" },
-        { "offsetX": "0px", "offsetY": "18px", "blur": "36px", "spread": "-18px", "color": "rgba(0,0,0,0.1)" }
+        {
+          "offsetX": "0px",
+          "offsetY": "30px",
+          "blur": "45px",
+          "spread": "-30px",
+          "color": "rgba(50,50,93,0.25)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "18px",
+          "blur": "36px",
+          "spread": "-18px",
+          "color": "rgba(0,0,0,0.1)"
+        }
       ],
       "$type": "shadow",
       "$description": "Elevated — featured cards, dropdowns, popovers. Blue-tinted far + neutral near parallax."
     },
     "level-4": {
       "$value": [
-        { "offsetX": "0px", "offsetY": "14px", "blur": "21px", "spread": "-14px", "color": "rgba(3,3,39,0.25)" },
-        { "offsetX": "0px", "offsetY": "8px", "blur": "17px", "spread": "-8px", "color": "rgba(0,0,0,0.1)" }
+        {
+          "offsetX": "0px",
+          "offsetY": "14px",
+          "blur": "21px",
+          "spread": "-14px",
+          "color": "rgba(3,3,39,0.25)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "17px",
+          "spread": "-8px",
+          "color": "rgba(0,0,0,0.1)"
+        }
       ],
       "$type": "shadow",
       "$description": "Deep — modals, floating panels. Dark blue-tinted dual-layer."
@@ -414,7 +685,6 @@
       "$description": "Keyboard focus ring — accessibility outline"
     }
   },
-
   "motion": {
     "duration-fast": {
       "$value": "150ms",
@@ -432,17 +702,41 @@
       "$description": "Deliberate transitions — card hover, shadow intensification"
     },
     "easing-default": {
-      "$value": [0.16, 1, 0.3, 1],
+      "$value": [
+        0.16,
+        1,
+        0.3,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Spring-like entrance curve — smooth deceleration"
     },
     "easing-exit": {
-      "$value": [0.4, 0, 1, 1],
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Quick exit curve — fast departure"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
-
   "breakpoint": {
     "mobile": {
       "$value": "640px",

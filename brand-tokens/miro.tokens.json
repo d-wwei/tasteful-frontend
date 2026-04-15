@@ -55,6 +55,11 @@
       "$type": "color",
       "$description": "Success state"
     },
+    "warning": {
+      "$value": "#da920b",
+      "$type": "color",
+      "$description": "Warning state -- warm amber derived from brand warmth"
+    },
     "border": {
       "$value": "#e5e5e5",
       "$type": "color",
@@ -230,6 +235,21 @@
       ],
       "$type": "cubicBezier",
       "$description": "Ease"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

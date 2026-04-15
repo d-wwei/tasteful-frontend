@@ -430,19 +430,49 @@
       "$description": "Slow — panel expand/collapse, modal open"
     },
     "easing-default": {
-      "$value": [0.15, 0.0, 0.35, 1.0],
+      "$value": [
+        0.15,
+        0,
+        0.35,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Default ease — snappy in, smooth out"
     },
     "easing-enter": {
-      "$value": [0.0, 0.0, 0.35, 1.0],
+      "$value": [
+        0,
+        0,
+        0.35,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Enter — elements appearing"
     },
     "easing-exit": {
-      "$value": [0.15, 0.0, 1.0, 1.0],
+      "$value": [
+        0.15,
+        0,
+        1,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Exit — elements disappearing"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

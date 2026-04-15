@@ -479,24 +479,59 @@
       "$description": "Deliberate -- hero animations, showcase reveals"
     },
     "easing-spring": {
-      "$value": [0.2, 0.9, 0.3, 1.0],
+      "$value": [
+        0.2,
+        0.9,
+        0.3,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Spring -- Framer's signature spring-physics feel, overshoots slightly"
     },
     "easing-ease-out": {
-      "$value": [0.16, 1, 0.3, 1],
+      "$value": [
+        0.16,
+        1,
+        0.3,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Ease Out -- decelerating motion for enter animations"
     },
     "easing-ease-in-out": {
-      "$value": [0.4, 0, 0.2, 1],
+      "$value": [
+        0.4,
+        0,
+        0.2,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Ease In Out -- symmetric motion for looping or reversible transitions"
     },
     "easing-bounce": {
-      "$value": [0.34, 1.56, 0.64, 1],
+      "$value": [
+        0.34,
+        1.56,
+        0.64,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Bounce -- playful overshoot for delightful micro-interactions"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {

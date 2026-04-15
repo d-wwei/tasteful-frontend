@@ -3,7 +3,11 @@
     "brand": "spotify",
     "source": "awesome-design-md",
     "aesthetic": "dark immersive music cocoon with pill geometry",
-    "key-characteristics": ["dark-immersive", "green-functional-accent", "pill-circle-geometry"]
+    "key-characteristics": [
+      "dark-immersive",
+      "green-functional-accent",
+      "pill-circle-geometry"
+    ]
   },
   "color": {
     "surface": {
@@ -357,9 +361,29 @@
       "$description": "Card hover transitions"
     },
     "easing-default": {
-      "$value": [0.25, 0.1, 0.25, 1],
+      "$value": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
       "$type": "cubicBezier",
       "$description": "Standard ease"
+    },
+    "reduced-duration": {
+      "$value": "0.01ms",
+      "$type": "duration",
+      "$description": "Near-zero duration for prefers-reduced-motion. Applied via media query."
+    },
+    "reduced-easing": {
+      "$value": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "$type": "cubicBezier",
+      "$description": "Linear easing for reduced motion -- no spring/bounce."
     }
   },
   "breakpoint": {
