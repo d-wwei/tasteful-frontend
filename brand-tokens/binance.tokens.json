@@ -6,7 +6,8 @@
     "key-characteristics": [
       "yellow-crypto",
       "trading-ui",
-      "data-dense"
+      "data-dense",
+      "binanceplex-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "BinancePlex, Space Grotesk, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- BinancePlex (proprietary IBM Plex fork). Preview fallback: Space Grotesk for technical geometric character"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "BinancePlex, Space Grotesk, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- data-dense crypto exchange readability with technical precision"
     },
     "scale-display": {
       "$value": "48px",

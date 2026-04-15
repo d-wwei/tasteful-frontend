@@ -6,7 +6,8 @@
     "key-characteristics": [
       "green-brand",
       "friendly-type",
-      "transparent-design"
+      "transparent-design",
+      "rounded-friendly-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Wise Sans, Outfit, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- Wise Sans (proprietary). Preview fallback: Outfit for friendly rounded terminals"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Wise Sans, Outfit, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- rounded friendly sans for transparent fintech design"
     },
     "scale-display": {
       "$value": "48px",

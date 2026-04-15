@@ -6,7 +6,8 @@
     "key-characteristics": [
       "dark-ai-voice",
       "gradient-accent",
-      "audio-native"
+      "audio-native",
+      "humanist-warm-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "ABC Favorit, Plus Jakarta Sans, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- ABC Favorit (proprietary). Preview fallback: Plus Jakarta Sans for modern humanist warmth"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "GT Walsheim, Plus Jakarta Sans, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- GT Walsheim (proprietary). Preview fallback: Plus Jakarta Sans for modern AI voice platform readability"
     },
     "scale-display": {
       "$value": "48px",

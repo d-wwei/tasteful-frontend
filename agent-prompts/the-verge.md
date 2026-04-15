@@ -19,10 +19,10 @@ Text secondary:      #6b6b6b
 ## 2. Quick Typography Reference
 
 ```
-Display:     Inter, -apple-system, sans-serif  | 48px | weight 600 | line-height 1.15
-Section:     Inter, -apple-system, sans-serif  | 32px | weight 600 | line-height 1.20
-Body:        Inter, -apple-system, sans-serif  | 16px | weight 400 | line-height 1.50
-Caption:     Inter, -apple-system, sans-serif  | 14px | weight 400 | line-height 1.43
+Display:     Pathfinder, Space Grotesk, -apple-system, sans-serif  | 48px | weight 600 | line-height 1.15
+Section:     Pathfinder, Space Grotesk, -apple-system, sans-serif  | 32px | weight 600 | line-height 1.20
+Body:        Polysans, Instrument Sans, -apple-system, sans-serif  | 16px | weight 400 | line-height 1.50
+Caption:     Polysans, Instrument Sans, -apple-system, sans-serif  | 14px | weight 400 | line-height 1.43
 ```
 
 ---

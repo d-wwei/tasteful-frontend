@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wired Brand Tokens Preview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600;700&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --surface: #ffffff;
@@ -14,7 +14,7 @@
     --text-primary: #1a1a1a;
     --text-secondary: #6b6b6b;
     --border: #e5e5e5;
-    --font: Inter, -apple-system, sans-serif;
+    --font-display: Space Mono, monospace; --font: Instrument Sans, -apple-system, sans-serif;
   }
   body { font-family: var(--font); background: var(--surface); color: var(--text-primary); line-height: 1.5; }
   .container { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
@@ -23,12 +23,12 @@
     background: var(--surface-subtle); border-radius: 12px;
     border: 1px solid var(--border);
   }
-  .brand-header h1 { font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
+  .brand-header h1 { font-family: var(--font-display); font-size: 48px; font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 12px; }
   .brand-header .aesthetic { font-size: 18px; color: var(--text-secondary); margin-bottom: 16px; font-style: italic; }
   .brand-header .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
   .brand-header .tag { font-size: 11px; padding: 4px 12px; background: var(--accent); color: #ffffff; border-radius: 9999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
   .section { margin-bottom: 80px; }
-  .section-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
+  .section-title { font-family: var(--font-display); font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 8px; }
   .section-desc { font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; }
   .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
   .color-swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-subtle); }

@@ -6,7 +6,8 @@
     "key-characteristics": [
       "yellow-brand",
       "collaborative",
-      "whiteboard-native"
+      "whiteboard-native",
+      "roobert-friendly-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Roobert, Outfit, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- Roobert (proprietary). Preview fallback: Outfit for semi-geometric friendly personality"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Roobert, Outfit, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- friendly semi-geometric sans for collaborative whiteboard UI"
     },
     "scale-display": {
       "$value": "48px",

@@ -6,7 +6,8 @@
     "key-characteristics": [
       "carbon-system",
       "enterprise-grade",
-      "structured-design"
+      "structured-design",
+      "ibm-plex-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "IBM Plex Sans, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- IBM Plex Sans, the bespoke typeface of IBM Carbon Design System"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "IBM Plex Sans, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- IBM Plex Sans for enterprise clarity and structured reading"
     },
     "scale-display": {
       "$value": "48px",

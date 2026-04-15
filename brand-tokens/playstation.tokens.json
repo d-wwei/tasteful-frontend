@@ -6,7 +6,8 @@
     "key-characteristics": [
       "dark-gaming",
       "blue-accent",
-      "immersive-ui"
+      "immersive-ui",
+      "sst-sony-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "SST, Source Sans 3, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- SST (Sony Sans Text, proprietary). Preview fallback: Source Sans 3 for similar clean humanist quality"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "SST, Source Sans 3, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- SST for immersive gaming UI readability"
     },
     "scale-display": {
       "$value": "48px",

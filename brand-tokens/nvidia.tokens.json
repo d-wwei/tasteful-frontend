@@ -6,7 +6,8 @@
     "key-characteristics": [
       "green-power",
       "gpu-focused",
-      "tech-hardware"
+      "tech-hardware",
+      "nvidia-sans-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "NVIDIA Sans, DM Sans, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- NVIDIA Sans (proprietary). Preview fallback: DM Sans approximates its geometric precision"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "NVIDIA Sans, DM Sans, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- NVIDIA Sans for technical hardware authority"
     },
     "scale-display": {
       "$value": "48px",

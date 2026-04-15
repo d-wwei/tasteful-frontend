@@ -6,7 +6,8 @@
     "key-characteristics": [
       "purple-crypto",
       "trading-platform",
-      "security-focused"
+      "security-focused",
+      "sharp-geometric-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Kraken Grotesk, Space Grotesk, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- Kraken Grotesk (proprietary). Preview fallback: Space Grotesk for sharp geometric trading UI"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Kraken Grotesk, Space Grotesk, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- sharp geometric sans for crypto exchange with purple depth"
     },
     "scale-display": {
       "$value": "48px",

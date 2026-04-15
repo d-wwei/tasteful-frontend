@@ -6,7 +6,8 @@
     "key-characteristics": [
       "yellow-diamond",
       "modern-auto",
-      "french-design"
+      "french-design",
+      "soft-geometric-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Renault Life, Nunito Sans, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- Renault Life (proprietary). Preview fallback: Nunito Sans for soft geometric roundness"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Renault Life, Nunito Sans, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- friendly rounded humanist for modern French automotive"
     },
     "scale-display": {
       "$value": "48px",

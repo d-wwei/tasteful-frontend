@@ -6,7 +6,8 @@
     "key-characteristics": [
       "futuristic-editorial",
       "tech-magazine",
-      "bold-type"
+      "bold-type",
+      "mono-display-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "WIRED Mono, Space Mono, monospace",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- WIRED Mono (proprietary). Preview fallback: Space Mono for futuristic tech-magazine monospace display"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "WIRED Sans, Instrument Sans, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- WIRED Sans (proprietary). Preview fallback: Instrument Sans for clean editorial reading"
     },
     "scale-display": {
       "$value": "48px",

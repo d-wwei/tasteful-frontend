@@ -6,7 +6,8 @@
     "key-characteristics": [
       "dark-aerospace",
       "technical-type",
-      "mission-focused"
+      "mission-focused",
+      "condensed-technical-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "SpaceX Sans, D-DIN, Rajdhani, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- SpaceX Sans (proprietary, D-DIN derived). Preview fallback: Rajdhani for technical condensed aerospace character"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "SpaceX Sans, D-DIN, Rajdhani, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- condensed technical sans for dark aerospace precision"
     },
     "scale-display": {
       "$value": "48px",

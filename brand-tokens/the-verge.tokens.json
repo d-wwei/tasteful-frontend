@@ -6,7 +6,8 @@
     "key-characteristics": [
       "bold-editorial",
       "tech-media",
-      "high-contrast"
+      "high-contrast",
+      "editorial-display-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Pathfinder, Space Grotesk, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- Pathfinder (proprietary). Preview fallback: Space Grotesk for bold editorial-tech geometric character"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Polysans, Instrument Sans, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- Polysans (proprietary). Preview fallback: Instrument Sans for editorial readability"
     },
     "scale-display": {
       "$value": "48px",

@@ -6,7 +6,8 @@
     "key-characteristics": [
       "ultra-luxury",
       "dark-elegance",
-      "artisan-precision"
+      "artisan-precision",
+      "luxury-serif-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Bugatti Type, Cormorant Garamond, serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- Bugatti Type (proprietary). Preview fallback: Cormorant Garamond for luxury high-contrast serif presence"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Bugatti Type, EB Garamond, serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- luxury serif with refined reading texture for ultra-premium automotive"
     },
     "scale-display": {
       "$value": "48px",

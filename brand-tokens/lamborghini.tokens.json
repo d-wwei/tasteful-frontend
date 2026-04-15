@@ -6,7 +6,8 @@
     "key-characteristics": [
       "angular-dark",
       "supercar-energy",
-      "italian-bold"
+      "italian-bold",
+      "angular-geometric-typography"
     ]
   },
   "color": {
@@ -68,14 +69,14 @@
   },
   "typography": {
     "font-display": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Lamborghini Sans, Rajdhani, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Display font"
+      "$description": "Display font -- Lamborghini Sans (proprietary). Preview fallback: Rajdhani for angular, aggressive geometric character"
     },
     "font-body": {
-      "$value": "Inter, -apple-system, sans-serif",
+      "$value": "Lamborghini Sans, Rajdhani, -apple-system, sans-serif",
       "$type": "fontFamily",
-      "$description": "Body font"
+      "$description": "Body font -- sharp geometric sans matching supercar aggression"
     },
     "scale-display": {
       "$value": "48px",

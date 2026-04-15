@@ -19,10 +19,10 @@ Text secondary:      #8c8c8c
 ## 2. Quick Typography Reference
 
 ```
-Display:     Inter, -apple-system, sans-serif  | 48px | weight 600 | line-height 1.15
-Section:     Inter, -apple-system, sans-serif  | 32px | weight 600 | line-height 1.20
-Body:        Inter, -apple-system, sans-serif  | 16px | weight 400 | line-height 1.50
-Caption:     Inter, -apple-system, sans-serif  | 14px | weight 400 | line-height 1.43
+Display:     Bugatti Type, Cormorant Garamond, serif  | 48px | weight 600 | line-height 1.15
+Section:     Bugatti Type, Cormorant Garamond, serif  | 32px | weight 600 | line-height 1.20
+Body:        Bugatti Type, EB Garamond, serif  | 16px | weight 400 | line-height 1.50
+Caption:     Bugatti Type, EB Garamond, serif  | 14px | weight 400 | line-height 1.43
 ```
 
 ---
